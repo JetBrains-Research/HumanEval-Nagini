@@ -34,7 +34,8 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
                     (Implies((((((0) <= (d_5_i1_)) and ((d_5_i1_) < (d_4_i_))) and (((0) <= (d_6_j_)) and ((d_6_j_) < (len(l))))) or (d_5_i1_ == d_4_i_ and ((0) <= (d_6_j_)) and ((d_6_j_) < (d_9_j_)))) and ((d_5_i1_) != (d_6_j_)), (((l)[d_5_i1_]) + ((l)[d_6_j_])) != (0)), [[((l)[d_5_i1_]) + ((l)[d_6_j_])]])))))
             Invariant(not (result) or ((Exists(int, lambda d_13_i1_:
                 Exists(int, lambda d_14_j1_:
-                    (((((0) <= (d_13_i1_)) and ((d_13_i1_) < (d_4_i_))) and (((0) <= (d_14_j1_)) and ((d_14_j1_) < (len(l))))) and ((d_13_i1_) != (d_14_j1_))) and ((((l)[d_13_i1_]) + ((l)[d_14_j1_])) == (0))))) or (Exists(int, lambda d_15_j1_:
+                    (((((0) <= (d_13_i1_)) and ((d_13_i1_) < (d_4_i_))) and (((0) <= (d_14_j1_)) and ((d_14_j1_) < (len(l))))) and ((d_13_i1_) != (d_14_j1_))) and ((((l)[d_13_i1_]) + ((l)[d_14_j1_])) == (0)))))
+             or (Exists(int, lambda d_15_j1_:
                 ((((0) <= (d_15_j1_)) and ((d_15_j1_) < (d_9_j_))) and ((d_4_i_) != (d_15_j1_))) and ((((l)[d_4_i_]) + ((l)[d_15_j1_])) == (0))))))
             if ((d_4_i_) != (d_9_j_)) and ((((l)[d_4_i_]) + ((l)[d_9_j_])) == (0)):
                 result = True
