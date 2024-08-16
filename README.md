@@ -14,7 +14,7 @@ Current status:
 - [x] 8. sum_product
 - [x] 9. rolling_max
 - [ ] 10. is_palindrome
-- [ ] 11. string_xor
+- [x] 11. string_xor
 - [ ] 12. longest
 - [x] 13. greatest_common_divisor
 - [ ] 14. all_prefixes
@@ -23,14 +23,14 @@ Current status:
 - [ ] 17. parse_music
 - [ ] 18. how_many_times
 - [ ] 19. sort_numbers
-- [ ] 20. find_closest_elements
+- [x] 20. find_closest_elements
 - [ ] 21. rescale_to_unit
 - [ ] 22. filter_integers
 - [x] 23. strlen
 - [x] 24. largest_divisor
 - [ ] 25. factorize
 - [ ] 26. remove_duplicates
-- [ ] 27. flip_case
+- [x] 27. flip_case
 - [ ] 28. concatenate
 - [ ] 29. filter_by_prefix
 - [x] 30. get_positive
@@ -51,13 +51,13 @@ Current status:
 - [ ] 45. triangle_area
 - [ ] 46. fib4
 - [ ] 47. median
-- [ ] 48. is_palindrome
+- [x] 48. is_palindrome
 - [ ] 49. modp
 - [ ] 50. encode_shift
 - [ ] 51. remove_vowels
 - [x] 52. below_threshold
 - [x] 53. add
-- [ ] 54. same_chars
+- [x] 54. same_chars
 - [x] 55. fib
 - [ ] 56. correct_bracketing
 - [x] 57. monotonic
@@ -69,21 +69,21 @@ Current status:
 - [x] 63. fibfib
 - [ ] 64. vowels_count
 - [ ] 65. circular_shift
-- [ ] 66. digitSum
+- [x] 66. digitSum
 - [ ] 67. fruit_distribution
 - [x] 68. pluck
 - [ ] 69. search
-- [ ] 70. strange_sort_list
+- [x] 70. strange_sort_list
 - [ ] 71. triangle_area
-- [ ] 72. will_it_fly
+- [x] 72. will_it_fly
 - [ ] 73. smallest_change
 - [ ] 74. total_match
 - [ ] 75. is_multiply_prime
 - [ ] 76. is_simple_power
 - [ ] 77. iscube
-- [ ] 78. hex_key
+- [x] 78. hex_key
 - [ ] 79. decimal_to_binary
-- [ ] 80. is_happy
+- [x] 80. is_happy
 - [ ] 81. numerical_letter_grade
 - [x] 82. prime_length
 - [x] 83. starts_one_ends
