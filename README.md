@@ -13,7 +13,7 @@ Current status:
 - [ ] 7. filter_by_substring
 - [x] 8. sum_product
 - [x] 9. rolling_max
-- [ ] 10. is_palindrome
+- [x] 10. is_palindrome
 - [x] 11. string_xor
 - [ ] 12. longest
 - [x] 13. greatest_common_divisor
@@ -43,7 +43,7 @@ Current status:
 - [ ] 37. sort_even
 - [ ] 38. encode_cyclic
 - [ ] 39. prime_fib
-- [ ] 40. triples_sum_to_zero
+- [x] 40. triples_sum_to_zero
 - [ ] 41. car_race_collision
 - [x] 42. incr_list
 - [x] 43. pairs_sum_to_zero
@@ -54,7 +54,7 @@ Current status:
 - [x] 48. is_palindrome
 - [ ] 49. modp
 - [ ] 50. encode_shift
-- [ ] 51. remove_vowels
+- [x] 51. remove_vowels
 - [x] 52. below_threshold
 - [x] 53. add
 - [x] 54. same_chars
@@ -107,7 +107,7 @@ Current status:
 - [ ] 101. words_string
 - [x] 102. choose_num
 - [ ] 103. rounded_avg
-- [ ] 104. unique_digits
+- [x] 104. unique_digits
 - [ ] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
@@ -121,11 +121,11 @@ Current status:
 - [ ] 115. max_fill
 - [ ] 116. sort_array
 - [ ] 117. select_words
-- [ ] 118. get_closest_vowel
+- [x] 118. get_closest_vowel
 - [ ] 119. match_parens
 - [ ] 120. maximum
 - [ ] 121. solution
-- [ ] 122. add_elements
+- [x] 122. add_elements
 - [ ] 123. get_odd_collatz
 - [ ] 124. valid_date
 - [ ] 125. split_words
@@ -157,7 +157,7 @@ Current status:
 - [x] 151. double_the_difference
 - [x] 152. compare
 - [ ] 153. Strongest_Extension
-- [ ] 154. cycpattern_check
+- [x] 154. cycpattern_check
 - [ ] 155. even_odd_count
 - [ ] 156. int_to_mini_roman
 - [x] 157. right_angle_triangle
