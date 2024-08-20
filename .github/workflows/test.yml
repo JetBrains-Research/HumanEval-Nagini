@@ -27,4 +27,4 @@ jobs:
         pip install .
     - name: Test with pytest
       run: |
-        nagini 001-has-close-elements.py
+        nagini 000-has-close-elements.py
