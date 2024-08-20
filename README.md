@@ -36,11 +36,11 @@ Current status:
 - [x] 30. get_positive
 - [x] 31. is_prime
 - [ ] 32. poly
-- [ ] 33. sort_third
+- [x] 33. sort_third
 - [ ] 34. unique
 - [x] 35. max_element
 - [ ] 36. fizz_buzz
-- [ ] 37. sort_even
+- [x] 37. sort_even
 - [ ] 38. encode_cyclic
 - [ ] 39. prime_fib
 - [x] 40. triples_sum_to_zero
@@ -61,7 +61,7 @@ Current status:
 - [x] 55. fib
 - [ ] 56. correct_bracketing
 - [x] 57. monotonic
-- [ ] 58. common
+- [x] 58. common
 - [x] 59. largest_prime_factor
 - [x] 60. sum_to_n
 - [ ] 61. correct_bracketing
@@ -78,7 +78,7 @@ Current status:
 - [x] 72. will_it_fly
 - [ ] 73. smallest_change
 - [ ] 74. total_match
-- [ ] 75. is_multiply_prime
+- [x] 75. is_multiply_prime
 - [ ] 76. is_simple_power
 - [ ] 77. iscube
 - [x] 78. hex_key
@@ -91,7 +91,7 @@ Current status:
 - [x] 85. add
 - [ ] 86. anti_shuffle
 - [ ] 87. get_row
-- [ ] 88. sort_array
+- [x] 88. sort_array
 - [ ] 89. encrypt
 - [ ] 90. next_smallest
 - [ ] 91. is_bored
