@@ -24,6 +24,7 @@ def will__it__fly(s : List[int], w : int) -> bool:
             return result
         d_0_i_ = (d_0_i_) + (1)
         d_1_j_ = (d_1_j_) - (1)
+    
     d_3_total_ = int(0) # type : int
     d_3_total_ = 0
     d_0_i_ = 0

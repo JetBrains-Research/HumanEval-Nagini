@@ -27,6 +27,7 @@ def UniqueDigits(x : List[int]) -> List[int]:
     result = list([int(0)] * 0) # type : List[int]
     result = list([])
     d_5_i_ = 0
+    
     while d_5_i_ < len(x):
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(x), 1/2))
