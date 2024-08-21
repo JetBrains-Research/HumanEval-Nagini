@@ -33,6 +33,6 @@ jobs:
         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
         chmod +x ./public/scripts/test-new.sh
-        ./public/scripts/test.sh-new $ALL_CHANGED_FILES
+        ./public/scripts/test-new.sh $ALL_CHANGED_FILES
       shell: bash
         # nagini 000-has-close-elements.py
