@@ -25,6 +25,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         pip install .
-    - name: Test with pytest
+    - name: Run Nagini tests
       run: |
-        nagini 000-has-close-elements.py
+        chmod +x ./public/scripts/test.sh
+        ./public/scripts/test.sh
+      shell: bash
+        # nagini 000-has-close-elements.py
