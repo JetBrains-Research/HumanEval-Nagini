@@ -25,9 +25,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         pip install .
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v45
     - name: Run Nagini tests
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
-        chmod +x ./public/scripts/test.sh
-        ./public/scripts/test.sh
+        chmod +x ./public/scripts/test-new.sh
+        ./public/scripts/test.sh-new $ALL_CHANGED_FILES
       shell: bash
         # nagini 000-has-close-elements.py
