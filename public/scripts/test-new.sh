@@ -10,7 +10,7 @@ file_count=0
 echo "New files found:"
 for f in $1; do
     # Check if the file is in the known directory
-    if [[ $f == $directory/* ]]; then
+    if [[ $f == $DIRECTORY/* ]]; then
         if [[ $f == *.py ]]; then
             echo $f
             file_count=$((file_count+1))
@@ -22,7 +22,7 @@ echo "Staring the check"
 for f in $1
 do
     # Check if the file is in the known directory
-    if [[ $f == $directory/* ]]; then
+    if [[ $f == $DIRECTORY/* ]]; then
         if [[ $f == *.py ]]; then
             file_no=$((file_no+1))
             echo "Running dafny on $(basename "$f") ($file_no/$file_count)"
