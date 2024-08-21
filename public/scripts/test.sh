@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Directory containing Python files
-DIRECTORY="./" # You can change this to your specific directory
+DIRECTORY="./Bench" # You can change this to your specific directory
+
+# Timeout duration in seconds
+TIMEOUT_DURATION=600
 
 echo "Running Nagini on Python files in $DIRECTORY"
 
@@ -9,7 +12,7 @@ echo "Running Nagini on Python files in $DIRECTORY"
 for file in "$DIRECTORY"/*.py; do
   if [[ -f "$file" ]]; then
     echo "Running Nagini on $file"
-    nagini "$file"
+    timeout "$TIMEOUT_DURATION" nagini "$file"
   else
     echo "No Python files found in $DIRECTORY"
   fi
