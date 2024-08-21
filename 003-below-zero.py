@@ -26,8 +26,9 @@ def below__zero(ops : List[int]) -> bool:
         Invariant(Acc(list_pred(ops)))
         Invariant(((0) <= (d_4_i_)) and ((d_4_i_) <= (len(ops))))
         Invariant((d_3_balance_) == (psum(0, d_4_i_, ops)))
+        Invariant(Forall(int, lambda d_2_i_: (not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(ops)))) or ((psum(0, d_2_i_ + 1, ops)) == (psum(0, d_2_i_, ops) + ops[d_2_i_])), [[psum(0, d_2_i_ + 1, ops)]])))
         Invariant(Forall(int, lambda d_5_j_:
-            not (((0) <= (d_5_j_)) and ((d_5_j_) <= (d_4_i_))) or ((psum(0, d_5_j_, ops)) >= (0))))
+            (not (((0) <= (d_5_j_)) and ((d_5_j_) <= (d_4_i_))) or ((psum(0, d_5_j_, ops)) >= (0)), [[psum(0, d_5_j_, ops)]])))
         Assert((psum(0, (d_4_i_) + (1), ops)) == ((psum(0, d_4_i_, ops)) + ((ops)[d_4_i_])))
         d_3_balance_ = (d_3_balance_) + ((ops)[d_4_i_])
         if (d_3_balance_) < (0):
