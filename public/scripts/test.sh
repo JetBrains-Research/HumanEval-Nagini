@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eou pipefail
 
 # Directory containing Python files
 DIRECTORY="./Bench" # You can change this to your specific directory
