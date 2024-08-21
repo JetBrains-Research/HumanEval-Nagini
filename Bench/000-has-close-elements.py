@@ -34,7 +34,6 @@ def has_close_elements(numbers: List[int], threshold: int) -> bool:
     Ensures(Implies(Result() != True, Forall(range(len(numbers)), lambda x : 
             fn(x, numbers, threshold)
     )))
-
     
     flag = False
     i = 0
@@ -58,7 +57,6 @@ def has_close_elements(numbers: List[int], threshold: int) -> bool:
                     )
                 )
             
-
             if i != j:
                 distance = abs_value(numbers[i] - numbers[j])
                 if distance < threshold:

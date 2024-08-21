@@ -9,6 +9,8 @@ def IsPrime(n : int) -> bool :
 def CountUpTo(n : int) -> List[int]:
     Requires((n) >= (0))
     Ensures(Acc(list_pred(Result())))
+
+    
     Ensures(Forall(int, lambda d_2_i_:
         not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(Result())))) or (((Result())[d_2_i_]) < (n))))
     # Ensures(Forall(int, lambda d_1_i_:
