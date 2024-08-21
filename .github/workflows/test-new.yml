@@ -5,6 +5,7 @@ name: Nagini Tests (Changed) Ubuntu
 
 on:
   pull_request:
+    types: [synchronize] 
     branches:
       - main
 
