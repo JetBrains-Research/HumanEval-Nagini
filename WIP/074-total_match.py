@@ -33,11 +33,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def sum__chars__rec(i : int, j : int, lst : List[List[int]]) -> int :
-    Requires(Acc(list_pred(lst)))
-    Requires(Forall(lst, lambda x: Acc(list_pred(x))))
-    # Requires(Forall(int, lambda x: (Implies(x >= 0 and x < len(lst), Acc(list_pred(lst[x]))), [[lst[x]]])))
+    Requires(Acc(list_pred(lst), 1/2))
+    Requires(Forall(lst, lambda x: Acc(list_pred(x), 1/2)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(lst))))
-    Requires(Implies(j > 0, Acc(list_pred(lst[j - 1]))))
     if i == j:
         return 0
     else:
@@ -46,25 +44,21 @@ def sum__chars__rec(i : int, j : int, lst : List[List[int]]) -> int :
 def SumChars(lst : List[List[int]]) -> int:
     Requires(Acc(list_pred(lst)))
     Requires(Forall(lst, lambda x: Acc(list_pred(x))))
-    # Requires(Forall(int, lambda x: (Implies(x >= 0 and x < len(lst), Acc(list_pred(lst[x]))), [[lst[x]]])))
     Ensures(Acc(list_pred(lst)))
     Ensures(Forall(lst, lambda x: Acc(list_pred(x))))
-    # Ensures(Forall(int, lambda x: (Implies(x >= 0 and x < len(lst), Acc(list_pred(lst[x]))), [[lst[x]]])))
-    Ensures(Implies(len(lst) > 0, Acc(list_pred(lst[len(lst) - 1]))))
-    Ensures((Result()) == (sum__chars__rec(0, len(lst), lst)))
+    # Ensures((Result()) == (sum__chars__rec(0, len(lst), lst)))
     sum = int(0) # type : int
     sum = 0
     d_3_i_ = int(0) # type : int
     d_3_i_ = 0
     while (d_3_i_) < (len(lst)):
-        Invariant(Acc(list_pred(lst)))
-        # Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < len(lst), Acc(list_pred(lst[x]))), [[lst[x]]])))
-        Invariant(Forall(lst, lambda x: Acc(list_pred(x))))
+        Invariant(Acc(list_pred(lst), 1/2))
+        Invariant(Forall(lst, lambda x: Acc(list_pred(x), 1/2)))
         Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(lst))))
-        Invariant(Implies(d_3_i_ > 0, Acc(list_pred(lst[d_3_i_ - 1]))))
-        Invariant((sum) == (sum__chars__rec(0, d_3_i_, lst)))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), Acc(list_pred(lst[d_0_i_])) and (Implies(d_0_i_ > 0, Acc(list_pred(lst[d_0_i_ - 1])))) and sum__chars__rec(0, d_0_i_ + 1, lst) == sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_])), [[sum__chars__rec(0, d_0_i_ + 1, lst)]])))
-        Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + len(lst[d_3_i_]))
+        Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), sum__chars__rec(0, d_0_i_ + 1, lst) == (sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_]))), 
+            [[sum__chars__rec(0, d_0_i_ + 1, lst) == (sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_]))]])))
+        # Invariant((sum) == (sum__chars__rec(0, d_3_i_, lst)))
+        # Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + len(lst[d_3_i_]))
         sum = (sum) + (len((lst)[d_3_i_]))
         d_3_i_ = (d_3_i_) + (1)
     # Assert((list) == (list((list)[:len(list):])))
