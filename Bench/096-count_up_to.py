@@ -31,7 +31,7 @@ def CountUpTo(n : int) -> List[int]:
             (Implies(((0) <= (d_5_j_)) and ((d_5_j_) < (len(primes))), IsPrime((primes)[d_5_j_])), [[IsPrime((primes)[d_5_j_])]])))
         Invariant(Forall(int, lambda d_3_p_:
             (Implies((((2) <= (d_3_p_)) and ((d_3_p_) < (d_4_i_))) and IsPrime(d_3_p_),
-                Exists(int, lambda x: x >= 0 and x < len(primes) and primes[x] == d_3_p_)), [[IsPrime(d_3_p_),]])))
+                Exists(int, lambda x: x >= 0 and x < len(primes) and primes[x] == d_3_p_)), [[IsPrime(d_3_p_)]])))
         if IsPrime(d_4_i_):
             primes = primes + [(d_4_i_)]
         d_4_i_ = (d_4_i_) + (1)
