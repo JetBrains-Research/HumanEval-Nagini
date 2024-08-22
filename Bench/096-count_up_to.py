@@ -16,8 +16,6 @@ def CountUpTo(n : int) -> List[int]:
     Ensures(Forall(int, lambda d_3_p_:
         Implies((((2) <= (d_3_p_)) and ((d_3_p_) < (n))) and IsPrime(d_3_p_),
             Exists(int, lambda x: x >= 0 and x < len(Result()) and Result()[x] == d_3_p_))))
-    # Ensures(Forall(int, lambda d_3_p_:
-    #     ((((2) <= (d_3_p_)) and ((d_3_p_) < (n))) and (IsPrime(d_3_p_))) == ((d_3_p_) in (Result()))))
     primes = list([int(0)] * 0) # type : List[int]
     primes = list([])
     if (n) <= (2):
@@ -34,15 +32,6 @@ def CountUpTo(n : int) -> List[int]:
         Invariant(Forall(int, lambda d_3_p_:
             Implies((((2) <= (d_3_p_)) and ((d_3_p_) < (d_4_i_))) and IsPrime(d_3_p_),
                 Exists(int, lambda x: x >= 0 and x < len(primes) and primes[x] == d_3_p_))))
-        # Invariant(Forall(int, lambda d_6_j_:
-        #     (Implies(((0) <= (d_6_j_)) and ((d_6_j_) < (len(primes))), ((2) <= ((primes)[d_6_j_])) and (((primes)[d_6_j_]) < (d_4_i_))))))
-        # Invariant(Forall(int, lambda d_7_p_:
-        #     (((((2) <= (d_7_p_)) and ((d_7_p_) < (d_4_i_))) and (IsPrime(d_7_p_))) == ((d_7_p_) in (primes)), [[IsPrime(d_7_p_)]])))
-        # Invariant(Forall(int, lambda d_8_j_:
-        #     (Implies(((0) <= (d_8_j_)) and ((d_8_j_) < (len(primes))), ((primes)[d_8_j_]) < (d_4_i_)), [[(primes)[d_8_j_]]])))
-        # Invariant(Forall(int, lambda d_8_j_:
-        #     Forall(int, lambda d_9_k_:
-        #         (Implies((((0) <= (d_8_j_)) and ((d_8_j_) < (d_9_k_))) and ((d_9_k_) < (len(primes))), ((primes)[d_8_j_]) < ((primes)[d_9_k_])), [[(primes)[d_8_j_] < (primes)[d_9_k_]]]))))
         if IsPrime(d_4_i_):
             primes = primes + [(d_4_i_)]
         d_4_i_ = (d_4_i_) + (1)
