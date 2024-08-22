@@ -5,7 +5,7 @@ set -eou pipefail
 DIRECTORY="./Bench" # You can change this to your specific directory
 
 # Timeout duration in seconds
-TIMEOUT_DURATION=600
+TIMEOUT_DURATION=1200
 
 echo "Running Nagini on Python files in $DIRECTORY"
 

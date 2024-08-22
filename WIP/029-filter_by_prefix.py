@@ -54,32 +54,32 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
         #     (starts__with(x, p, 0), [[starts__with(x, p, 0)]])))
         # Invariant(Forall(int, lambda d_2_j_:
         #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (len(filtered))), starts__with(xs[(filtered)[d_2_j_]], p, 0)), [[starts__with(xs[(filtered)[d_2_j_]], p, 0)]])))
-        # Invariant(Forall(int, lambda d_2_j_:
+        Invariant(Forall(int, lambda d_2_j_:
+            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
+                    Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
+            [[xs[d_2_j_]]])))
+        # Assume(Forall(int, lambda d_2_j_:
         #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
         #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
         #     [[xs[d_2_j_]]])))
-        Assume(Forall(int, lambda d_2_j_:
-            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-                    Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-            [[xs[d_2_j_]]])))
         if starts__with((xs)[d_1_i_], p, 0):
             filtered = (filtered) + [d_1_i_]
-            Assert(starts__with(xs[(filtered)[len(filtered) - 1]], p, 0))
-            Assert(d_1_i_ == filtered[len(filtered) - 1])
-            Assert(Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_1_i_))
-        Assert(Forall(int, lambda d_2_j_:
-            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-                    Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-            [[xs[d_2_j_]]])))
-        Assert(Forall(int, lambda d_2_j_:
-            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) <= (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-                    Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-            [[xs[d_2_j_]]])))
+        #     Assert(starts__with(xs[(filtered)[len(filtered) - 1]], p, 0))
+        #     Assert(d_1_i_ == filtered[len(filtered) - 1])
+        #     Assert(Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_1_i_))
+        # Assert(Forall(int, lambda d_2_j_:
+        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
+        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
+        #     [[xs[d_2_j_]]])))
+        # Assert(Forall(int, lambda d_2_j_:
+        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) <= (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
+        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
+        #     [[xs[d_2_j_]]])))
         d_1_i_ = (d_1_i_) + (1)
-        Assert(Forall(int, lambda d_2_j_:
-            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-                    Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-            [[xs[d_2_j_]]])))
+        # Assert(Forall(int, lambda d_2_j_:
+        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
+        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
+        #     [[xs[d_2_j_]]])))
         # Assert(Implies(((0) <= (d_1_i_)) and ((d_1_i_) < (d_1_i_)) and starts__with(xs[d_1_i_], p, 0), 
         #     Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_1_i_)))
     return filtered
