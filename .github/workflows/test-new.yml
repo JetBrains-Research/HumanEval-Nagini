@@ -5,6 +5,7 @@ name: Nagini Tests (Changed) Ubuntu
 
 on:
   pull_request:
+    types: [synchronize, opened, reopened, edited]
     branches:
       - main
 
@@ -36,6 +37,7 @@ jobs:
         ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
       run: |
         chmod +x ./public/scripts/test-new.sh
-        ./public/scripts/test-new.sh $ALL_CHANGED_FILES
+        echo "${ALL_CHANGED_FILES[@]}"
+        ./public/scripts/test-new.sh "${ALL_CHANGED_FILES[@]}"
       shell: bash
         # nagini 000-has-close-elements.py

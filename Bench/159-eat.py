@@ -7,9 +7,10 @@ def eat(number : int, need : int, remaining : int) -> List[int]:
     Ensures((len(Result())) == (2))
     Ensures(not ((remaining) >= (need)) or ((((Result())[0]) == ((number) + (need))) and (((Result())[1]) == ((remaining) - (need)))))
     Ensures(not ((remaining) < (need)) or ((((Result())[0]) == ((number) + (remaining))) and (((Result())[1]) == (0))))
-    result = list([int(0)] * 0) # type : List[int]
+    result = list([int(0)] * 2) # type : List[int]
     if (remaining) < (need):
-        result = ([(number) + (remaining), 0])
+        result[0] = (number) + (remaining)
     else:
-        result = ([(number) + (need), (remaining) - (need)])
+        result[0] = (number) + (need)
+        result[1] = (remaining) - (need)
     return result
