@@ -12,7 +12,7 @@ for f in $1; do
     # Check if the file is in the known directory
     echo "check"
     echo $f
-    if [[ $f == $DIRECTORY/* ]]; then
+    if [[ $f == "$DIRECTORY"/* ]]; then
         echo "check1"
         echo $f
         if [[ $f == *.py ]]; then
@@ -26,7 +26,7 @@ echo "Staring the check"
 for f in $1
 do
     # Check if the file is in the known directory
-    if [[ $f == $DIRECTORY/* ]]; then
+    if [[ $f == "$DIRECTORY"/* ]]; then
         if [[ $f == *.py ]]; then
             file_no=$((file_no+1))
             echo "Running dafny on $(basename "$f") ($file_no/$file_count)"
