@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eou pipefail
 
-DIRECTORY="./Bench" # You can change this to your specific directory
+DIRECTORY="Bench" # You can change this to your specific directory
 
 # Timeout duration in seconds
 TIMEOUT_DURATION=600
@@ -26,8 +26,8 @@ echo "Starting the check"
 for f in $1
 do
     # Check if the file is in the known directory
-    if [[ "$f" == "$DIRECTORY/*" ]]; then
-        if [[ "$f" == "*.py" ]]; then
+    if [[ $f == $DIRECTORY/* ]]; then
+        if [[ $f == *.py ]]; then
             file_no=$((file_no+1))
             echo "Running dafny on $(basename "$f") ($file_no/$file_count)"
             timeout "$TIMEOUT_DURATION" nagini "$file"
