@@ -21,12 +21,13 @@ def UniqueDigits(x : List[int]) -> List[int]:
                 (d_9_j_ >= 0 and d_9_j_ < len(Result())) and Result()[d_9_j_] == x[d_8_e_]))))
     Ensures(Forall(int, lambda d_7_e_:
         not ((d_7_e_) >= 0 and d_7_e_ < len(Result())) or (Exists(int, lambda d_8_j_: (d_8_j_ >= 0 and d_8_j_ < len(x)) and x[d_8_j_] == Result()[d_7_e_]))))
-    # Ensures(Forall(int, lambda d_1_i_:
-    #     Forall(int, lambda d_2_j_:
-    #         not ((((0) <= (d_1_i_)) and ((d_1_i_) < (d_2_j_))) and ((d_2_j_) < (len(Result())))) or (((Result())[d_1_i_]) <= ((Result())[d_2_j_])))))
+    Ensures(Forall(int, lambda d_1_i_:
+        Forall(int, lambda d_2_j_:
+            not ((((0) <= (d_1_i_)) and ((d_1_i_) < (d_2_j_))) and ((d_2_j_) < (len(Result())))) or (((Result())[d_1_i_]) <= ((Result())[d_2_j_])))))
     result = list([int(0)] * 0) # type : List[int]
     result = list([])
     d_5_i_ = 0
+    
     while d_5_i_ < len(x):
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(x), 1/2))
