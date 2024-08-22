@@ -7,6 +7,8 @@ DIRECTORY="Bench" # You can change this to your specific directory
 TIMEOUT_DURATION=600
 
 file_count=0
+file_no=0
+
 echo "New files found:"
 for f in $1; do
     # Check if the file is in the known directory
@@ -23,7 +25,6 @@ for f in $1; do
 done
 
 echo "Starting the check"
-file_no = 0
 for f in $1
 do
     # Check if the file is in the known directory
