@@ -35,6 +35,7 @@ def has_close_elements(numbers: List[int], threshold: int) -> bool:
             fn(x, numbers, threshold)
     )))
     
+    
     flag = False
     i = 0
     while i < len(numbers):

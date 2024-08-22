@@ -10,7 +10,11 @@ file_count=0
 echo "New files found:"
 for f in $1; do
     # Check if the file is in the known directory
+    echo "check"
+    echo $f
     if [[ $f == $DIRECTORY/* ]]; then
+        echo "check1"
+        echo $f
         if [[ $f == *.py ]]; then
             echo $f
             file_count=$((file_count+1))
