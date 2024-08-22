@@ -23,6 +23,7 @@ for f in $1; do
 done
 
 echo "Starting the check"
+file_no = 0
 for f in $1
 do
     # Check if the file is in the known directory
