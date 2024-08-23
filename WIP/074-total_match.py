@@ -61,5 +61,5 @@ def SumChars(lst : List[List[int]]) -> int:
         # Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + len(lst[d_3_i_]))
         sum = (sum) + (len((lst)[d_3_i_]))
         d_3_i_ = (d_3_i_) + (1)
-    # Assert((list) == (list((list)[:len(list):])))
+    # Assert((list) == (list((list)[:leSequencen(list):])))
     return sum

@@ -5,7 +5,7 @@ Current status:
 
 - [x] 0. has_close_elements
 - [ ] 1. separate_paren_groups
-- [ ] 2. truncate
+- [x] 2. truncate
 - [x] 3. below_zero
 - [ ] 4. mean_absolute_derivation
 - [x] 5. intersperse
@@ -48,7 +48,7 @@ Current status:
 - [x] 42. incr_list
 - [x] 43. pairs_sum_to_zero
 - [ ] 44. change_base
-- [ ] 45. triangle_area
+- [x] 45. triangle_area
 - [x] 46. fib4
 - [ ] 47. median
 - [x] 48. is_palindrome
@@ -119,14 +119,14 @@ Current status:
 - [ ] 113. odd_count
 - [ ] 114. minSubArraySum
 - [ ] 115. max_fill
-- [ ] 116. sort_array
+- [x] 116. sort_array
 - [ ] 117. select_words
 - [x] 118. get_closest_vowel
 - [ ] 119. match_parens
 - [ ] 120. maximum
 - [ ] 121. solution
 - [x] 122. add_elements
-- [ ] 123. get_odd_collatz
+- [x] 123. get_odd_collatz
 - [ ] 124. valid_date
 - [ ] 125. split_words
 - [x] 126. is_sorted
@@ -158,7 +158,7 @@ Current status:
 - [x] 152. compare
 - [ ] 153. Strongest_Extension
 - [x] 154. cycpattern_check
-- [ ] 155. even_odd_count
+- [x] 155. even_odd_count
 - [ ] 156. int_to_mini_roman
 - [x] 157. right_angle_triangle
 - [ ] 158. find_max
