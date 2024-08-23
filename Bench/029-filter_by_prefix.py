@@ -16,8 +16,6 @@ def starts__with__fun(s : List[int], p : List[int], i : int) -> bool :
     Requires(Acc(list_pred(s), 1/2))
     Requires(Acc(list_pred(p), 1/2))
     Requires(0 <= i and i <= len(p) and i <= len(s))
-    # Ensures(Implies(len(p) == i, len(s) >= len(p) and Forall(int, lambda x: x >= i and x < len(p) and s[x] == p[x]) and Result()))
-    # Ensures(Implies(len(p) == i, Result() == starts__with(s,p, i)))
     Ensures(Result() == starts__with(s, p, i))
     if (len(p) == i):
         return True
@@ -50,32 +48,7 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
             (i >= 0 and i < d_1_i_)))
         Invariant(Forall(filtered, lambda i:
             (starts__with(xs[i], p, 0), [[starts__with(xs[i], p, 0)]])))
-        # Invariant(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[starts__with(xs[d_2_j_], p, 0)]])))
-        # Assume(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[xs[d_2_j_]]])))
         if starts__with__fun((xs)[d_1_i_], p, 0):
             filtered = (filtered) + [d_1_i_]
-        #     Assert(starts__with(xs[(filtered)[len(filtered) - 1]], p, 0))
-            # Assert(d_1_i_ == filtered[len(filtered) - 1])
-        #     Assert(Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_1_i_))
-        # Assert(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[starts__with(xs[d_2_j_], p, 0)]])))
-        # Assert(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) <= (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[xs[d_2_j_]]])))
         d_1_i_ = (d_1_i_) + (1)
-        # Assert(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[xs[d_2_j_]]])))
-        # Assert(Implies(((0) <= (d_1_i_)) and ((d_1_i_) < (d_1_i_)) and starts__with(xs[d_1_i_], p, 0), 
-        #     Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_1_i_)))
     return filtered

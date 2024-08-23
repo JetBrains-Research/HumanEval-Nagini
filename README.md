@@ -32,7 +32,7 @@ Current status:
 - [ ] 26. remove_duplicates
 - [x] 27. flip_case
 - [ ] 28. concatenate
-- [ ] 29. filter_by_prefix
+- [x] 29. filter_by_prefix
 - [x] 30. get_positive
 - [x] 31. is_prime
 - [ ] 32. poly
@@ -99,7 +99,7 @@ Current status:
 - [ ] 93. encode
 - [ ] 94. skjkasdkd
 - [ ] 95. check_dict_case
-- [ ] 96. count_up_to
+- [x] 96. count_up_to
 - [x] 97. multiply
 - [ ] 98. count_upper
 - [ ] 99. closest_integer
