@@ -44,12 +44,12 @@ Current status:
 - [ ] 38. encode_cyclic
 - [ ] 39. prime_fib
 - [x] 40. triples_sum_to_zero
-- [ ] 41. car_race_collision
+- [x] 41. car_race_collision
 - [x] 42. incr_list
 - [x] 43. pairs_sum_to_zero
 - [ ] 44. change_base
 - [ ] 45. triangle_area
-- [ ] 46. fib4
+- [x] 46. fib4
 - [ ] 47. median
 - [x] 48. is_palindrome
 - [ ] 49. modp
@@ -99,7 +99,7 @@ Current status:
 - [ ] 93. encode
 - [ ] 94. skjkasdkd
 - [ ] 95. check_dict_case
-- [x] 96. count_up_to
+- [ ] 96. count_up_to
 - [x] 97. multiply
 - [ ] 98. count_upper
 - [ ] 99. closest_integer
@@ -107,7 +107,7 @@ Current status:
 - [ ] 101. words_string
 - [x] 102. choose_num
 - [ ] 103. rounded_avg
-- [x] 104. unique_digits
+- [ ] 104. unique_digits
 - [ ] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
@@ -129,7 +129,7 @@ Current status:
 - [ ] 123. get_odd_collatz
 - [ ] 124. valid_date
 - [ ] 125. split_words
-- [ ] 126. is_sorted
+- [x] 126. is_sorted
 - [x] 127. intersection
 - [ ] 128. prod_signs
 - [ ] 129. minPath
@@ -138,10 +138,10 @@ Current status:
 - [ ] 132. is_nested
 - [x] 133. sum_squares
 - [ ] 134. check_if_last_char_is_a_letter
-- [ ] 135. can_arrange
+- [x] 135. can_arrange
 - [ ] 136. largest_smallest_integers
 - [ ] 137. compare_one
-- [ ] 138. is_equal_to_sum_even
+- [x] 138. is_equal_to_sum_even
 - [x] 139. special_factorial
 - [ ] 140. fix_spaces
 - [ ] 141. file_name_check
@@ -149,7 +149,7 @@ Current status:
 - [ ] 143. words_in_sentence
 - [ ] 144. simplify
 - [ ] 145. order_by_points
-- [ ] 146. specialFilter
+- [x] 146. specialFilter
 - [ ] 147. get_max_triples
 - [ ] 148. bf
 - [ ] 149. sorted_list_sum
