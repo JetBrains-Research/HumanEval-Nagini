@@ -13,7 +13,7 @@ echo "Running Nagini on Python files in $DIRECTORY"
 for file in "$DIRECTORY"/*.py; do
   if [[ -f "$file" ]]; then
     echo "Running Nagini on $file"
-    timeout "$TIMEOUT_DURATION" nagini "$file"
+    timeout "$TIMEOUT_DURATION" nagini --float-encoding=real "$file"
   else
     echo "No Python files found in $DIRECTORY"
   fi
