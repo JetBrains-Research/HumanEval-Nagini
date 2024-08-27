@@ -15,19 +15,17 @@ def max__fill(grid : List[List[int]], capacity : int) -> int:
     d_2_i_ = int(0) # type : int
     d_2_i_ = 0
     cnt = 0
+    lst_h : List[int] = []
     while (d_2_i_) < (len(grid)):
         Invariant(capacity > 0)
         Invariant(Acc(list_pred(grid), 1/2))
+        Invariant(Acc(list_pred(lst_h)))
         Invariant(Forall(grid, lambda grid0: Acc(list_pred(grid0), 1/2)))
         Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(grid))))
-        # Invariant(Forall(int, lambda d_0_i_: 
-        #     (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
-        #         psum2(0, d_0_i_ + 1, grid, capacity) == (psum2(0, d_0_i_, grid, capacity) + (psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity)), [[]])))
-        # Invariant(cnt == (psum2(0, d_2_i_, grid, capacity)))
-        Assume(Forall(int, lambda d_0_i_: 
-            (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
-                psum2(0, d_0_i_ + 1, grid, capacity) == (psum2(0, d_0_i_, grid, capacity) + (psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity)), 
-                [[grid[d_0_i_]]])))
+        Invariant(len(lst_h) == d_2_i_)
+        Invariant(Forall(int, lambda d_0_i_:
+            (Implies(d_0_i_ >= 0 and d_0_i_ < len(lst_h), lst_h[d_0_i_] == psum(0, len(grid[d_0_i_]), grid[d_0_i_])) 
+             , [[grid[d_0_i_]]])))
         d_4_j_ = int(0) # type : int
         d_4_j_ = 0
         d_5_sum__j_ = int(0) # type : int
@@ -36,28 +34,55 @@ def max__fill(grid : List[List[int]], capacity : int) -> int:
             Invariant(capacity > 0)
             Invariant(Acc(list_pred(grid), 1/2))
             Invariant(Forall(grid, lambda grid0: Acc(list_pred(grid0), 1/2)))
+            Invariant(d_2_i_ == Old(d_2_i_))
+            Invariant(capacity == Old(capacity))
+            Invariant(grid == Old(grid))
             Invariant(((0) <= (d_2_i_)) and ((d_2_i_) < (len(grid))))
             Invariant(((0) <= (d_4_j_)) and ((d_4_j_) <= (len((grid)[d_2_i_]))))
-            Invariant(Forall(int, lambda d_0_i_: 
-                (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
-                    psum2(0, d_0_i_ + 1, grid, capacity) == (psum2(0, d_0_i_, grid, capacity) + (psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity)), 
-                    [[grid[d_0_i_]]])))
-            Invariant((psum2(0, d_2_i_ + 1, grid, capacity)) == (psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity))
-            # Invariant((psum(0, d_4_j_ + 1, grid[d_2_i_])) == ((psum(0, d_4_j_, grid[d_2_i_]) + (grid[d_2_i_])[d_4_j_])))
-            # Invariant(Forall(int, lambda x: 
-            #     (not (((0) <= (x)) and ((x) < (len(grid[d_2_i_])))) or 
-            #         ((psum(0, x + 1, grid[d_2_i_])) == (psum(0, x, grid[d_2_i_]) + grid[d_2_i_][x])), [[psum(0, x + 1, grid[d_2_i_])]])))
-            # Invariant(cnt == (psum2(0, d_2_i_, grid, capacity)))
-            # Invariant((d_5_sum__j_) == (psum(0, d_4_j_, grid[d_2_i_])))
-            # Assert((psum(0, d_4_j_ + 1, grid[d_2_i_])) == ((psum(0, d_4_j_, grid[d_2_i_]) + (grid[d_2_i_])[d_4_j_])))
+            Invariant(Acc(list_pred(lst_h)))
+            Invariant(len(lst_h) == d_2_i_)
+            Invariant(Forall(int, lambda d_0_i_:
+                (Implies(d_0_i_ >= 0 and d_0_i_ < len(lst_h), lst_h[d_0_i_] == psum(0, len(grid[d_0_i_]), grid[d_0_i_]))
+                , [[grid[d_0_i_]]])))
+            Invariant(Forall(int, lambda x: 
+                (not (((0) <= (x)) and ((x) < (len(grid[d_2_i_])))) or 
+                    ((psum(0, x + 1, grid[d_2_i_])) == (psum(0, x, grid[d_2_i_]) + grid[d_2_i_][x])), [[psum(0, x + 1, grid[d_2_i_])]])))
+            Invariant((d_5_sum__j_) == (psum(0, d_4_j_, grid[d_2_i_])))
+            Assert((psum(0, d_4_j_ + 1, grid[d_2_i_])) == ((psum(0, d_4_j_, grid[d_2_i_]) + (grid[d_2_i_])[d_4_j_])))
             d_5_sum__j_ = (d_5_sum__j_) + (((grid)[d_2_i_])[d_4_j_])
             d_4_j_ = (d_4_j_) + (1)
-        d_6_current__el_ = int(0) # type : int
-        d_6_current__el_ = ((((d_5_sum__j_) + (capacity)) - (1)) // capacity)
-        Assert((psum2(0, d_2_i_ + 1, grid, capacity)) == (psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity))
-        cnt = (cnt) + (d_6_current__el_)
+        Assert(d_5_sum__j_ == psum(0, len(grid[d_2_i_]), grid[d_2_i_]))
+        lst_h = lst_h + [d_5_sum__j_]
         d_2_i_ = (d_2_i_) + (1)
+
+    d_2_i_ = 0
+    while d_2_i_ < len(grid):
+        Invariant(capacity > 0)
+        Invariant(Acc(list_pred(lst_h), 1/2))
+        Invariant(Acc(list_pred(grid), 1/2))
+        Invariant(len(lst_h) == len(grid))
+        Invariant(Forall(grid, lambda grid0: Acc(list_pred(grid0), 1/2)))
+        Invariant(0 <= d_2_i_ and d_2_i_ <= len(grid))
+        Invariant(Forall(int, lambda d_0_i_:
+            (Implies(d_0_i_ >= 0 and d_0_i_ < len(lst_h), lst_h[d_0_i_] == psum(0, len(grid[d_0_i_]), grid[d_0_i_])) 
+             , [[grid[d_0_i_]]])))
+        Invariant(Forall(int, lambda d_0_i_: 
+            (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
+                psum2(0, d_0_i_ + 1, grid, capacity) == (((psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity) + psum2(0, d_0_i_, grid, capacity))), 
+                [[psum2(0, d_0_i_ + 1, grid, capacity)]])))
+        Assert(lst_h[d_2_i_] == psum(0, len(grid[d_2_i_]), grid[d_2_i_]))
+        # Assert(psum2(0, d_2_i_ + 1, grid, capacity) == psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity)
+        cnt = cnt + ((lst_h[d_2_i_] + capacity - 1) // capacity)
+        d_2_i_= d_2_i_ + 1
     return cnt
+
+# Invariant(Forall(int, lambda d_0_i_: 
+#     (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
+#         psum2(0, d_0_i_ + 1, grid, capacity) == (psum2(0, d_0_i_, grid, capacity) + (psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity)), 
+#         [[grid[d_0_i_]]])))
+# Invariant((psum2(0, d_2_i_ + 1, grid, capacity)) == (psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity))
+# Invariant((psum(0, d_4_j_ + 1, grid[d_2_i_])) == ((psum(0, d_4_j_, grid[d_2_i_]) + (grid[d_2_i_])[d_4_j_])))
+# Invariant(cnt == (psum2(0, d_2_i_, grid, capacity)))
 
 @Pure
 def psum2(i : int, j : int, s : List[List[int]], capacity : int) -> int :

@@ -15,7 +15,7 @@ Current status:
 - [x] 9. rolling_max
 - [x] 10. is_palindrome
 - [x] 11. string_xor
-- [ ] 12. longest
+- [x] 12. longest
 - [x] 13. greatest_common_divisor
 - [ ] 14. all_prefixes
 - [ ] 15. string_sequence
@@ -29,7 +29,7 @@ Current status:
 - [x] 23. strlen
 - [x] 24. largest_divisor
 - [ ] 25. factorize
-- [ ] 26. remove_duplicates
+- [x] 26. remove_duplicates
 - [x] 27. flip_case
 - [ ] 28. concatenate
 - [x] 29. filter_by_prefix
@@ -52,7 +52,7 @@ Current status:
 - [x] 46. fib4
 - [ ] 47. median
 - [x] 48. is_palindrome
-- [ ] 49. modp
+- [x] 49. modp
 - [ ] 50. encode_shift
 - [x] 51. remove_vowels
 - [x] 52. below_threshold
@@ -67,16 +67,16 @@ Current status:
 - [ ] 61. correct_bracketing
 - [x] 62. derivative
 - [x] 63. fibfib
-- [ ] 64. vowels_count
+- [x] 64. vowels_count
 - [ ] 65. circular_shift
 - [x] 66. digitSum
 - [ ] 67. fruit_distribution
 - [x] 68. pluck
-- [ ] 69. search
+- [x] 69. search
 - [x] 70. strange_sort_list
 - [ ] 71. triangle_area
 - [x] 72. will_it_fly
-- [ ] 73. smallest_change
+- [x] 73. smallest_change
 - [ ] 74. total_match
 - [x] 75. is_multiply_prime
 - [ ] 76. is_simple_power
@@ -92,7 +92,7 @@ Current status:
 - [ ] 86. anti_shuffle
 - [ ] 87. get_row
 - [x] 88. sort_array
-- [ ] 89. encrypt
+- [x] 89. encrypt
 - [ ] 90. next_smallest
 - [ ] 91. is_bored
 - [x] 92. any_int
@@ -101,7 +101,7 @@ Current status:
 - [ ] 95. check_dict_case
 - [x] 96. count_up_to
 - [x] 97. multiply
-- [ ] 98. count_upper
+- [x] 98. count_upper
 - [ ] 99. closest_integer
 - [x] 100. make_a_pile
 - [ ] 101. words_string
@@ -111,13 +111,13 @@ Current status:
 - [ ] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
-- [ ] 108. count_nums
+- [x] 108. count_nums
 - [ ] 109. move_one_ball
 - [x] 110. exchange
 - [ ] 111. histogram
 - [ ] 112. reverse_delete
 - [ ] 113. odd_count
-- [ ] 114. minSubArraySum
+- [x] 114. minSubArraySum
 - [ ] 115. max_fill
 - [x] 116. sort_array
 - [ ] 117. select_words
@@ -131,7 +131,7 @@ Current status:
 - [ ] 125. split_words
 - [x] 126. is_sorted
 - [x] 127. intersection
-- [ ] 128. prod_signs
+- [x] 128. prod_signs
 - [ ] 129. minPath
 - [ ] 130. tri
 - [ ] 131. digits
@@ -139,7 +139,7 @@ Current status:
 - [x] 133. sum_squares
 - [ ] 134. check_if_last_char_is_a_letter
 - [x] 135. can_arrange
-- [ ] 136. largest_smallest_integers
+- [x] 136. largest_smallest_integers
 - [ ] 137. compare_one
 - [x] 138. is_equal_to_sum_even
 - [x] 139. special_factorial

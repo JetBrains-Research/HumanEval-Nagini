@@ -9,6 +9,8 @@ def remove__duplicates(a : List[int]) -> List[int]:
     Ensures(Acc(list_pred(Result())))
     Ensures(len(a) == len(Old(a)))
     Ensures(len(a) >= len(Result()))
+    Ensures(Forall(int, lambda d_2_i_:
+        Implies(((0) <= (d_2_i_)) and ((d_2_i_) < (len(a))) and (count__rec(a, a[d_2_i_], len(a)) == 1), Exists(int, lambda d_3_i_: d_3_i_ >= 0 and d_3_i_ < len(Result()) and Result()[d_3_i_] == a[d_2_i_]))))
     Ensures(Forall(int, lambda d_1_i_:
         not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(Result())))) or ((count__rec(a, (Result())[d_1_i_], len((Result())))) == (1))))
     # Ensures(Forall(int, lambda d_2_i_:
@@ -37,6 +39,9 @@ def remove__duplicates(a : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_3_i_: (Implies(d_3_i_ >= 0 and d_3_i_ < len(a), a_old[d_3_i_] == a[d_3_i_]))))
         Invariant(((0) <= (d_4_i_)) and ((d_4_i_) <= (len(a))))
         Invariant(len(result) <= d_4_i_)
+        Invariant(Forall(int, lambda d_2_i_:
+            (Implies(((0) <= (d_2_i_)) and ((d_2_i_) < (d_4_i_)) and (count__rec(a, a[d_2_i_], len(a)) == 1), Exists(int, lambda d_3_i_: d_3_i_ >= 0 and d_3_i_ < len(result) and result[d_3_i_] == a[d_2_i_])), 
+                [[a[d_2_i_]]])))
         Invariant(Forall(int, lambda d_5_j_:
             (Implies(((0) <= (d_5_j_)) and ((d_5_j_) < (len(result))), (count__rec(a, (result)[d_5_j_], len(a))) == (1)), [[count__rec(a, (result)[d_5_j_], len(a))]])))
         # Invariant(Forall(int, lambda d_6_j_:
@@ -44,12 +49,10 @@ def remove__duplicates(a : List[int]) -> List[int]:
         # Invariant(Forall(int, lambda d_7_j_:
         #     not (((0) <= (d_7_j_)) and ((d_7_j_) < (len(d_3_res_)))) or (((d_3_res_)[d_7_j_]) in (list((a)[:d_4_i_:])))))
         d_8_cnt_ = int(0) # type : int
-        d_8_cnt_ = count_my(a, (a)[d_4_i_])
+        d_8_cnt_ = count__rec(a, (a)[d_4_i_], len(a))
         if (d_8_cnt_) == (1):
-            Assert(d_4_i_ < len(a_old))
-            Assert(len(a) == len(a_old))
-            Assert(count__rec(a, (a)[d_4_i_], len(a)) == 1)
             result = (result) + [(a)[d_4_i_]]
+            Assert(count__rec(a, result[len(result) - 1], len(a)) == 1)
         d_4_i_ = (d_4_i_) + (1)
     return result
 
