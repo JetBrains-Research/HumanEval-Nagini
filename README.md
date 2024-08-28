@@ -108,7 +108,7 @@ Current status:
 - [x] 102. choose_num
 - [ ] 103. rounded_avg
 - [ ] 104. unique_digits
-- [ ] 105. by_length
+- [x] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
 - [x] 108. count_nums

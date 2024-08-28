@@ -37,6 +37,13 @@ def sum__chars__rec(i : int, j : int, lst : List[List[int]]) -> int :
     else:
         return len((lst)[j - 1]) + sum__chars__rec(i, j - 1, lst)
 
+@Pure 
+def progress(lst : List[List[int]], i : int) -> bool:
+    Requires(Acc(list_pred(lst), 1/2))
+    Requires(Forall(lst, lambda x: Acc(list_pred(x), 1/2)))
+    Requires(((0) <= (i)) and ((i) < (len(lst))))
+    return sum__chars__rec(0, i + 1, lst) == (sum__chars__rec(0, i, lst) + len(lst[i]))
+
 def SumChars(lst : List[List[int]]) -> int:
     Requires(Acc(list_pred(lst)))
     Requires(Forall(lst, lambda x: Acc(list_pred(x))))
@@ -47,17 +54,20 @@ def SumChars(lst : List[List[int]]) -> int:
     sum = 0
     d_3_i_ = int(0) # type : int
     d_3_i_ = 0
-    Assert(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), sum__chars__rec(0, d_0_i_ + 1, lst) == (sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_]))), 
-        [[sum__chars__rec(0, d_0_i_ + 1, lst)]])))
+    # Assert(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), sum__chars__rec(0, d_0_i_ + 1, lst) == (sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_]))), 
+    #     [[sum__chars__rec(0, d_0_i_ + 1, lst)]])))
     while (d_3_i_) < (len(lst)):
         Invariant(Acc(list_pred(lst), 1/2))
         Invariant(Forall(lst, lambda x: Acc(list_pred(x), 1/2)))
         Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(lst))))
         Invariant(lst == Old(lst))
+        Invariant(Forall(int, lambda d_0_i_: 
+            (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), 
+                progress(lst, d_0_i_)), 
+                [[]])))
         # Invariant((sum) == (sum__chars__rec(0, d_3_i_, lst)))
-        Assert(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(lst))), sum__chars__rec(0, d_0_i_ + 1, lst) == (sum__chars__rec(0, d_0_i_, lst) + len(lst[d_0_i_]))), 
-            [[sum__chars__rec(0, d_0_i_ + 1, lst)]])))
-        Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + len(lst[d_3_i_]))
+        # Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + len(lst[d_3_i_]))
+        Assert(progress(lst, d_3_i_))
         sum = (sum) + (len((lst)[d_3_i_]))
         d_3_i_ = (d_3_i_) + (1)
     return sum
