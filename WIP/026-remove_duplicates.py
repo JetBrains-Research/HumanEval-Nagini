@@ -39,7 +39,7 @@ def remove__duplicates(a : List[int]) -> List[int]:
                 [[]])))
         Invariant(Forall(int, lambda d_2_i_:
             (not (((0) <= (d_2_i_)) and ((d_2_i_) < d_4_i_)) or check_eq(a, result, (a)[d_2_i_]), 
-                [[(a)[d_2_i_]]])))
+                [[]])))
         # Invariant(Forall(int, lambda d_6_j_:
         #     (Implies(((0) <= (d_6_j_)) and ((d_6_j_) < (d_4_i_)), (((a)[d_6_j_]) in (d_3_res_)) == ((count__rec(a, (a)[d_6_j_], len(a))) == (1))), [[count__rec(a, (a)[d_6_j_], len(a))]])))
         # Invariant(Forall(int, lambda d_7_j_:
@@ -56,13 +56,13 @@ def remove__duplicates(a : List[int]) -> List[int]:
 def check_eq(a : List[int], result : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     Requires(Acc(list_pred(result), 1/2))
-    return (count__rec(a, x, len(a)) == 1) == (Exists(int, lambda d_3_i_: d_3_i_ >= 0 and d_3_i_ < len(result) and result[d_3_i_] == x))
+    return (count__rec(a, x, len(a)) == 1) == (exists_check(result, x))
 
 @Pure 
 def exists_check(a : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     return Exists(int, lambda d_0_i_:
-        (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) == (x))))
+        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
 
 @Pure 
 def count_check(a : List[int], x : int) -> bool:

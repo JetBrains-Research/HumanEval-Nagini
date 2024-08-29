@@ -37,7 +37,7 @@ Current status:
 - [x] 31. is_prime
 - [ ] 32. poly
 - [x] 33. sort_third
-- [ ] 34. unique
+- [x] 34. unique
 - [x] 35. max_element
 - [ ] 36. fizz_buzz
 - [x] 37. sort_even
@@ -87,7 +87,7 @@ Current status:
 - [ ] 81. numerical_letter_grade
 - [x] 82. prime_length
 - [x] 83. starts_one_ends
-- [ ] 84. solve
+- [x] 84. solve
 - [x] 85. add
 - [ ] 86. anti_shuffle
 - [ ] 87. get_row
@@ -107,7 +107,7 @@ Current status:
 - [ ] 101. words_string
 - [x] 102. choose_num
 - [ ] 103. rounded_avg
-- [ ] 104. unique_digits
+- [x] 104. unique_digits
 - [x] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
@@ -137,7 +137,7 @@ Current status:
 - [ ] 131. digits
 - [ ] 132. is_nested
 - [x] 133. sum_squares
-- [ ] 134. check_if_last_char_is_a_letter
+- [x] 134. check_if_last_char_is_a_letter
 - [x] 135. can_arrange
 - [x] 136. largest_smallest_integers
 - [ ] 137. compare_one

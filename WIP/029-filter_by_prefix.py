@@ -3,6 +3,12 @@ from nagini_contracts.contracts import *
 
 
 @Pure
+def InArray(a : List[int], x : int) -> bool:
+    Requires(Acc(list_pred(a), 1/2))
+    return Exists(int, lambda d_0_i_:
+        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
+
+@Pure
 def starts__with(s : List[int], p : List[int], i : int) -> bool :
     Requires(Acc(list_pred(s), 1/2))
     Requires(Acc(list_pred(p), 1/2))
@@ -24,6 +30,15 @@ def starts__with__fun(s : List[int], p : List[int], i : int) -> bool :
     if (len(s) > i and len(s) >= len(p) and s[i] == p[i]):
         return starts__with(s, p, i + 1)
     return False
+
+@Pure 
+def implStarts__with(xs : List[List[int]], p : List[int], filtered : List[int], d_2_j : int) -> bool:
+    Requires(Acc(list_pred(xs), 1/2))
+    Requires(Forall(xs, lambda x : Acc(list_pred(x), 1/2)))
+    Requires(Acc(list_pred(p), 1/2))
+    Requires(Acc(list_pred(filtered), 1/2))
+    Requires(0 <= d_2_j and d_2_j < len(xs))
+    return Implies(starts__with(xs[d_2_j], p, 0), InArray(filtered, d_2_j))
 
 def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
     Requires(Acc(list_pred(xs)))
@@ -50,10 +65,10 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
             (i >= 0 and i < d_1_i_)))
         Invariant(Forall(filtered, lambda i:
             (starts__with(xs[i], p, 0), [[starts__with(xs[i], p, 0)]])))
-        # Invariant(Forall(int, lambda d_2_j_:
-        #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
-        #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 
-        #     [[starts__with(xs[d_2_j_], p, 0)]])))
+        Invariant(Forall(int, lambda d_2_j_:
+            (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)), 
+                    implStarts__with(xs, p, filtered, d_2_j_)), 
+            [[]])))
         # Assume(Forall(int, lambda d_2_j_:
         #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)) and starts__with(xs[d_2_j_], p, 0), 
         #             Exists(int, lambda x: x >= 0 and x < len(filtered) and filtered[x] == d_2_j_)), 

@@ -1,6 +1,14 @@
 from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
+@Pure
+def InArray(a : List[int], x : int) -> bool:
+    Requires(Acc(list_pred(a), 1/2))
+    return Exists(int, lambda d_0_i_:
+        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
+
+
+
 def uniqueSorted(s : List[int]) -> List[int]:
     Requires(Acc(list_pred(s)))
     Requires(Forall(int, lambda d_0_i_:
@@ -9,13 +17,13 @@ def uniqueSorted(s : List[int]) -> List[int]:
                 ((s)[d_0_i_]) <= ((s)[d_1_j_])))))
     Ensures(Acc(list_pred(s)))
     Ensures(Acc(list_pred(Result())))
-    # Ensures(Forall(int, lambda d_2_i_:
-    #     Forall(int, lambda d_3_j_:
-    #         not ((((0) <= (d_2_i_)) and ((d_2_i_) < (d_3_j_))) and ((d_3_j_) < (len(Result())))) or (((Result())[d_2_i_]) < ((Result())[d_3_j_])))))
-    # Ensures(Forall(int, lambda d_4_x_:
-    #     not ((d_4_x_) in (Result())) or ((d_4_x_) in (s))))
-    # Ensures(Forall(int, lambda d_5_x_:
-    #     not ((d_5_x_) in (s)) or ((d_5_x_) in (Result()))))
+    Ensures(Forall(int, lambda d_9_k_:
+        (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(Result()))), InArray(s, Result()[d_9_k_])))))
+    Ensures(Forall(int, lambda d_2_i_:
+        Forall(int, lambda d_3_j_:
+            not ((((0) <= (d_2_i_)) and ((d_2_i_) < (d_3_j_))) and ((d_3_j_) < (len(Result())))) or (((Result())[d_2_i_]) < ((Result())[d_3_j_])))))
+    Ensures(Forall(int, lambda d_11_j_:
+        (Implies(((0) <= (d_11_j_)) and ((d_11_j_) < (len(s))), InArray(Result(), s[d_11_j_])))))
     result = list([int(0)] * 0) # type : List[int]
     result = list([])
     d_6_i_ = int(0) # type : int
@@ -28,44 +36,24 @@ def uniqueSorted(s : List[int]) -> List[int]:
                 Implies((((0) <= (d_0_i_)) and ((d_0_i_) < (d_1_j_))) and ((d_1_j_) < (len(s))), 
                     ((s)[d_0_i_]) <= ((s)[d_1_j_])))))
         Invariant(((0) <= (d_6_i_)) and ((d_6_i_) <= (len(s))))
-        # Invariant(Forall(int, lambda d_7_k_:
-        #     Forall(int, lambda d_8_l_:
-        #         not ((((0) <= (d_7_k_)) and ((d_7_k_) < (d_8_l_))) and ((d_8_l_) < (len(result)))) or (((result)[d_7_k_]) < ((result)[d_8_l_])))))
         Invariant(Forall(int, lambda d_9_k_:
-            (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(result))), Exists(int, lambda d_10_m_:
-                (((0) <= (d_10_m_)) and ((d_10_m_) < (d_6_i_))) and (((result)[d_9_k_]) == ((s)[d_10_m_])))), [[(result)[d_9_k_]]])))
-        # Invariant(Forall(int, lambda d_11_k_:
-        #     (Forall(int, lambda d_12_l_:
-        #         (Implies(0 <= d_11_k_ and d_11_k_ < len(result), 
-        #             Implies(d_6_i_ <= d_12_l_ and d_12_l_ < len(s), result[d_11_k_] <= s[d_12_l_])), 
-        #             [[s[d_12_l_]]])), [[result[d_11_k_]]])))
-        # Invariant(Forall(int, lambda d_11_j_:
-        #     not (((0) <= (d_11_j_)) and ((d_11_j_) < (d_6_i_))) or (((s)[d_11_j_]) in (result))))
+            (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(result))), InArray(s, result[d_9_k_])), [[InArray(s, result[d_9_k_])]])))
+        Invariant(Implies(d_6_i_ < len(s), 
+            Forall(int, lambda d_2_i_:
+                (Implies(((0) <= (d_2_i_)) and ((d_2_i_) < (len(result))), result[d_2_i_] <= s[d_6_i_]), [[result[d_2_i_]]]))))
+        Invariant(Forall(int, lambda d_7_k_:
+            (Forall(int, lambda d_8_l_:
+                (not ((((0) <= (d_7_k_)) and ((d_7_k_) < (d_8_l_))) and ((d_8_l_) < (len(result)))) or (((result)[d_7_k_]) < ((result)[d_8_l_])), 
+                    [[(result)[d_8_l_]]])), 
+                [[(result)[d_7_k_]]])))
+        Invariant(Forall(int, lambda d_11_j_:
+            (Implies(((0) <= (d_11_j_)) and ((d_11_j_) < (d_6_i_)), InArray(result, s[d_11_j_])), [[]])))
         if ((len(result)) == (0)) or (((result)[(len(result)) - (1)]) != ((s)[d_6_i_])):
-            # Assert(((len(result)) == (0)) or (((result)[(len(result)) - (1)]) < ((s)[d_6_i_])))
-            # old_res = list(result)
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(result))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) < (d_6_i_))) and (((result)[d_9_k_]) == ((s)[d_10_m_])))), [[(result)[d_9_k_]]])))
-            # Assert(Forall(int, lambda d_9_k_: Implies(0 <= d_9_k_ and d_9_k_ < len(result), result[d_9_k_] == old_res[d_9_k_])))
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(old_res))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) < (d_6_i_))) and (((old_res)[d_9_k_]) == ((s)[d_10_m_])))), [[(old_res)[d_9_k_]]])))    
+            Assert(Implies(len(result) > 0, result[len(result) - 1] < s[d_6_i_]))
+            Assert(Implies(len(result) > 0, 
+                Forall(int, lambda d_11_j_:
+                    Implies(0 <= d_11_j_ and d_11_j_ < len(result), result[d_11_j_] < s[d_6_i_]))))
             result = (result) + [(s)[d_6_i_]]
-            # Assert(Exists(int, lambda d_10_m_:
-            #     (((0) <= (d_10_m_)) and ((d_10_m_) <= (d_6_i_))) and (((result)[len(result) - 1]) == ((s)[d_10_m_]))))
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(old_res))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) < (d_6_i_))) and (((old_res)[d_9_k_]) == ((s)[d_10_m_])))), [[(old_res)[d_9_k_]]])))    
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(old_res))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) <= (d_6_i_))) and (((old_res)[d_9_k_]) == ((s)[d_10_m_])))), [[(old_res)[d_9_k_]]])))    
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) + 1 < (len(result))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) <= (d_6_i_))) and (((result)[d_9_k_]) == ((s)[d_10_m_])))), [[(result)[d_9_k_]]])))    
-            # Assert(Forall(int, lambda d_9_k_:
-            #     (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(result))), Exists(int, lambda d_10_m_:
-            #         (((0) <= (d_10_m_)) and ((d_10_m_) <= (d_6_i_))) and (((result)[d_9_k_]) == ((s)[d_10_m_])))), [[(result)[d_9_k_]]])))    
         d_6_i_ = (d_6_i_) + (1)
     return result
 

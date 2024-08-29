@@ -5,7 +5,7 @@ from nagini_contracts.contracts import *
 def InArray(a : List[int], x : int) -> bool :
     Requires(Acc(list_pred(a)))
     return Exists(int, lambda d_0_i_:
-        (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) == (x))))
+        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
 
 @Pure 
 def NotInArray(a : List[int], x : int) -> bool :
@@ -46,13 +46,11 @@ def reverse__delete(s : List[int], chars : List[int]) -> Tuple[List[int], bool]:
         Invariant(Forall(int, lambda d_5_i_:
             (not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(res)))) or (InArray(s, res[d_5_i_])), [[InArray(s, res[d_5_i_])]])))
         Invariant(Forall(int, lambda d_6_j_:
-            (not ((((0) <= (d_6_j_)) and ((d_6_j_) < (d_3_i_)))) or (implArrays(chars, res, (s)[d_6_j_])), [[implArrays(chars, res, (s)[d_6_j_])]])))
+            (not ((((0) <= (d_6_j_)) and ((d_6_j_) < (d_3_i_)))) or (implArrays(chars, res, (s)[d_6_j_])), [[InArray(res, (s)[d_6_j_])]])))
         if NotInArray(chars, (s)[d_3_i_]):
             res = (res) + [(s)[d_3_i_]]
         d_3_i_ = (d_3_i_) + (1)
     is__palindrome = is__palindrome__fun(res)
-    Assert(Forall(int, lambda d_4_i_:
-        (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(res)))) or (NotInArray(chars, (res)[d_4_i_])), [[NotInArray(chars, (res)[d_4_i_])]])))
     return (res, is__palindrome)
 
 def is__palindrome__fun(text : List[int]) -> bool:

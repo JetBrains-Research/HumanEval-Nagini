@@ -68,9 +68,10 @@ def max__fill(grid : List[List[int]], capacity : int) -> int:
              , [[grid[d_0_i_]]])))
         Invariant(Forall(int, lambda d_0_i_: 
             (Implies(d_0_i_ >= 0 and d_0_i_ < len(grid), 
-                psum2(0, d_0_i_ + 1, grid, capacity) == (((psum(0, len(grid[d_0_i_]), grid[d_0_i_]) + capacity - 1) // capacity) + psum2(0, d_0_i_, grid, capacity))), 
-                [[psum2(0, d_0_i_ + 1, grid, capacity)]])))
+                psumCheck(d_0_i_, grid, capacity, lst_h)), 
+                [[psumCheck(d_0_i_, grid, capacity, lst_h)]])))
         Assert(lst_h[d_2_i_] == psum(0, len(grid[d_2_i_]), grid[d_2_i_]))
+        Assert(psumCheck(d_2_i_, grid, capacity, lst_h))
         # Assert(psum2(0, d_2_i_ + 1, grid, capacity) == psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity)
         cnt = cnt + ((lst_h[d_2_i_] + capacity - 1) // capacity)
         d_2_i_= d_2_i_ + 1
@@ -83,6 +84,16 @@ def max__fill(grid : List[List[int]], capacity : int) -> int:
 # Invariant((psum2(0, d_2_i_ + 1, grid, capacity)) == (psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity))
 # Invariant((psum(0, d_4_j_ + 1, grid[d_2_i_])) == ((psum(0, d_4_j_, grid[d_2_i_]) + (grid[d_2_i_])[d_4_j_])))
 # Invariant(cnt == (psum2(0, d_2_i_, grid, capacity)))
+
+@Pure 
+def psumCheck(d_2_i_ : int, grid : List[List[int]], capacity : int, lst_h : List[int]) -> bool:
+    Requires(Acc(list_pred(lst_h), 1/2))
+    Requires(Acc(list_pred(grid), 1/2))
+    Requires(Forall(grid, lambda grid0: Acc(list_pred(grid0), 1/2)))
+    Requires(capacity > 0)
+    Requires(0 <= d_2_i_ and d_2_i_ < len(grid))
+    Requires(len(grid) == len(lst_h))
+    return psum2(0, d_2_i_ + 1, grid, capacity) == (psum2(0, d_2_i_, grid, capacity) + (psum(0, len(grid[d_2_i_]), grid[d_2_i_]) + capacity - 1) // capacity)
 
 @Pure
 def psum2(i : int, j : int, s : List[List[int]], capacity : int) -> int :
