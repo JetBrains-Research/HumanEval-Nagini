@@ -27,7 +27,7 @@ def encode__shift(s : List[int]) -> List[int]:
         Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(s))))
         Invariant((len(t)) == (d_2_i_))
         Invariant(Forall(int, lambda d_3_j_:
-            not (((0) <= (d_3_j_)) and ((d_3_j_) < (d_2_i_))) or (((t)[d_3_j_]) == (encode__char((s)[d_3_j_])))))
+            (not (((0) <= (d_3_j_)) and ((d_3_j_) < (d_2_i_))) or (((t)[d_3_j_]) == (encode__char((s)[d_3_j_]))), [[encode__char((s)[d_3_j_])]])))
         t = (t) + [encode__char((s)[d_2_i_])]
         d_2_i_ = (d_2_i_) + (1)
     return t
@@ -50,7 +50,7 @@ def decode__shift(s : List[int]) -> List[int]:
         Invariant(((0) <= (d_6_i_)) and ((d_6_i_) <= (len(s))))
         Invariant((len(t)) == (d_6_i_))
         Invariant(Forall(int, lambda d_7_j_:
-            not (((0) <= (d_7_j_)) and ((d_7_j_) < (d_6_i_))) or (((t)[d_7_j_]) == (decode__char((s)[d_7_j_])))))
+            (not (((0) <= (d_7_j_)) and ((d_7_j_) < (d_6_i_))) or (((t)[d_7_j_]) == (decode__char((s)[d_7_j_]))), [[decode__char((s)[d_7_j_])]])))
         t = (t) + [decode__char((s)[d_6_i_])]
         d_6_i_ = (d_6_i_) + (1)
     return t
