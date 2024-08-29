@@ -112,10 +112,10 @@ Current status:
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
 - [x] 108. count_nums
-- [ ] 109. move_one_ball
+- [x] 109. move_one_ball
 - [x] 110. exchange
 - [ ] 111. histogram
-- [ ] 112. reverse_delete
+- [x] 112. reverse_delete
 - [ ] 113. odd_count
 - [x] 114. minSubArraySum
 - [ ] 115. max_fill
