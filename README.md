@@ -19,7 +19,7 @@ Current status:
 - [x] 13. greatest_common_divisor
 - [ ] 14. all_prefixes
 - [ ] 15. string_sequence
-- [ ] 16. count_distinct_characters
+- [x] 16. count_distinct_characters
 - [ ] 17. parse_music
 - [ ] 18. how_many_times
 - [ ] 19. sort_numbers
@@ -39,7 +39,7 @@ Current status:
 - [x] 33. sort_third
 - [x] 34. unique
 - [x] 35. max_element
-- [ ] 36. fizz_buzz
+- [x] 36. fizz_buzz
 - [x] 37. sort_even
 - [ ] 38. encode_cyclic
 - [ ] 39. prime_fib
@@ -78,7 +78,7 @@ Current status:
 - [x] 72. will_it_fly
 - [x] 73. smallest_change
 - [ ] 74. total_match
-- [x] 75. is_multiply_prime
+- [ ] 75. is_multiply_prime
 - [ ] 76. is_simple_power
 - [ ] 77. iscube
 - [x] 78. hex_key
@@ -164,6 +164,6 @@ Current status:
 - [ ] 158. find_max
 - [x] 159. eat
 - [ ] 160. do_algebra
-- [ ] 161. solve
+- [x] 161. solve
 - [ ] 162. string_to_md5
 - [x] 163. generate_integers
