@@ -54,9 +54,9 @@ def get_row(lst : List[List[int]], x : int) -> List[Tuple[int, int]]:
             #         Forall(int, lambda j1: 
             #             Implies(j1 >= 0 and j1 < len(lst[i]) and lst[i1][j1] == x, 
             #                 InArray(pos, i1, j1))))))
-            # Invariant(Forall(int, lambda j1: 
-            #     (Implies(j1 >= 0 and j1 < j and lst[i][j1] == x, 
-            #         InArray(pos, i, j1)), [[InArray(pos, i, j1)]])))
+            Invariant(Forall(int, lambda j1: 
+                (Implies(j1 >= 0 and j1 < j and lst[i][j1] == x, 
+                    InArray(pos, i, j1)), [[InArray(pos, i, j1)]])))
             if lst[i][j] == x:
                 pos = pos + [(i, j)]
             j += 1

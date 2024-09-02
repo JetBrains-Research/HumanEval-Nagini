@@ -32,7 +32,7 @@ do
         if [[ $f == *.py ]]; then
             file_no=$((file_no+1))
             echo "Running dafny on $(basename "$f") ($file_no/$file_count)"
-            rm -rf .mypy_cache
+            # rm -rf .mypy_cache
             timeout "$TIMEOUT_DURATION" nagini "$f"
         fi
     fi
