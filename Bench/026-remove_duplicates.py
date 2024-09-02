@@ -43,7 +43,7 @@ def remove__duplicates(a : List[int]) -> List[int]:
 def exists_check(a : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     return Exists(int, lambda d_0_i_:
-        (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) == (x))))
+        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
 
 @Pure 
 def count_check(a : List[int], x : int) -> bool:

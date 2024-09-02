@@ -26,6 +26,11 @@ from nagini_contracts.contracts import *
 #         d_2_i_ = (d_2_i_) + (1)
 #     return max__depth
 
+@Pure 
+def get_len(s : List[int]) -> bool:
+    Requires(Acc(list_pred(s), 1/2))
+    return len(s) > 0
+
 def split(s : List[int], res : List[List[int]]) -> None:
     Requires(Acc(list_pred(s)))
     Requires(Acc(list_pred(res)))
@@ -35,7 +40,7 @@ def split(s : List[int], res : List[List[int]]) -> None:
     Ensures(Acc(list_pred(res)))
     Ensures(Forall(res, lambda x: Acc(list_pred(x), 1/2)))
     Ensures(Forall(int, lambda d_10_j_:
-        Implies(d_10_j_ >= 0 and d_10_j_ < len(res), (len(res[d_10_j_])) > (0))))
+        Implies(d_10_j_ >= 0 and d_10_j_ < len(res), (get_len(res[d_10_j_])))))
     # Ensures(Forall(int, lambda d_10_j_:
     #     not (d_10_j_ >= 0 and d_10_j_ < len(Result())) or ((Forall(int, lambda d_11_j_:
     #         not (((d_11_j_) >= (0)) and ((d_11_j_) < (len(Result()[d_10_j_])))) or ((((Result()[d_10_j_])[d_11_j_]) == (1)) or (((Result()[d_10_j_])[d_11_j_]) == (2))))) and ((len(Result()[d_10_j_])) > (0)))))
@@ -57,53 +62,24 @@ def split(s : List[int], res : List[List[int]]) -> None:
              (((((d_7_current__string_)[d_4_i_]) == (1)) or (((d_7_current__string_)[d_4_i_]) == (2)))), [[]])))
         Invariant(Forall(res, lambda x: Acc(list_pred(x), 1/2)))
         Invariant(Forall(int, lambda d_10_j_:
-            (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
-        # Invariant(Forall(int, lambda d_10_j_:
-        #     (not (d_10_j_ >= 0 and d_10_j_ < len(res)) or 
-        #         ((Forall(int, lambda d_11_j_:
-        #             not (((d_11_j_) >= (0)) and ((d_11_j_) < (len(res[d_10_j_])))) or 
-        #                 ((((res[d_10_j_])[d_11_j_]) == (1)) or (((res[d_10_j_])[d_11_j_]) == (2))))))))) # , [[res[d_10_j_]]]
-        # Invariant(Forall(res, lambda x:
-        #     ((Forall(int, lambda d_11_j_:
-        #         (not (((d_11_j_) >= (0)) and ((d_11_j_) < (len(x)))) or 
-        #             ((((x)[d_11_j_]) == (1)) or (((x)[d_11_j_]) == (2))), [[]]))), [[]]))) # , [[res[d_10_j_]]]
-        # Invariant(Forall(int, lambda d_10_j_:
-        #     (not (d_10_j_ >= 0 and d_10_j_ < len(res)) or 
-        #         ((Forall(int, lambda d_11_j_:
-        #             not (((d_11_j_) >= (0)) and ((d_11_j_) < (len(res[d_10_j_])))) or 
-        #                 ((((res[d_10_j_])[d_11_j_]) == (1)) or (((res[d_10_j_])[d_11_j_]) == (2)))))), [[res[d_10_j_]]]))) # , [[res[d_10_j_]]]
+            (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((get_len(res[d_10_j_])))), [[]])))
         if ((s)[d_8_i_]) == (3):
-            Assert(Forall(int, lambda d_10_j_:
-                (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
             if len(d_7_current__string_) > 0:
                 d_7_copy = list(d_7_current__string_)
-                Assert(len(d_7_current__string_)    > 0)
-                Assert(len(d_7_copy) > 0)
-                Assert(Forall(int, lambda d_4_i_:
-                    (not (((d_4_i_) >= (0)) and ((d_4_i_) < (len(d_7_current__string_)))) or (((((d_7_current__string_)[d_4_i_]) == (1)) or (((d_7_current__string_)[d_4_i_]) == (2)))), [[]])))
-                Assert(Forall(int, lambda d_9_j_:
-                    (not (d_9_j_ >= 0 and d_9_j_ < len(d_7_copy)) or 
-                        ((d_7_copy[d_9_j_]) == (1) or (d_7_copy[d_9_j_]) == (2)), [[]])))
-                Assert(Forall(int, lambda d_10_j_:
-                    (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
                 res = (res) + [d_7_copy]
-                Assert(Forall(int, lambda d_10_j_:
-                    (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
                 d_7_current__string_ = []
         else:
             d_7_current__string_ = (d_7_current__string_) + [(s)[d_8_i_]]
         d_8_i_ = (d_8_i_) + (1)
-        Assert(Forall(int, lambda d_10_j_:
-            (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
     if len(d_7_current__string_) > 0:
-        # Assert(Forall(int, lambda d_10_j_:
-        #     (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))))))
-        res = (res) + [d_7_current__string_]
-        # Assert(Forall(int, lambda d_10_j_:
-        #     (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))))))
+        d_7_copy = list(d_7_current__string_)
+        res = (res) + [d_7_copy]
+        Assert(Forall(int, lambda d_10_j_:
+            (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((get_len(res[d_10_j_])))), [[]])))
         d_7_current__string_ =  []
     Assert(Forall(int, lambda d_10_j_:
-        (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((len(res[d_10_j_])) > (0))), [[]])))
+        (Implies(d_10_j_ >= 0 and d_10_j_ < len(res), ((get_len(res[d_10_j_])))), [[]])))
+    return None
 
 # def parse__nested__parens(paren__string : List[int]) -> List[int]:
 #     Requires(Forall(int, lambda d_12_i_:

@@ -21,9 +21,9 @@ def encode(s : List[int]) -> List[int]:
         Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(s))))
         Invariant((len(t)) == (d_3_i_))
         Invariant(Forall(int, lambda d_4_j_:
-            not ((((0) <= (d_4_j_)) and ((d_4_j_) < (d_3_i_))) and (is__vowel((s)[d_4_j_]))) or (((t)[d_4_j_]) == (rot2(swap__case((s)[d_4_j_]))))))
+            (not ((((0) <= (d_4_j_)) and ((d_4_j_) < (d_3_i_))) and (is__vowel((s)[d_4_j_]))) or (((t)[d_4_j_]) == (rot2(swap__case((s)[d_4_j_])))), [[rot2(swap__case((s)[d_4_j_]))]])))
         Invariant(Forall(int, lambda d_5_j_:
-            not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_3_i_))) and (not(is__vowel((s)[d_5_j_])))) or (((t)[d_5_j_]) == (swap__case((s)[d_5_j_])))))
+            (not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_3_i_))) and (not(is__vowel((s)[d_5_j_])))) or (((t)[d_5_j_]) == (swap__case((s)[d_5_j_]))), [[swap__case((s)[d_5_j_])]])))
         if is__vowel((s)[d_3_i_]):
             t = (t) + [rot2(swap__case((s)[d_3_i_]))]
         else:

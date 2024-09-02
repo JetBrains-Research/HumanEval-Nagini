@@ -19,7 +19,7 @@ Current status:
 - [x] 13. greatest_common_divisor
 - [ ] 14. all_prefixes
 - [ ] 15. string_sequence
-- [ ] 16. count_distinct_characters
+- [x] 16. count_distinct_characters
 - [ ] 17. parse_music
 - [ ] 18. how_many_times
 - [ ] 19. sort_numbers
@@ -37,9 +37,9 @@ Current status:
 - [x] 31. is_prime
 - [ ] 32. poly
 - [x] 33. sort_third
-- [ ] 34. unique
+- [x] 34. unique
 - [x] 35. max_element
-- [ ] 36. fizz_buzz
+- [x] 36. fizz_buzz
 - [x] 37. sort_even
 - [ ] 38. encode_cyclic
 - [ ] 39. prime_fib
@@ -78,7 +78,7 @@ Current status:
 - [x] 72. will_it_fly
 - [x] 73. smallest_change
 - [ ] 74. total_match
-- [x] 75. is_multiply_prime
+- [ ] 75. is_multiply_prime
 - [ ] 76. is_simple_power
 - [ ] 77. iscube
 - [x] 78. hex_key
@@ -87,7 +87,7 @@ Current status:
 - [ ] 81. numerical_letter_grade
 - [x] 82. prime_length
 - [x] 83. starts_one_ends
-- [ ] 84. solve
+- [x] 84. solve
 - [x] 85. add
 - [ ] 86. anti_shuffle
 - [ ] 87. get_row
@@ -107,15 +107,15 @@ Current status:
 - [ ] 101. words_string
 - [x] 102. choose_num
 - [ ] 103. rounded_avg
-- [ ] 104. unique_digits
+- [x] 104. unique_digits
 - [x] 105. by_length
 - [x] 106. f
 - [ ] 107. even_odd_palindrome
 - [x] 108. count_nums
-- [ ] 109. move_one_ball
+- [x] 109. move_one_ball
 - [x] 110. exchange
 - [ ] 111. histogram
-- [ ] 112. reverse_delete
+- [x] 112. reverse_delete
 - [ ] 113. odd_count
 - [x] 114. minSubArraySum
 - [ ] 115. max_fill
@@ -137,7 +137,7 @@ Current status:
 - [ ] 131. digits
 - [ ] 132. is_nested
 - [x] 133. sum_squares
-- [ ] 134. check_if_last_char_is_a_letter
+- [x] 134. check_if_last_char_is_a_letter
 - [x] 135. can_arrange
 - [x] 136. largest_smallest_integers
 - [ ] 137. compare_one
@@ -164,6 +164,6 @@ Current status:
 - [ ] 158. find_max
 - [x] 159. eat
 - [ ] 160. do_algebra
-- [ ] 161. solve
+- [x] 161. solve
 - [ ] 162. string_to_md5
 - [x] 163. generate_integers
