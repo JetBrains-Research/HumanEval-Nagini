@@ -32,7 +32,7 @@ def get_row(lst : List[List[int]], x : int) -> List[Tuple[int, int]]:
         Invariant(Forall(int, lambda j: 
             (Implies(j >= 0 and j < len(pos), 0 <= pos[j][0] and pos[j][0] < len(lst) and 
                 0 <= pos[j][1] and pos[j][1] < len(lst[pos[j][0]]) and
-                    lst[pos[j][0]][pos[j][1]] == x), [[]])))
+                    lst[pos[j][0]][pos[j][1]] == x))))
         # Invariant(Forall(int, lambda i1: 
         #     Implies(i1 >= 0 and i1 < i, 
         #         Forall(int, lambda j1: 
@@ -48,7 +48,7 @@ def get_row(lst : List[List[int]], x : int) -> List[Tuple[int, int]]:
             Invariant(Forall(int, lambda j: 
                 (Implies(j >= 0 and j < len(pos), 0 <= pos[j][0] and pos[j][0] < len(lst) and 
                     0 <= pos[j][1] and pos[j][1] < len(lst[pos[j][0]]) and
-                        lst[pos[j][0]][pos[j][1]] == x), [[]])))
+                        lst[pos[j][0]][pos[j][1]] == x))))
             # Invariant(Forall(int, lambda i1: 
             #     Implies(i1 >= 0 and i1 < i, 
             #         Forall(int, lambda j1: 
