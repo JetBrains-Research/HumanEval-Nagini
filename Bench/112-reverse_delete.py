@@ -77,5 +77,5 @@ def is__palindrome__fun(text : List[int]) -> bool:
 def is__palindrome__pred(s : List[int]) -> bool :
     Requires(Acc(list_pred(s), 1/2))
     return Forall(int, lambda d_10_k_:
-        (not (((0) <= (d_10_k_)) and ((d_10_k_) < (len(s)))) or (((s)[d_10_k_]) == ((s)[((len(s)) - (1)) - (d_10_k_)])), [[]]))
+        (not (((0) <= (d_10_k_)) and ((d_10_k_) < (len(s)))) or (((s)[d_10_k_]) == ((s)[((len(s)) - (1)) - (d_10_k_)]))))
 
