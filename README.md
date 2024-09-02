@@ -4,13 +4,13 @@ examples from HumanEval translated to Nagini
 Current status:
 
 - [x] 0. has_close_elements
-- [ ] 1. separate_paren_groups
+- [x] 1. separate_paren_groups
 - [x] 2. truncate
 - [x] 3. below_zero
 - [ ] 4. mean_absolute_derivation
 - [x] 5. intersperse
-- [ ] 6. parse_nested_parens
-- [ ] 7. filter_by_substring
+- [x] 6. parse_nested_parens
+- [x] 7. filter_by_substring
 - [x] 8. sum_product
 - [x] 9. rolling_max
 - [x] 10. is_palindrome

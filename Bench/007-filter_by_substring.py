@@ -50,10 +50,6 @@ def InArray(a : List[List[int]], x : List[int]) -> bool :
         (Implies(((0) <= (d_0_s_)) and ((d_0_s_) < (len((a)))), 
             EqArrays(a[d_0_s_], x))))
 
-# @Pure 
-# def AccBiDim(a : List[List[int]]) -> bool :
-#     Requires(Acc(list_pred(a)))
-#     return Forall(a, lambda d_0_s_: Acc(list_pred(d_0_s_)))
 
 def filter__by__substring(strings : List[List[int]], substring : List[int]) -> List[List[int]]:
     Requires(Acc(list_pred(strings)))
@@ -62,13 +58,10 @@ def filter__by__substring(strings : List[List[int]], substring : List[int]) -> L
     Ensures(Acc(list_pred(strings)))
     Ensures(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
     Ensures(Acc(list_pred(Result())))
-    # Ensures(AccBiDim(Result()))
+    Ensures(Forall(ResultT(List[List[int]]), lambda d_0_s_: Acc(list_pred(d_0_s_))))
     Ensures((len(Result())) <= (len(strings)))
-    # Ensures(Forall(List[int], lambda d_3_s_: Implies(Exists(int, lambda x : Implies(x >= 0 and x < len(Result()), Result()[x] == d_3_s_)), Acc(list_pred(d_3_s_)))))
-    # Ensures(Forall(int, lambda d_3_i_:
-    #     (Implies(0 <= d_3_i_ and d_3_i_ < len(Result()), Acc(list_pred(Result()[d_3_i_])) and InArray(strings, Result()[d_3_i_])))))
-    # Ensures(Forall(List[int], lambda d_1_s_:
-    #     not ((d_1_s_) in (Result())) or ((d_1_s_) in (strings))))
+    Ensures(Forall(int, lambda d_3_i_:
+        (Implies(0 <= d_3_i_ and d_3_i_ < len(Result()), InArray(strings, Result()[d_3_i_])))))
     res : List[List[int]] = []
     d_2_i_ = int(0) # type : int
     d_2_i_ = 0
@@ -82,8 +75,6 @@ def filter__by__substring(strings : List[List[int]], substring : List[int]) -> L
         Invariant((len(res)) <= (d_2_i_))
         Invariant(Forall(int, lambda d_3_i_:
             (Implies(0 <= d_3_i_ and d_3_i_ < len(res), InArray(strings, res[d_3_i_])), [[InArray(strings, res[d_3_i_])]])))
-        # Invariant(Forall(List[int], lambda d_3_s_:
-        #     not ((d_3_s_) in (res)) or ((d_3_s_) in (strings))))
         d_4_check_ = False # type : bool
         d_4_check_ = checkSubstring((strings)[d_2_i_], substring)
         if d_4_check_:
