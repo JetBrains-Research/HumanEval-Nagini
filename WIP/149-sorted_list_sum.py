@@ -70,6 +70,11 @@ def comparison(a : List[int], b : List[int], i : int) -> bool :
 #         d_0_i_ = (d_0_i_) + (1)
 #     return sorted
 
+@Pure 
+def check_len(lst : List[int]) -> bool:
+    Requires(Acc(list_pred(lst), 1/2))
+    return len(lst) % 2 == 0
+
 def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
     Requires(Acc(list_pred(lst)))
     Requires(Forall(lst, lambda x: Acc(list_pred(x))))
@@ -78,7 +83,7 @@ def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
     Ensures(Acc(list_pred(lst)))
     Ensures(Acc(list_pred(Result())))
     Ensures(Forall(lst, lambda x: Acc(list_pred(x))))
-    Ensures(Forall(ResultT(List[List[int]]), lambda x: Acc(list_pred(x))))
+    Ensures(Forall(ResultT(List[List[int]]), lambda x: Acc(list_pred(x),1/2)))
     # Ensures(Forall(int, lambda d_5_i_:
     #     not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(Result())))) or (((len((Result())[d_5_i_]) % 2)) == (0))))
     Ensures((len(Result())) == (len(lst)))
@@ -97,9 +102,9 @@ def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
         Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= (len(lst))))
         Invariant((len(sorted)) == (len(lst)))
         Invariant(Forall(int, lambda d_4_i_:
-            not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(lst)))) or (((len((lst)[d_4_i_]) % 2)) == (0))))
+            not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(lst)))) or (((check_len((lst)[d_4_i_]))))))
         Invariant(Forall(int, lambda d_4_i_:
-            not (((0) <= (d_4_i_)) and ((d_4_i_) < (d_0_i_))) or (((len((sorted)[d_4_i_]) % 2)) == (0))))
+            not (((0) <= (d_4_i_)) and ((d_4_i_) < (d_0_i_))) or (((check_len((sorted)[d_4_i_]))))))
         sorted[d_0_i_] = list(lst[d_0_i_])
     d_8_i_ = int(0) # type : int
     d_8_i_ = 0
@@ -108,9 +113,9 @@ def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
         Invariant(Acc(list_pred(lst)))
         Invariant(len(sorted) == len(lst))
         Invariant(Forall(lst, lambda x: Acc(list_pred(x))))
-        Invariant(Forall(sorted, lambda x: Acc(list_pred(x))))
+        Invariant(Forall(sorted, lambda x: Acc(list_pred(x),1/2)))
         Invariant(Forall(int, lambda d_4_i_:
-            (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(sorted)))) or (((len((sorted)[d_4_i_]) % 2)) == (0)))))
+            (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(sorted)))) or (((check_len((sorted)[d_4_i_])))), [[]])))
         Invariant(((0) <= (d_8_i_)) and ((d_8_i_) <= (len(lst))))
         Invariant((len(sorted)) == (len(lst)))
         # Invariant(Forall(int, lambda d_9_x_:
@@ -123,14 +128,16 @@ def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
         d_14_j_ = (d_8_i_) + (1)
         d_15_min_ = int(0) # type : int
         d_15_min_ = d_8_i_
+        Assert(Forall(int, lambda d_4_i_:
+            (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(sorted)))) or (((check_len((sorted)[d_4_i_])))), [[]])))
         while (d_14_j_) < (len(lst)):
             Invariant(Acc(list_pred(sorted)))
             Invariant(Acc(list_pred(lst)))
             Invariant(len(sorted) == len(lst))  
             Invariant(Forall(lst, lambda x: Acc(list_pred(x))))
-            Invariant(Forall(sorted, lambda x: Acc(list_pred(x))))
+            Invariant(Forall(sorted, lambda x: Acc(list_pred(x),1/2)))
             Invariant(Forall(int, lambda d_4_i_:
-                (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(sorted)))) or (((len((sorted)[d_4_i_]) % 2)) == (0)))))
+                (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(sorted)))) or (((check_len((sorted)[d_4_i_])))), [[]])))
             Invariant((len(sorted)) == (len(lst)))
             Invariant(((0) <= (d_0_i_)) and ((d_8_i_) < (len(lst))))
             Invariant((((0) <= (d_8_i_)) and ((d_8_i_) < (d_14_j_))) and ((d_14_j_) <= (len(lst))))
@@ -141,8 +148,11 @@ def sort__lengths(lst : List[List[int]]) -> List[List[int]]:
                 d_15_min_ = d_14_j_
             d_14_j_ = (d_14_j_) + (1)
         d_17_temp_ : List[int] = list((sorted)[d_8_i_])
+        Assert(check_len(d_17_temp_))
         sorted[d_8_i_] = list(sorted[d_15_min_])
+        Assert(check_len(sorted[d_8_i_]))
         sorted[d_15_min_] = list(d_17_temp_)
+        Assert(check_len(sorted[d_15_min_]))
         d_8_i_ = (d_8_i_) + (1)
     return sorted
 

@@ -31,22 +31,43 @@ def is__prime(k : int) -> bool:
 def is__multiply__prime(x : int) -> bool:
     Requires((x) > (1))
     Ensures(Implies(Result(), Exists(int, lambda d_1_a_:
+        d_1_a_< x and 
+        ((Prime(d_1_a_)) and 
         Exists(int, lambda d_2_b_:
-                (((Prime(d_1_a_)) and (Prime(d_2_b_)))) and ((x) == (((d_1_a_) * (d_2_b_))))))))
+            d_2_b_ < x and 
+            (Prime(d_2_b_)) and
+            Exists(int, lambda d_3_c_:
+                (d_3_c_ < x) and (Prime(d_3_c_)) and ((x) == (((d_1_a_) * (d_2_b_)) * (d_3_c_)))))))))
     Ensures(Implies(not(Result()), Forall(int, lambda d_10_i_:
-        (Forall(int, lambda d_11_j_:
-            (Implies((1 < d_10_i_ and 1 < d_11_j_ and (d_10_i_) < (x) and d_11_j_ < x), Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), ((x) != (((d_10_i_) * (d_11_j_)))))))))))))
+        (Implies(1 < d_10_i_ and d_10_i_ < x, 
+            Forall(int, lambda d_11_j_:
+                (Implies((1 < d_11_j_ and d_11_j_ < x), 
+                    (Forall(int, lambda d_12_k_:
+                        (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                            Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), ((x) != (((d_10_i_) * (d_11_j_) * (d_12_k_)))))))))))))))))))
     d_4_a_ = int(2) # type : int
     result = False # type : bool
     while d_4_a_ < x:
         Invariant(x >= 2)
         Invariant(d_4_a_ >= 2 and d_4_a_ <= x) 
         Invariant(Implies(result, Exists(int, lambda d_1_a_:
+            d_1_a_< x and 
+            ((Prime(d_1_a_)) and 
             Exists(int, lambda d_2_b_:
-                    (d_1_a_ < x and d_2_b_ < x and ((Prime(d_1_a_)) and (Prime(d_2_b_)))) and ((x) == (((d_1_a_) * (d_2_b_))))))))
+                d_2_b_ < x and 
+                (Prime(d_2_b_)) and
+                Exists(int, lambda d_3_c_:
+                    (d_3_c_ < x) and (Prime(d_3_c_)) and ((x) == (((d_1_a_) * (d_2_b_)) * (d_3_c_)))))))))
         Invariant(Implies(not(result), Forall(int, lambda d_10_i_:
-            (Forall(int, lambda d_11_j_:
-                (Implies((1 < d_10_i_ and 1 < d_11_j_ and (d_10_i_) < (d_4_a_) and d_11_j_ < x), Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), ((x) != (((d_10_i_) * (d_11_j_))))))), [[Prime(d_11_j_)]])), [[Prime(d_10_i_)]]))))
+            (Implies(1 < d_10_i_ and d_10_i_ < d_4_a_, 
+                Forall(int, lambda d_11_j_:
+                    (Implies((1 < d_11_j_ and d_11_j_ < x), 
+                        (Forall(int, lambda d_12_k_:
+                            (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                                Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), ((x) != (((d_10_i_) * (d_11_j_) * (d_12_k_)))))))), 
+                                    [[Prime(d_12_k_)]])))), 
+                        [[Prime(d_11_j_)]]))), 
+                [[Prime(d_10_i_)]]))))
         if is__prime(d_4_a_):
             d_5_b_  = int(2) # type : int
             while d_5_b_ < x:
@@ -55,15 +76,74 @@ def is__multiply__prime(x : int) -> bool:
                 Invariant(d_4_a_ >= 2 and d_4_a_ < x)
                 Invariant(d_5_b_ >= 2 and d_5_b_ <= x)
                 Invariant(Implies(result, Exists(int, lambda d_1_a_:
+                    d_1_a_< x and 
+                    ((Prime(d_1_a_)) and 
                     Exists(int, lambda d_2_b_:
-                            (d_1_a_ < x and d_2_b_ < x and ((Prime(d_1_a_)) and (Prime(d_2_b_)))) and ((x) == (((d_1_a_) * (d_2_b_))))))))        
-                Invariant(Implies(not(result), Forall(int, lambda d_8_j_:
-                    (Implies(1 < d_8_j_ and d_8_j_ < d_5_b_, Implies(Prime(d_8_j_), ((x) != (((d_4_a_) * (d_8_j_)))))), [[Prime(d_8_j_)]]))))
+                        d_2_b_ < x and 
+                        (Prime(d_2_b_)) and
+                        Exists(int, lambda d_3_c_:
+                            (d_3_c_ < x) and (Prime(d_3_c_)) and ((x) == (((d_1_a_) * (d_2_b_)) * (d_3_c_)))))))))
                 Invariant(Implies(not(result), Forall(int, lambda d_10_i_:
-                    (Forall(int, lambda d_11_j_:
-                        (Implies((1 < d_10_i_ and 1 < d_11_j_ and (d_10_i_) < (d_4_a_) and d_11_j_ < x), Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), ((x) != (((d_10_i_) * (d_11_j_))))))), [[Prime(d_11_j_)]])), [[Prime(d_10_i_)]]))))
-                if is__prime(d_5_b_) and x == d_4_a_ * d_5_b_:
-                    result = True
+                    (Implies(1 < d_10_i_ and d_10_i_ < d_4_a_, 
+                        Forall(int, lambda d_11_j_:
+                            (Implies((1 < d_11_j_ and d_11_j_ < x), 
+                                (Forall(int, lambda d_12_k_:
+                                    (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                                        Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), ((x) != (((d_10_i_) * (d_11_j_) * (d_12_k_)))))))), 
+                                            [[Prime(d_12_k_)]])))), 
+                                [[Prime(d_11_j_)]]))), 
+                        [[Prime(d_10_i_)]]))))
+                Invariant(Implies(not(result), 
+                    Forall(int, lambda d_11_j_:
+                        (Implies((1 < d_11_j_ and d_11_j_ < d_5_b_), 
+                            (Forall(int, lambda d_12_k_:
+                                (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                                        Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), (x) != (((d_4_a_) * (d_11_j_) * (d_12_k_)))))), 
+                                [[Prime(d_12_k_)]])))), 
+                        [[Prime(d_11_j_)]]))))
+                if is__prime(d_5_b_):
+                    d_6_c_ = int(2) # type : int
+                    while d_6_c_ < x:
+                        Invariant(x >= 2)
+                        Invariant(Prime(d_4_a_))
+                        Invariant(Prime(d_5_b_))
+                        Invariant(d_4_a_ >= 2 and d_4_a_ < x)
+                        Invariant(d_5_b_ >= 2 and d_5_b_ < x)
+                        Invariant(d_6_c_ >= 2 and d_6_c_ <= x)
+                        Invariant(Implies(result, Exists(int, lambda d_1_a_:
+                            d_1_a_< x and 
+                            ((Prime(d_1_a_)) and 
+                            Exists(int, lambda d_2_b_:
+                                d_2_b_ < x and 
+                                (Prime(d_2_b_)) and
+                                Exists(int, lambda d_3_c_:
+                                    (d_3_c_ < x) and (Prime(d_3_c_)) and ((x) == (((d_1_a_) * (d_2_b_)) * (d_3_c_)))))))))
+                        Invariant(Implies(not(result), Forall(int, lambda d_10_i_:
+                            (Implies(1 < d_10_i_ and d_10_i_ < d_4_a_, 
+                                Forall(int, lambda d_11_j_:
+                                    (Implies((1 < d_11_j_ and d_11_j_ < x), 
+                                        (Forall(int, lambda d_12_k_:
+                                            (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                                                Implies((Prime(d_10_i_)), Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), ((x) != (((d_10_i_) * (d_11_j_) * (d_12_k_)))))))), 
+                                                    [[Prime(d_12_k_)]])))), 
+                                        [[Prime(d_11_j_)]]))), 
+                                [[Prime(d_10_i_)]]))))
+                        Invariant(Implies(not(result), 
+                            Forall(int, lambda d_11_j_:
+                                (Implies((1 < d_11_j_ and d_11_j_ < d_5_b_), 
+                                    (Forall(int, lambda d_12_k_:
+                                        (Implies(1 < d_12_k_ and d_12_k_ < x, 
+                                                Implies((Prime(d_11_j_)), Implies(Prime(d_12_k_), (x) != (((d_4_a_) * (d_11_j_) * (d_12_k_)))))), 
+                                        [[Prime(d_12_k_)]])))), 
+                                [[Prime(d_11_j_)]]))))
+                        Invariant(Implies(not(result), 
+                            Forall(int, lambda d_12_k_: 
+                                (Implies(1 < d_12_k_ and d_12_k_ < d_6_c_, 
+                                    Implies((Prime(d_12_k_)), ((x) != (((d_4_a_) * (d_5_b_) * (d_12_k_)))))), 
+                                [[Prime(d_12_k_)]]))))
+                        if (is__prime(d_6_c_)) and ((x) == (((d_4_a_) * (d_5_b_)) * (d_6_c_))):
+                            result = True
+                        d_6_c_ = d_6_c_ + 1
                 d_5_b_ = d_5_b_ + 1
         d_4_a_ = d_4_a_ + 1
     return result

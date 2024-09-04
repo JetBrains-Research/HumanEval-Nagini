@@ -5,7 +5,7 @@ Current status:
 
 - [x] 0. has_close_elements
 - [x] 1. separate_paren_groups
-- [x] 2. truncate
+- [ ] 2. truncate
 - [x] 3. below_zero
 - [ ] 4. mean_absolute_derivation
 - [x] 5. intersperse
@@ -41,7 +41,7 @@ Current status:
 - [x] 35. max_element
 - [x] 36. fizz_buzz
 - [x] 37. sort_even
-- [ ] 38. encode_cyclic
+- [x] 38. encode_cyclic
 - [ ] 39. prime_fib
 - [x] 40. triples_sum_to_zero
 - [x] 41. car_race_collision
@@ -59,7 +59,7 @@ Current status:
 - [x] 53. add
 - [x] 54. same_chars
 - [x] 55. fib
-- [ ] 56. correct_bracketing
+- [x] 56. correct_bracketing
 - [x] 57. monotonic
 - [x] 58. common
 - [x] 59. largest_prime_factor
@@ -93,7 +93,7 @@ Current status:
 - [ ] 87. get_row
 - [x] 88. sort_array
 - [x] 89. encrypt
-- [ ] 90. next_smallest
+- [x] 90. next_smallest
 - [ ] 91. is_bored
 - [x] 92. any_int
 - [x] 93. encode
