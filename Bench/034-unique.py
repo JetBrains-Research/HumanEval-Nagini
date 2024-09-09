@@ -30,8 +30,6 @@ def uniqueSorted(s : List[int]) -> List[int]:
     Ensures(Forall(int, lambda d_2_i_:
         Forall(int, lambda d_3_j_:
             not ((((0) <= (d_2_i_)) and ((d_2_i_) < (d_3_j_))) and ((d_3_j_) < (len(Result())))) or (((Result())[d_2_i_]) < ((Result())[d_3_j_])))))
-    Ensures(Forall(int, lambda d_11_j_:
-        (Implies(((0) <= (d_11_j_)) and ((d_11_j_) < (len(s))), InArray(Result(), s[d_11_j_])))))
     # post-conditions-end
 
     # impl-start
@@ -58,8 +56,6 @@ def uniqueSorted(s : List[int]) -> List[int]:
                 (not ((((0) <= (d_7_k_)) and ((d_7_k_) < (d_8_l_))) and ((d_8_l_) < (len(result)))) or (((result)[d_7_k_]) < ((result)[d_8_l_])), 
                     [[(result)[d_8_l_]]])), 
                 [[(result)[d_7_k_]]])))
-        Invariant(Forall(int, lambda d_11_j_:
-            (Implies(((0) <= (d_11_j_)) and ((d_11_j_) < (d_6_i_)), InArray(result, s[d_11_j_])), [[]])))
         # invariants-end
         if ((len(result)) == (0)) or (((result)[(len(result)) - (1)]) != ((s)[d_6_i_])):
             # assert-start
