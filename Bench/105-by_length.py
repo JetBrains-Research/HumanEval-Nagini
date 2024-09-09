@@ -3,23 +3,34 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def WithinRange(n : int) -> bool:
+    # impl-start
     return ((n) >= (1)) and ((n) <= (9))
+    # impl-end
 
 @Pure 
 def WithinRangeString(s : str) -> bool:
+    # impl-start
     return (s == "One" or s == "Two" or s == "Three" or s == "Four" or s == "Five" or s == "Six" or s == "Seven" or s == "Eight" or s == "Nine")
+    # impl-end
 
 def SortReverseAndName(arr : List[int]) -> List[str]:
+    # pre-conditions-start
     Requires(Acc(list_pred(arr)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(arr)))
     Ensures(Acc(list_pred(Result())))
     Ensures((len(Result())) <= (len(arr)))
     Ensures(Forall(int, lambda d_0_i_:
         Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(Result()))), 
             WithinRangeString(Result()[d_0_i_]))))
+    # post-conditions-end
+
+    # impl-start
     d_1_validNumbers_ : List[int] = [] # type : List[int]
     d_2_i_ = int(0) # type : int
     while (d_2_i_) < (len(arr)):
+        # invariants-start
         Invariant(Acc(list_pred(d_1_validNumbers_)))
         Invariant(Acc(list_pred(arr)))
         Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(arr))))
@@ -27,16 +38,20 @@ def SortReverseAndName(arr : List[int]) -> List[str]:
         Invariant(Forall(int, lambda d_3_j_:
             (Implies(((0) <= (d_3_j_)) and ((d_3_j_) < (len(d_1_validNumbers_))), WithinRange(d_1_validNumbers_[d_3_j_])), 
                 [[]])))
+        # invariants-end
         if WithinRange((arr)[d_2_i_]):
             d_1_validNumbers_ = (d_1_validNumbers_) + [(arr)[d_2_i_]]
         d_2_i_ = (d_2_i_) + (1)
+    # assert-start
     Assert(len(d_1_validNumbers_) <= len(arr))
+    # assert-end
     d_1_validNumbers_ = BubbleSort(d_1_validNumbers_)
 
     d_1_validNumbers_ = reverse(d_1_validNumbers_)
     d_2_i_ = 0
     result : List[str] = [] # type : List[str]
     while (d_2_i_) < (len(d_1_validNumbers_)):
+        # invariants-start
         Invariant(Acc(list_pred(d_1_validNumbers_)))
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(arr)))
@@ -51,14 +66,19 @@ def SortReverseAndName(arr : List[int]) -> List[str]:
             (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(result))), 
                 WithinRangeString(result[d_0_i_])), 
                 [[]])))
+        # invariants-end
         result = (result) + [NumberToName((d_1_validNumbers_)[d_2_i_])]
         d_2_i_ = (d_2_i_) + (1)
     return result
+    # impl-end
 
 def BubbleSort(a1 : List[int]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(a1), 1/2))
     Requires(Forall(int, lambda d_4_j_:
         Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(a1))), ((1) <= ((a1)[d_4_j_])) and (((a1)[d_4_j_]) <= (9)))))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(a1), 1/2))
     Ensures(Acc(list_pred(Result())))
     Ensures(Forall(int, lambda d_4_j_:
@@ -67,10 +87,14 @@ def BubbleSort(a1 : List[int]) -> List[int]:
     Ensures(Forall(int, lambda d_0_i_:
         Forall(int, lambda d_1_j_:
             Implies((((0) <= (d_0_i_)) and ((d_0_i_) < (d_1_j_))) and ((d_1_j_) < (len((Result())))), ((Result())[d_0_i_]) <= ((Result())[d_1_j_])))))
+    # post-conditions-end
+
+    # impl-start
     a = list(a1) # type : List[int]
     d_2_i_ = int(0) # type : int
     d_2_i_ = (len((a))) - (1)
     while (d_2_i_) > (0):
+        # invariants-start
         Invariant(Acc(list_pred(a)))
         Invariant(Acc(list_pred(a1), 1/2))
         Invariant(Forall(int, lambda d_4_j_:
@@ -89,9 +113,11 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                 (Implies(((((0) <= (d_5_k_)) and ((d_5_k_) <= (d_2_i_))) and ((d_2_i_) < (d_6_k_k_)) and (d_6_k_k_) < (len((a)))), ((a)[d_5_k_]) <= ((a)[d_6_k_k_])),
                     [[(a)[d_6_k_k_]]])),
                 [[(a)[d_5_k_]]])))
+        # invariants-end
         d_7_j_ = int(0) # type : int
         d_7_j_ = 0
         while (d_7_j_) < (d_2_i_):
+            # invariants-start
             Invariant(Acc(list_pred(a)))
             Invariant(Acc(list_pred(a1), 1/2))
             Invariant(Forall(int, lambda d_4_j_:
@@ -112,6 +138,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
             Invariant(Forall(int, lambda d_12_k_:
                 (Implies(((0) <= (d_12_k_)) and ((d_12_k_) <= (d_7_j_)), ((a)[d_12_k_]) <= ((a)[d_7_j_])),
                     [[(a)[d_12_k_]]])))
+            # invariants-end
             if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
                 rhs0_ = (a)[(d_7_j_) + (1)] # type : int
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
@@ -119,12 +146,16 @@ def BubbleSort(a1 : List[int]) -> List[int]:
             d_7_j_ = (d_7_j_) + (1)
         d_2_i_ = (d_2_i_) - (1)
     return a
+    # impl-end
 
 def reverse(str : List[int]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(str), 1/2))
     Requires(Forall(int, lambda x: Forall(int, lambda y: Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(str))), (str)[x] <= (str)[y]))))
     Requires(Forall(int, lambda d_4_j_:
         Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(str))), ((1) <= ((str)[d_4_j_])) and (((str)[d_4_j_]) <= (9))))) 
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(str), 1/2))
     Ensures(Acc(list_pred(Result())))
     Ensures(Forall(int, lambda d_4_j_:
@@ -134,11 +165,15 @@ def reverse(str : List[int]) -> List[int]:
     Ensures((len(Result())) == (len(str)))
     Ensures(Forall(int, lambda d_11_k_:
         Implies(((0) <= (d_11_k_)) and ((d_11_k_) < (len(str))), ((Result())[d_11_k_]) == ((str)[((len(str)) - (1)) - (d_11_k_)]))))
+    # post-conditions-end
+
+    # impl-start
     rev = list([int(0)] * 0) # type : List[int]
     rev = []
     d_12_i_ = int(0) # type : int
     d_12_i_ = 0
     while (d_12_i_) < (len(str)):
+        # invariants-start
         Invariant(Acc(list_pred(str), 1/2))
         Invariant(Acc(list_pred(rev)))
         Invariant(Forall(int, lambda d_4_j_:
@@ -159,13 +194,21 @@ def reverse(str : List[int]) -> List[int]:
         Invariant(Forall(int, lambda x: 
             Forall(int, lambda y:
                 (Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(rev))), (rev)[x] >= (rev)[y]), [[rev[x] >= rev[y]]]))))
+        # invariants-end 
         rev = (rev) + [(str)[(len(str) - (d_12_i_)) - (1)]]
         d_12_i_ = (d_12_i_) + (1)
     return rev
+    # impl-end
 
 def NumberToName(n : int) -> str :
+    # pre-conditions-start
     Requires(n >= 1 and n <= 9)
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(WithinRangeString(Result()))
+    # pos-conditions-end
+
+    # impl-start
     if (n) == (1):
         return "One"
 
@@ -192,3 +235,4 @@ def NumberToName(n : int) -> str :
 
     if (n) == (9):
         return "Nine"
+    # impl-end

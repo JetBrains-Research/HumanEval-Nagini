@@ -3,12 +3,20 @@ from nagini_contracts.contracts import *
 
 @Pure
 def getVal(mx: Optional[int]) -> int:
+    # pre-conditions-start
     Requires(mx is not None)
+    # pre-conditions-end
+
+    # impl-start
     return mx  
+    # impl-end
 
 def longest(strings : List[List[int]]) -> Optional[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(strings)))
     Requires(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(strings)))
     Ensures(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
     Ensures(((Result()) is (None)) == ((len(strings)) == (0)))
@@ -19,6 +27,9 @@ def longest(strings : List[List[int]]) -> Optional[int]:
         ((d_1_s_) >= 0 and d_1_s_ < len(strings)) and ((len(strings[getVal(Result())])) == (len(strings[d_1_s_]))))))
     Ensures(not ((Result()) is not (None)) or (Forall(int, lambda d_4_j_:
         (not (((0) <= (d_4_j_)) and ((d_4_j_) < (Result()))) or ((len((strings)[d_4_j_])) < (len(strings[getVal(Result())])))))))
+    # post-conditions-end
+
+    # impl-start
     result : Optional[int] = None
     if (len(strings)) != (0):
         d_5_i_ = int(0) # type : int
@@ -26,6 +37,7 @@ def longest(strings : List[List[int]]) -> Optional[int]:
         d_6_mx_ = int(0) # type : int
         d_6_mx_ = -1
         while (d_5_i_) < (len(strings)):
+            # invariants-start
             Invariant(Acc(list_pred(strings)))
             Invariant(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
             Invariant(((d_5_i_) >= (0)) and ((d_5_i_) <= (len(strings))))
@@ -41,9 +53,13 @@ def longest(strings : List[List[int]]) -> Optional[int]:
                 ((d_1_s_) >= 0 and d_1_s_ < d_5_i_) and ((len(strings[getVal(result)])) == (len(strings[d_1_s_]))))))
             Invariant(not ((result) is not (None)) or (Forall(int, lambda d_4_j_:
                     (not (((0) <= (d_4_j_)) and ((d_4_j_) < (result))) or ((len((strings)[d_4_j_])) < (len(strings[getVal(result)]))), [[((strings)[d_4_j_])]]))))
+            # invariants-end
             if result is None or (len((strings)[d_5_i_])) > (len(strings[getVal(result)])):
                 d_6_mx_ = len((strings)[d_5_i_])
                 result = d_5_i_
+                # assert-start  
                 Assert(Forall(int, lambda x: Implies(x >= 0 and x < result, len(strings[result]) > len(strings[x]))))
+                # assert-end
             d_5_i_ = (d_5_i_) + (1)
     return result
+    # impl-end

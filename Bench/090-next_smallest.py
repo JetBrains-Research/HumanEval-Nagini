@@ -2,7 +2,10 @@ from typing import cast, List, Dict, Set, Optional, Union, Tuple
 from nagini_contracts.contracts import *
 
 def next_smallest(s : List[int]) -> Optional[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(s)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(s)))
     Ensures((Result() is None) == (len(s) < 2))
     Ensures(Implies(Result() is not None, Exists(int, lambda x: x >= 0 and x < len(s) and s[x] == Result())))
@@ -11,7 +14,9 @@ def next_smallest(s : List[int]) -> Optional[int]:
             Forall(int, lambda y: 
                 Implies(y > x and y < len(s), 
                     s[x] <= Result() or s[y] <= Result())))))
+    # post-conditions-end
 
+    # impl-start
     if len(s) < 2:
         return None
     
@@ -19,6 +24,7 @@ def next_smallest(s : List[int]) -> Optional[int]:
     mx : int = s[0]
     i = 1
     while i < len(s):
+        # invariants-start
         Invariant(Acc(list_pred(s)))
         Invariant(len(s) >= 2)
         Invariant(0 <= i and i <= len(s))
@@ -35,6 +41,7 @@ def next_smallest(s : List[int]) -> Optional[int]:
                 Forall(int, lambda y: 
                     Implies(y > x and y < i, 
                         s[x] <= res or s[y] <= res)))))
+        # invariants-end
 
         if s[i] > mx:
             res = mx 
@@ -43,3 +50,4 @@ def next_smallest(s : List[int]) -> Optional[int]:
             res = s[i]
         i += 1
     return res
+    # impl-end

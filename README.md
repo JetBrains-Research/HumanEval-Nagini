@@ -78,7 +78,7 @@ Current status:
 - [x] 72. will_it_fly
 - [x] 73. smallest_change
 - [ ] 74. total_match
-- [ ] 75. is_multiply_prime
+- [x] 75. is_multiply_prime
 - [ ] 76. is_simple_power
 - [ ] 77. iscube
 - [x] 78. hex_key
@@ -122,7 +122,7 @@ Current status:
 - [x] 116. sort_array
 - [ ] 117. select_words
 - [x] 118. get_closest_vowel
-- [ ] 119. match_parens
+- [x] 119. match_parens
 - [ ] 120. maximum
 - [x] 121. solution
 - [x] 122. add_elements
@@ -135,7 +135,7 @@ Current status:
 - [ ] 129. minPath
 - [ ] 130. tri
 - [ ] 131. digits
-- [ ] 132. is_nested
+- [x] 132. is_nested
 - [x] 133. sum_squares
 - [x] 134. check_if_last_char_is_a_letter
 - [x] 135. can_arrange
