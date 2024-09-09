@@ -3,11 +3,19 @@ from nagini_contracts.contracts import *
 
 @Pure
 def getVal(mx: Optional[int]) -> int:
+    # pre-conditions-start
     Requires(mx is not None)  
+    # pre-conditions-end
+
+    # impl-start
     return mx  
+    # impl-end
 
 def largest__smallest__integers(arr : List[int]) -> Tuple[Optional[int], Optional[int]]:
+    # pre-conditions-start
     Requires(Acc(list_pred(arr)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(arr)))
     Ensures(not ((Result()[0]) is None) or (Forall(int, lambda d_0_i_:
         not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(arr)))) or (((arr)[d_0_i_]) >= (0)))))
@@ -19,10 +27,14 @@ def largest__smallest__integers(arr : List[int]) -> Tuple[Optional[int], Optiona
     Ensures(not ((Result()[1]) is not None) or (((getVal(Result()[1])) in (arr)) and ((getVal(Result()[1])) > (0))))
     Ensures(not ((Result()[1]) is not None) or (Forall(int, lambda d_3_i_:
         not ((((0) <= (d_3_i_)) and ((d_3_i_) < (len(arr)))) and (((arr)[d_3_i_]) > (0))) or (((arr)[d_3_i_]) >= (getVal(Result()[1]))))))
+    # post-conditions-end
+
+    # impl-start
     a : Optional[int] = None 
     b : Optional[int] = None 
     d_4_i_ = int(0) 
     while (d_4_i_) < (len(arr)):
+        # invariants-start
         Invariant(Acc(list_pred(arr)))
         Invariant(((0) <= (d_4_i_)) and ((d_4_i_) <= (len(arr))))
         Invariant(not ((a) is None) or (Forall(int, lambda d_5_j_:
@@ -36,9 +48,11 @@ def largest__smallest__integers(arr : List[int]) -> Tuple[Optional[int], Optiona
         Invariant(not ((b) is not None) or (((getVal(b)) in (arr)) and ((getVal(b)) > (0))))
         Invariant(not ((b) is not None) or (Forall(int, lambda d_8_j_:
             not ((((0) <= (d_8_j_)) and ((d_8_j_) < (d_4_i_))) and (((arr)[d_8_j_]) > (0))) or (((arr)[d_8_j_]) >= (getVal(b))))))
+        # invariants-end
         if (((arr)[d_4_i_]) < (0)) and (((a) is None) or (((arr)[d_4_i_]) >= (a))):
             a = ((arr)[d_4_i_])
         if (((arr)[d_4_i_]) > (0)) and (((b) is None) or (((arr)[d_4_i_]) <= (getVal(b)))):
             b = ((arr)[d_4_i_])
         d_4_i_ = (d_4_i_) + (1)
     return (a, b)
+    # impl-end

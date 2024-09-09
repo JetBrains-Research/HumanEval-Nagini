@@ -2,8 +2,11 @@ from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
 def sort__third(a : List[int]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires((len(a)) > (0))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(a)))
     Ensures(Acc(list_pred(Result())))
     Ensures((len(Result())) == (len(a)))
@@ -12,12 +15,16 @@ def sort__third(a : List[int]) -> List[int]:
             not ((((((0) <= (d_0_i_)) and ((d_0_i_) < (d_1_j_))) and ((d_1_j_) < (len(Result())))) and (((d_0_i_ % 3)) == (0))) and (((d_1_j_ % 3)) == (0))) or (((Result())[d_0_i_]) <= ((Result())[d_1_j_])))))
     Ensures(Forall(int, lambda d_2_i_:
         not ((((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) and (((d_2_i_ % 3)) != (0))) or (((Result())[d_2_i_]) == ((a)[d_2_i_]))))
+    # post-conditions-end
+
+    # impl-start
     sorted__even = list([int(0)] * 0) # type : List[int]
     d_3_p_ = list([False] * 0) # type : List[bool]
     d_3_p_ = list([])
     d_4_i_ = int(0) # type : int
     d_4_i_ = 0
     while (d_4_i_) < (len(a)):
+        # invariants-start
         Invariant(Acc(list_pred(d_3_p_)))
         Invariant(Acc(list_pred(sorted__even)))
         Invariant(Acc(list_pred(a)))
@@ -25,15 +32,20 @@ def sort__third(a : List[int]) -> List[int]:
         Invariant((len(d_3_p_)) == (d_4_i_))
         Invariant(Forall(int, lambda d_5_j_:
             not (((0) <= (d_5_j_)) and ((d_5_j_) < (d_4_i_))) or (((d_3_p_)[d_5_j_]) == (((d_5_j_ % 3)) == (0)))))
+        # invariants-end
         d_3_p_ = (d_3_p_) + [((d_4_i_ % 3)) == (0)]
         d_4_i_ = (d_4_i_) + (1)
     sorted__even = SortSeqPred(a, d_3_p_)
     return sorted__even
+    # impl-end
 
 def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(p), 1/2))
     Requires(Acc(list_pred(s), 1/2))
     Requires((len(s)) == (len(p)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(p), 1/2))
     Ensures(Acc(list_pred(s), 1/2))
     Ensures(Acc(list_pred(Result())))
@@ -44,11 +56,15 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
             not ((((((0) <= (d_6_i_)) and ((d_6_i_) < (d_7_j_))) and ((d_7_j_) < (len(Result())))) and ((p)[d_6_i_])) and ((p)[d_7_j_])) or (((Result())[d_6_i_]) <= ((Result())[d_7_j_])))))
     Ensures(Forall(int, lambda d_8_i_:
         not ((((0) <= (d_8_i_)) and ((d_8_i_) < (len(s)))) and (not((p)[d_8_i_]))) or (((Result())[d_8_i_]) == ((s)[d_8_i_]))))
+    # post-conditions-end
+
+    # impl-start
     sorted = list([int(0)] * 0) # type : List[int]
     sorted = list(s)
     d_9_i_ = int(0) # type : int
     d_9_i_ = 0
     while (d_9_i_) < (len(sorted)):
+        # invariants-start
         Invariant(Acc(list_pred(sorted)))
         Invariant(Acc(list_pred(p), 1/2))
         Invariant(Acc(list_pred(s), 1/2))
@@ -66,12 +82,14 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
                 (Forall(int, lambda d_13_k_:
                     (not ((((d_9_i_) <= (d_13_k_)) and ((d_13_k_) < (len(sorted)))) and ((p)[d_13_k_])) or 
                         (((sorted)[d_12_j_]) <= ((sorted)[d_13_k_])), [[sorted[d_13_k_]]]))), [[(sorted)[d_12_j_]]])))
+        # invariants-end
         if (p)[d_9_i_]:
             d_15_minIndex_ = int(0) # type : int
             d_15_minIndex_ = d_9_i_
             d_16_j_ = int(0) # type : int
             d_16_j_ = (d_9_i_) + (1)
             while (d_16_j_) < (len(sorted)):
+                # invariants-start
                 Invariant(Acc(list_pred(sorted)))
                 Invariant(Acc(list_pred(p), 1/2))
                 Invariant(Acc(list_pred(s), 1/2))
@@ -94,14 +112,18 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
                         (Forall(int, lambda d_13_k_:
                             (not ((((d_9_i_) <= (d_13_k_)) and ((d_13_k_) < (len(sorted)))) and ((p)[d_13_k_])) or 
                                 (((sorted)[d_12_j_]) <= ((sorted)[d_13_k_])), [[sorted[d_13_k_]]]))), [[(sorted)[d_12_j_]]])))
+                # invariants-end
                 if ((p)[d_16_j_]) and (((sorted)[d_16_j_]) < ((sorted)[d_15_minIndex_])):
                     d_15_minIndex_ = d_16_j_
                 d_16_j_ = (d_16_j_) + (1)
             if (d_15_minIndex_) != (d_9_i_):
+                # assert-start
                 Assert((p)[d_15_minIndex_])
                 Assert(p[d_9_i_])
+                # assert-end
                 rhs0_ = (sorted)[d_9_i_] # type : int
                 (sorted)[d_9_i_] = (sorted)[d_15_minIndex_]
                 (sorted)[d_15_minIndex_] = rhs0_
         d_9_i_ = (d_9_i_) + (1)
     return sorted
+    # impl-end

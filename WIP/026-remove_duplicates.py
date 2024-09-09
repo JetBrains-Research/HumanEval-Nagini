@@ -13,8 +13,8 @@ def remove__duplicates(a : List[int]) -> List[int]:
         Implies(((0) <= (d_2_i_)) and ((d_2_i_) < (len(a))) and (count__rec(a, a[d_2_i_], len(a)) == 1), exists_check(Result(), a[d_2_i_]))))
     Ensures(Forall(int, lambda d_1_i_:
         not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(Result())))) or (count_check(a, (Result())[d_1_i_]))))
-    Ensures(Forall(int, lambda d_2_i_:
-        not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or check_eq(a, Result(), (a)[d_2_i_])))
+    # Ensures(Forall(int, lambda d_2_i_:
+    #     not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or check_eq(a, Result(), (a)[d_2_i_])))
     # Ensures(Forall(int, lambda d_2_i_:
     #     not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or ((((a)[d_2_i_]) in (Result())) == ((count__rec(a, (a)[d_2_i_], len(a))) == (1)))))
     result = list([int(0)] * 0) # type : List[int]
@@ -37,9 +37,9 @@ def remove__duplicates(a : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_1_i_:
             (not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(result)))) or (count_check(a, (result)[d_1_i_])), 
                 [[]])))
-        Invariant(Forall(int, lambda d_2_i_:
-            (not (((0) <= (d_2_i_)) and ((d_2_i_) < d_4_i_)) or check_eq(a, result, (a)[d_2_i_]), 
-                [[]])))
+        # Invariant(Forall(int, lambda d_2_i_:
+        #     (not (((0) <= (d_2_i_)) and ((d_2_i_) < d_4_i_)) or check_eq(a, result, (a)[d_2_i_]), 
+        #         [[]])))
         # Invariant(Forall(int, lambda d_6_j_:
         #     (Implies(((0) <= (d_6_j_)) and ((d_6_j_) < (d_4_i_)), (((a)[d_6_j_]) in (d_3_res_)) == ((count__rec(a, (a)[d_6_j_], len(a))) == (1))), [[count__rec(a, (a)[d_6_j_], len(a))]])))
         # Invariant(Forall(int, lambda d_7_j_:

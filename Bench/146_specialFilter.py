@@ -3,19 +3,31 @@ from nagini_contracts.contracts import *
 
 @Pure
 def first__digit(n : int) -> int :
+    # pre-conditions-start
     Requires(((0) <= (n)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(0 <= Result() and (Result()) < (10))
+    # post-conditions-end
+
+    # impl-start
     if n < 10:
         return n
     else:
         return first__digit(n // 10)
+    # impl-end
 
 @Pure
 def last__digit(n : int) -> int :
+    # impl-start
     return (n % 10)
+    # impl-end
 
 def specialFilter(s : List[int]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(s)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(s)))
     Ensures(Acc(list_pred(Result())))
     Ensures(Forall(int, lambda d_0_i_:
@@ -25,11 +37,15 @@ def specialFilter(s : List[int]) -> List[int]:
     Ensures(Forall(int, lambda d_5_i_:
         not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(Result())))) or 
             (Exists(int, lambda x: x >= 0 and x < len(s) and s[x] == Result()[d_5_i_]))))
+    # post-conditions-end
+
+    # impl-start
     r = list([int(0)] * 0) # type : List[int]
     d_3_i_ = int(0) # type : int
     d_3_i_ = 0
     r = list([])
     while (d_3_i_) < (len(s)):
+        # invariants-start
         Invariant(Acc(list_pred(r)))
         Invariant(Acc(list_pred(s)))
         Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(s))))
@@ -40,7 +56,9 @@ def specialFilter(s : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_5_i_:
             not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(r)))) or 
                 (Exists(int, lambda x: x >= 0 and x < len(s) and s[x] == r[d_5_i_]))))
+        # invariants-end
         if ((((s)[d_3_i_]) > (10)) and (((last__digit((s)[d_3_i_]) % 2)) == (1))) and (((first__digit((s)[d_3_i_]) % 2)) == (1)):
             r = (r) + [(s)[d_3_i_]]
         d_3_i_ = (d_3_i_) + (1)
     return r
+    # impl-end

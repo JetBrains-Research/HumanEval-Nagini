@@ -39,8 +39,8 @@ def Tribonacci(n : int) -> List[int]:
             Invariant(Forall(int, lambda x: (Implies(2 <= x and x <= n, tri(x) == ((1 + (x // 2)) if x % 2 == 0 else tri(x - 1) + tri(x - 2) + (x + 3) // 2)), [[tri(x)]])))
             Invariant(Forall(int, lambda x: (Implies(2 <= x and x <= n and x % 2 == 0, tri(x) == (1 + (x // 2))), [[tri(x)]])))
             Invariant(Forall(int, lambda x: (Implies(2 <= x and x <= n and x % 2 == 1, tri(x) == (tri(x - 2) + tri(x - 1) + ((x + 3) // 2))), [[tri(x)]])))
-            # Invariant(result[(d_1_i_) - (2)] == tri(d_1_i_ - 2))
-            # Invariant(result[(d_1_i_) - (1)] == tri(d_1_i_ - 1))
+            Invariant(result[(d_1_i_) - (2)] == tri(d_1_i_ - 2))
+            Invariant(result[(d_1_i_) - (1)] == tri(d_1_i_ - 1))
             # Invariant(Forall(int, lambda d_2_j_:
             #     (Implies(((0) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)), ((result)[d_2_j_]) == (tri(d_2_j_))), [[tri(d_2_j_)]]))) # , [[(result)[d_2_j_]]]
             # Assert(Forall(int, lambda d_2_j_:

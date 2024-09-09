@@ -4,18 +4,31 @@ from nagini_contracts.contracts import *
 
 @Pure
 def InArray(a : List[int], x : int) -> bool:
+    # pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
+    # pre-conditions-end
+
+    # impl-start
     return Exists(int, lambda d_0_i_:
         ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
+    # impl-end
 
 @Pure
 def HasNoEvenDigit(n : int) -> bool :
+    # pre-conditions-start
     Requires(((0) <= (n)))
+    # pre-conditions-end
+
+    # impl-start
     return (n == 0 or (((((n % 10) % 2)) != (0)) and (HasNoEvenDigit((n // 10)))))
+    # impl-end
 
 def UniqueDigits(x : List[int]) -> List[int]:
+    # pre-conditions-start
     Requires(Acc(list_pred(x), 1/2))
     Requires(Forall(int, lambda d_0_i_: Implies(d_0_i_ >= 0 and d_0_i_ < len(x), (x[d_0_i_] >= 0))))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(x), 1/2))
     Ensures(Acc(list_pred(Result())))
     Ensures(len(Result()) <= len(x))
@@ -32,11 +45,15 @@ def UniqueDigits(x : List[int]) -> List[int]:
     Ensures(Forall(int, lambda d_1_i_:
         Forall(int, lambda d_2_j_:
             not ((((0) <= (d_1_i_)) and ((d_1_i_) < (d_2_j_))) and ((d_2_j_) < (len(Result())))) or (((Result())[d_1_i_]) <= ((Result())[d_2_j_])))))
+    # post-conditions-end
+
+    # impl-start
     result = list([int(0)] * 0) # type : List[int]
     result = list([])
     d_5_i_ = 0
     
     while d_5_i_ < len(x):
+        # invariants-start
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(x), 1/2))
         Invariant(0 <= d_5_i_ and d_5_i_ <= len(x))
@@ -54,12 +71,14 @@ def UniqueDigits(x : List[int]) -> List[int]:
             (Implies((d_7_e_) >= 0 and d_7_e_ < len(result), 
                 InArray(x, result[d_7_e_])), 
                 [[InArray(x, result[d_7_e_])]])))
+        # invariants-end
         if HasNoEvenDigit((x)[d_5_i_]):
             result = (result) + [(x)[d_5_i_]]
         d_5_i_ = (d_5_i_) + (1)
     d_9_i_ = int(0) # type : int
     d_9_i_ = 0
     while (d_9_i_) < (len(result)):
+        # invariants-start
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(x), 1/2))
         Invariant(len(result) <= len(x))
@@ -91,11 +110,13 @@ def UniqueDigits(x : List[int]) -> List[int]:
                         (((result)[d_12_j_]) <= ((result)[d_13_k_])), 
                     [[result[d_13_k_]]]))), 
                 [[(result)[d_12_j_]]])))
+        # invariants-end
         d_17_minIndex_ = int(0) # type : int
         d_17_minIndex_ = d_9_i_
         d_18_j_ = int(0) # type : int
         d_18_j_ = (d_9_i_) + (1)
         while (d_18_j_) < (len(result)):
+            # invariants-start
             Invariant(Acc(list_pred(result)))
             Invariant(Acc(list_pred(x), 1/2))    
             Invariant(len(result) <= len(x))
@@ -131,15 +152,21 @@ def UniqueDigits(x : List[int]) -> List[int]:
                             (((result)[d_12_j_]) <= ((result)[d_13_k_])), 
                         [[result[d_13_k_]]]))), 
                     [[(result)[d_12_j_]]])))
+            # invariants-end
             if ((result)[d_18_j_]) < ((result)[d_17_minIndex_]):
                 d_17_minIndex_ = d_18_j_
             d_18_j_ = (d_18_j_) + (1)
         if (d_17_minIndex_) != (d_9_i_):
             d_20_temp_ = int(0) # type : int
             d_20_temp_ = (result)[d_9_i_]
+            # assert-start
             Assert(HasNoEvenDigit((result)[d_17_minIndex_]))
+            # assert-end
             result[d_9_i_] = (result)[d_17_minIndex_]
+            # assert-start
             Assert(HasNoEvenDigit(d_20_temp_))
+            # assert-end
             result[d_17_minIndex_] = d_20_temp_
         d_9_i_ = (d_9_i_) + (1)
     return result
+    # impl-end

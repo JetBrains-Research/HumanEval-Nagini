@@ -2,7 +2,10 @@ from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
 def pairs__sum__to__zero(l : List[int]) -> bool:
+    # pre-conditions-start
     Requires(Acc(list_pred(l)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Acc(list_pred(l)))
     Ensures(not (Result()) or (Exists(int, lambda d_0_i_:
         Exists(int, lambda d_1_j_:
@@ -10,11 +13,15 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
     Ensures(not (not(Result())) or (Forall(int, lambda d_2_i_:
         Forall(int, lambda d_3_j_:
             (not (((((0) <= (d_2_i_)) and ((d_2_i_) < (len(l)))) and (((0) <= (d_3_j_)) and ((d_3_j_) < (len(l))))) and ((d_2_i_) != (d_3_j_))) or ((((l)[d_2_i_]) + ((l)[d_3_j_])) != (0)), [[((l)[d_2_i_]) + ((l)[d_3_j_])]])))))
+    # post-conditions-end
+
+    # impl-start
     result = False # type : bool
     result = False
     d_4_i_ = int(0) # type : int
     d_4_i_ = 0
     while (d_4_i_) < (len(l)):
+        # invariants-start
         Invariant(Acc(list_pred(l)))
         Invariant(((d_4_i_) >= (0)) and ((d_4_i_) <= (len(l))))
         Invariant(Implies(not(result), Forall(int, lambda d_5_i1_:
@@ -23,9 +30,11 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
         Invariant(not (result) or (Exists(int, lambda d_7_i1_:
             Exists(int, lambda d_8_j_:
                 (((((0) <= (d_7_i1_)) and ((d_7_i1_) < (d_4_i_))) and (((0) <= (d_8_j_)) and ((d_8_j_) < (len(l))))) and ((d_7_i1_) != (d_8_j_))) and ((((l)[d_7_i1_]) + ((l)[d_8_j_])) == (0))))))
+        # invariants-end
         d_9_j_ = int(0) # type : int
         d_9_j_ = 0
         while (d_9_j_) < (len(l)):
+            # invariants-start
             Invariant(Acc(list_pred(l)))
             Invariant(((d_4_i_) >= (0)) and ((d_4_i_) < (len(l))))
             Invariant(((d_9_j_) >= (0)) and ((d_9_j_) <= (len(l))))
@@ -37,8 +46,10 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
                     (((((0) <= (d_13_i1_)) and ((d_13_i1_) < (d_4_i_))) and (((0) <= (d_14_j1_)) and ((d_14_j1_) < (len(l))))) and ((d_13_i1_) != (d_14_j1_))) and ((((l)[d_13_i1_]) + ((l)[d_14_j1_])) == (0)))))
              or (Exists(int, lambda d_15_j1_:
                 ((((0) <= (d_15_j1_)) and ((d_15_j1_) < (d_9_j_))) and ((d_4_i_) != (d_15_j1_))) and ((((l)[d_4_i_]) + ((l)[d_15_j1_])) == (0))))))
+            # invariants-end
             if ((d_4_i_) != (d_9_j_)) and ((((l)[d_4_i_]) + ((l)[d_9_j_])) == (0)):
                 result = True
             d_9_j_ = (d_9_j_) + (1)
         d_4_i_ = (d_4_i_) + (1)
     return result
+    # impl-end
