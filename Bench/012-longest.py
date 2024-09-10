@@ -52,7 +52,7 @@ def longest(strings : List[List[int]]) -> Optional[int]:
             Invariant(not (result is not None) or (Exists(int, lambda d_1_s_:
                 ((d_1_s_) >= 0 and d_1_s_ < d_5_i_) and ((len(strings[getVal(result)])) == (len(strings[d_1_s_]))))))
             Invariant(not ((result) is not (None)) or (Forall(int, lambda d_4_j_:
-                    (not (((0) <= (d_4_j_)) and ((d_4_j_) < (result))) or ((len((strings)[d_4_j_])) < (len(strings[getVal(result)]))), [[((strings)[d_4_j_])]]))))
+                    (not (((0) <= (d_4_j_)) and ((d_4_j_) < (result))) or ((len((strings)[d_4_j_])) < (len(strings[getVal(result)])))))))
             # invariants-end
             if result is None or (len((strings)[d_5_i_])) > (len(strings[getVal(result)])):
                 d_6_mx_ = len((strings)[d_5_i_])
