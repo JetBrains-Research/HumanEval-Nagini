@@ -4,48 +4,65 @@ from nagini_contracts.contracts import *
 
 @Pure
 def abs_value(val: int) -> int:
+    # post-conditions-start
     Ensures(Implies(val < 0, Result() == -val))
     Ensures(Implies(val >= 0, Result() == val))
+    # post-conditions-end
 
+    # impl-start
     if val < 0:
         return -val
     else:
         return val
+    # impl-end
 
 
 @Pure
 def abs1(x: int, threshold: int) -> bool:
+    # impl-start
     return x >= threshold or x <= -threshold
+    # impl-end
 
 @Pure
 def fn(x: int, numbers: List[int], threshold: int) -> bool:
+    # pre-conditions-start
     Requires(threshold > 0)
     Requires(Acc(list_pred(numbers)))
     Requires(x >= 0 and x < len(numbers))
+    # pre-conditions-end
+    
+    # impl-start
     return Forall(range(len(numbers)), lambda y :
         x == y or
         abs1(numbers[x] - numbers[y], threshold)
     )
+    # impl-end
 
 
 def has_close_elements(numbers: List[int], threshold: int) -> bool:
+    # pre-conditions-start
     Requires(threshold > 0)
     Requires(Acc(list_pred(numbers)))
+    # pre-conditions-end
+    # post-conditions-start
     Ensures(Implies(Result() != True, Forall(range(len(numbers)), lambda x : 
             fn(x, numbers, threshold)
     )))
+    # post-conditions-end
     
-    
+    # impl-start
     flag = False
     i = 0
     while i < len(numbers):
+        # invariants-start
         Invariant(Acc(list_pred(numbers)))
         Invariant(0 <= i and i <= len(numbers))
         Invariant(Implies(flag != True, 
             Forall(range(i), lambda x : fn(x, numbers, threshold))))
-
+        # invariants-end
         j = 0
         while j < len(numbers):
+            # invariants-start
             Invariant(Acc(list_pred(numbers)))
             Invariant(0 <= i and i < len(numbers))
             Invariant(0 <= j and j <= len(numbers))
@@ -57,6 +74,7 @@ def has_close_elements(numbers: List[int], threshold: int) -> bool:
                         Forall(range(j), lambda y : i == y or abs1(numbers[i] - numbers[y], threshold))
                     )
                 )
+            # invariants-end
             
             if i != j:
                 distance = abs_value(numbers[i] - numbers[j])
@@ -67,3 +85,4 @@ def has_close_elements(numbers: List[int], threshold: int) -> bool:
         i += 1
 
     return flag
+    # impl-end
