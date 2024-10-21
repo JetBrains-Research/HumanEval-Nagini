@@ -3,8 +3,12 @@ from nagini_contracts.contracts import *
 
 @Pure
 def getVal(mx: Optional[int]) -> int:
-    Requires(mx is not None)  
-    return mx  
+    # pre-conditions-start
+    Requires(mx is not None)
+    # pre-conditions-end
+    # impl-start
+    return mx
+    # impl-end
 
 def rolling_max(numbers: List[int]) -> List[int]:
     # pre-conditions-start
