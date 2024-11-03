@@ -15,6 +15,7 @@ def is__sorted(a : List[int]) -> bool:
         and (Forall(int, lambda d_2_i_:
                     not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or ((count_set(a, (a)[d_2_i_], 0)) <= (2))))))
     # post-conditions-end
+    # impl-start
     f = False # type : bool
     if (len(a)) == (0):
         f = True
@@ -66,6 +67,7 @@ def is__sorted(a : List[int]) -> bool:
         d_4_i_ = (d_4_i_) + (1)
     f = d_7_has__no__more__that__2_
     return f
+    # impl-end
 
 @Pure
 def count_set(a : List[int], x : int, i : int) -> int:
@@ -73,6 +75,8 @@ def count_set(a : List[int], x : int, i : int) -> int:
     Requires(Acc(list_pred(a), 1/2))
     Requires(((0) <= (i)) and ((i) <= (len(a))))
     # pre-conditions-end
+    # post-conditions-start
+    # post-conditions-end
 
     # impl-start
     if (i) == 0:

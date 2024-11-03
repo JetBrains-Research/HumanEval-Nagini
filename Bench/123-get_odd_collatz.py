@@ -78,6 +78,7 @@ def get__odd__collatz__unsorted(n : int) -> List[int]:
     Ensures(Forall(int, lambda d_2_i_:
         not (((1) <= (d_2_i_)) and ((d_2_i_) < (len(Result())))) or (((Result())[d_2_i_]) == (next__odd__collatz((Result())[(d_2_i_) - (1)])))))
     # post-conditions-end
+    # impl-start
     odd__collatz = list([int(0)] * 0) # type : List[int]
     d_3_cur_ = int(0) # type : int
     d_3_cur_ = n
@@ -109,6 +110,8 @@ def get__odd__collatz__unsorted(n : int) -> List[int]:
             (not (((1) <= (d_5_i_)) and ((d_5_i_) < (len(odd__collatz)))) or (((odd__collatz)[d_5_i_]) == (next__odd__collatz((odd__collatz)[(d_5_i_) - (1)]))), [[next__odd__collatz((odd__collatz)[(d_5_i_) - (1)])]])))
         # assert-end
     return odd__collatz
+    # impl-end
+
 
 
 def get__odd__collatz(n : int) -> List[int]:
