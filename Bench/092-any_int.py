@@ -6,7 +6,5 @@ def any__int(a : int, b : int, c : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    r = False # type : bool
-    r = (((a) == ((b) + (c))) or ((b) == ((a) + (c)))) or ((c) == ((a) + (b)))
-    return r
+    return (((a) == ((b) + (c))) or ((b) == ((a) + (c)))) or ((c) == ((a) + (b)))
     # impl-end

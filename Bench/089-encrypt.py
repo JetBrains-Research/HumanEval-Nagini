@@ -11,7 +11,7 @@ def rot__sym(c : int) -> int :
     # post-conditions-end
 
     # impl-start
-    d_0_alph_ = c - 0 # type : int
+    d_0_alph_ : int = c - 0
     return ((d_0_alph_) + ((2) * (2))) % 26
     # impl-end
 
@@ -34,9 +34,8 @@ def encrypt(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    r : List[int] = [] # type : List[int]
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    r : List[int] = []
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))

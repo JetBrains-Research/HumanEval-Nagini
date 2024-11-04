@@ -50,10 +50,8 @@ def prod__signs(numbers : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    s = int(0) # type : int
-    s = 0
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    s : int = 0
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(numbers)):
         # invariants-start
         Invariant(Acc(list_pred(numbers)))
@@ -71,8 +69,7 @@ def prod__signs(numbers : List[int]) -> int:
         s = (s) + (abs((numbers)[d_3_i_]))
         d_3_i_ = (d_3_i_) + (1)
     d_3_i_ = 0
-    d_4_cnt_ = int(0) # type : int
-    d_4_cnt_ = 0
+    d_4_cnt_ : int = 0
     while (d_3_i_) < (len(numbers)):
         # invariants-start
         Invariant(Acc(list_pred(numbers)))

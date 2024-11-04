@@ -36,17 +36,11 @@ def Intersection(start1 : int, end1 : int, start2 : int, end2 : int) -> str:
     # post-conditions-end
 
     # impl-start
-    result = "" # type : str
-    d_1_intersectionStart_ = int(0) # type : int
-    d_1_intersectionStart_ = max(start1, start2)
-    d_2_intersectionEnd_ = int(0) # type : int
-    d_2_intersectionEnd_ = min(end1, end2)
+    d_1_intersectionStart_ : int = max(start1, start2)
+    d_2_intersectionEnd_ : int = min(end1, end2)
     if (d_1_intersectionStart_) <= (d_2_intersectionEnd_):
-        d_3_length_ = int(0) # type : int
-        d_3_length_ = ((d_2_intersectionEnd_) - (d_1_intersectionStart_)) + (1)
+        d_3_length_ : int = ((d_2_intersectionEnd_) - (d_1_intersectionStart_)) + (1)
         if IsPrime(d_3_length_):
-            result = "YES"
-            return result
-    result = "NO"
-    return result
+            return "YES"
+    return "NO"
     # impl-end

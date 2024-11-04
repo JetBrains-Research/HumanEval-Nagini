@@ -31,11 +31,10 @@ def find__closest__elements(s : List[int]) -> Tuple[int, int]:
     # post-conditions-end
 
     # impl-start
-    l = (s)[0] # type : int
-    h = (s)[1] # type : int
-    d_4_d_ = dist(l, h) # type : int
-    d_5_i_ = int(0) # type : int
-    d_5_i_ = 0
+    l : int = (s)[0]
+    h : int = (s)[1]
+    d_4_d_ : int = dist(l, h)
+    d_5_i_ : int = 0
     # assert-start
     Assert(Exists(int, lambda d_6_a_:
         Exists(int, lambda d_7_b_:
@@ -57,8 +56,7 @@ def find__closest__elements(s : List[int]) -> Tuple[int, int]:
             Forall(int, lambda d_9_b_:
                 (Implies((0 <= d_8_a_ and (d_8_a_) < (d_5_i_) and 0 <= d_9_b_ and d_9_b_ < len(s)) and (d_8_a_ != d_9_b_), (dist(l, h)) <= (dist((s)[d_8_a_], (s)[d_9_b_]))), [[dist((s)[d_8_a_], (s)[d_9_b_])]]))))
         # invariants-end
-        d_10_j_ = int(0) # type : int
-        d_10_j_ = (d_5_i_) + (1)
+        d_10_j_ : int = (d_5_i_) + (1)
         # assert-start
         Assert(Forall(int, lambda d_8_a_:
             Forall(int, lambda d_9_b_:

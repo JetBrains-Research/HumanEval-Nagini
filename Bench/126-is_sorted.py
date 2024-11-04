@@ -16,15 +16,13 @@ def is__sorted(a : List[int]) -> bool:
                     not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or ((count_set(a, (a)[d_2_i_], 0)) <= (2))))))
     # post-conditions-end
     # impl-start
-    f = False # type : bool
     if (len(a)) == (0):
-        f = True
         # assert-start
         Assert(Forall(int, lambda d_0_i_:
             Forall(int, lambda d_1_j_:
                 not ((((0) <= (d_0_i_)) and ((d_0_i_) <= (d_1_j_))) and ((d_1_j_) < (len(a)))) or ((((a)[d_0_i_]) <= ((a)[d_1_j_]))))))
         # assert-end
-        return f
+        return True
     d_3_is__asc_ : bool = True
     d_4_i_ : int = 1
     while (d_4_i_) < (len(a)):
@@ -39,8 +37,7 @@ def is__sorted(a : List[int]) -> bool:
             d_3_is__asc_ = False
         d_4_i_ = (d_4_i_) + (1)
     if not(d_3_is__asc_):
-        f = False
-        return f
+        return False
     d_4_i_ = 0
     d_7_has__no__more__that__2_ : bool = True
     while (d_4_i_) < (len(a)):
@@ -57,12 +54,11 @@ def is__sorted(a : List[int]) -> bool:
                 Forall(int, lambda d_6_k_:
                     not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_6_k_))) and ((d_6_k_) < (len(a)))) or (((a)[d_5_j_]) <= ((a)[d_6_k_])))))))
         # invariants-end
-        d_9_count_ = int(0) # type : int
-        d_9_count_ = count_set(a, (a)[d_4_i_], 0)
+        d_9_count_ : int = count_set(a, (a)[d_4_i_], 0)
         if (d_9_count_) > (2):
             d_7_has__no__more__that__2_ = False
         d_4_i_ = (d_4_i_) + (1)
-    f = d_7_has__no__more__that__2_
+    f : bool = d_7_has__no__more__that__2_
     return f
     # impl-end
 

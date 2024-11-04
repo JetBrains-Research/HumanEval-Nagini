@@ -48,8 +48,8 @@ def flip__case(s : List[int]) -> List[int] :
     # post-conditions-end
 
     # impl-start
-    res = list([int(0)] * len(s)) # type : List[int]
-    i = int(0) # type : int
+    res : List[int] = list([int(0)] * len(s))
+    i : int = int(0)
     while i < len(s):
         # invariants-start
         Invariant(Acc(list_pred(s)))

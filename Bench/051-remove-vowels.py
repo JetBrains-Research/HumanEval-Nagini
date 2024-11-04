@@ -17,10 +17,8 @@ def remove__vowels(text : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    s = list([int(0)] * 0) # type : List[int]
-    s = []
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    s : List[int] = []
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(text)):
         # invariants-start
         Invariant(Acc(list_pred(text)))
@@ -33,7 +31,7 @@ def remove__vowels(text : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_6_j_:
             not ((((((((d_6_j_) >= (0)) and ((d_6_j_) < (d_3_i_))) and (((text)[d_6_j_]) != (0))) and (((text)[d_6_j_]) != (1))) and (((text)[d_6_j_]) != (2))) and (((text)[d_6_j_]) != (3))) and (((text)[d_6_j_]) != (4))) or (((text)[d_6_j_]) in (s))))
         # invariants-end
-        d_7_c_ = (text)[d_3_i_] # type : int
+        d_7_c_ : int = (text)[d_3_i_]
         if (((((d_7_c_) != (0)) and ((d_7_c_) != (1))) and ((d_7_c_) != (2))) and ((d_7_c_) != (3))) and ((d_7_c_) != (4)):
             s = (s) + [d_7_c_]
         d_3_i_ = (d_3_i_) + (1)

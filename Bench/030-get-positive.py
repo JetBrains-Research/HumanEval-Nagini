@@ -20,9 +20,8 @@ def get__positive(l : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([0] * 0) # type : List[int]
-    d_5_i_ = int(0) # type : int
-    d_5_i_ = 0
+    result : List[int] = []
+    d_5_i_ : int = 0
     while (d_5_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(result)))
@@ -40,8 +39,7 @@ def get__positive(l : List[int]) -> List[int]:
             not (((d_11_i1_) >= (0)) and ((d_11_i1_) < (len(result)))) or (Exists(int, lambda d_12_i2_:
                 (((d_12_i2_) >= (0)) and ((d_12_i2_) < (len(l)))) and (((l)[d_12_i2_]) == ((result)[d_11_i1_])))))))
         # invariants-end
-        d_13_n_ = int(0) # type : int
-        d_13_n_ = (l)[d_5_i_]
+        d_13_n_ : int = (l)[d_5_i_]
         if (d_13_n_) > (0):
             d_17_res__prev_ = result
             # assert-start

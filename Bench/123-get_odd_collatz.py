@@ -48,11 +48,10 @@ def next__odd__collatz__iter(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    next = int(0) # type : int
-    next = n
+    next : int = n
     if ((next % 2)) == (1):
         next = ((3) * (next)) + (1)
-    d_0_start_ = next # type : int
+    d_0_start_ : int = next
     while ((next % 2)) == (0):
         # invariants-start
         Invariant((next) > (0))
@@ -79,9 +78,8 @@ def get__odd__collatz__unsorted(n : int) -> List[int]:
         not (((1) <= (d_2_i_)) and ((d_2_i_) < (len(Result())))) or (((Result())[d_2_i_]) == (next__odd__collatz((Result())[(d_2_i_) - (1)])))))
     # post-conditions-end
     # impl-start
-    odd__collatz = list([int(0)] * 0) # type : List[int]
-    d_3_cur_ = int(0) # type : int
-    d_3_cur_ = n
+    odd__collatz : List[int] = []
+    d_3_cur_ : int = n
     if ((d_3_cur_ % 2)) == (0):
         d_3_cur_ = next__odd__collatz__iter(d_3_cur_)
     odd__collatz = [d_3_cur_]
@@ -128,11 +126,10 @@ def get__odd__collatz(n : int) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    sorted = list([int(0)] * 0) # type : List[int]
+    sorted : List[int] = []
     sorted = get__odd__collatz__unsorted(n)
-    d_12_unsorted_ = list(sorted) # type : List[int]
-    d_9_i_ = int(0) # type : int
-    d_9_i_ = 0
+    d_12_unsorted_ : List[int] = list(sorted)
+    d_9_i_ : int = 0
     while (d_9_i_) < (len(sorted)):
         # invariants-start
         Invariant(Acc(list_pred(sorted)))
@@ -152,10 +149,8 @@ def get__odd__collatz(n : int) -> List[int]:
                     (not ((((d_9_i_) <= (d_13_k_)) and ((d_13_k_) < (len(sorted))))) or 
                         (((sorted)[d_12_j_]) <= ((sorted)[d_13_k_])), [[sorted[d_13_k_]]]))), [[(sorted)[d_12_j_]]])))
         # invariants-end
-        d_15_minIndex_ = int(0) # type : int
-        d_15_minIndex_ = d_9_i_
-        d_16_j_ = int(0) # type : int
-        d_16_j_ = (d_9_i_) + (1)
+        d_15_minIndex_ : int = d_9_i_
+        d_16_j_ : int = (d_9_i_) + (1)
         while (d_16_j_) < (len(sorted)):
             # invariants-start
             Invariant(Acc(list_pred(sorted)))
@@ -182,7 +177,7 @@ def get__odd__collatz(n : int) -> List[int]:
                 d_15_minIndex_ = d_16_j_
             d_16_j_ = (d_16_j_) + (1)
         if (d_15_minIndex_) != (d_9_i_):
-            rhs0_ = (sorted)[d_9_i_] # type : int
+            rhs0_ : int = (sorted)[d_9_i_]
             (sorted)[d_9_i_] = (sorted)[d_15_minIndex_]
             (sorted)[d_15_minIndex_] = rhs0_
         d_9_i_ = (d_9_i_) + (1)

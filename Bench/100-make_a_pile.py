@@ -14,13 +14,11 @@ def make__a__pile(n : int) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    pile = list([int(0)] * 0) # type : List[int]
-    pile = list([])
+    pile : List[int] = []
     if (n) == (0):
         return pile
     pile = [n]
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 1
+    d_1_i_ : int = 1
     while (d_1_i_) < (n):
         # invariants-start
         Invariant(Acc(list_pred(pile)))

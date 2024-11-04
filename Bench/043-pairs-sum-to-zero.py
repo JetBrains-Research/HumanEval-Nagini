@@ -16,10 +16,8 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = False
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 0
+    result : bool = False
+    d_4_i_ : int = 0
     while (d_4_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l)))
@@ -31,8 +29,7 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
             Exists(int, lambda d_8_j_:
                 (((((0) <= (d_7_i1_)) and ((d_7_i1_) < (d_4_i_))) and (((0) <= (d_8_j_)) and ((d_8_j_) < (len(l))))) and ((d_7_i1_) != (d_8_j_))) and ((((l)[d_7_i1_]) + ((l)[d_8_j_])) == (0))))))
         # invariants-end
-        d_9_j_ = int(0) # type : int
-        d_9_j_ = 0
+        d_9_j_ : int = 0
         while (d_9_j_) < (len(l)):
             # invariants-start
             Invariant(Acc(list_pred(l)))

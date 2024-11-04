@@ -11,10 +11,8 @@ def solve(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    r = int(0) # type : int
-    d_0_m_ = int(0) # type : int
-    d_0_m_ = n
-    r = 0
+    d_0_m_ : int = n
+    r : int = 0
     while (d_0_m_) > (0):
         # invariants-start
         Invariant(((0) <= (d_0_m_)) and ((d_0_m_) <= (n)))

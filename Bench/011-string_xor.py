@@ -8,7 +8,7 @@ def xor(a : int, b : int) -> int:
     # pre-conditions-end
 
     # impl-start
-    result = int(0) # type : int
+    result : int = int(0)
     if (a) == (b):
         result = 0
     else:
@@ -39,8 +39,8 @@ def string__xor(a : List[int], b : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    d_4_i_ = int(0) # type : int
+    result : List[int] = []
+    d_4_i_ : int = int(0)
     while (d_4_i_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(b)))

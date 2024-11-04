@@ -23,8 +23,8 @@ def rolling_max(numbers: List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    running_max = None # type: Optional[int]
-    result = [] # type: List[int]
+    running_max : Optional[int] = None
+    result : List[int] = []
 
     i = 0
     while i < len(numbers):

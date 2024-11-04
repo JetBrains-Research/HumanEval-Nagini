@@ -28,9 +28,8 @@ def encode__shift(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    t : List[int] = [] # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    t : List[int] = []
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))
@@ -61,8 +60,7 @@ def decode__shift(s : List[int]) -> List[int]:
 
     # impl-start
     t : List[int] = []
-    d_6_i_ = int(0) # type : int
-    d_6_i_ = 0
+    d_6_i_ : int = 0
     while (d_6_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))

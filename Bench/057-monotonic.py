@@ -16,16 +16,11 @@ def monotonic(xs : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
     if (len(xs)) == (1):
-        result = True
-        return result
-    d_4_increasing_ = False # type : bool
-    d_4_increasing_ = True
-    d_5_decreasing_ = False # type : bool
-    d_5_decreasing_ = True
-    d_6_i_ = int(0) # type : int
-    d_6_i_ = 1
+        return True
+    d_4_increasing_ : bool = True
+    d_5_decreasing_ : bool = True
+    d_6_i_ : int = 1
     while (d_6_i_) < (len(xs)):
         # invariants-start
         Invariant(Acc(list_pred(xs)))
@@ -42,6 +37,6 @@ def monotonic(xs : List[int]) -> bool:
         if ((xs)[(d_6_i_) - (1)]) <= ((xs)[d_6_i_]):
             d_5_decreasing_ = False
         d_6_i_ = (d_6_i_) + (1)
-    result = (d_4_increasing_) or (d_5_decreasing_)
+    result : bool = (d_4_increasing_) or (d_5_decreasing_)
     return result
     # impl-end
