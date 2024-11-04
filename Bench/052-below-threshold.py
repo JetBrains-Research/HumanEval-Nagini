@@ -12,10 +12,8 @@ def below__threshold(l : List[int], t : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    b = False # type : bool
-    b = True
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    b : bool = True
+    d_1_i_ : int = 0
     while (d_1_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l)))
