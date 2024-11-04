@@ -15,10 +15,8 @@ def derivative(xs : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = list([])
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 1
+    result : List[int] = []
+    d_1_i_ : int = 1
     while (d_1_i_) < (len(xs)):
         # invariants-start
         Invariant(Acc(list_pred(result)))

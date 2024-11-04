@@ -14,16 +14,14 @@ def choose__num(x : int, y : int) -> int:
     # post-conditions-end
 
     # impl-start
-    num = int(0) # type : int
-    num = -1
+    num : int = -1
     if (x) >= (y):
         return num
     if ((x % 2)) == (0):
         num = x
     elif True:
         num = (x) + (1)
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = (x) + (2)
+    d_1_i_ : int = (x) + (2)
     while (d_1_i_) <= (y):
         # invariants-start
         Invariant(((d_1_i_) >= (x)) and ((d_1_i_) <= ((y) + (1))))

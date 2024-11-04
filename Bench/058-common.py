@@ -39,9 +39,8 @@ def common(l1 : List[int], l2 : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    c = list([int(0)] * 0) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    c : List[int] = []
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(l1)):
         # invariants-start
         Invariant(Acc(list_pred(c)))

@@ -30,12 +30,12 @@ def minSubArraySum(a : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    s = int(0) # type : int
-    d_5_k_ = int(0) # type : int
-    d_6_m_ = int(0) # type : int
-    d_7_n_ = int(0) # type : int
-    d_8_c_ = int(0) # type : int
-    d_9_t_ = int(0) # type : int
+    s : int = int(0)
+    d_5_k_ : int = int(0)
+    d_6_m_ : int = int(0)
+    d_7_n_ : int = int(0)
+    d_8_c_ : int = int(0)
+    d_9_t_ : int = int(0)
     while (d_7_n_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))
