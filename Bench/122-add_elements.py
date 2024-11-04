@@ -27,10 +27,8 @@ def SumElementsWithAtMostTwoDigits(lst : List[int], k : int) -> int:
     # post-conditions-end
 
     # impl-start
-    sum = int(0) # type : int
-    sum = 0
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    sum : int = 0
+    d_3_i_ : int = 0
     while d_3_i_ < k:
         # invariants-start
         Invariant(Acc(list_pred(lst)))

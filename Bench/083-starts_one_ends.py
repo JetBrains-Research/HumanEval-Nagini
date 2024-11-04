@@ -11,7 +11,7 @@ def CountNumbersStartingOrEndingWithOne(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    count = int(0) # type : int
+    count : int = int(0)
     if (n) == (1):
         count = 1
     elif True:

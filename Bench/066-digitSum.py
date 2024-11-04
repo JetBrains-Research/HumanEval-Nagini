@@ -34,6 +34,7 @@ def upper__sum(s : List[int]) -> int:
         Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(s))), upper__sum__rec(0, d_0_i_ + 1, s) == upper__sum__rec(0, d_0_i_, s) + s[d_0_i_]), [[upper__sum__rec(0, d_1_i_ + 1, s)]])))
         Invariant((res) == (upper__sum__rec(0, d_1_i_, s)))
         # invariants-end
+        Assert(upper__sum__rec(0, d_1_i_ + 1, s) == upper__sum__rec(0, d_1_i_, s) + s[d_1_i_])
         res = (res) + (((s)[d_1_i_]))
         d_1_i_ = (d_1_i_) + (1)
     return res

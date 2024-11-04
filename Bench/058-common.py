@@ -53,8 +53,7 @@ def common(l1 : List[int], l2 : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_0_i_: 
             (Implies((d_0_i_) >= 0 and d_0_i_ < len(c), ExistsBoth(l1, l2, c[d_0_i_])), [[ExistsBoth(l1, l2, c[d_0_i_])]])))
         # invariants-end
-        d_5_j_ = int(0) # type : int
-        d_5_j_ = 0
+        d_5_j_ : int = 0
         while (d_5_j_) < (len(l2)):
             # invariants-start
             Invariant(Acc(list_pred(c)))
