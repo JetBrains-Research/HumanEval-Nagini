@@ -15,7 +15,7 @@ def intersperse(numbers: List[int], delimiter: int) -> List[int]:
     # post-conditions-end
     
     # impl-start
-    res = []  # type: List[int]
+    res : List[int] = []
     if len(numbers) != 0:
         i = 0
         while i + 1 < len(numbers):

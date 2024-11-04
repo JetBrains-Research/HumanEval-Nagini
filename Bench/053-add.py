@@ -6,7 +6,6 @@ def add(x : int, y : int) -> int:
     # pre-conditions-end
 
     # impl-start
-    z = int(0) # type : int
-    z = (x) + (y)
+    z : int = (x) + (y)
     return z
     # impl-end

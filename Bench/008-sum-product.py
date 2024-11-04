@@ -40,12 +40,9 @@ def sum__product(numbers : List[int]) -> Tuple[int, int]:
     # post-conditions-end
 
     # impl-start
-    s = int(0) # type : int
-    p = int(0) # type : int
-    s = 0
-    p = 1
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    s : int = 0
+    p : int = 1
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(numbers)):
         # invariants-start
         Invariant(Acc(list_pred(numbers)))

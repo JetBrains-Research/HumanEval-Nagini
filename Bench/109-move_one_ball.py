@@ -40,18 +40,13 @@ def move__one__ball(a : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    can = False # type : bool
     if (len(a)) <= (1):
         # assert-start
         Assert(is__sorted(a, 0, len(a)))
         # assert-end
-        can = True
-        return can
-    can = False
-    d_5_i_ = int(0) # type : int
-    d_5_i_ = 0
-    d_6_min__index_ = int(0) # type : int
-    d_6_min__index_ = 0
+        return True
+    d_5_i_ : int = 0
+    d_6_min__index_ : int = 0
     while (d_5_i_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -78,6 +73,6 @@ def move__one__ball(a : List[int]) -> bool:
                 Forall(int, lambda d_6_j_:
                     Implies(d_6_min__index_ <= d_6_j_ and d_6_j_ < len(a), a[d_5_j_] > a[d_6_j_])))))))
     # assert-end
-    can = is__sorted(a, 0, d_6_min__index_) and is__sorted(a, d_6_min__index_, len(a)) and (d_6_min__index_ == 0 or a[len(a) - 1] < a[0])
+    can : bool = is__sorted(a, 0, d_6_min__index_) and is__sorted(a, d_6_min__index_, len(a)) and (d_6_min__index_ == 0 or a[len(a) - 1] < a[0])
     return can
     # impl-end

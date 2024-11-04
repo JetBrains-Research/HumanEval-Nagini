@@ -32,10 +32,8 @@ def longest(strings : List[List[int]]) -> Optional[int]:
     # impl-start
     result : Optional[int] = None
     if (len(strings)) != (0):
-        d_5_i_ = int(0) # type : int
-        d_5_i_ = 0
-        d_6_mx_ = int(0) # type : int
-        d_6_mx_ = -1
+        d_5_i_ : int = 0
+        d_6_mx_ : int = -1
         while (d_5_i_) < (len(strings)):
             # invariants-start
             Invariant(Acc(list_pred(strings)))

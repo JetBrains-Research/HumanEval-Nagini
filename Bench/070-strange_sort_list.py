@@ -20,11 +20,9 @@ def strange__sort__list__helper(s : List[int]) -> Tuple[List[int], List[int]]:
     # post-conditions-end
 
     # impl-start
-    sorted = list([int(0)] * 0) # type : List[int]
-    sorted = BubbleSort(s) # type : List[int]
-    strange = list(s) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    sorted : List[int] = BubbleSort(s)
+    strange : List[int] = list(s)
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(strange)))
@@ -44,8 +42,7 @@ def strange__sort__list__helper(s : List[int]) -> Tuple[List[int], List[int]]:
         if ((d_2_i_ % 2)) == (0):
             strange[d_2_i_] = (sorted)[(d_2_i_ // 2)]
         else:
-            d_5_r_ = int(0) # type : int
-            d_5_r_ = (((d_2_i_) - (1)) // 2)
+            d_5_r_ : int = (((d_2_i_) - (1)) // 2)
             strange[d_2_i_] = (sorted)[((len(s)) - (d_5_r_)) - (1)]
         d_2_i_ = (d_2_i_) + (1)
     return (sorted, strange)
@@ -62,7 +59,7 @@ def strange__sort__list(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    p = strange__sort__list__helper(s) # type : Tuple[List[int], List[int]]
+    p : Tuple[List[int], List[int]] = strange__sort__list__helper(s)
     return p[1]
     # impl-end
 
@@ -80,9 +77,8 @@ def BubbleSort(a1 : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    a = list(a1) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = (len((a))) - (1)
+    a : List[int] = list(a1)
+    d_2_i_ : int = (len((a))) - (1)
     while (d_2_i_) > (0):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -101,8 +97,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_6_k_k_]]])),
                 [[(a)[d_5_k_]]])))
         # invariants-end
-        d_7_j_ = int(0) # type : int
-        d_7_j_ = 0
+        d_7_j_ : int = 0
         while (d_7_j_) < (d_2_i_):
             # invariants-start
             Invariant(Acc(list_pred(a)))
@@ -124,7 +119,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_12_k_]]])))
             # invariants-end
             if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
-                rhs0_ = (a)[(d_7_j_) + (1)] # type : int
+                rhs0_ : int = (a)[(d_7_j_) + (1)]
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
                 (a)[d_7_j_] = rhs0_
             d_7_j_ = (d_7_j_) + (1)

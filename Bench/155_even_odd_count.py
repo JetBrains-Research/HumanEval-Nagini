@@ -11,9 +11,9 @@ def even__odd__count(n : int) -> Tuple[int, int]:
     # post-conditions-end
 
     # impl-start
-    even = int(0) # type : int
-    odd = int(0) # type : int
-    d_0_num_ = n # type : int
+    even : int = int(0)
+    odd : int = int(0)
+    d_0_num_ : int = n
     while (d_0_num_) > (0):
         # invariants-start
         Invariant(((0) <= (d_0_num_)))

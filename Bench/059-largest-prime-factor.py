@@ -10,8 +10,8 @@ def is_prime(k : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    i = 2 # type : int
-    result = True # type : bool
+    i : int = 2
+    result : bool = True
     while i < k:
         # invariants-start
         Invariant(i >= 2 and i <= k)
@@ -39,8 +39,8 @@ def largest_prime_factor(n: int) -> int:
     # post-conditions-end
 
     # impl-start
-    largest = 1 # type : int
-    j = 2 # type : int
+    largest : int = 1
+    j : int = 2
     while j <= n:
         # invariants-start
         Invariant(j >= 2 and j <= n + 1)

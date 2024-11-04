@@ -80,8 +80,8 @@ def separate__paren__groups(paren__string : List[int]) -> List[List[int]]:
     # impl-start
     res : List[List[int]] = []
     d_3_current__string_ : List[int] = []
-    d_4_current__depth_ = int(0) # type : int
-    d_5_i_ = int(0) # type : int
+    d_4_current__depth_ : int = int(0)
+    d_5_i_ : int = int(0)
     while (d_5_i_) < (len(paren__string)):
         # invariants-start
         Invariant(Acc(list_pred(res)))

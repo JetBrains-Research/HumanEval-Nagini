@@ -13,8 +13,7 @@ def largest__divisor(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    d = int(0) # type : int
-    d = (n) - (1)
+    d : int = (n) - (1)
     while (d) >= (1):
         # invariants-start
         Invariant(((1) <= (d)) and ((d) < (n)))

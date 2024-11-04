@@ -18,10 +18,7 @@ def triples__sum__to__zero(l : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = False
-    d_6_i_ = int(0) # type : int
-    d_6_i_ = 0
+    d_6_i_ : int = 0
     while (d_6_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l), 1/2))
@@ -31,8 +28,7 @@ def triples__sum__to__zero(l : List[int]) -> bool:
                 Forall(int, lambda d_9_k_:
                     (Implies((((((((0) <= (d_7_i1_)) and ((d_7_i1_) < (d_6_i_))) and (((0) <= (d_8_j_)) and ((d_8_j_) < (len(l))))) and (((0) <= (d_9_k_)) and ((d_9_k_) < (len(l))))) and ((d_7_i1_) != (d_8_j_))) and ((d_8_j_) != (d_9_k_))) and ((d_7_i1_) != (d_9_k_)), ((((l)[d_7_i1_]) + ((l)[d_8_j_])) + ((l)[d_9_k_])) != (0)), [[(((l)[d_7_i1_]) + ((l)[d_8_j_])) + ((l)[d_9_k_])]])))))
         # invariants-end
-        d_13_j_ = int(0) # type : int
-        d_13_j_ = 0
+        d_13_j_ : int = 0
         while (d_13_j_) < (len(l)):
             # invariants-start
             Invariant(Acc(list_pred(l), 1/2))
@@ -45,8 +41,7 @@ def triples__sum__to__zero(l : List[int]) -> bool:
                                 (d_14_i1_ == d_6_i_ and (d_15_j_) >= 0 and (d_15_j_) < d_13_j_ and (d_16_k_) >= 0 and (d_16_k_) < len(l)))
                                 and ((d_14_i1_) != (d_15_j_)) and ((d_15_j_) != (d_16_k_))) and ((d_14_i1_) != (d_16_k_)), ((((l)[d_14_i1_]) + ((l)[d_15_j_])) + ((l)[d_16_k_])) != (0)), [[(((l)[d_14_i1_]) + ((l)[d_15_j_])) + ((l)[d_16_k_])]])))))
             # invariants-end
-            d_24_k_ = int(0) # type : int
-            d_24_k_ = 0
+            d_24_k_ : int = 0
             while (d_24_k_) < (len(l)):
                 # invariants-start
                 Invariant(Acc(list_pred(l), 1/2))

@@ -19,9 +19,8 @@ def solve(s : List[int]) -> List[int]:
 
     # impl-start
     t : List[int] = []
-    d_4_flag_ = False # type : bool
-    d_5_i_ = int(0) # type : int
-    d_5_i_ = 0
+    d_4_flag_ : bool = False
+    d_5_i_ : int = 0
     while (d_5_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))
@@ -64,10 +63,8 @@ def reverse(str : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    rev = list([int(0)] * 0) # type : List[int]
-    rev = []
-    d_12_i_ = int(0) # type : int
-    d_12_i_ = 0
+    rev : List[int] = []
+    d_12_i_ : int = 0
     while (d_12_i_) < (len(str)):
         # invariants-start
         Invariant(Acc(list_pred(str), 1/2))

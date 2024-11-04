@@ -17,10 +17,8 @@ def remove__duplicates(a : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = []
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 0
+    result : List[int] = []
+    d_4_i_ : int = 0
     a_old = list(a)
 
     while (d_4_i_) < (len(a)):
@@ -39,8 +37,7 @@ def remove__duplicates(a : List[int]) -> List[int]:
             (not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(result)))) or (count_check(a, (result)[d_1_i_])), 
                 [[]])))
         # invariants-end
-        d_8_cnt_ = int(0) # type : int
-        d_8_cnt_ = count__rec(a, (a)[d_4_i_], len(a))
+        d_8_cnt_ : int = count__rec(a, (a)[d_4_i_], len(a))
         if (d_8_cnt_) == (1):
             result = (result) + [(a)[d_4_i_]]
             # assert-start
