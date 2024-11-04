@@ -12,13 +12,11 @@ def checkSubstring(s : List[int], sub : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = False
+    result : bool = False
     if (len(sub)) == (0):
         result = True
     elif (len(s)) >= (len(sub)):
-        d_0_i_ = int(0) # type : int
-        d_0_i_ = 0
+        d_0_i_ : int = 0
         while (d_0_i_) <= ((len(s)) - (len(sub))):
             # invariants-start
             Invariant(Acc(list_pred(s), 1/2))
@@ -90,8 +88,7 @@ def filter__by__substring(strings : List[List[int]], substring : List[int]) -> L
 
     # impl-start
     res : List[List[int]] = []
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(strings)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
@@ -104,8 +101,7 @@ def filter__by__substring(strings : List[List[int]], substring : List[int]) -> L
         Invariant(Forall(int, lambda d_3_i_:
             (Implies(0 <= d_3_i_ and d_3_i_ < len(res), InArray(strings, res[d_3_i_])), [[InArray(strings, res[d_3_i_])]])))
         # invariants-end
-        d_4_check_ = False # type : bool
-        d_4_check_ = checkSubstring((strings)[d_2_i_], substring)
+        d_4_check_ : bool = checkSubstring((strings)[d_2_i_], substring)
         if d_4_check_:
             cpy = list((strings)[d_2_i_])
             res = (res) + [cpy]

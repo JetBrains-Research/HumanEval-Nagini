@@ -31,12 +31,11 @@ def get__closest__vowel(word : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
+    result : List[int] = list([int(0)] * 0)
     if (len(word)) < (3):
         result = []
         return result
-    d_5_i_ = int(0) # type : int
-    d_5_i_ = (len(word)) - (2)
+    d_5_i_ : int = (len(word)) - (2)
     while (d_5_i_) > (0):
         # invariants-start
         Invariant(Acc(list_pred(word)))

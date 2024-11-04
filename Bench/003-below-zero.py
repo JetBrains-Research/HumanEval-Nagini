@@ -28,11 +28,8 @@ def below__zero(ops : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    res = False # type : bool
-    d_3_balance_ = int(0) # type : int
-    d_3_balance_ = 0
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 0
+    d_3_balance_ : int = 0
+    d_4_i_ : int = 0
     
     while (d_4_i_) < (len(ops)):
         # invariants-start
@@ -50,10 +47,8 @@ def below__zero(ops : List[int]) -> bool:
         
         d_3_balance_ = (d_3_balance_) + ((ops)[d_4_i_])
         if (d_3_balance_) < (0):
-            res = False
-            return res
+            return False
         d_4_i_ = (d_4_i_) + (1)
-    
-    res = True
-    return res
+
+    return True
     # impl-end

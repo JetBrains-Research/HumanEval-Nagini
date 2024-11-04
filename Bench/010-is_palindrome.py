@@ -17,10 +17,8 @@ def is__palindrome(start : int, s : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = start
-    d_2_j_ = int(0) # type : int
-    d_2_j_ = (len(s)) - (1)
+    d_1_i_ : int = start
+    d_2_j_ : int = (len(s)) - (1)
     while (d_1_i_) < (d_2_j_):
         # invariants-start
         Invariant(Acc(list_pred(s), 1/2))
@@ -76,12 +74,12 @@ def make__palindrome(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
+    result : List[int] = list([int(0)] * 0)
     if (len(s)) == (0):
         result = []
         return result
-    d_6_beginning__of__suffix_ = int(0) # type : int
-    d_8_flag_ = is__palindrome(d_6_beginning__of__suffix_, s) # type : bool
+    d_6_beginning__of__suffix_ : int = int(0)
+    d_8_flag_ : bool = is__palindrome(d_6_beginning__of__suffix_, s)
     while not(d_8_flag_):
         # invariants-start
         Invariant(Acc(list_pred(s)))
@@ -91,7 +89,7 @@ def make__palindrome(s : List[int]) -> List[int]:
         # invariants-end
         d_6_beginning__of__suffix_ = (d_6_beginning__of__suffix_) + (1)
         d_8_flag_ = is__palindrome(d_6_beginning__of__suffix_, s)
-    d_10_reversed_ = reverse(d_6_beginning__of__suffix_, s) # type : List[int]
+    d_10_reversed_ : List[int] = reverse(d_6_beginning__of__suffix_, s)
     result = (s) + (d_10_reversed_)
     return result
     # impl-end
@@ -112,10 +110,8 @@ def reverse(end : int, str : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    rev = list([int(0)] * 0) # type : List[int]
-    rev = []
-    d_12_i_ = int(0) # type : int
-    d_12_i_ = 0
+    rev : List[int] = []
+    d_12_i_ : int = 0
     while (d_12_i_) < (end):
         # invariants-start
         Invariant(Acc(list_pred(str), 1/2))

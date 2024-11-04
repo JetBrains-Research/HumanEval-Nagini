@@ -25,10 +25,8 @@ def modp(n : int, p : int) -> int:
     # post-conditions-end
 
     # impl-start
-    r = int(0) # type : int
-    r = (1 % p)
-    d_0_i_ = int(0) # type : int
-    d_0_i_ = 0
+    r : int = (1 % p)
+    d_0_i_ : int = 0
     while (d_0_i_) < (n):
         # invariants-start
         Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= (n)))

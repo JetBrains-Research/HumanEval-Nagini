@@ -18,7 +18,7 @@ def sort__array(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    sorted = list([int(0)] * 0) # type : List[int]
+    sorted : List[int] = []
     if (len(s)) == (0):
         sorted = list([])
         return sorted
@@ -26,8 +26,7 @@ def sort__array(s : List[int]) -> List[int]:
         # assert-start
         Assert(len(s) > 0)
         # assert-end
-        d_4_t_ = list([int(0)] * 0) # type : List[int]
-        d_4_t_ = BubbleSort(s)
+        d_4_t_ : List[int] = BubbleSort(s)
         # assert-start
         Assert(Forall(int, lambda d_0_i_:
             Forall(int, lambda d_1_j_:
@@ -71,10 +70,8 @@ def reverse(str : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    rev = list([int(0)] * 0) # type : List[int]
-    rev = []
-    d_12_i_ = int(0) # type : int
-    d_12_i_ = 0
+    rev : List[int] = []
+    d_12_i_ : int = 0
     while (d_12_i_) < (len(str)):
         # invariants-start
         Invariant(Acc(list_pred(str), 1/2))
@@ -106,9 +103,8 @@ def BubbleSort(a1 : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    a = list(a1) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = (len((a))) - (1)
+    a : List[int] = list(a1)
+    d_2_i_ : int = (len((a))) - (1)
     while (d_2_i_) > (0):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -127,8 +123,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_6_k_k_]]])),
                 [[(a)[d_5_k_]]])))
         # invariants-end
-        d_7_j_ = int(0) # type : int
-        d_7_j_ = 0
+        d_7_j_ : int = 0
         while (d_7_j_) < (d_2_i_):
             # invariants-start
             Invariant(Acc(list_pred(a)))
@@ -150,7 +145,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_12_k_]]])))
             # invariants-end
             if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
-                rhs0_ = (a)[(d_7_j_) + (1)] # type : int
+                rhs0_ : int = (a)[(d_7_j_) + (1)]
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
                 (a)[d_7_j_] = rhs0_
             d_7_j_ = (d_7_j_) + (1)

@@ -11,10 +11,8 @@ def fizz__buzz(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    result = int(0) # type : int
-    result = 0
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    result : int = 0
+    d_1_i_ : int = 0
     while (d_1_i_) < (n):
         # invariants-start
         Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (n)))
@@ -23,8 +21,7 @@ def fizz__buzz(n : int) -> int:
         Invariant(result == fizz_buzz_fun(d_1_i_))
         # invariants-end
         if (((d_1_i_ % 11)) == (0)) or (((d_1_i_ % 13)) == (0)):
-            d_4_cnt_ = int(0) # type : int
-            d_4_cnt_ = count7(d_1_i_)
+            d_4_cnt_ : int = count7(d_1_i_)
             result = (result) + (d_4_cnt_)
         d_1_i_ = (d_1_i_) + (1)
     return result
@@ -57,10 +54,8 @@ def count7(x : int) -> int:
     # post-conditions-end
 
     # impl-start
-    count = int(0) # type : int
-    count = 0
-    d_6_y_ = int(0) # type : int
-    d_6_y_ = x
+    count : int = 0
+    d_6_y_ : int = x
     while (d_6_y_) > (0):
         # invariants-start
         Invariant(((0) <= (d_6_y_)) and ((d_6_y_) <= (x)))

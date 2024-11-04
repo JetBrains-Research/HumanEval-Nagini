@@ -13,7 +13,7 @@ def eat(number : int, need : int, remaining : int) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 2) # type : List[int]
+    result : List[int] = list([int(0)] * 2)
     if (remaining) < (need):
         result[0] = (number) + (remaining)
     else:

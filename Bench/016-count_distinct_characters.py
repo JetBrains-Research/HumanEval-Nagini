@@ -48,8 +48,8 @@ def count_distinct_characters(s : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    c = int(0) # type : int
-    d_2_i_ = int(97) # type : int
+    c : int = int(0)
+    d_2_i_ : int = int(97)
     while (d_2_i_) <= (122):
         # invariants-start
         Invariant(Acc(list_pred(s)))
