@@ -12,10 +12,8 @@ def is__palindrome(text : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = True
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    result : bool = True
+    d_1_i_ : int = 0
     while (d_1_i_) < ((len(text) // 2)):
         # invariants-start
         Invariant(Acc(list_pred(text)))

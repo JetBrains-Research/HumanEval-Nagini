@@ -33,10 +33,8 @@ def count__prime__hex__digits(s : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    count = int(0) # type : int
-    count = 0
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    count : int = 0
+    d_1_i_ : int = 0
     while (d_1_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))

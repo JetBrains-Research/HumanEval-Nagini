@@ -35,10 +35,8 @@ def double__the__difference(lst : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    r = int(0) # type : int
-    r = 0
-    d_3_k_ = int(0) # type : int
-    d_3_k_ = 0
+    r : int = 0
+    d_3_k_ : int = 0
     while (d_3_k_) < (len(lst)):
         # invariants-start
         Invariant(Acc(list_pred(lst)))

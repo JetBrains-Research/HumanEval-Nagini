@@ -23,12 +23,10 @@ def PluckSmallestEven(nodes : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    d_4_smallestEven_ = int(0) # type : int
-    d_4_smallestEven_ = -1
-    d_5_smallestIndex_ = int(0) # type : int
-    d_5_smallestIndex_ = -1
-    d_6_i_ = int(0) # type : int
+    result : List[int] = []
+    d_4_smallestEven_ : int = -1
+    d_5_smallestIndex_ : int = -1
+    d_6_i_ : int = int(0)
     while d_6_i_ < len(nodes):
         # invariants-start
         Invariant(Acc(list_pred(result)))

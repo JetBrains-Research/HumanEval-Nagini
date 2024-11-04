@@ -14,10 +14,8 @@ def incr__list(l : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = list([])
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    result : List[int] = list([])
+    d_1_i_ : int = 0
     while (d_1_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(result)))

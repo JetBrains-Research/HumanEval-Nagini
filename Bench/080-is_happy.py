@@ -33,12 +33,9 @@ def IsHappy(s : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    happy = False # type : bool
     if (len(s)) < (3):
-        happy = False
-        return happy
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 1
+        return False
+    d_1_i_ : int = 1
     while (d_1_i_) < ((len(s)) - (1)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
@@ -48,9 +45,7 @@ def IsHappy(s : List[int]) -> bool:
             Implies(((0) < (d_2_j_)) and ((d_2_j_) < (d_1_i_)), ThreeDistinct(s, d_2_j_))))
         # invariants-end
         if not(ThreeDistinct(s, d_1_i_)):
-            happy = False
-            return happy
+            return False
         d_1_i_ = (d_1_i_) + (1)
-    happy = True
-    return happy
+    return True
     # impl-end

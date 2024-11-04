@@ -18,11 +18,8 @@ def Compare(scores : List[int], guesses : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = [int(0)] * 0 # type : List[int]
-    nw0_ = [int(0)] * len((scores)) # type : List[int]
-    result = nw0_
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    result : List[int] = [int(0)] * len((scores))
+    d_1_i_ : int = 0
     while (d_1_i_) < (len((scores))):
         # invariants-start
         Invariant(Acc(list_pred(result)))

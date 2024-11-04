@@ -48,8 +48,7 @@ def UniqueDigits(x : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = list([])
+    result : List[int] = []
     d_5_i_ = 0
     
     while d_5_i_ < len(x):
@@ -75,8 +74,7 @@ def UniqueDigits(x : List[int]) -> List[int]:
         if HasNoEvenDigit((x)[d_5_i_]):
             result = (result) + [(x)[d_5_i_]]
         d_5_i_ = (d_5_i_) + (1)
-    d_9_i_ = int(0) # type : int
-    d_9_i_ = 0
+    d_9_i_ : int = 0
     while (d_9_i_) < (len(result)):
         # invariants-start
         Invariant(Acc(list_pred(result)))
@@ -111,10 +109,8 @@ def UniqueDigits(x : List[int]) -> List[int]:
                     [[result[d_13_k_]]]))), 
                 [[(result)[d_12_j_]]])))
         # invariants-end
-        d_17_minIndex_ = int(0) # type : int
-        d_17_minIndex_ = d_9_i_
-        d_18_j_ = int(0) # type : int
-        d_18_j_ = (d_9_i_) + (1)
+        d_17_minIndex_ : int = d_9_i_
+        d_18_j_ : int = (d_9_i_) + (1)
         while (d_18_j_) < (len(result)):
             # invariants-start
             Invariant(Acc(list_pred(result)))
@@ -157,8 +153,7 @@ def UniqueDigits(x : List[int]) -> List[int]:
                 d_17_minIndex_ = d_18_j_
             d_18_j_ = (d_18_j_) + (1)
         if (d_17_minIndex_) != (d_9_i_):
-            d_20_temp_ = int(0) # type : int
-            d_20_temp_ = (result)[d_9_i_]
+            d_20_temp_ : int = (result)[d_9_i_]
             # assert-start
             Assert(HasNoEvenDigit((result)[d_17_minIndex_]))
             # assert-end
