@@ -30,9 +30,9 @@ def correct_bracketing(s : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    i = 0 # type : int
-    depth = 0 # type : int
-    result = True # type : bool
+    i : int = 0
+    depth : int = 0
+    result : int = True
     while i < len(s):
         # invariants-start
         Invariant(Acc(list_pred(s), 1/2))

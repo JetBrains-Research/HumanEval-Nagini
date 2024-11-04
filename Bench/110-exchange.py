@@ -43,9 +43,7 @@ def Exchange(lst1 : List[int], lst2 : List[int]) -> str:
     # post-conditions-end
 
     # impl-start
-    result = "" # type : str
-    d_1_totalEvens_ = int(0) # type : int
-    d_1_totalEvens_ = CountEvens(0, lst1) + CountEvens(0, lst2)
+    d_1_totalEvens_ : int = CountEvens(0, lst1) + CountEvens(0, lst2)
     if (d_1_totalEvens_) >= (len(lst1)):
         result = "YES"
     elif True:

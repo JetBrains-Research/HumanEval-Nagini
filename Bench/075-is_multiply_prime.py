@@ -21,10 +21,8 @@ def is__prime(k : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 2
-    result = True
+    d_2_i_ : int = 2
+    result : bool = True
     while (d_2_i_) < (k):
         # invariants-start
         Invariant(((2) <= (d_2_i_)) and ((d_2_i_) <= (k)))
@@ -62,8 +60,8 @@ def is__multiply__prime(x : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    d_4_a_ = int(2) # type : int
-    result = False # type : bool
+    d_4_a_ : int = int(2)
+    result : bool = False
     while d_4_a_ < x:
         # invariants-start
         Invariant(x >= 2)
@@ -88,7 +86,7 @@ def is__multiply__prime(x : int) -> bool:
                 [[Prime(d_10_i_)]]))))
         # invariants-end
         if is__prime(d_4_a_):
-            d_5_b_  = int(2) # type : int
+            d_5_b_ : int = int(2)
             while d_5_b_ < x:
                 # invariants-start
                 Invariant(x >= 2)   
@@ -123,7 +121,7 @@ def is__multiply__prime(x : int) -> bool:
                         [[Prime(d_11_j_)]]))))
                 # invariants-end
                 if is__prime(d_5_b_):
-                    d_6_c_ = int(2) # type : int
+                    d_6_c_ : int = int(2)
                     while d_6_c_ < x:
                         # invariants-start
                         Invariant(x >= 2)

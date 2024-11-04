@@ -25,10 +25,8 @@ def is__sorted(a : List[int]) -> bool:
                 not ((((0) <= (d_0_i_)) and ((d_0_i_) <= (d_1_j_))) and ((d_1_j_) < (len(a)))) or ((((a)[d_0_i_]) <= ((a)[d_1_j_]))))))
         # assert-end
         return f
-    d_3_is__asc_ = False # type : bool
-    d_3_is__asc_ = True
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 1
+    d_3_is__asc_ : bool = True
+    d_4_i_ : int = 1
     while (d_4_i_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -44,8 +42,7 @@ def is__sorted(a : List[int]) -> bool:
         f = False
         return f
     d_4_i_ = 0
-    d_7_has__no__more__that__2_ = False # type : bool
-    d_7_has__no__more__that__2_ = True
+    d_7_has__no__more__that__2_ : bool = True
     while (d_4_i_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))

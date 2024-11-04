@@ -30,9 +30,8 @@ def BubbleSort(a1 : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    a = list(a1) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = (len((a))) - (1)
+    a : List[int] = list(a1)
+    d_2_i_ : int = (len((a))) - (1)
     while (d_2_i_) > (0):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -52,8 +51,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[popcount((a)[d_6_k_k_])]])),
                 [[popcount((a)[d_5_k_])]])))
         # invariants-end
-        d_7_j_ = int(0) # type : int
-        d_7_j_ = 0
+        d_7_j_ : int = 0
         while (d_7_j_) < (d_2_i_):
             # invariants-start
             Invariant(Acc(list_pred(a)))
@@ -76,7 +74,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[popcount((a)[d_12_k_])]])))
             # invariants-end
             if popcount((a)[d_7_j_]) > popcount((a)[(d_7_j_) + (1)]):
-                rhs0_ = (a)[(d_7_j_) + (1)] # type : int
+                rhs0_ : int = (a)[(d_7_j_) + (1)]
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
                 (a)[d_7_j_] = rhs0_
                 # assert-start

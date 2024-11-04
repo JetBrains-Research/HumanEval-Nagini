@@ -15,12 +15,9 @@ def parseparengroup(s : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    max__depth = int(0) # type : int
-    d_1_depth_ = int(0) # type : int
-    d_1_depth_ = 0
-    max__depth = 0
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 0
+    d_1_depth_ : int = 0
+    max__depth : int = 0
+    d_2_i_ : int = 0
     while (d_2_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s), 1/2))
@@ -29,7 +26,7 @@ def parseparengroup(s : List[int]) -> int:
         Invariant(contains12(s))
         Invariant(get_len(s))
         # invariants-end
-        d_3_c_ = (s)[d_2_i_] # type : int
+        d_3_c_ : int = (s)[d_2_i_]
         if (d_3_c_) == (1):
             d_1_depth_ = (d_1_depth_) + (1)
             if (d_1_depth_) > (max__depth):
@@ -78,10 +75,9 @@ def split(s : List[int]) -> List[List[int]]:
     # post-conditions-end
 
     # impl-start
-    res : List[List[int]] = [] # type : List[List[int]]
-    d_7_current__string_ : List[int] = [] # type : List[int]
-    d_8_i_ = int(0) # type : int
-    d_8_i_ = 0
+    res : List[List[int]] = []
+    d_7_current__string_ : List[int] = []
+    d_8_i_ : int = 0
     while (d_8_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
@@ -133,7 +129,7 @@ def parse__nested__parens(paren__string : List[int]) -> List[int]:
     # impl-start
     res : List[int] = []
     d_14_strings_ : List[List[int]] = split(paren__string)
-    d_15_i_ = int(0) # type : int
+    d_15_i_ : int = int(0)
     while (d_15_i_) < (len(d_14_strings_)):
         # invariants-start
         Invariant(Acc(list_pred(d_14_strings_)))
@@ -147,8 +143,7 @@ def parse__nested__parens(paren__string : List[int]) -> List[int]:
             (Implies(d_10_j_ >= 0 and d_10_j_ < len(d_14_strings_), 
                 contains12(d_14_strings_[d_10_j_])), [[contains12(d_14_strings_[d_10_j_])]])))
         # invariants-end
-        d_17_cur_ = int(0) # type : int
-        d_17_cur_ = parseparengroup((d_14_strings_)[d_15_i_])
+        d_17_cur_ : int = parseparengroup((d_14_strings_)[d_15_i_])
         res = (res) + [d_17_cur_]
         d_15_i_ = (d_15_i_) + (1)
     return res

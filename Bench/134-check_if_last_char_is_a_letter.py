@@ -11,8 +11,7 @@ def check__if__last__char__is__a__letter(s : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    b = False # type : bool
-    b = (((len(s)) > (0)) and (is__alpha((s)[(len(s)) - (1)]))) and (((len(s)) == (1)) or (((s)[(len(s)) - (2)]) == (32)))
+    b : bool = (((len(s)) > (0)) and (is__alpha((s)[(len(s)) - (1)]))) and (((len(s)) == (1)) or (((s)[(len(s)) - (2)]) == (32)))
     return b
     # impl-end
 
