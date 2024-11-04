@@ -33,10 +33,8 @@ def uniqueSorted(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = list([])
-    d_6_i_ = int(0) # type : int
-    d_6_i_ = 0
+    result : List[int] = []
+    d_6_i_ : int = 0
     while (d_6_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(result)))
@@ -118,7 +116,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
 
     # impl-start
     a : List[int] = []
-    d_2_i_ = int(0) # type : int
+    d_2_i_ : int = int(0)
     while d_2_i_ < len(a1):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -158,8 +156,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_9_k_:
             (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(a))), InArray(a1, a[d_9_k_])), [[InArray(a1, a[d_9_k_])]])))
         # invariants-end
-        d_7_j_ = int(0) # type : int
-        d_7_j_ = 0
+        d_7_j_ : int = 0
         while (d_7_j_) < (d_2_i_):
             # invariants-start
             Invariant(Acc(list_pred(a)))
@@ -183,7 +180,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                 (Implies(((0) <= (d_9_k_)) and ((d_9_k_) < (len(a))), InArray(a1, a[d_9_k_])), [[InArray(a1, a[d_9_k_])]])))
             # invariants-end
             if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
-                rhs0_ = (a)[(d_7_j_) + (1)] # type : int
+                rhs0_ : int = (a)[(d_7_j_) + (1)]
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
                 (a)[d_7_j_] = rhs0_
             d_7_j_ = (d_7_j_) + (1)

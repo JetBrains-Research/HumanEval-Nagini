@@ -41,8 +41,8 @@ def checkFixed(s1 : List[int], s2 : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    bal = 0 # type : int
-    i = 0 # type : int
+    bal : int = 0
+    i : int = 0
 
     while i < len(s1):
         # invariants-start

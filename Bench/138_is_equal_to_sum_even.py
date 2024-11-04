@@ -7,7 +7,5 @@ def is__equal__to__sum__even(n : int) -> bool:
     # pre-conditions-end
 
     # impl-start
-    b = False # type : bool
-    b = (((n % 2)) == (0)) and ((n) >= (8))
-    return b
+    return (((n % 2)) == (0)) and ((n) >= (8))
     # impl-end

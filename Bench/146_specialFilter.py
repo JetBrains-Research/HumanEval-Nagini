@@ -40,10 +40,8 @@ def specialFilter(s : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    r = list([int(0)] * 0) # type : List[int]
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
-    r = list([])
+    r : List[int] = []
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(r)))

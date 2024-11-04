@@ -42,12 +42,9 @@ def special__factorial(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    result = int(0) # type : int
-    result = 1
-    d_2_fact_ = int(0) # type : int
-    d_2_fact_ = 1
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 1
+    result : int = 1
+    d_2_fact_ : int = 1
+    d_3_i_ : int = 1
     while (d_3_i_) <= (n):
         # invariants-start
         Invariant(((1) <= (d_3_i_)) and ((d_3_i_) <= (n + 1)))

@@ -54,9 +54,7 @@ def reverse__delete(s : List[int], chars : List[int]) -> Tuple[List[int], bool]:
 
     # impl-start
     res : List[int] = []
-    is__palindrome = False # type : bool
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
@@ -73,7 +71,7 @@ def reverse__delete(s : List[int], chars : List[int]) -> Tuple[List[int], bool]:
         if NotInArray(chars, (s)[d_3_i_]):
             res = (res) + [(s)[d_3_i_]]
         d_3_i_ = (d_3_i_) + (1)
-    is__palindrome = is__palindrome__fun(res)
+    is__palindrome : bool = is__palindrome__fun(res)
     return (res, is__palindrome)
     # impl-end
 
@@ -89,10 +87,8 @@ def is__palindrome__fun(text : List[int]) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = True
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    result : bool = True
+    d_1_i_ : int = 0
     while (d_1_i_) < ((len(text) // 2)):
         # invariant-start
         Invariant(Acc(list_pred(text), 1/2))

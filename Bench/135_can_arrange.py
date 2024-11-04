@@ -19,10 +19,8 @@ def can__arrange(arr : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    pos = int(0) # type : int
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 1
-    pos = -1
+    d_4_i_ : int = 1
+    pos : int = -1
     while (d_4_i_) < (len(arr)):
         # invariants-start
         Invariant(Acc(list_pred(arr)))

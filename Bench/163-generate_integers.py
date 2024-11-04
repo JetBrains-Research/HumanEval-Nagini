@@ -9,7 +9,7 @@ def min(a : int, b : int) -> int:
     # pre-conditions-end
 
     # impl-start
-    m = int(0) # type : int
+    m : int = int(0)
     if (a) < (b):
         m = a
     elif True:
@@ -25,7 +25,7 @@ def max(a : int, b : int) -> int:
     # pre-conditions-end
 
     # impl-start
-    m = int(0) # type : int
+    m : int = int(0)
     if (a) > (b):
         m = a
     elif True:
@@ -43,18 +43,12 @@ def generate__integers(a : int, b : int) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    d_2_left_ = int(0) # type : int
-    d_2_left_ = min(a, b)
-    d_3_right_ = int(0) # type : int
-    d_3_right_ = max(a, b)
-    d_4_lower_ = int(0) # type : int
-    d_4_lower_ = max(2, d_2_left_)
-    d_5_upper_ = int(0) # type : int
-    d_5_upper_ = min(8, d_3_right_)
-    result = list([])
-    d_6_i_ = int(0) # type : int
-    d_6_i_ = d_4_lower_
+    result : List[int] = []
+    d_2_left_ : int = min(a, b)
+    d_3_right_ : int = max(a, b)
+    d_4_lower_ : int = max(2, d_2_left_)
+    d_5_upper_ : int = min(8, d_3_right_)
+    d_6_i_ : int = d_4_lower_
     
     while (d_6_i_) <= (d_5_upper_):
         # invariants-start

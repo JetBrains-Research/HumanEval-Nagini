@@ -18,11 +18,9 @@ def sorted__even(a : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    sorted__even = list([int(0)] * 0) # type : List[int]
-    d_3_p_ = list([False] * 0) # type : List[bool]
-    d_3_p_ = list([])
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 0
+    sorted__even : List[int] =[]
+    d_3_p_ : List[bool] = []
+    d_4_i_ : int = 0
     while (d_4_i_) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(d_3_p_)))
@@ -59,10 +57,8 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    sorted = list([int(0)] * 0) # type : List[int]
-    sorted = list(s)
-    d_9_i_ = int(0) # type : int
-    d_9_i_ = 0
+    sorted : List[int] = list(s)
+    d_9_i_ : int = 0
     while (d_9_i_) < (len(sorted)):
         # invariants-start
         Invariant(Acc(list_pred(sorted)))
@@ -84,10 +80,8 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
                         (((sorted)[d_12_j_]) <= ((sorted)[d_13_k_])), [[sorted[d_13_k_]]]))), [[(sorted)[d_12_j_]]])))
         # invariants-end
         if (p)[d_9_i_]:
-            d_15_minIndex_ = int(0) # type : int
-            d_15_minIndex_ = d_9_i_
-            d_16_j_ = int(0) # type : int
-            d_16_j_ = (d_9_i_) + (1)
+            d_15_minIndex_ : int = d_9_i_
+            d_16_j_ : int = (d_9_i_) + (1)
             while (d_16_j_) < (len(sorted)):
                 # invariants-start
                 Invariant(Acc(list_pred(sorted)))
@@ -121,7 +115,7 @@ def SortSeqPred(s : List[int], p : List[bool]) -> List[int]:
                 Assert((p)[d_15_minIndex_])
                 Assert(p[d_9_i_])
                 # assert-end
-                rhs0_ = (sorted)[d_9_i_] # type : int
+                rhs0_ : int = (sorted)[d_9_i_]
                 (sorted)[d_9_i_] = (sorted)[d_15_minIndex_]
                 (sorted)[d_15_minIndex_] = rhs0_
         d_9_i_ = (d_9_i_) + (1)

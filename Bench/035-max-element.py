@@ -15,10 +15,8 @@ def max__element(l : List[int]) -> int:
     # post-conditions-end
 
     # impl-start
-    result = int(0) # type : int
-    result = (l)[0]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 1
+    result : int = (l)[0]
+    d_2_i_ : int = 1
     while (d_2_i_) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l)))

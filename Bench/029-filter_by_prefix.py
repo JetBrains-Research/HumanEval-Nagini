@@ -55,9 +55,8 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    filtered = list([int(0)] * 0) # type : List[int]
-    d_1_i_ = int(0) # type : int
-    d_1_i_ = 0
+    filtered : List[int] = []
+    d_1_i_ : int = 0
     while (d_1_i_) < (len(xs)):
         # invariants-start
         Invariant(Acc(list_pred(filtered)))
