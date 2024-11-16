@@ -23,10 +23,8 @@ def sum__squares(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    r = int(0) # type : int
-    r = 0
-    d_2_k_ = int(0) # type : int
-    d_2_k_ = 0
+    r : int = 0
+    d_2_k_ : int = 0
     while (d_2_k_) < (n):
         # invariants-start
         Invariant(((0) <= (d_2_k_)) and ((d_2_k_) <= (n)))

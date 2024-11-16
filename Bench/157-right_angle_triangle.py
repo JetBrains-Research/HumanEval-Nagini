@@ -6,7 +6,5 @@ def right__angle__triangle(a : int, b : int, c : int) -> bool:
     # pre-conditions-end
 
     # impl-start
-    result = False # type : bool
-    result = (((((a) * (a)) + ((b) * (b))) == ((c) * (c))) or ((((a) * (a)) + ((c) * (c))) == ((b) * (b)))) or ((((b) * (b)) + ((c) * (c))) == ((a) * (a)))
-    return result
+    return (((((a) * (a)) + ((b) * (b))) == ((c) * (c))) or ((((a) * (a)) + ((c) * (c))) == ((b) * (b)))) or ((((b) * (b)) + ((c) * (c))) == ((a) * (a)))
     # impl-end

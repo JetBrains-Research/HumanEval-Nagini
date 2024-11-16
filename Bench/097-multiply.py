@@ -19,7 +19,5 @@ def multiply(a : int, b : int) -> int:
     # post-conditions-end
 
     # impl-start
-    c = int(0) # type : int
-    c = (last__digit(a)) * (last__digit(b))
-    return c
+    return (last__digit(a)) * (last__digit(b))
     # impl-end

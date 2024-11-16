@@ -10,7 +10,5 @@ def car__race__collision(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    cnt = int(0) # type : int
-    cnt = (n) * (n)
-    return cnt
+    return n * n
     # impl-end

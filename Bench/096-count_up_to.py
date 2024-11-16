@@ -21,12 +21,10 @@ def CountUpTo(n : int) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    primes = list([int(0)] * 0) # type : List[int]
-    primes = list([])
+    primes : List[int] = []
     if (n) <= (2):
         return primes
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 2
+    d_4_i_ : int = 2
     while (d_4_i_) < (n):
         # invariants-start
         Invariant(Acc(list_pred(primes)))

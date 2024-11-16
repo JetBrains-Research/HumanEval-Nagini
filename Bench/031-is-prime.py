@@ -13,10 +13,8 @@ def is__prime(k : int) -> bool:
     # post-conditions-end
 
     # impl-start
-    result = False # type : bool
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 2
-    result = True
+    d_2_i_ : int = 2
+    result : bool = True
     while (d_2_i_) < (k):
         # invariants-start
         Invariant(((2) <= (d_2_i_)) and ((d_2_i_) <= (k)))

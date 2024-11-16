@@ -27,8 +27,8 @@ def SortReverseAndName(arr : List[int]) -> List[str]:
     # post-conditions-end
 
     # impl-start
-    d_1_validNumbers_ : List[int] = [] # type : List[int]
-    d_2_i_ = int(0) # type : int
+    d_1_validNumbers_ : List[int] = []
+    d_2_i_ : int = int(0)
     while (d_2_i_) < (len(arr)):
         # invariants-start
         Invariant(Acc(list_pred(d_1_validNumbers_)))
@@ -49,7 +49,7 @@ def SortReverseAndName(arr : List[int]) -> List[str]:
 
     d_1_validNumbers_ = reverse(d_1_validNumbers_)
     d_2_i_ = 0
-    result : List[str] = [] # type : List[str]
+    result : List[str] = []
     while (d_2_i_) < (len(d_1_validNumbers_)):
         # invariants-start
         Invariant(Acc(list_pred(d_1_validNumbers_)))
@@ -90,9 +90,8 @@ def BubbleSort(a1 : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    a = list(a1) # type : List[int]
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = (len((a))) - (1)
+    a : List[int] = list(a1)
+    d_2_i_ : int = (len((a))) - (1)
     while (d_2_i_) > (0):
         # invariants-start
         Invariant(Acc(list_pred(a)))
@@ -114,8 +113,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_6_k_k_]]])),
                 [[(a)[d_5_k_]]])))
         # invariants-end
-        d_7_j_ = int(0) # type : int
-        d_7_j_ = 0
+        d_7_j_ : int = 0
         while (d_7_j_) < (d_2_i_):
             # invariants-start
             Invariant(Acc(list_pred(a)))
@@ -140,7 +138,7 @@ def BubbleSort(a1 : List[int]) -> List[int]:
                     [[(a)[d_12_k_]]])))
             # invariants-end
             if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
-                rhs0_ = (a)[(d_7_j_) + (1)] # type : int
+                rhs0_ : int = (a)[(d_7_j_) + (1)]
                 (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
                 (a)[d_7_j_] = rhs0_
             d_7_j_ = (d_7_j_) + (1)
@@ -168,10 +166,8 @@ def reverse(str : List[int]) -> List[int]:
     # post-conditions-end
 
     # impl-start
-    rev = list([int(0)] * 0) # type : List[int]
-    rev = []
-    d_12_i_ = int(0) # type : int
-    d_12_i_ = 0
+    rev : List[int] = []
+    d_12_i_ : int = 0
     while (d_12_i_) < (len(str)):
         # invariants-start
         Invariant(Acc(list_pred(str), 1/2))

@@ -19,8 +19,7 @@ def encode(s : List[int]) -> List[int]:
 
     # impl-start
     t : List[int] = []
-    d_3_i_ = int(0) # type : int
-    d_3_i_ = 0
+    d_3_i_ : int = 0
     while (d_3_i_) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))

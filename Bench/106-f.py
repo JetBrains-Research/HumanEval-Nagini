@@ -47,10 +47,8 @@ def f(n : int) -> List[int]:
     # post-conditions-end
     
     # impl-start
-    result = list([int(0)] * 0) # type : List[int]
-    result = list([])
-    d_4_i_ = int(0) # type : int
-    d_4_i_ = 0
+    result : List[int] = []
+    d_4_i_ : int = 0
     while (d_4_i_) < (n):
         # invariants-start
         Invariant(Acc(list_pred(result)))
@@ -62,10 +60,8 @@ def f(n : int) -> List[int]:
             (Implies((((d_6_i_) >= (0)) and ((d_6_i_) < (len(result)))) and (((d_6_i_ % 2)) != (0)), ((result)[d_6_i_]) == (sum__spec(d_6_i_ - 1))), [[sum__spec(d_6_i_ - 1)]])))
         # invariants-end
         if ((d_4_i_ % 2)) == (0):
-            d_7_x_ = int(0) # type : int
-            d_7_x_ = 1
-            d_8_j_ = int(0) # type : int
-            d_8_j_ = 0
+            d_7_x_ : int = 1
+            d_8_j_ : int = 0
             while (d_8_j_) < (d_4_i_):
                 # invariants-start
                 Invariant(Acc(list_pred(result)))
@@ -82,10 +78,8 @@ def f(n : int) -> List[int]:
                 d_8_j_ = (d_8_j_) + (1)
             result = (result) + [d_7_x_]
         else:
-            d_9_x_ = int(0) # type : int
-            d_9_x_ = 0
-            d_10_j_ = int(0) # type : int
-            d_10_j_ = 0
+            d_9_x_ : int = 0
+            d_10_j_ : int = 0
             while (d_10_j_) < (d_4_i_):
                 # invariants-start
                 Invariant(Acc(list_pred(result)))

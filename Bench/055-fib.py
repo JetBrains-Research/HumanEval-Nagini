@@ -29,29 +29,23 @@ def ComputeFib(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    result = int(0) # type : int
+    result : int = int(0)
     if (n) == (0):
         result = 0
         return result
     if (n) == (1):
         result = 1
         return result
-    d_0_a_ = int(0) # type : int
-    d_1_b_ = int(0) # type : int
-    rhs0_ = 0 # type : int
-    rhs1_ = 1 # type : int
-    d_0_a_ = rhs0_
-    d_1_b_ = rhs1_
-    d_2_i_ = int(0) # type : int
-    d_2_i_ = 2
+    d_0_a_ : int = 0
+    d_1_b_ : int = 1
+    d_2_i_ : int = 2
     while (d_2_i_) <= (n):
         # invariants-start
         Invariant(((2) <= (d_2_i_)) and ((d_2_i_) <= ((n) + (1))))
         Invariant((d_0_a_) == (fib((d_2_i_) - (2))))
         Invariant((d_1_b_) == (fib((d_2_i_) - (1))))
         # invariants-end
-        d_3_temp_ = int(0) # type : int
-        d_3_temp_ = (d_0_a_) + (d_1_b_)
+        d_3_temp_ : int = (d_0_a_) + (d_1_b_)
         d_0_a_ = d_1_b_
         d_1_b_ = d_3_temp_
         d_2_i_ = (d_2_i_) + (1)
