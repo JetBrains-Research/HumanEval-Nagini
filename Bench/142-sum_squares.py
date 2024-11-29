@@ -1,16 +1,17 @@
 from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def checkVal(x : int) -> int: 
-    # impl-start
+    # pure-start
     if x % 3 == 0:
         return x * x
     elif x % 4 == 0 and x % 3 != 0:
         return x * x * x
     else:
         return x
-    # impl-end
+    # pure-end
 
 @Pure
 def psum(i : int, j : int, s : List[int]) -> int :
@@ -19,12 +20,12 @@ def psum(i : int, j : int, s : List[int]) -> int :
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return checkVal((s)[j - 1]) + (psum(i, j - 1, s))
-    # impl-end
+    # pure-end
 
 def sum__squares(lst : List[int]) -> int:
     # pre-conditions-start

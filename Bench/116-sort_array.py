@@ -7,12 +7,12 @@ def popcount(n : int) -> int :
     Requires(n >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if n == 0:
         return 0
     else:
         return ((n % 2)) + popcount(n // 10)
-    # impl-end
+    # pure-end
 
 def BubbleSort(a1 : List[int]) -> List[int]:
     # pre-conditions-start

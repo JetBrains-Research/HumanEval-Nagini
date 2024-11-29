@@ -8,12 +8,12 @@ def upper__sum__rec(i : int, j : int, s : List[int]) -> int :
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return s[j - 1] + upper__sum__rec(i, j - 1, s)
-    # impl-end
+    # pure-end
     
 def upper__sum(s : List[int]) -> int:
     # pre-conditions-start

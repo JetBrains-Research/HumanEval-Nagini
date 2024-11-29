@@ -8,12 +8,12 @@ def psum(i : int, j : int, s : List[int]) -> int :
     Requires(0 <= i and i <= j + 1 and j < len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i > j:
         return 0
     else:
         return ((s)[j] if ((((j) % 2) == 0) and ((s)[j] % 2 == 1)) else 0) + (psum(i, j - 1, s))
-    # impl-end
+    # pure-end
 
 def add(v : List[int]) -> int:
     # pre-conditions-start

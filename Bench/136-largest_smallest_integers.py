@@ -7,9 +7,9 @@ def getVal(mx: Optional[int]) -> int:
     Requires(mx is not None)  
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return mx  
-    # impl-end
+    # pure-end
 
 def largest__smallest__integers(arr : List[int]) -> Tuple[Optional[int], Optional[int]]:
     # pre-conditions-start

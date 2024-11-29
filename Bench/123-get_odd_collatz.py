@@ -12,12 +12,12 @@ def iterate__to__odd(n : int) -> int :
     Ensures(Result() > 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (n // 2) % 2 == 1:
         return n // 2
     else:
         return iterate__to__odd(n // 2)
-    # impl-end
+    # pure-end
 
 @Pure
 def next__odd__collatz(n : int) -> int :
@@ -29,13 +29,12 @@ def next__odd__collatz(n : int) -> int :
     Ensures(Result() % 2 == 1)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if ((n % 2)) == (0):
         return iterate__to__odd(n)
     else:
         return iterate__to__odd(((3) * (n)) + (1))
-    # impl-end
-
+    # pure-end
 
 def next__odd__collatz__iter(n : int) -> int:
     # pre-conditions-start
@@ -102,7 +101,7 @@ def get__odd__collatz__unsorted(n : int) -> List[int]:
         Invariant(Forall(int, lambda d_5_i_:
             (not (((1) <= (d_5_i_)) and ((d_5_i_) < (len(odd__collatz)))) or (((odd__collatz)[d_5_i_]) == (next__odd__collatz((odd__collatz)[(d_5_i_) - (1)]))), [[next__odd__collatz((odd__collatz)[(d_5_i_) - (1)])]])))
         # invariants-end
-        odd__collatz = (odd__collatz) + [next__odd__collatz((odd__collatz)[(len(odd__collatz)) - (1)])]
+        odd__collatz = (odd__collatz) + [next__odd__collatz__iter((odd__collatz)[(len(odd__collatz)) - (1)])]
         # assert-start
         Assert(Forall(int, lambda d_5_i_:
             (not (((1) <= (d_5_i_)) and ((d_5_i_) < (len(odd__collatz)))) or (((odd__collatz)[d_5_i_]) == (next__odd__collatz((odd__collatz)[(d_5_i_) - (1)]))), [[next__odd__collatz((odd__collatz)[(d_5_i_) - (1)])]])))

@@ -38,21 +38,21 @@ def get_positive(i : int, j : int, s : List[int]) -> int:
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return (digits__sum(s[j - 1]) > 0) + get_positive(i, j - 1, s)
-    # impl-end
+    # pure-end
 
 @Pure
 def digits__sum(x : int) -> int :
-    # impl-start
+    # pure-start
     if abs(x) < 10:
         return x % 10
     else:
         return (10 - x % 10) + digits__sum(x // 10)
-    # impl-end
+    # pure-end
 
 @Pure
 def abs(x : int) -> int :
@@ -61,9 +61,9 @@ def abs(x : int) -> int :
     Ensures((Result()) == (x) or (Result()) == (0) - (x))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (x) >= (0):
         return x
     elif True:
         return (0) - (x)
-    # impl-end
+    # pure-end

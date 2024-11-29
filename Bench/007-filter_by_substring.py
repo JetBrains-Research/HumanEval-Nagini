@@ -51,9 +51,9 @@ def EqArrays(a : List[int], x : List[int]) -> bool :
     Requires(Acc(list_pred(x)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return len(a) == len(x) and Forall(int, lambda d_0_i_: Implies(0 <= d_0_i_ and d_0_i_ < len(a), (a)[d_0_i_] == x[d_0_i_]))
-    # impl-end
+    # pure-end
 
 @Pure 
 def InArray(a : List[List[int]], x : List[int]) -> bool :
@@ -63,11 +63,11 @@ def InArray(a : List[List[int]], x : List[int]) -> bool :
     Requires(Forall(a, lambda d_0_s_: Acc(list_pred(d_0_s_))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Exists(int, lambda d_0_s_:
         (Implies(((0) <= (d_0_s_)) and ((d_0_s_) < (len((a)))), 
             EqArrays(a[d_0_s_], x))))
-    # impl-end
+    # pure-end
 
 
 def filter__by__substring(strings : List[List[int]], substring : List[int]) -> List[List[int]]:

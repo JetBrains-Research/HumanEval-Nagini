@@ -7,14 +7,14 @@ def xor(a : int, b : int) -> int:
     Ensures((Result()) == ((0 if (a) == (b) else 1)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     result : int = int(0)
     if (a) == (b):
         result = 0
     else:
         result = 1
     return result
-    # impl-end
+    # pure-end
 
 def string__xor(a : List[int], b : List[int]) -> List[int]:
     # pre-conditions-start

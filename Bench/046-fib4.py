@@ -7,14 +7,14 @@ def fib4__rec(n : int) -> int :
     Requires(n >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (((n) == (0)) or ((n) == (1))) or ((n) == (2)):
         return 0
     elif (n) == (3):
         return 1
     elif True:
         return (((fib4__rec((n) - (1))) + (fib4__rec((n) - (2)))) + (fib4__rec((n) - (3)))) + (fib4__rec((n) - (4)))
-    # impl-end
+    # pure-end
 
 def fib4(n : int) -> int:
     # pre-conditions-start

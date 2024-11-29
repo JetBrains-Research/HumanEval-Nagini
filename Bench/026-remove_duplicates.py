@@ -53,10 +53,10 @@ def exists_check(a : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Exists(int, lambda d_0_i_:
         ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
-    # impl-end
+    # pure-end
 
 @Pure 
 def count_check(a : List[int], x : int) -> bool:
@@ -64,9 +64,9 @@ def count_check(a : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return (count__rec(a, x, len(a))) == (1)
-    # impl-end
+    # pure-end
 
 @Pure
 def count__rec(a : List[int], x : int, i : int) -> int :
@@ -75,9 +75,9 @@ def count__rec(a : List[int], x : int, i : int) -> int :
     Requires(((0) <= (i)) and ((i) <= (len(a))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (i) == 0:
         return 0
     else:
         return (((a)[i - 1]) == (x)) + (count__rec(a, x, (i) - (1)))
-    # impl-end
+    # pure-end

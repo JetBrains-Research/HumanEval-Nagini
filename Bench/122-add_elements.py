@@ -8,12 +8,12 @@ def sum__chars__rec(i : int, j : int, lst : List[int]) -> int :
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(lst))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return ((lst)[j - 1] if (lst)[j - 1] < 100 else 0) + sum__chars__rec(i, j - 1, lst)
-    # impl-end
+    # pure-end
 
 def SumElementsWithAtMostTwoDigits(lst : List[int], k : int) -> int:
     # pre-conditions-start

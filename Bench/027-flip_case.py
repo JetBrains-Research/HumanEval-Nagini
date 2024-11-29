@@ -3,37 +3,36 @@ from nagini_contracts.contracts import *
 
 @Pure
 def lower(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((0) <= (c)) and ((c) <= (25))
-    # impl-end
+    # pure-end
 
 @Pure
 def upper(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((26) <= (c)) and ((c) <= (51))
-    # impl-end
+    # pure-end
 
 @Pure
 def alpha(c : int) -> bool :
-    # impl-start
+    # pure-start
     return (lower(c)) or (upper(c))
-    # impl-end
+    # pure-end
 
-@Pure
 def flip__char(c : int) -> int :
     # pre-conditions-start
     Ensures(lower(c) == upper(Result()))
     Ensures(upper(c) == lower(Result()))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if lower(c):
         return ((c) - (0)) + (26)
     elif upper(c):
         return ((c) + (0)) - (26)
     elif True:
         return c
-    # impl-end
+    # pure-end
 
 def flip__case(s : List[int]) -> List[int] :
     # pre-conditions-start

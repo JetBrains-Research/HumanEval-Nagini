@@ -33,12 +33,12 @@ def odd__count(n : int) -> int :
     Requires(n >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if n == 0:
         return 0
     else:
         return (n % 2) + odd__count(n // 10)
-    # impl-end
+    # pure-end
 
 @Pure
 def even__count(n : int) -> int :
@@ -46,9 +46,9 @@ def even__count(n : int) -> int :
     Requires(n >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if n == 0:
         return 0
     else:
         return ((n % 2) == 0) + even__count(n // 10)
-    # impl-end
+    # pure-end

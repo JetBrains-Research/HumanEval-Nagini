@@ -8,12 +8,12 @@ def Sum(a : List[int], s : int, t : int) -> int :
     Requires(((0) <= (s)) and ((s) <= (t)) and ((t) <= (len(a))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if s == t:
         return 0
     else:
         return (a)[t - 1] + (Sum(a, s, t - 1))
-    # impl-end
+    # pure-end
 
 def minSubArraySum(a : List[int]) -> int:
     # pre-conditions-start

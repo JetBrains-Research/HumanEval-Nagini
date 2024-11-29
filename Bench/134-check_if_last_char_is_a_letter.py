@@ -17,6 +17,6 @@ def check__if__last__char__is__a__letter(s : List[int]) -> bool:
 
 @Pure
 def is__alpha(c : int) -> bool :
-    # impl-start
+    # pure-start
     return (((97) <= (c)) and ((c) <= (122))) or (((65) <= (c)) and ((c) <= (90)))
-    # impl-end
+    # pure-end

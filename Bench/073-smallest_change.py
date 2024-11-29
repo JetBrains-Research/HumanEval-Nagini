@@ -11,7 +11,7 @@ def smallest__change__fun(s : List[int], i : int, j : int) -> int:
     Ensures((Result()) >= (0))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
@@ -19,7 +19,7 @@ def smallest__change__fun(s : List[int], i : int, j : int) -> int:
             return 1 + (smallest__change__fun(s, i, j - 1))
         else:
             return smallest__change__fun(s, i, j - 1)
-    # impl-end
+    # pure-end
 
 def smallest__change(s : List[int]) -> int:
     # pre-conditions-start

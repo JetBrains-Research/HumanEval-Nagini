@@ -1,6 +1,7 @@
 from typing import cast, List, Dict, Set, Optional, Union, Tuple
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def rot__sym(c : int) -> int :
     # pre-conditions-start
@@ -10,10 +11,10 @@ def rot__sym(c : int) -> int :
     Ensures(Result() >= 0 and Result() <= 25)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     d_0_alph_ : int = c - 0
     return ((d_0_alph_) + ((2) * (2))) % 26
-    # impl-end
+    # pure-end
 
 def encrypt(s : List[int]) -> List[int]:
     # pre-conditions-start
@@ -47,7 +48,7 @@ def encrypt(s : List[int]) -> List[int]:
         Invariant(Forall(int, lambda d_1_i_:
             not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(r)))) or (((0) <= ((r)[d_1_i_])) and (((r)[d_1_i_]) <= (25)))))  
         Invariant(Forall(int, lambda d_4_j_:
-            not (((0) <= (d_4_j_)) and ((d_4_j_) < (d_3_i_))) or (((r)[d_4_j_]) == (rot__sym((s)[d_4_j_])))))
+            (not (((0) <= (d_4_j_)) and ((d_4_j_) < (d_3_i_))) or (((r)[d_4_j_]) == (rot__sym((s)[d_4_j_]))), [[rot__sym((s)[d_4_j_])]])))
         # invariants-end
         r = (r) + [rot__sym((s)[d_3_i_])]
         d_3_i_ = (d_3_i_) + (1)

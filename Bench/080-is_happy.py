@@ -8,9 +8,9 @@ def ThreeDistinct(s : List[int], i : int) -> bool :
     Requires(((0) < (i)) and ((i) < ((len(s)) - (1))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return ((((s)[(i) - (1)]) != ((s)[i])) and (((s)[i]) != ((s)[(i) + (1)]))) and (((s)[(i) - (1)]) != ((s)[(i) + (1)]))
-    # impl-end
+    # pure-end
 
 @Pure
 def Happy(s : List[int]) -> bool :
@@ -18,10 +18,10 @@ def Happy(s : List[int]) -> bool :
     Requires(Acc(list_pred(s)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return ((len(s)) >= (3)) and (Forall(int, lambda d_0_i_:
         Implies(((0) < (d_0_i_)) and ((d_0_i_) < ((len(s)) - (1))), ThreeDistinct(s, d_0_i_))))
-    # impl-end
+    # pure-end
 
 def IsHappy(s : List[int]) -> bool:
     # pre-conditions-start

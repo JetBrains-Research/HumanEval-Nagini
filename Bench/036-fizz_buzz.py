@@ -36,12 +36,12 @@ def fizz_buzz_fun(n : int) -> int:
     Ensures(Result() >= 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if n == 0:
         return 0
     else:
         return (count7__r(n - 1) if ((n - 1) % 11 == 0 or (n - 1) % 13 == 0) else 0) + fizz_buzz_fun(n - 1)
-    # impl-end
+    # pure-end
 
 
 def count7(x : int) -> int:
@@ -76,9 +76,9 @@ def count7__r(x : int) -> int :
     Ensures(Result() >= 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if x == 0:
         return 0
     else:
         return (x % 10 == 7) + count7__r(x // 10)
-    # impl-end
+    # pure-end

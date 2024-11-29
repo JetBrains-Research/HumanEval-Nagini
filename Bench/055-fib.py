@@ -10,14 +10,14 @@ def fib(n : int) -> int :
     Ensures(Result() >= 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (n) == (0):
         return 0
     elif (n) == (1):
         return 1
     elif True:
         return (fib((n) - (1))) + (fib((n) - (2)))
-    # impl-end
+    # pure-end
 
 def ComputeFib(n : int) -> int:
     # pre-conditions-start

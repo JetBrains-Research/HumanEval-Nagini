@@ -1,15 +1,16 @@
 from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def checkVal(x : int) -> int: 
-    # impl-start
+    # pure-start
     if x > 0 and x % 2 != 0:
         return x * x
     else:
         return 0
-    # impl-end
-    
+    # pure-end
+
 @Pure
 def psum(i : int, j : int, s : List[int]) -> int :
     # pre-conditions-start
@@ -17,12 +18,12 @@ def psum(i : int, j : int, s : List[int]) -> int :
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return checkVal((s)[j - 1]) + (psum(i, j - 1, s))
-    # impl-end
+    # pure-end
 
 
 def double__the__difference(lst : List[int]) -> int:

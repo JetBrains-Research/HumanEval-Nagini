@@ -44,10 +44,10 @@ def is__palindrome__fun(start : int, s : List[int]) -> bool :
     Requires(0 <= start and start < len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_4_k_:
         not (((start) <= (d_4_k_)) and ((d_4_k_) < (len(s)))) or (((s)[d_4_k_]) == ((s)[((len(s)) - (1)) - (d_4_k_ - start)])))
-    # impl-end
+    # pure-end
 
 @Pure
 def starts__with(result : List[int], s : List[int]) -> bool :
@@ -56,10 +56,10 @@ def starts__with(result : List[int], s : List[int]) -> bool :
     Requires(Acc(list_pred(result), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return ((len(result)) >= (len(s))) and (Forall(int, lambda d_5_k_:
         not (((0) <= (d_5_k_)) and ((d_5_k_) < (len(s)))) or (((result)[d_5_k_]) == ((s)[d_5_k_]))))
-    # impl-end
+    # pure-end
 
 def make__palindrome(s : List[int]) -> List[int]:
     # pre-conditions-start

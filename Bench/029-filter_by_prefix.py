@@ -14,9 +14,9 @@ def starts__with(s : List[int], p : List[int], i : int) -> bool :
     Ensures(Implies(len(s) < len(p), not Result()))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     return len(s) >= len(p) and Forall(int, lambda x: Implies(x >= i and x < len(p), s[x] == p[x]))
-    # impl-end
+    # pure-end
 
 @Pure
 def starts__with__fun(s : List[int], p : List[int], i : int) -> bool :
@@ -29,13 +29,13 @@ def starts__with__fun(s : List[int], p : List[int], i : int) -> bool :
     Ensures(Result() == starts__with(s, p, i))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (len(p) == i):
         return True
     if (len(s) > i and len(s) >= len(p) and s[i] == p[i]):
         return starts__with(s, p, i + 1)
     return False
-    # impl-end
+    # pure-end
 
 def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
     # pre-conditions-start

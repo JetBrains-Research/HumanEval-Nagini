@@ -1,14 +1,15 @@
 from typing import cast, List, Dict, Set, Optional, Union, Tuple
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def abs(x : int) -> int :
-    # impl-start
+    # pure-start
     if (x) >= (0):
         return x
     elif True:
         return (0) - (x)
-    # impl-end
+    # pure-end
 
 @Pure
 def sum__abs(i : int, j : int, s : List[int]) -> int :
@@ -17,12 +18,12 @@ def sum__abs(i : int, j : int, s : List[int]) -> int :
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return abs(s[j - 1]) + sum__abs(i, j - 1, s)
-    # impl-end
+    # pure-end
     
 @Pure 
 def count_negatives(i : int, j : int, s : List[int]) -> int:
@@ -31,12 +32,12 @@ def count_negatives(i : int, j : int, s : List[int]) -> int:
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return (1 if s[j - 1] < 0 else 0) + count_negatives(i, j - 1, s)
-    # impl-end
+    # pure-end
 
 def prod__signs(numbers : List[int]) -> int:
     # pre-conditions-start

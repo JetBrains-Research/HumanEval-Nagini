@@ -1,18 +1,19 @@
-from typing import cast, List, Dict, Set, Optional, Union, Tuple
+from typing import List, Tuple
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def dist(a : int, b : int) -> int :
     # pre-conditions-start
     Ensures(Result() >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (a) < (b):
         return (b) - (a)
     else:
         return (a) - (b)
-    # impl-end
+    # pure-end
 
 def find__closest__elements(s : List[int]) -> Tuple[int, int]:
     # pre-conditions-start
@@ -103,4 +104,3 @@ def find__closest__elements(s : List[int]) -> Tuple[int, int]:
         d_5_i_ = (d_5_i_) + (1)
     return (l, h)
     # impl-end
-

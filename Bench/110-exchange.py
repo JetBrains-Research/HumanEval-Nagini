@@ -7,10 +7,11 @@ def IsEven(n : int) -> bool:
     Ensures(((Result()) == (True)) or ((Result()) == (False)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return (n % 2) == 0
-    # impl-end
+    # pure-end
 
+#use-as-unpure
 @Pure
 def CountEvens(i : int, lst : List[int]) -> int:
     # pre-conditions-start
@@ -22,11 +23,11 @@ def CountEvens(i : int, lst : List[int]) -> int:
     Ensures((Result()) <= (len(lst) - i))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if len(lst) == i:
         return 0
     return CountEvens(i + 1, lst) + IsEven(lst[i])
-    # impl-end
+    # pure-end
 
 def Exchange(lst1 : List[int], lst2 : List[int]) -> str:
     # pre-conditions-start

@@ -55,10 +55,10 @@ def is__palindrome__pred(s : List[int]) -> bool :
     Requires(Acc(list_pred(s)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_4_k_:
         not (((0) <= (d_4_k_)) and ((d_4_k_) < (len(s)))) or (((s)[d_4_k_]) == ((s)[((len(s)) - (1)) - (d_4_k_)])))
-    # impl-end
+    # pure-end
 
 @Pure
 def psum(i : int, j : int, s : List[int]) -> int :
@@ -67,9 +67,9 @@ def psum(i : int, j : int, s : List[int]) -> int :
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return (s)[j - 1] + (psum(i, j - 1, s))
-    # impl-end
+    # pure-end

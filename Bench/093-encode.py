@@ -41,21 +41,21 @@ def encode(s : List[int]) -> List[int]:
 
 @Pure
 def swap__case(c : int) -> int :
-    # impl-start
+    # pure-start
     if ((97) <= (c)) and ((c) <= (122)):
         return (65) + ((c) - (97))
     elif True:
         return (97) + ((c) - (65))
-    # impl-end
+    # pure-end
 
 @Pure
 def rot2(c : int) -> int :
-    # impl-start
+    # pure-start
     return (c + 2)  
-    # impl-end
+    # pure-end
 
 @Pure
 def is__vowel(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((((((c) == (97)) or ((c) == (101))) or ((c) == (105))) or ((c) == (111))) or ((c) == (117))) or ((((((c) == (65)) or ((c) == (69))) or ((c) == (73))) or ((c) == (79))) or ((c) == (85)))
-    # impl-end
+    # pure-end
