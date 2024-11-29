@@ -8,12 +8,12 @@ def CalBal(s : List[int], i : int, j : int, acc : int) -> int:
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return acc
     else:
         return (1 if s[j - 1] == 0 else -1) + CalBal(s, i, j - 1, acc)
-    # impl-end
+    # pure-end
     
 def checkFixed(s1 : List[int], s2 : List[int]) -> bool:
     # pre-conditions-start

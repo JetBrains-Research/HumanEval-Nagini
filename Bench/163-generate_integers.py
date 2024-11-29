@@ -1,37 +1,25 @@
 from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
-def min(a : int, b : int) -> int:
-    # pre-conditions-start
-    Ensures(((Result()) == (a)) or ((Result()) == (b)))
-    Ensures(((Result()) <= (a)) and ((Result()) <= (b)))
-    # pre-conditions-end
-
-    # impl-start
-    m : int = int(0)
-    if (a) < (b):
-        m = a
+def min(a : int, b : int) -> int :
+    # pure-start
+    if (a) <= (b):
+        return a
     elif True:
-        m = b
-    return m
-    # impl-end
+        return b
+    # pure-end
 
+#use-as-unpure
 @Pure
-def max(a : int, b : int) -> int:
-    # pre-conditions-start
-    Ensures(((Result()) == (a)) or ((Result()) == (b)))
-    Ensures(((Result()) >= (a)) and ((Result()) >= (b)))
-    # pre-conditions-end
-
-    # impl-start
-    m : int = int(0)
-    if (a) > (b):
-        m = a
+def max(a : int, b : int) -> int :
+    # pure-start
+    if (a) >= (b):
+        return a
     elif True:
-        m = b
-    return m
-    # impl-end
+        return b
+    # pure-end
 
 def generate__integers(a : int, b : int) -> List[int]:
     # post-conditions-start

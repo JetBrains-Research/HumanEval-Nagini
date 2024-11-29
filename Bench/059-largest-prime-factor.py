@@ -26,9 +26,9 @@ def is_prime(k : int) -> bool:
 
 @Pure
 def is_prime_pred(k : int) -> bool:
-    # impl-start
+    # pure-start
     return Forall(int, lambda i : Implies((i >= 2) and (i < k), (k % i != 0)))
-    # impl-end
+    # pure-end
 
 def largest_prime_factor(n: int) -> int:
     # pre-conditions-start

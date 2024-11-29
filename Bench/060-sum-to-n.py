@@ -7,12 +7,12 @@ def psum(i : int, j : int) -> int :
     Requires(0 <= i and i <= j + 1)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i > j:
         return 0
     else:
         return j + 1 + (psum(i, j - 1))
-    # impl-end
+    # pure-end
     
 def sum__squares(n : int) -> int:
     # pre-conditions-start

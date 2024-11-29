@@ -71,10 +71,9 @@ def count_set(a : List[int], x : int, i : int) -> int:
     # post-conditions-start
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (i) == 0:
         return 0
     else:
         return (count_set(a, x, (i) - (1))) + (((a)[(i) - (1)]) == (x))
-    # impl-end
-    
+    # pure-end

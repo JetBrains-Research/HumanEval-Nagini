@@ -8,10 +8,10 @@ def InArray(a : List[int], x : int) -> bool:
     Requires(Acc(list_pred(a), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Exists(int, lambda d_0_i_:
         ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
-    # impl-end
+    # pure-end
 
 @Pure
 def HasNoEvenDigit(n : int) -> bool :
@@ -19,9 +19,9 @@ def HasNoEvenDigit(n : int) -> bool :
     Requires(((0) <= (n)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return (n == 0 or (((((n % 10) % 2)) != (0)) and (HasNoEvenDigit((n // 10)))))
-    # impl-end
+    # pure-end
 
 def UniqueDigits(x : List[int]) -> List[int]:
     # pre-conditions-start

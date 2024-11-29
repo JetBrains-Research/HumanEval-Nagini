@@ -8,7 +8,7 @@ def IsValidParentheses(s : List[int], i : int, depth : int) -> bool :
     Requires(i >= 0 and i <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (i) == (len(s)):
         return (depth) >= (0)
     elif (depth) < (0):
@@ -19,7 +19,7 @@ def IsValidParentheses(s : List[int], i : int, depth : int) -> bool :
         return ((depth) > (0)) and (IsValidParentheses(s, (i) + (1), (depth) - (1)))
     elif True:
         return IsValidParentheses(s, (i) + (1), depth)
-    # impl-end
+    # pure-end
 
 @Pure
 def IsValidParentheses2(s : List[int], i : int, depth : int) -> bool :
@@ -28,7 +28,7 @@ def IsValidParentheses2(s : List[int], i : int, depth : int) -> bool :
     Requires(i >= 0 and i <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (i) == (len(s)):
         return (depth) >= (0)
     elif (depth) < (0):
@@ -39,7 +39,7 @@ def IsValidParentheses2(s : List[int], i : int, depth : int) -> bool :
         return ((depth) > (0)) and (IsValidParentheses(s, (i) + (1), (depth) - (1)))
     elif True:
         return IsValidParentheses(s, (i) + (1), depth)
-    # impl-end
+    # pure-end
 
 @Pure
 def IsValidParentheses1(s : List[int], i : int, depth : int) -> bool :
@@ -48,7 +48,7 @@ def IsValidParentheses1(s : List[int], i : int, depth : int) -> bool :
     Requires(i >= 0 and i <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (i) == (len(s)):
         return (depth) == (0)
     elif ((depth) <= (0)) and ((i) != (0)):
@@ -59,7 +59,7 @@ def IsValidParentheses1(s : List[int], i : int, depth : int) -> bool :
         return ((depth) > (0)) and (IsValidParentheses1(s, (i) + (1), (depth) - (1)))
     elif True:
         return IsValidParentheses1(s, (i) + (1), depth)
-    # impl-end
+    # pure-end
 
 def separate__paren__groups(paren__string : List[int]) -> List[List[int]]:
     # pre-conditions-start

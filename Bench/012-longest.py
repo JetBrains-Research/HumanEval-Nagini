@@ -7,9 +7,9 @@ def getVal(mx: Optional[int]) -> int:
     Requires(mx is not None)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return mx  
-    # impl-end
+    # pure-end
 
 def longest(strings : List[List[int]]) -> Optional[int]:
     # pre-conditions-start

@@ -10,12 +10,12 @@ def factorial(n : int) -> int :
     Ensures((Result()) >= (0))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (n) == (0):
         return 1
     else:
         return (n) * (factorial((n) - (1)))
-    # impl-end
+    # pure-end
 
 @Pure
 def special__factorial__rec(n : int) -> int :
@@ -26,12 +26,12 @@ def special__factorial__rec(n : int) -> int :
     Ensures((Result()) >= (0))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if (n) == (0):
         return 1
     else:
         return factorial(n) * (special__factorial__rec((n) - (1)))
-    # impl-end
+    # pure-end
 
 def special__factorial(n : int) -> int:
     # pre-conditions-start

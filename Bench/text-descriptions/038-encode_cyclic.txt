@@ -1,0 +1,4 @@
+You have to write 1 function in nagini (python verification framework), using the given helper functions
+The description is as follows:
+function `encode_cyclic`: returns encoded string by cycling groups of three characters.
+function `decode_cyclic`: takes as input string encoded with encode_cyclic function. Returns decoded string.

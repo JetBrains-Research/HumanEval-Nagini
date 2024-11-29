@@ -2,13 +2,11 @@ from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
 
-@Pure
 def abs_value(val: int) -> int:
     # post-conditions-start
     Ensures(Implies(val < 0, Result() == -val))
     Ensures(Implies(val >= 0, Result() == val))
     # post-conditions-end
-
     # impl-start
     if val < 0:
         return -val
@@ -19,9 +17,9 @@ def abs_value(val: int) -> int:
 
 @Pure
 def abs1(x: int, threshold: int) -> bool:
-    # impl-start
+    # pure-start
     return x >= threshold or x <= -threshold
-    # impl-end
+    # pure-end
 
 @Pure
 def fn(x: int, numbers: List[int], threshold: int) -> bool:
@@ -30,13 +28,13 @@ def fn(x: int, numbers: List[int], threshold: int) -> bool:
     Requires(Acc(list_pred(numbers)))
     Requires(x >= 0 and x < len(numbers))
     # pre-conditions-end
-    
-    # impl-start
+
+    # pure-start
     return Forall(range(len(numbers)), lambda y :
         x == y or
         abs1(numbers[x] - numbers[y], threshold)
     )
-    # impl-end
+    # pure-end
 
 
 def has_close_elements(numbers: List[int], threshold: int) -> bool:

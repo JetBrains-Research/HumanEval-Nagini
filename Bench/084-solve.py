@@ -30,10 +30,10 @@ def popcount(n : int) -> int :
     Requires(n >= 0)
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if n == 0:
         return 0
     else:
         return (n % 2) + popcount(n // 2)
-    # impl-end
+    # pure-end
 

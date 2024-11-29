@@ -3,15 +3,15 @@ from nagini_contracts.contracts import *
 
 @Pure
 def IsVowel(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((((((((((c) == (97)) or ((c) == (101))) or ((c) == (105))) or ((c) == (111))) or ((c) == (117))) or ((c) == (65))) or ((c) == (69))) or ((c) == (73))) or ((c) == (79))) or ((c) == (85))
-    # impl-end
+    # pure-end
 
 @Pure
 def IsConsonant(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((((65) <= (c)) and ((c) <= (90))) or (((97) <= (c)) and ((c) <= (122)))) and (not(IsVowel(c)))
-    # impl-end
+    # pure-end
 
 def get__closest__vowel(word : List[int]) -> List[int]:
     # pre-conditions-start

@@ -38,9 +38,9 @@ def Compare(scores : List[int], guesses : List[int]) -> List[int]:
 
 @Pure
 def abs(x : int) -> int :
-    # impl-start
+    # pure-start
     if (x) < (0):
         return (0) - (x)
     elif True:
         return x
-    # impl-end
+    # pure-end

@@ -43,9 +43,9 @@ def get_len(s : List[int]) -> bool:
     Requires(Acc(list_pred(s), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return len(s) > 0
-    # impl-end
+    # pure-end
 
 @Pure 
 def contains12(s : List[int]) -> bool:
@@ -53,10 +53,10 @@ def contains12(s : List[int]) -> bool:
     Requires(Acc(list_pred(s), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_0_i_: 
         Implies(d_0_i_ >= 0 and d_0_i_ < len(s), s[d_0_i_] == 1 or s[d_0_i_] == 2))
-    # impl-end
+    # pure-end
 
 def split(s : List[int]) -> List[List[int]]:
     # pre-conditions-start

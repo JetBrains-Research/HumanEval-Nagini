@@ -8,12 +8,12 @@ def modp__rec(n : int, p : int) -> int :
     Requires((n) >= (0))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (n) == (0):
         return (1 % p)
     elif True:
         return ((modp__rec((n) - (1), p)) * (2)) % p
-    # impl-end
+    # pure-end
 
 def modp(n : int, p : int) -> int:
     # pre-conditions-start

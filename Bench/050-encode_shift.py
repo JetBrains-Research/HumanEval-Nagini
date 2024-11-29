@@ -1,17 +1,19 @@
 from typing import cast, List, Dict, Set, Optional, Union, Tuple
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure 
 def encode__char(c : int) -> int :
-    # impl-start
+    # pure-start
     return (c - 97 + 5) % 26 + 97
-    # impl-end
+    # pure-end
 
+#use-as-unpure
 @Pure 
 def decode__char(c : int) -> int :
-    # impl-start
+    # pure-start
     return ((c) - (97) - (5)) % 26 + 97
-    # impl-end
+    # pure-end
 
 def encode__shift(s : List[int]) -> List[int]:
     # pre-conditions-start

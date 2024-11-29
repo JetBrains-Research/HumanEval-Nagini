@@ -81,15 +81,15 @@ def reverse(str : List[int]) -> List[int]:
 
 @Pure
 def is__alpha(c : int) -> bool :
-    # impl-start
+    # pure-start
     return (((97) <= (c)) and ((c) <= (122))) or (((65) <= (c)) and ((c) <= (90)))
-    # impl-end 
+    # pure-end
 
 @Pure
 def flip__case(c : int) -> int :
-    # impl-start
+    # pure-start
     if ((97) <= (c)) and ((c) <= (122)):
         return ((c) - (97)) + (65)
     elif True:
         return ((c) - (65)) + (97)
-    # impl-end
+    # pure-end

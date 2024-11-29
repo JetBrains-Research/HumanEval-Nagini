@@ -1,11 +1,12 @@
 from typing import cast, List, Dict, Set, Optional, Union, Tuple
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def IsPrimeHexDigit(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((((((c) == (2)) or ((c) == (3))) or ((c) == (5))) or ((c) == (7))) or ((c) == (11))) or ((c) == (13))
-    # impl-end
+    # pure-end
 
 @Pure
 def count__prime__hex__digits__rec(i : int, j : int, num : List[int]) -> int :
@@ -14,12 +15,12 @@ def count__prime__hex__digits__rec(i : int, j : int, num : List[int]) -> int :
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(num))))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return (1 if IsPrimeHexDigit(num[j - 1]) else 0) + count__prime__hex__digits__rec(i, j - 1, num)
-    # impl-end
+    # pure-end
 
 
 def count__prime__hex__digits(s : List[int]) -> int:

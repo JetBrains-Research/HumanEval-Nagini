@@ -3,15 +3,15 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def WithinRange(n : int) -> bool:
-    # impl-start
+    # pure-start
     return ((n) >= (1)) and ((n) <= (9))
-    # impl-end
+    # pure-end
 
 @Pure 
 def WithinRangeString(s : str) -> bool:
-    # impl-start
+    # pure-start
     return (s == "One" or s == "Two" or s == "Three" or s == "Four" or s == "Five" or s == "Six" or s == "Seven" or s == "Eight" or s == "Nine")
-    # impl-end
+    # pure-end
 
 def SortReverseAndName(arr : List[int]) -> List[str]:
     # pre-conditions-start

@@ -43,7 +43,7 @@ def count_fun(i : int, j : int, s : List[int]) -> int:
     Ensures((Result()) >= (0))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
@@ -51,10 +51,10 @@ def count_fun(i : int, j : int, s : List[int]) -> int:
             return (1) + (count_fun(i, j - 1, s))
         else:
             return count_fun(i, j - 1, s)
-    # impl-end
+    # pure-end
 
 @Pure
 def is__vowel(c : int) -> bool :
-    # impl-start
+    # pure-start
     return ((((((((((c) == (97)) or ((c) == (101))) or ((c) == (105))) or ((c) == (111))) or ((c) == (117))) or ((c) == (65))) or ((c) == (69))) or ((c) == (73))) or ((c) == (79))) or ((c) == (85))
-    # impl-end
+    # pure-end

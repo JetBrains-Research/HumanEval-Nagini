@@ -8,12 +8,12 @@ def freq_req(i : int, j : int, s : List[int], x : int) -> int:
     Requires(0 <= i and i <= j and j <= len(s))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
         return ((s)[j - 1] == x) + (freq_req(i, j - 1, s, x))
-    # impl-end  
+    # pure-end
 
 def freq(s : List[int], x : int) -> int:
     # pre-conditions-start
@@ -42,3 +42,4 @@ def freq(s : List[int], x : int) -> int:
         d_1_i_ = (d_1_i_) + (1)
     return count
     # impl-end
+

@@ -10,12 +10,12 @@ def factorial__spec(n : int) -> int :
     Ensures(Result() >= 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if n == -1:
         return 1
     else:
         return (n + 1) * factorial__spec(n - 1)
-    # impl-end
+    # pure-end
 
 @Pure
 def sum__spec(n : int) -> int :
@@ -26,12 +26,12 @@ def sum__spec(n : int) -> int :
     Ensures(Result() >= 0)
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if 0 > n:
         return 0
     else:
         return n + 1 + sum__spec(n - 1)
-    # impl-end
+    # pure-end
 
 def f(n : int) -> List[int]:
     # pre-conditions-start

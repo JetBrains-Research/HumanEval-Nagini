@@ -6,9 +6,9 @@ def getVal(mx: Optional[int]) -> int:
     # pre-conditions-start
     Requires(mx is not None)
     # pre-conditions-end
-    # impl-start
+    # pure-start
     return mx
-    # impl-end
+    # pure-end
 
 def rolling_max(numbers: List[int]) -> List[int]:
     # pre-conditions-start

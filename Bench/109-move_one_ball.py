@@ -1,6 +1,7 @@
 from typing import cast, List, Dict, Set, Optional, Union
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def is__sorted(a : List[int], l : int, r : int) -> bool :
     # pre-conditions-start
@@ -8,11 +9,11 @@ def is__sorted(a : List[int], l : int, r : int) -> bool :
     Requires(((0) <= (l)) and ((l) <= (r)) and ((r) <= (len(a))))
     # pre-conditions-end
     
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_0_i_:
         Forall(int, lambda d_1_j_:
             not ((((l) <= (d_0_i_)) and ((d_0_i_) < (d_1_j_))) and ((d_1_j_) < (r))) or (((a)[d_0_i_]) <= ((a)[d_1_j_]))))
-    # impl-end
+    # pure-end
 
 def move__one__ball(a : List[int]) -> bool:
     # pre-conditions-start

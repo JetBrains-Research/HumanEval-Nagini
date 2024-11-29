@@ -11,12 +11,12 @@ def contains_char(s : List[int], c : int, i : int, j : int) -> bool:
     Requires(((97) <= (c)) and ((c) <= (122)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return False
     else:
         return s[j - 1] == c or contains_char(s, c, i, j - 1)
-    # impl-end
+    # pure-end
     
 @Pure 
 def count_chars_inter(s : List[int], c : int) -> int:
@@ -27,12 +27,12 @@ def count_chars_inter(s : List[int], c : int) -> int:
     Requires(((97) <= (c)) and ((c) <= (123)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if c == 97:
         return 0
     else:
         return count_chars_inter(s, c - 1) + (1 if contains_char(s, c - 1, 0, len(s)) else 0)
-    # impl-end
+    # pure-end
 
 def count_distinct_characters(s : List[int]) -> int:
     # pre-conditions-start

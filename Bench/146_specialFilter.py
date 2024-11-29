@@ -10,18 +10,18 @@ def first__digit(n : int) -> int :
     Ensures(0 <= Result() and (Result()) < (10))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if n < 10:
         return n
     else:
         return first__digit(n // 10)
-    # impl-end
+    # pure-end
 
 @Pure
 def last__digit(n : int) -> int :
-    # impl-start
+    # pure-start
     return (n % 10)
-    # impl-end
+    # pure-end
 
 def specialFilter(s : List[int]) -> List[int]:
     # pre-conditions-start

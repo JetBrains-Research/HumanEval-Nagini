@@ -1,13 +1,14 @@
 from nagini_contracts.contracts import *
 
+#use-as-unpure
 @Pure
 def last__digit(n : int) -> int :
-    # impl-start
+    # pure-start
     if (n) < (0):
         return (((0) - (n)) % 10)
     elif True:
         return (n % 10)
-    # impl-end
+    # pure-end
 
 def multiply(a : int, b : int) -> int:
     # pre-conditions-start

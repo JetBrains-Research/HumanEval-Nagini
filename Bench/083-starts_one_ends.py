@@ -25,9 +25,9 @@ def Pow(base : int, exponent : int) -> int :
     Requires((exponent) >= (0))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     if (exponent) == (0):
         return 1
     else:
         return (base) * (Pow(base, (exponent) - (1)))
-    # impl-end
+    # pure-end

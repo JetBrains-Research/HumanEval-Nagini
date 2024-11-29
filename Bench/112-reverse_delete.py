@@ -7,10 +7,10 @@ def InArray(a : List[int], x : int) -> bool :
     Requires(Acc(list_pred(a)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Exists(int, lambda d_0_i_:
         ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
-    # impl-end
+    # pure-end
 
 @Pure 
 def NotInArray(a : List[int], x : int) -> bool :
@@ -18,10 +18,10 @@ def NotInArray(a : List[int], x : int) -> bool :
     Requires(Acc(list_pred(a)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_0_i_:
         (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) != (x))))
-    # impl-end
+    # pure-end
 
 @Pure 
 def implArrays(chars : List[int], res : List[int], x : int) -> bool:
@@ -30,9 +30,9 @@ def implArrays(chars : List[int], res : List[int], x : int) -> bool:
     Requires(Acc(list_pred(res)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Implies(NotInArray(chars, x), InArray(res, x))
-    # impl-end
+    # pure-end
 
 def reverse__delete(s : List[int], chars : List[int]) -> Tuple[List[int], bool]:
     # pre-conditions-start
@@ -108,7 +108,7 @@ def is__palindrome__pred(s : List[int]) -> bool :
     Requires(Acc(list_pred(s), 1/2))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_10_k_:
         (not (((0) <= (d_10_k_)) and ((d_10_k_) < (len(s)))) or (((s)[d_10_k_]) == ((s)[((len(s)) - (1)) - (d_10_k_)]))))
-    # impl-end
+    # pure-end

@@ -8,11 +8,11 @@ def IsSubstring(s : List[int], sub : List[int], n : int) -> bool :
     Requires(Acc(list_pred(sub)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return ((len(s)) >= (len(sub))) and (Exists(int, lambda d_0_i_:
         (((0) <= (d_0_i_)) and ((d_0_i_) < 1 + ((len(s)) - (len(sub))))) and (
             Forall(int, lambda y: (Implies(y >= 0 and y < len(sub), sub[(n + y) % len(sub)] == s[d_0_i_ + y]), [[sub[(n + y) % len(sub)] == s[d_0_i_ + y]]])))))
-    # impl-end
+    # pure-end
 
 def CycpatternCheck(word : List[int], pattern : List[int]) -> bool:
     # pre-conditions-start

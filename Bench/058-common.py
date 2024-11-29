@@ -7,10 +7,10 @@ def NotInArray(a : List[int], x : int) -> bool :
     Requires(Acc(list_pred(a)))
     # pre-conditions-end
 
-    # impl-start
+    # pure-start
     return Forall(int, lambda d_0_i_:
         (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) != (x)), [[(a)[d_0_i_]]]))
-    # impl-end
+    # pure-end
 
 @Pure 
 def ExistsBoth(a : List[int], b : List[int], x : int) -> bool:
@@ -19,11 +19,11 @@ def ExistsBoth(a : List[int], b : List[int], x : int) -> bool:
     Requires(Acc(list_pred(b), 1/2))
     # pre-conditions-end
     
-    # impl-start
+    # pure-start
     return Exists(int, lambda d_0_i_:
         (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) == (x)))) and Exists(int, lambda d_0_i_:
         (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((b)))), ((b)[d_0_i_]) == (x))))
-    # impl-end
+    # pure-end
 
 def common(l1 : List[int], l2 : List[int]) -> List[int]:
     # pre-conditions-start

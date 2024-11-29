@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def Prime(p : int) -> bool :
-    # impl-start
+    # pure-start
     return ((p) > (1)) and (Forall(int, lambda d_0_k_:
         not (((1) < (d_0_k_)) and ((d_0_k_) < (p))) or (((p % d_0_k_)) != (0))))
-    # impl-end
+    # pure-end
 
 def is__prime(k : int) -> bool:
     # pre-conditions-start

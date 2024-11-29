@@ -11,7 +11,7 @@ def count__upper__fun(s : List[int], i : int, j : int) -> int:
     Ensures((Result()) >= (0))
     # post-conditions-end
 
-    # impl-start
+    # pure-start
     if i == j:
         return 0
     else:
@@ -19,7 +19,7 @@ def count__upper__fun(s : List[int], i : int, j : int) -> int:
             return (1) + (count__upper__fun(s, i, j - 1))
         else:
             return count__upper__fun(s, i, j - 1)
-    # impl-end
+    # pure-end
 
 
 def count__upper(s : List[int]) -> int:
@@ -57,6 +57,6 @@ def count__upper(s : List[int]) -> int:
 
 @Pure
 def is__upper__vowel(c : int) -> bool :
-    # impl-start
+    # pure-start
     return (((((c) == (0)) or ((c) == (1))) or ((c) == (2))) or ((c) == (3))) or ((c) == (4))
-    # impl-end
+    # pure-end
