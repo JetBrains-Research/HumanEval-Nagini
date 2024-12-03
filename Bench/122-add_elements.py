@@ -28,20 +28,20 @@ def SumElementsWithAtMostTwoDigits(lst : List[int], k : int) -> int:
 
     # impl-start
     sum : int = 0
-    d_3_i_ : int = 0
-    while d_3_i_ < k:
+    i : int = 0
+    while i < k:
         # invariants-start
         Invariant(Acc(list_pred(lst)))
         Invariant(1 <= k and k <= len(lst))
-        Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(lst))) and d_3_i_ <= k)
-        Invariant(Forall(int, lambda d_3_i_ : (Implies(d_3_i_ >= 0 and d_3_i_ < k, sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + ((lst)[d_3_i_] if (lst)[d_3_i_] < 100 else 0)), [[sum__chars__rec(0, d_3_i_ + 1, lst)]])))
-        Invariant((sum) == (sum__chars__rec(0, d_3_i_, lst)))
+        Invariant(((0) <= (i)) and ((i) <= (len(lst))) and i <= k)
+        Invariant(Forall(int, lambda i : (Implies(i >= 0 and i < k, sum__chars__rec(0, i + 1, lst) == sum__chars__rec(0, i, lst) + ((lst)[i] if (lst)[i] < 100 else 0)), [[sum__chars__rec(0, i + 1, lst)]])))
+        Invariant((sum) == (sum__chars__rec(0, i, lst)))
         # invariants-end
         # assert-start
-        Assert(sum__chars__rec(0, d_3_i_ + 1, lst) == sum__chars__rec(0, d_3_i_, lst) + ((lst)[d_3_i_] if (lst)[d_3_i_] < 100 else 0))
+        Assert(sum__chars__rec(0, i + 1, lst) == sum__chars__rec(0, i, lst) + ((lst)[i] if (lst)[i] < 100 else 0))
         # assert-end
-        if (lst)[d_3_i_] < 100:
-            sum = (sum) + ((lst)[d_3_i_])
-        d_3_i_ = (d_3_i_) + (1)
+        if (lst)[i] < 100:
+            sum = (sum) + ((lst)[i])
+        i = (i) + (1)
     return sum
     # impl-end

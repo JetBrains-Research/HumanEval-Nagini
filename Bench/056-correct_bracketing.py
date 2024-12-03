@@ -18,13 +18,13 @@ def CalBal(s : List[int], i : int, j : int) -> int:
 def correct_bracketing(s : List[int]) -> bool:
     # pre-conditions-start
     Requires(Acc(list_pred(s)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s)))) or ((((s)[d_0_i_]) == (0)) or (((s)[d_0_i_]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s)))) or ((((s)[i]) == (0)) or (((s)[i]) == (1)))))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(s)))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s)))) or ((((s)[d_0_i_]) == (0)) or (((s)[d_0_i_]) == (1)))))
+    Ensures(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s)))) or ((((s)[i]) == (0)) or (((s)[i]) == (1)))))
     Ensures(Implies(Result(), Forall(int, lambda x: (Implies(x >= 0 and x <= len(s), CalBal(s, 0, x) >= 0)))))
     Ensures(Implies(Forall(int, lambda x: (Implies(x >= 0 and x <= len(s), CalBal(s, 0, x) >= 0))), Result()))
     # post-conditions-end
@@ -37,8 +37,8 @@ def correct_bracketing(s : List[int]) -> bool:
         # invariants-start
         Invariant(Acc(list_pred(s), 1/2))
         Invariant(0 <= i and i <= len(s))
-        Invariant(Forall(int, lambda d_0_i_:
-            not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s)))) or ((((s)[d_0_i_]) == (0)) or (((s)[d_0_i_]) == (1)))))
+        Invariant(Forall(int, lambda i:
+            not (((i) >= (0)) and ((i) < (len(s)))) or ((((s)[i]) == (0)) or (((s)[i]) == (1)))))
         Invariant(Forall(int, lambda x : (Implies(x >= 0 and x < len(s), CalBal(s, 0, x + 1) == CalBal(s, 0, x) + (1 if s[x] == 0 else -1)), [[CalBal(s, 0, x + 1)]])))
         Invariant(depth >= 0)
         Invariant(depth == CalBal(s, 0, i)) 

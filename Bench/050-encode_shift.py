@@ -18,61 +18,61 @@ def decode__char(c : int) -> int :
 def encode__shift(s : List[int]) -> List[int]:
     # pre-conditions-start
     Requires(Acc(list_pred(s)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(s)))) or (((97) <= ((s)[d_0_i_])) and (((s)[d_0_i_]) <= (122)))))
+    Requires(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(s)))) or (((97) <= ((s)[i])) and (((s)[i]) <= (122)))))
     # pre-conditions-end
     # post-conditions-start 
     Ensures(Acc(list_pred(Result())))
     Ensures(Acc(list_pred(s)))
     Ensures((len(s)) == (len(Result())))
-    Ensures(Forall(int, lambda d_1_i_:
-        not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(s)))) or (((Result())[d_1_i_]) == (encode__char((s)[d_1_i_])))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(s)))) or (((Result())[i]) == (encode__char((s)[i])))))
     # post-conditions-end
 
     # impl-start
     t : List[int] = []
-    d_2_i_ : int = 0
-    while (d_2_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(s))))
-        Invariant((len(t)) == (d_2_i_))
-        Invariant(Forall(int, lambda d_3_j_:
-            (not (((0) <= (d_3_j_)) and ((d_3_j_) < (d_2_i_))) or (((t)[d_3_j_]) == (encode__char((s)[d_3_j_]))), [[encode__char((s)[d_3_j_])]])))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant((len(t)) == (i))
+        Invariant(Forall(int, lambda j:
+            (not (((0) <= (j)) and ((j) < (i))) or (((t)[j]) == (encode__char((s)[j]))), [[encode__char((s)[j])]])))
         # invariants-end
-        t = (t) + [encode__char((s)[d_2_i_])]
-        d_2_i_ = (d_2_i_) + (1)
+        t = (t) + [encode__char((s)[i])]
+        i = (i) + (1)
     return t
     # impl-end
 
 def decode__shift(s : List[int]) -> List[int]:
     # pre-conditions-start
     Requires(Acc(list_pred(s)))
-    Requires(Forall(int, lambda d_4_i_:
-        not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(s)))) or (((97) <= ((s)[d_4_i_])) and (((s)[d_4_i_]) <= (122)))))
+    Requires(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(s)))) or (((97) <= ((s)[i])) and (((s)[i]) <= (122)))))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(Result())))
     Ensures(Acc(list_pred(s)))
     Ensures((len(s)) == (len(Result())))
-    Ensures(Forall(int, lambda d_5_i_:
-        not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(s)))) or (((Result())[d_5_i_]) == (decode__char((s)[d_5_i_])))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(s)))) or (((Result())[i]) == (decode__char((s)[i])))))
     # post-conditions-end
 
     # impl-start
     t : List[int] = []
-    d_6_i_ : int = 0
-    while (d_6_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(t)))
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_6_i_)) and ((d_6_i_) <= (len(s))))
-        Invariant((len(t)) == (d_6_i_))
-        Invariant(Forall(int, lambda d_7_j_:
-            (not (((0) <= (d_7_j_)) and ((d_7_j_) < (d_6_i_))) or (((t)[d_7_j_]) == (decode__char((s)[d_7_j_]))), [[decode__char((s)[d_7_j_])]])))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant((len(t)) == (i))
+        Invariant(Forall(int, lambda j:
+            (not (((0) <= (j)) and ((j) < (i))) or (((t)[j]) == (decode__char((s)[j]))), [[decode__char((s)[j])]])))
         # invariants-end
-        t = (t) + [decode__char((s)[d_6_i_])]
-        d_6_i_ = (d_6_i_) + (1)
+        t = (t) + [decode__char((s)[i])]
+        i = (i) + (1)
     return t
     # impl-end

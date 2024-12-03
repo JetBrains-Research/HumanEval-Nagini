@@ -48,29 +48,29 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
     Ensures(Acc(list_pred(xs)))
     Ensures(Forall(xs, lambda x : Acc(list_pred(x))))
     Ensures(Acc(list_pred(Result())))
-    Ensures(Forall(int, lambda d_2_j_: 
-        Implies(d_2_j_ >= 0 and d_2_j_ < len(Result()), Result()[d_2_j_] >= 0 and Result()[d_2_j_] < len(xs))))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(Result())))) or (starts__with(xs[Result()[d_0_i_]], p, 0))))
+    Ensures(Forall(int, lambda j: 
+        Implies(j >= 0 and j < len(Result()), Result()[j] >= 0 and Result()[j] < len(xs))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result())))) or (starts__with(xs[Result()[i]], p, 0))))
     # post-conditions-end
 
     # impl-start
     filtered : List[int] = []
-    d_1_i_ : int = 0
-    while (d_1_i_) < (len(xs)):
+    i : int = 0
+    while (i) < (len(xs)):
         # invariants-start
         Invariant(Acc(list_pred(filtered)))
         Invariant(Acc(list_pred(xs), 1/2))
         Invariant(Acc(list_pred(p), 1/2))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(xs))))
+        Invariant(((0) <= (i)) and ((i) <= (len(xs))))
         Invariant(Forall(xs, lambda x : Acc(list_pred(x))))
         Invariant(Forall(filtered, lambda i:
-            (i >= 0 and i < d_1_i_)))
+            (i >= 0 and i < i)))
         Invariant(Forall(filtered, lambda i:
             (starts__with(xs[i], p, 0), [[starts__with(xs[i], p, 0)]])))
         # invariants-end
-        if starts__with__fun((xs)[d_1_i_], p, 0):
-            filtered = (filtered) + [d_1_i_]
-        d_1_i_ = (d_1_i_) + (1)
+        if starts__with__fun((xs)[i], p, 0):
+            filtered = (filtered) + [i]
+        i = (i) + (1)
     return filtered
     # impl-end
