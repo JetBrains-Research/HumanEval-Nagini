@@ -44,8 +44,8 @@ def generate__integers(a : int, b : int) -> List[int]:
         Invariant(i >= 2)
         Invariant(Implies((i) <= (upper), i <= 8))
         Invariant(upper <= 8)
-        Invariant(Forall(int, lambda i:
-            not (((i) >= (0)) and ((i) < (len(result)))) or ((((result)[i] % 2)) == (0))))
+        Invariant(Forall(int, lambda j:
+            (not (((j) >= (0)) and ((j) < (len(result)))) or ((((result)[j] % 2)) == (0)))))
         Invariant(Forall(int, lambda j:
             (not (((j) >= (0)) and ((j) < (len(result)))) or (((result)[j]) > 0 and ((result)[j]) < 10), [[result[j]]])))
         # invariants-end

@@ -31,13 +31,13 @@ def move__one__ball(a : List[int]) -> bool:
     Ensures(Implies(Result(), Exists(int, lambda i:
         (((0) <= (i)) and ((i) < (len(a)))) and (is__sorted(a, 0, i) and is__sorted(a, i, len(a)) and (Forall(int, lambda j:
             Implies(0 <= j and j < i, 
-                Forall(int, lambda j:
-                    Implies(i <= j and j < len(a), a[j] > a[j])))))))))
+                Forall(int, lambda j1:
+                    Implies(i <= j1 and j1 < len(a), a[j] > a[j1])))))))))
     Ensures(Implies(Exists(int, lambda i:
         (((0) <= (i)) and ((i) < (len(a)))) and (is__sorted(a, 0, i) and is__sorted(a, i, len(a)) and (Forall(int, lambda j:
             Implies(0 <= j and j < i, 
-                Forall(int, lambda j:
-                    Implies(i <= j and j < len(a), a[j] > a[j]))))))), Result()))
+                Forall(int, lambda j1:
+                    Implies(i <= j1 and j1 < len(a), a[j] > a[j1]))))))), Result()))
     # post-conditions-end
 
     # impl-start
@@ -71,8 +71,8 @@ def move__one__ball(a : List[int]) -> bool:
     Assert(Implies(is__sorted(a, 0, min__index) and is__sorted(a, min__index, len(a)) and min__index != 0 and a[len(a) - 1] < a[0], 
         (Forall(int, lambda j:
             Implies(0 <= j and j < min__index, 
-                Forall(int, lambda j:
-                    Implies(min__index <= j and j < len(a), a[j] > a[j])))))))
+                Forall(int, lambda j1:
+                    Implies(min__index <= j1 and j1 < len(a), a[j] > a[j1])))))))
     # assert-end
     can : bool = is__sorted(a, 0, min__index) and is__sorted(a, min__index, len(a)) and (min__index == 0 or a[len(a) - 1] < a[0])
     return can

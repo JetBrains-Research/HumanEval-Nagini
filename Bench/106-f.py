@@ -78,23 +78,23 @@ def f(n : int) -> List[int]:
                 j = (j) + (1)
             result = (result) + [x]
         else:
-            x : int = 0
-            j : int = 0
-            while (j) < (i):
+            x1 : int = 0
+            j1 : int = 0
+            while (j1) < (i):
                 # invariants-start
                 Invariant(Acc(list_pred(result)))
                 Invariant(((i) >= (0)) and ((i) <= (n)))
                 Invariant((len(result)) == (i))
-                Invariant(((j) >= (0)) and ((j) <= (i)))
-                Invariant((x) == (sum__spec(j - 1)))
+                Invariant(((j1) >= (0)) and ((j1) <= (i)))
+                Invariant((x1) == (sum__spec(j1 - 1)))
                 Invariant(Forall(int, lambda i:
                     (Implies((((i) >= (0)) and ((i) < (len(result)))) and (((i % 2)) == (0)), ((result)[i]) == (factorial__spec(i - 1))), [[factorial__spec(i - 1)]])))
                 Invariant(Forall(int, lambda i:
                     (Implies((((i) >= (0)) and ((i) < (len(result)))) and (((i % 2)) != (0)), ((result)[i]) == (sum__spec(i - 1))), [[sum__spec(i - 1)]])))
                 # invariants-end
-                x = (x) + (j + 1)
-                j = (j) + (1)
-            result = (result) + [x]
+                x1 = (x1) + (j1 + 1)
+                j1 = (j1) + (1)
+            result = (result) + [x1]
         i = (i) + (1)
     return result
     # impl-end

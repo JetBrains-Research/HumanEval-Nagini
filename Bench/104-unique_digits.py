@@ -49,7 +49,7 @@ def UniqueDigits(x : List[int]) -> List[int]:
 
     # impl-start
     result : List[int] = []
-    i = 0
+    i : int = 0
     
     while i < len(x):
         # invariants-start
@@ -74,7 +74,6 @@ def UniqueDigits(x : List[int]) -> List[int]:
         if HasNoEvenDigit((x)[i]):
             result = (result) + [(x)[i]]
         i = (i) + (1)
-    i : int = 0
     while (i) < (len(result)):
         # invariants-start
         Invariant(Acc(list_pred(result)))

@@ -55,8 +55,8 @@ def flip__case(s : List[int]) -> List[int] :
         Invariant(Acc(list_pred(res)))
         Invariant(((0) <= (i)) and ((i) <= (len(s))))
         Invariant((len(res)) == (len(s)))
-        Invariant(Forall(int, lambda i: (Implies(((0) <= (i)) and ((i) < (i)), lower((s)[i]) == upper((res)[i])))))
-        Invariant(Forall(int, lambda i: (Implies(((0) <= (i)) and ((i) < (i)), upper((s)[i]) == lower((res)[i])))))
+        Invariant(Forall(int, lambda j: (Implies(((0) <= (j)) and ((j) < (i)), lower((s)[j]) == upper((res)[j])))))
+        Invariant(Forall(int, lambda j: (Implies(((0) <= (j)) and ((j) < (i)), upper((s)[j]) == lower((res)[j])))))
         # invariants-end
         res[i] = flip__char(s[i])
         i = i + 1

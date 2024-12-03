@@ -36,8 +36,8 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
             Invariant(((i) >= (0)) and ((i) < (len(l))))
             Invariant(((j) >= (0)) and ((j) <= (len(l))))
             Invariant(Implies(not(result), Forall(int, lambda i1:
-                Forall(int, lambda j:
-                    (Implies((((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j)) and ((j) < (len(l))))) or (i1 == i and ((0) <= (j)) and ((j) < (j)))) and ((i1) != (j)), (((l)[i1]) + ((l)[j])) != (0)), [[((l)[i1]) + ((l)[j])]])))))
+                Forall(int, lambda j1:
+                    (Implies((((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j1)) and ((j1) < (len(l))))) or (i1 == i and ((0) <= (j1)) and ((j1) < (j)))) and ((i1) != (j1)), (((l)[i1]) + ((l)[j1])) != (0)), [[((l)[i1]) + ((l)[j1])]])))))
             Invariant(not (result) or ((Exists(int, lambda i1:
                 Exists(int, lambda j1:
                     (((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j1)) and ((j1) < (len(l))))) and ((i1) != (j1))) and ((((l)[i1]) + ((l)[j1])) == (0)))))
