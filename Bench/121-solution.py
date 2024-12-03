@@ -26,14 +26,14 @@ def add(v : List[int]) -> int:
 
     # impl-start
     r : int = 0
-    d_2_k_ : int = 0
-    while (d_2_k_) < (len(v)):
+    k : int = 0
+    while (k) < (len(v)):
         # invariants-start
         Invariant(Acc(list_pred(v)))
-        Invariant(((0) <= (d_2_k_)) and ((d_2_k_) <= (len(v))))
-        Invariant((r) == (psum(0, d_2_k_ - 1, v)))
+        Invariant(((0) <= (k)) and ((k) <= (len(v))))
+        Invariant((r) == (psum(0, k - 1, v)))
         # invariants-end
-        r = (r) + (((v)[d_2_k_] if ((((d_2_k_) % 2) == 0) and ((v)[d_2_k_] % 2 == 1)) else 0))
-        d_2_k_ = (d_2_k_) + (1)
+        r = (r) + (((v)[k] if ((((k) % 2) == 0) and ((v)[k] % 2 == 1)) else 0))
+        k = (k) + (1)
     return r
     # impl-end

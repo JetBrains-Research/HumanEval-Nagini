@@ -7,22 +7,22 @@ def is__palindrome(text : List[int]) -> bool:
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(text)))
-    Ensures((Result()) == (Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(text)))) or (((text)[d_0_i_]) == ((text)[((len(text)) - (d_0_i_)) - (1)])))))
+    Ensures((Result()) == (Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(text)))) or (((text)[i]) == ((text)[((len(text)) - (i)) - (1)])))))
     # post-conditions-end
 
     # impl-start
     result : bool = True
-    d_1_i_ : int = 0
-    while (d_1_i_) < ((len(text) // 2)):
+    i : int = 0
+    while (i) < ((len(text) // 2)):
         # invariants-start
         Invariant(Acc(list_pred(text)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= ((len(text) // 2))))
-        Invariant((result) == (Forall(int, lambda d_2_i1_:
-            not (((d_2_i1_) >= (0)) and ((d_2_i1_) < (d_1_i_))) or (((text)[d_2_i1_]) == ((text)[((len(text)) - (d_2_i1_)) - (1)])))))
+        Invariant(((0) <= (i)) and ((i) <= ((len(text) // 2))))
+        Invariant((result) == (Forall(int, lambda i1:
+            not (((i1) >= (0)) and ((i1) < (i))) or (((text)[i1]) == ((text)[((len(text)) - (i1)) - (1)])))))
         # invariants-end
-        if ((text)[d_1_i_]) != ((text)[((len(text)) - (d_1_i_)) - (1)]):
+        if ((text)[i]) != ((text)[((len(text)) - (i)) - (1)]):
             result = False
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return result
     # impl-end

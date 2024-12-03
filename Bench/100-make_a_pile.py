@@ -8,8 +8,8 @@ def make__a__pile(n : int) -> List[int]:
     # post-conditions-start
     Ensures(Acc(list_pred(Result())))
     Ensures((len(Result())) == (n))
-    Ensures(Forall(int, lambda d_0_i_:
-        Implies(((1) <= (d_0_i_)) and ((d_0_i_) < (n)), ((Result())[d_0_i_]) == (((Result())[(d_0_i_) - (1)]) + (2)))))
+    Ensures(Forall(int, lambda i:
+        Implies(((1) <= (i)) and ((i) < (n)), ((Result())[i]) == (((Result())[(i) - (1)]) + (2)))))
     Ensures(Implies((n) > (0), ((Result())[0]) == (n)))
     # post-conditions-end
 
@@ -18,19 +18,19 @@ def make__a__pile(n : int) -> List[int]:
     if (n) == (0):
         return pile
     pile = [n]
-    d_1_i_ : int = 1
-    while (d_1_i_) < (n):
+    i : int = 1
+    while (i) < (n):
         # invariants-start
         Invariant(Acc(list_pred(pile)))
-        Invariant(len(pile) == d_1_i_)
+        Invariant(len(pile) == i)
         Invariant(len(pile) > 0)
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (n)))
-        Invariant((len(pile)) == (d_1_i_))
-        Invariant(Forall(int, lambda d_2_j_:
-            Implies(((1) <= (d_2_j_)) and ((d_2_j_) < (d_1_i_)), ((pile)[d_2_j_]) == (((pile)[(d_2_j_) - (1)]) + (2)))))
+        Invariant(((0) <= (i)) and ((i) <= (n)))
+        Invariant((len(pile)) == (i))
+        Invariant(Forall(int, lambda j:
+            Implies(((1) <= (j)) and ((j) < (i)), ((pile)[j]) == (((pile)[(j) - (1)]) + (2)))))
         Invariant(Implies((n) > (0), ((pile)[0]) == (n)))
         # invariants-end
-        pile = (pile) + [((pile)[(d_1_i_) - (1)]) + (2)]
-        d_1_i_ = (d_1_i_) + (1)
+        pile = (pile) + [((pile)[(i) - (1)]) + (2)]
+        i = (i) + (1)
     return pile
     # impl-end

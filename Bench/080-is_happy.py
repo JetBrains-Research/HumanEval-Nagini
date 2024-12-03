@@ -19,8 +19,8 @@ def Happy(s : List[int]) -> bool :
     # pre-conditions-end
 
     # pure-start
-    return ((len(s)) >= (3)) and (Forall(int, lambda d_0_i_:
-        Implies(((0) < (d_0_i_)) and ((d_0_i_) < ((len(s)) - (1))), ThreeDistinct(s, d_0_i_))))
+    return ((len(s)) >= (3)) and (Forall(int, lambda i:
+        Implies(((0) < (i)) and ((i) < ((len(s)) - (1))), ThreeDistinct(s, i))))
     # pure-end
 
 def IsHappy(s : List[int]) -> bool:
@@ -35,17 +35,17 @@ def IsHappy(s : List[int]) -> bool:
     # impl-start
     if (len(s)) < (3):
         return False
-    d_1_i_ : int = 1
-    while (d_1_i_) < ((len(s)) - (1)):
+    i : int = 1
+    while (i) < ((len(s)) - (1)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) < (d_1_i_)) and ((d_1_i_) <= ((len(s)) - (1))))
+        Invariant(((0) < (i)) and ((i) <= ((len(s)) - (1))))
         Invariant(len(s) >= 3)
-        Invariant(Forall(int, lambda d_2_j_:
-            Implies(((0) < (d_2_j_)) and ((d_2_j_) < (d_1_i_)), ThreeDistinct(s, d_2_j_))))
+        Invariant(Forall(int, lambda j:
+            Implies(((0) < (j)) and ((j) < (i)), ThreeDistinct(s, j))))
         # invariants-end
-        if not(ThreeDistinct(s, d_1_i_)):
+        if not(ThreeDistinct(s, i)):
             return False
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return True
     # impl-end

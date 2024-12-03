@@ -8,26 +8,26 @@ def max__element(l : List[int]) -> int:
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(l)))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(l)))) or (((l)[d_0_i_]) <= (Result()))))
-    Ensures(Exists(int, lambda d_1_i_:
-        (((d_1_i_) >= (0)) and ((d_1_i_) < (len(l)))) and (((l)[d_1_i_]) == (Result()))))
+    Ensures(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(l)))) or (((l)[i]) <= (Result()))))
+    Ensures(Exists(int, lambda i:
+        (((i) >= (0)) and ((i) < (len(l)))) and (((l)[i]) == (Result()))))
     # post-conditions-end
 
     # impl-start
     result : int = (l)[0]
-    d_2_i_ : int = 1
-    while (d_2_i_) < (len(l)):
+    i : int = 1
+    while (i) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l)))
-        Invariant(((d_2_i_) >= (1)) and ((d_2_i_) <= (len(l))))
-        Invariant(Forall(int, lambda d_3_i1_:
-            not (((d_3_i1_) >= (0)) and ((d_3_i1_) < (d_2_i_))) or (((l)[d_3_i1_]) <= (result))))
-        Invariant(Exists(int, lambda d_4_i1_:
-            (((d_4_i1_) >= (0)) and ((d_4_i1_) < (d_2_i_))) and (((l)[d_4_i1_]) == (result))))
+        Invariant(((i) >= (1)) and ((i) <= (len(l))))
+        Invariant(Forall(int, lambda i1:
+            not (((i1) >= (0)) and ((i1) < (i))) or (((l)[i1]) <= (result))))
+        Invariant(Exists(int, lambda i1:
+            (((i1) >= (0)) and ((i1) < (i))) and (((l)[i1]) == (result))))
         # invariants-end
-        if ((l)[d_2_i_]) > (result):
-            result = (l)[d_2_i_]
-        d_2_i_ = (d_2_i_) + (1)
+        if ((l)[i]) > (result):
+            result = (l)[i]
+        i = (i) + (1)
     return result
     # impl-end

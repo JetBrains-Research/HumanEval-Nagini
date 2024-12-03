@@ -13,40 +13,40 @@ def will__it__fly(s : List[int], w : int) -> bool:
 
     # impl-start
     result : bool = True
-    d_0_i_ : int = 0
-    d_1_j_ : int = (len(s)) - (1)
-    while (d_0_i_) < (d_1_j_):
+    i : int = 0
+    j : int = (len(s)) - (1)
+    while (i) < (j):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_0_i_)) and ((d_0_i_) < (len(s))))
-        Invariant(((0) <= (d_1_j_)) and ((d_1_j_) < (len(s))))
-        Invariant((d_1_j_) == (((len(s)) - (d_0_i_)) - (1)))
-        Invariant(Forall(int, lambda d_2_k_:
-            not (((0) <= (d_2_k_)) and ((d_2_k_) < (d_0_i_))) or (((s)[d_2_k_]) == ((s)[((len(s)) - (1)) - (d_2_k_)]))))
+        Invariant(((0) <= (i)) and ((i) < (len(s))))
+        Invariant(((0) <= (j)) and ((j) < (len(s))))
+        Invariant((j) == (((len(s)) - (i)) - (1)))
+        Invariant(Forall(int, lambda k:
+            not (((0) <= (k)) and ((k) < (i))) or (((s)[k]) == ((s)[((len(s)) - (1)) - (k)]))))
         # invariants-end
-        if ((s)[d_0_i_]) != ((s)[d_1_j_]):
+        if ((s)[i]) != ((s)[j]):
             result = False
             return result
-        d_0_i_ = (d_0_i_) + (1)
-        d_1_j_ = (d_1_j_) - (1)
-    d_3_total_ : int = 0
-    d_0_i_ = 0
-    while (d_0_i_) < (len(s)):
+        i = (i) + (1)
+        j = (j) - (1)
+    total : int = 0
+    i = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= (len(s))))
-        Invariant(Forall(int, lambda d_2_i_: (not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(s)))) or ((psum(0, d_2_i_ + 1, s)) == (psum(0, d_2_i_, s) + s[d_2_i_])), [[psum(0, d_2_i_ + 1, s)]])))
-        Invariant((d_3_total_) == (psum(0, d_0_i_, s)))
-        Invariant(Forall(int, lambda d_2_k_:
-            not (((0) <= (d_2_k_)) and ((d_2_k_) < (len(s)))) or (((s)[d_2_k_]) == ((s)[((len(s)) - (1)) - (d_2_k_)]))))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant(Forall(int, lambda i: (not (((0) <= (i)) and ((i) < (len(s)))) or ((psum(0, i + 1, s)) == (psum(0, i, s) + s[i])), [[psum(0, i + 1, s)]])))
+        Invariant((total) == (psum(0, i, s)))
+        Invariant(Forall(int, lambda k:
+            not (((0) <= (k)) and ((k) < (len(s)))) or (((s)[k]) == ((s)[((len(s)) - (1)) - (k)]))))
         # invariants-end
 
         # assert-start
-        Assert((psum(0, (d_0_i_) + (1), s)) == ((psum(0, d_0_i_, s) + (s)[d_0_i_])))
+        Assert((psum(0, (i) + (1), s)) == ((psum(0, i, s) + (s)[i])))
         # assert-end
-        d_3_total_ = (d_3_total_) + ((s)[d_0_i_])
-        d_0_i_ = (d_0_i_) + (1)
-    return (d_3_total_) <= (w)
+        total = (total) + ((s)[i])
+        i = (i) + (1)
+    return (total) <= (w)
     # impl-end
 
 @Pure
@@ -56,8 +56,8 @@ def is__palindrome__pred(s : List[int]) -> bool :
     # pre-conditions-end
 
     # pure-start
-    return Forall(int, lambda d_4_k_:
-        not (((0) <= (d_4_k_)) and ((d_4_k_) < (len(s)))) or (((s)[d_4_k_]) == ((s)[((len(s)) - (1)) - (d_4_k_)])))
+    return Forall(int, lambda k:
+        not (((0) <= (k)) and ((k) < (len(s)))) or (((s)[k]) == ((s)[((len(s)) - (1)) - (k)])))
     # pure-end
 
 @Pure

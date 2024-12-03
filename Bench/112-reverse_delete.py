@@ -8,8 +8,8 @@ def InArray(a : List[int], x : int) -> bool :
     # pre-conditions-end
 
     # pure-start
-    return Exists(int, lambda d_0_i_:
-        ((((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))) and ((a)[d_0_i_]) == (x))))
+    return Exists(int, lambda i:
+        ((((0) <= (i)) and ((i) < (len((a)))) and ((a)[i]) == (x))))
     # pure-end
 
 @Pure 
@@ -19,8 +19,8 @@ def NotInArray(a : List[int], x : int) -> bool :
     # pre-conditions-end
 
     # pure-start
-    return Forall(int, lambda d_0_i_:
-        (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len((a)))), ((a)[d_0_i_]) != (x))))
+    return Forall(int, lambda i:
+        (Implies(((0) <= (i)) and ((i) < (len((a)))), ((a)[i]) != (x))))
     # pure-end
 
 @Pure 
@@ -44,33 +44,33 @@ def reverse__delete(s : List[int], chars : List[int]) -> Tuple[List[int], bool]:
     Ensures(Acc(list_pred(s)))
     Ensures(Acc(list_pred(chars)))
     Ensures((Result()[1]) == (is__palindrome__pred(Result()[0])))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(Result()[0])))) or (NotInArray(chars, (Result()[0])[d_0_i_]))))
-    Ensures(Forall(int, lambda d_1_i_:
-        not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(Result()[0])))) or (InArray(s, (Result()[0])[d_1_i_]))))
-    Ensures(Forall(int, lambda d_6_j_:
-        not ((((0) <= (d_6_j_)) and ((d_6_j_) < (len(s))))) or (implArrays(chars, Result()[0], (s)[d_6_j_]))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result()[0])))) or (NotInArray(chars, (Result()[0])[i]))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result()[0])))) or (InArray(s, (Result()[0])[i]))))
+    Ensures(Forall(int, lambda j:
+        not ((((0) <= (j)) and ((j) < (len(s))))) or (implArrays(chars, Result()[0], (s)[j]))))
     # post-conditions-end
 
     # impl-start
     res : List[int] = []
-    d_3_i_ : int = 0
-    while (d_3_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
         Invariant(Acc(list_pred(s)))
         Invariant(Acc(list_pred(chars)))
-        Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= (len(s))))
-        Invariant(Forall(int, lambda d_4_i_:
-            (not (((0) <= (d_4_i_)) and ((d_4_i_) < (len(res)))) or (NotInArray(chars, (res)[d_4_i_])), [[]])))
-        Invariant(Forall(int, lambda d_5_i_:
-            (not (((0) <= (d_5_i_)) and ((d_5_i_) < (len(res)))) or (InArray(s, res[d_5_i_])), [[InArray(s, res[d_5_i_])]])))
-        Invariant(Forall(int, lambda d_6_j_:
-            (not ((((0) <= (d_6_j_)) and ((d_6_j_) < (d_3_i_)))) or (implArrays(chars, res, (s)[d_6_j_])), [[InArray(res, (s)[d_6_j_])]])))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant(Forall(int, lambda i:
+            (not (((0) <= (i)) and ((i) < (len(res)))) or (NotInArray(chars, (res)[i])), [[]])))
+        Invariant(Forall(int, lambda i:
+            (not (((0) <= (i)) and ((i) < (len(res)))) or (InArray(s, res[i])), [[InArray(s, res[i])]])))
+        Invariant(Forall(int, lambda j:
+            (not ((((0) <= (j)) and ((j) < (i)))) or (implArrays(chars, res, (s)[j])), [[InArray(res, (s)[j])]])))
         # invariants-end
-        if NotInArray(chars, (s)[d_3_i_]):
-            res = (res) + [(s)[d_3_i_]]
-        d_3_i_ = (d_3_i_) + (1)
+        if NotInArray(chars, (s)[i]):
+            res = (res) + [(s)[i]]
+        i = (i) + (1)
     is__palindrome : bool = is__palindrome__fun(res)
     return (res, is__palindrome)
     # impl-end
@@ -81,24 +81,24 @@ def is__palindrome__fun(text : List[int]) -> bool:
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(text), 1/2))
-    Ensures((Result()) == (Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(text)))) or (((text)[d_0_i_]) == ((text)[((len(text)) - (d_0_i_)) - (1)])))))
+    Ensures((Result()) == (Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(text)))) or (((text)[i]) == ((text)[((len(text)) - (i)) - (1)])))))
     Ensures(Result() == is__palindrome__pred(text))
     # post-conditions-end
 
     # impl-start
     result : bool = True
-    d_1_i_ : int = 0
-    while (d_1_i_) < ((len(text) // 2)):
+    i : int = 0
+    while (i) < ((len(text) // 2)):
         # invariant-start
         Invariant(Acc(list_pred(text), 1/2))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= ((len(text) // 2))))
-        Invariant((result) == (Forall(int, lambda d_2_i1_:
-            (not (((d_2_i1_) >= (0)) and ((d_2_i1_) < (d_1_i_))) or (((text)[d_2_i1_]) == ((text)[((len(text)) - (d_2_i1_)) - (1)])), [[]]))))
+        Invariant(((0) <= (i)) and ((i) <= ((len(text) // 2))))
+        Invariant((result) == (Forall(int, lambda i1:
+            (not (((i1) >= (0)) and ((i1) < (i))) or (((text)[i1]) == ((text)[((len(text)) - (i1)) - (1)])), [[]]))))
         # invariant-end
-        if ((text)[d_1_i_]) != ((text)[((len(text)) - (d_1_i_)) - (1)]):
+        if ((text)[i]) != ((text)[((len(text)) - (i)) - (1)]):
             result = False
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return result
     # impl-end
 
@@ -109,6 +109,6 @@ def is__palindrome__pred(s : List[int]) -> bool :
     # pre-conditions-end
 
     # pure-start
-    return Forall(int, lambda d_10_k_:
-        (not (((0) <= (d_10_k_)) and ((d_10_k_) < (len(s)))) or (((s)[d_10_k_]) == ((s)[((len(s)) - (1)) - (d_10_k_)]))))
+    return Forall(int, lambda k:
+        (not (((0) <= (k)) and ((k) < (len(s)))) or (((s)[k]) == ((s)[((len(s)) - (1)) - (k)]))))
     # pure-end

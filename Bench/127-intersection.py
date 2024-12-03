@@ -5,8 +5,8 @@ from nagini_contracts.contracts import *
 @Pure
 def IsPrime(n : int) -> bool :
     # pure-start
-    return ((n) > (1)) and (Forall(int, lambda d_0_k_:
-        not (((2) <= (d_0_k_)) and ((d_0_k_) < (n))) or (((n % d_0_k_)) != (0))))
+    return ((n) > (1)) and (Forall(int, lambda k:
+        not (((2) <= (k)) and ((k) < (n))) or (((n % k)) != (0))))
     # pure-end
 
 #use-as-unpure
@@ -39,11 +39,11 @@ def Intersection(start1 : int, end1 : int, start2 : int, end2 : int) -> str:
     # post-conditions-end
 
     # impl-start
-    d_1_intersectionStart_ : int = max(start1, start2)
-    d_2_intersectionEnd_ : int = min(end1, end2)
-    if (d_1_intersectionStart_) <= (d_2_intersectionEnd_):
-        d_3_length_ : int = ((d_2_intersectionEnd_) - (d_1_intersectionStart_)) + (1)
-        if IsPrime(d_3_length_):
+    intersectionStart : int = max(start1, start2)
+    intersectionEnd : int = min(end1, end2)
+    if (intersectionStart) <= (intersectionEnd):
+        length : int = ((intersectionEnd) - (intersectionStart)) + (1)
+        if IsPrime(length):
             return "YES"
     return "NO"
     # impl-end

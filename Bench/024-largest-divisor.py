@@ -8,8 +8,8 @@ def largest__divisor(n : int) -> int:
     # post-conditions-start
     Ensures(((1) <= (Result())) and ((Result()) < (n)))
     Ensures(((n % Result())) == (0))
-    Ensures(Forall(int, lambda d_0_k_:
-        not (((Result()) < (d_0_k_)) and ((d_0_k_) < (n))) or (((n % d_0_k_)) != (0))))
+    Ensures(Forall(int, lambda k:
+        not (((Result()) < (k)) and ((k) < (n))) or (((n % k)) != (0))))
     # post-conditions-end
 
     # impl-start
@@ -17,8 +17,8 @@ def largest__divisor(n : int) -> int:
     while (d) >= (1):
         # invariants-start
         Invariant(((1) <= (d)) and ((d) < (n)))
-        Invariant(Forall(int, lambda d_1_k_:
-            not (((d) < (d_1_k_)) and ((d_1_k_) < (n))) or (((n % d_1_k_)) != (0))))
+        Invariant(Forall(int, lambda k:
+            not (((d) < (k)) and ((k) < (n))) or (((n % k)) != (0))))
         # invariants-end
         if ((n % d)) == (0):
             d = d

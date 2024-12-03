@@ -18,20 +18,20 @@ def CalBal(s : List[int], i : int, j : int, acc : int) -> int:
 def checkFixed(s1 : List[int], s2 : List[int]) -> bool:
     # pre-conditions-start
     Requires(Acc(list_pred(s1)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s1)))) or ((((s1)[d_0_i_]) == (0)) or (((s1)[d_0_i_]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s1)))) or ((((s1)[i]) == (0)) or (((s1)[i]) == (1)))))
     Requires(Acc(list_pred(s2)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s2)))) or ((((s2)[d_0_i_]) == (0)) or (((s2)[d_0_i_]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s2)))) or ((((s2)[i]) == (0)) or (((s2)[i]) == (1)))))
     # pre-conditions-end
 
     # post-conditions-start
     Ensures(Acc(list_pred(s1)))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s1)))) or ((((s1)[d_0_i_]) == (0)) or (((s1)[d_0_i_]) == (1)))))
+    Ensures(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s1)))) or ((((s1)[i]) == (0)) or (((s1)[i]) == (1)))))
     Ensures(Acc(list_pred(s2)))
-    Ensures(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s2)))) or ((((s2)[d_0_i_]) == (0)) or (((s2)[d_0_i_]) == (1)))))
+    Ensures(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(s2)))) or ((((s2)[i]) == (0)) or (((s2)[i]) == (1)))))
     
     Ensures(Implies(Result(), Forall(int, lambda x: (Implies(x >= 0 and x <= len(s1), CalBal(s1, 0, x, 0) >= 0)))))
     Ensures(Implies(Result(), Forall(int, lambda x: (Implies(x >= 0 and x <= len(s2), CalBal(s1, 0, len(s1), 0) + CalBal(s2, 0, x, 0) >= 0)))))
@@ -48,8 +48,8 @@ def checkFixed(s1 : List[int], s2 : List[int]) -> bool:
         # invariants-start
         Invariant(Acc(list_pred(s1), 1/2))
         Invariant(0 <= i and i <= len(s1))
-        Invariant(Forall(int, lambda d_0_i_:
-            not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s1)))) or ((((s1)[d_0_i_]) == (0)) or (((s1)[d_0_i_]) == (1)))))
+        Invariant(Forall(int, lambda i:
+            not (((i) >= (0)) and ((i) < (len(s1)))) or ((((s1)[i]) == (0)) or (((s1)[i]) == (1)))))
         Invariant(Forall(int, lambda x : (Implies(x >= 0 and x < len(s1), CalBal(s1, 0, x + 1, 0) == CalBal(s1, 0, x, 0) + (1 if s1[x] == 0 else -1)), [[CalBal(s1, 0, x + 1, 0)]])))
         Invariant(bal == CalBal(s1, 0, i, 0))
         Invariant(bal >= 0)
@@ -77,8 +77,8 @@ def checkFixed(s1 : List[int], s2 : List[int]) -> bool:
         Invariant(Acc(list_pred(s1), 1/2))
         Invariant(Acc(list_pred(s2), 1/2))
         Invariant(0 <= i and i <= len(s2))
-        Invariant(Forall(int, lambda d_0_i_:
-            not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(s2)))) or ((((s2)[d_0_i_]) == (0)) or (((s2)[d_0_i_]) == (1)))))
+        Invariant(Forall(int, lambda i:
+            not (((i) >= (0)) and ((i) < (len(s2)))) or ((((s2)[i]) == (0)) or (((s2)[i]) == (1)))))
         Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < len(s1), CalBal(s1, 0, x, 0) >= 0), [[CalBal(s1, 0, x, 0) >= 0]])))
         Invariant(Forall(int, lambda x : (Implies(x >= 0 and x < len(s2), CalBal(s2, 0, x + 1, 0) == CalBal(s2, 0, x, 0) + (1 if s2[x] == 0 else -1)), [[CalBal(s2, 0, x + 1, 0)]])))
         Invariant(bal == CalBal(s1, 0, len(s1), 0) + CalBal(s2, 0, i, 0))

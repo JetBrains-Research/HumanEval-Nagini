@@ -26,20 +26,20 @@ def freq(s : List[int], x : int) -> int:
 
     # impl-start
     count : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(s))))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
         Invariant(Forall(int, lambda y : (Implies(y >= 0 and y < len(s), freq_req(0, y + 1, s, x) == freq_req(0, y, s, x) + (s[y] == x)), [[freq_req(0, y + 1, s, x)]])))
-        Invariant(count == freq_req(0, d_1_i_, s, x))
+        Invariant(count == freq_req(0, i, s, x))
         # invariants-end
         # assert-start
-        Assert(freq_req(0, d_1_i_ + 1, s, x) == freq_req(0, d_1_i_, s, x) + (s[d_1_i_] == x))
+        Assert(freq_req(0, i + 1, s, x) == freq_req(0, i, s, x) + (s[i] == x))
         # assert-end
-        if ((s)[d_1_i_]) == (x):
+        if ((s)[i]) == (x):
             count = (count) + (1)
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return count
     # impl-end
 

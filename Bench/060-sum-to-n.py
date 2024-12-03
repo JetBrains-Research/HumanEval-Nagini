@@ -24,13 +24,13 @@ def sum__squares(n : int) -> int:
 
     # impl-start
     r : int = 0
-    d_2_k_ : int = 0
-    while (d_2_k_) < (n):
+    k : int = 0
+    while (k) < (n):
         # invariants-start
-        Invariant(((0) <= (d_2_k_)) and ((d_2_k_) <= (n)))
-        Invariant((r) == (psum(0, d_2_k_ - 1)))
+        Invariant(((0) <= (k)) and ((k) <= (n)))
+        Invariant((r) == (psum(0, k - 1)))
         # invariants-end
-        r = (r) + ((d_2_k_) + (1))
-        d_2_k_ = (d_2_k_) + (1)
+        r = (r) + ((k) + (1))
+        k = (k) + (1)
     return r
     # impl-end

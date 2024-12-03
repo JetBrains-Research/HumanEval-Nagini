@@ -38,16 +38,16 @@ def sum__squares(lst : List[int]) -> int:
 
     # impl-start
     r : int = 0
-    d_2_k_ : int = 0
-    while (d_2_k_) < (len(lst)):
+    k : int = 0
+    while (k) < (len(lst)):
         # invariants-start
         Invariant(Acc(list_pred(lst)))
-        Invariant(((0) <= (d_2_k_)) and ((d_2_k_) <= (len(lst))))
-        Invariant(Forall(int, lambda d_2_i_: (not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(lst)))) or 
-            (psum(0, d_2_i_ + 1, lst) == checkVal(lst[d_2_i_]) + psum(0, d_2_i_, lst)), [[psum(0, d_2_i_ + 1, lst)]])))
-        Invariant((r) == (psum(0, d_2_k_, lst)))
+        Invariant(((0) <= (k)) and ((k) <= (len(lst))))
+        Invariant(Forall(int, lambda i: (not (((0) <= (i)) and ((i) < (len(lst)))) or 
+            (psum(0, i + 1, lst) == checkVal(lst[i]) + psum(0, i, lst)), [[psum(0, i + 1, lst)]])))
+        Invariant((r) == (psum(0, k, lst)))
         # invariants-end
-        r = r + checkVal(lst[d_2_k_])
-        d_2_k_ = (d_2_k_) + (1)
+        r = r + checkVal(lst[k])
+        k = (k) + (1)
     return r
     # impl-end

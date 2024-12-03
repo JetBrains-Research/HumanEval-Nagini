@@ -7,46 +7,46 @@ def pairs__sum__to__zero(l : List[int]) -> bool:
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(l)))
-    Ensures(not (Result()) or (Exists(int, lambda d_0_i_:
-        Exists(int, lambda d_1_j_:
-            (((((0) <= (d_0_i_)) and ((d_0_i_) < (len(l)))) and (((0) <= (d_1_j_)) and ((d_1_j_) < (len(l))))) and ((d_0_i_) != (d_1_j_))) and ((((l)[d_0_i_]) + ((l)[d_1_j_])) == (0))))))
-    Ensures(not (not(Result())) or (Forall(int, lambda d_2_i_:
-        Forall(int, lambda d_3_j_:
-            (not (((((0) <= (d_2_i_)) and ((d_2_i_) < (len(l)))) and (((0) <= (d_3_j_)) and ((d_3_j_) < (len(l))))) and ((d_2_i_) != (d_3_j_))) or ((((l)[d_2_i_]) + ((l)[d_3_j_])) != (0)), [[((l)[d_2_i_]) + ((l)[d_3_j_])]])))))
+    Ensures(not (Result()) or (Exists(int, lambda i:
+        Exists(int, lambda j:
+            (((((0) <= (i)) and ((i) < (len(l)))) and (((0) <= (j)) and ((j) < (len(l))))) and ((i) != (j))) and ((((l)[i]) + ((l)[j])) == (0))))))
+    Ensures(not (not(Result())) or (Forall(int, lambda i:
+        Forall(int, lambda j:
+            (not (((((0) <= (i)) and ((i) < (len(l)))) and (((0) <= (j)) and ((j) < (len(l))))) and ((i) != (j))) or ((((l)[i]) + ((l)[j])) != (0)), [[((l)[i]) + ((l)[j])]])))))
     # post-conditions-end
 
     # impl-start
     result : bool = False
-    d_4_i_ : int = 0
-    while (d_4_i_) < (len(l)):
+    i : int = 0
+    while (i) < (len(l)):
         # invariants-start
         Invariant(Acc(list_pred(l)))
-        Invariant(((d_4_i_) >= (0)) and ((d_4_i_) <= (len(l))))
-        Invariant(Implies(not(result), Forall(int, lambda d_5_i1_:
-            Forall(int, lambda d_6_j_:
-                (Implies(((((0) <= (d_5_i1_)) and ((d_5_i1_) < (d_4_i_))) and (((0) <= (d_6_j_)) and ((d_6_j_) < (len(l))))) and ((d_5_i1_) != (d_6_j_)), (((l)[d_5_i1_]) + ((l)[d_6_j_])) != (0)), [[((l)[d_5_i1_]) + ((l)[d_6_j_])]])))))
-        Invariant(not (result) or (Exists(int, lambda d_7_i1_:
-            Exists(int, lambda d_8_j_:
-                (((((0) <= (d_7_i1_)) and ((d_7_i1_) < (d_4_i_))) and (((0) <= (d_8_j_)) and ((d_8_j_) < (len(l))))) and ((d_7_i1_) != (d_8_j_))) and ((((l)[d_7_i1_]) + ((l)[d_8_j_])) == (0))))))
+        Invariant(((i) >= (0)) and ((i) <= (len(l))))
+        Invariant(Implies(not(result), Forall(int, lambda i1:
+            Forall(int, lambda j:
+                (Implies(((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j)) and ((j) < (len(l))))) and ((i1) != (j)), (((l)[i1]) + ((l)[j])) != (0)), [[((l)[i1]) + ((l)[j])]])))))
+        Invariant(not (result) or (Exists(int, lambda i1:
+            Exists(int, lambda j:
+                (((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j)) and ((j) < (len(l))))) and ((i1) != (j))) and ((((l)[i1]) + ((l)[j])) == (0))))))
         # invariants-end
-        d_9_j_ : int = 0
-        while (d_9_j_) < (len(l)):
+        j : int = 0
+        while (j) < (len(l)):
             # invariants-start
             Invariant(Acc(list_pred(l)))
-            Invariant(((d_4_i_) >= (0)) and ((d_4_i_) < (len(l))))
-            Invariant(((d_9_j_) >= (0)) and ((d_9_j_) <= (len(l))))
-            Invariant(Implies(not(result), Forall(int, lambda d_5_i1_:
-                Forall(int, lambda d_6_j_:
-                    (Implies((((((0) <= (d_5_i1_)) and ((d_5_i1_) < (d_4_i_))) and (((0) <= (d_6_j_)) and ((d_6_j_) < (len(l))))) or (d_5_i1_ == d_4_i_ and ((0) <= (d_6_j_)) and ((d_6_j_) < (d_9_j_)))) and ((d_5_i1_) != (d_6_j_)), (((l)[d_5_i1_]) + ((l)[d_6_j_])) != (0)), [[((l)[d_5_i1_]) + ((l)[d_6_j_])]])))))
-            Invariant(not (result) or ((Exists(int, lambda d_13_i1_:
-                Exists(int, lambda d_14_j1_:
-                    (((((0) <= (d_13_i1_)) and ((d_13_i1_) < (d_4_i_))) and (((0) <= (d_14_j1_)) and ((d_14_j1_) < (len(l))))) and ((d_13_i1_) != (d_14_j1_))) and ((((l)[d_13_i1_]) + ((l)[d_14_j1_])) == (0)))))
-             or (Exists(int, lambda d_15_j1_:
-                ((((0) <= (d_15_j1_)) and ((d_15_j1_) < (d_9_j_))) and ((d_4_i_) != (d_15_j1_))) and ((((l)[d_4_i_]) + ((l)[d_15_j1_])) == (0))))))
+            Invariant(((i) >= (0)) and ((i) < (len(l))))
+            Invariant(((j) >= (0)) and ((j) <= (len(l))))
+            Invariant(Implies(not(result), Forall(int, lambda i1:
+                Forall(int, lambda j1:
+                    (Implies((((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j1)) and ((j1) < (len(l))))) or (i1 == i and ((0) <= (j1)) and ((j1) < (j)))) and ((i1) != (j1)), (((l)[i1]) + ((l)[j1])) != (0)), [[((l)[i1]) + ((l)[j1])]])))))
+            Invariant(not (result) or ((Exists(int, lambda i1:
+                Exists(int, lambda j1:
+                    (((((0) <= (i1)) and ((i1) < (i))) and (((0) <= (j1)) and ((j1) < (len(l))))) and ((i1) != (j1))) and ((((l)[i1]) + ((l)[j1])) == (0)))))
+             or (Exists(int, lambda j1:
+                ((((0) <= (j1)) and ((j1) < (j))) and ((i) != (j1))) and ((((l)[i]) + ((l)[j1])) == (0))))))
             # invariants-end
-            if ((d_4_i_) != (d_9_j_)) and ((((l)[d_4_i_]) + ((l)[d_9_j_])) == (0)):
+            if ((i) != (j)) and ((((l)[i]) + ((l)[j])) == (0)):
                 result = True
-            d_9_j_ = (d_9_j_) + (1)
-        d_4_i_ = (d_4_i_) + (1)
+            j = (j) + (1)
+        i = (i) + (1)
     return result
     # impl-end

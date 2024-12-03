@@ -23,84 +23,84 @@ def find__closest__elements(s : List[int]) -> Tuple[int, int]:
     # post-conditions-start
     Ensures(Acc(list_pred(s)))
     Ensures(len(s) >= 2)
-    Ensures(Exists(int, lambda d_0_a_:
-        Exists(int, lambda d_1_b_:
-            ((0 <= d_0_a_ and d_0_a_ < d_1_b_ and d_1_b_ < len(s)) and ((Result()[0]) == ((s)[d_0_a_])) and (Result()[1]) == ((s)[d_1_b_])))))
-    Ensures(Forall(int, lambda d_2_a_:
-        Forall(int, lambda d_3_b_:
-            Implies((0 <= d_2_a_ and (d_2_a_) < (len(s)) and 0 <= d_3_b_ and d_3_b_ < len(s)) and (d_2_a_ != d_3_b_), (dist(Result()[0], Result()[1])) <= (dist((s)[d_2_a_], (s)[d_3_b_]))))))
+    Ensures(Exists(int, lambda a:
+        Exists(int, lambda b:
+            ((0 <= a and a < b and b < len(s)) and ((Result()[0]) == ((s)[a])) and (Result()[1]) == ((s)[b])))))
+    Ensures(Forall(int, lambda a:
+        Forall(int, lambda b:
+            Implies((0 <= a and (a) < (len(s)) and 0 <= b and b < len(s)) and (a != b), (dist(Result()[0], Result()[1])) <= (dist((s)[a], (s)[b]))))))
     # post-conditions-end
 
     # impl-start
     l : int = (s)[0]
     h : int = (s)[1]
-    d_4_d_ : int = dist(l, h)
-    d_5_i_ : int = 0
+    d : int = dist(l, h)
+    i : int = 0
     # assert-start
-    Assert(Exists(int, lambda d_6_a_:
-        Exists(int, lambda d_7_b_:
-            ((0 <= d_6_a_ and (d_6_a_) < (d_7_b_) and d_7_b_ < len(s))) and ((l) == ((s)[d_6_a_])) and ((h) == ((s)[d_7_b_])))))
+    Assert(Exists(int, lambda a:
+        Exists(int, lambda b:
+            ((0 <= a and (a) < (b) and b < len(s))) and ((l) == ((s)[a])) and ((h) == ((s)[b])))))
     # assert-end
-    while (d_5_i_) < (len(s)):
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_5_i_)) and ((d_5_i_) <= (len(s))))
-        Invariant((d_4_d_) == (dist(l, h)))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant((d) == (dist(l, h)))
         Invariant((len(s)) >= (2))
-        Invariant(Exists(int, lambda d_6_a_:
-            Exists(int, lambda d_7_b_:
-                ((0 <= d_6_a_ and d_6_a_ < d_7_b_ and d_7_b_ < len(s) and ((l) == ((s)[d_6_a_]))) and ((h) == ((s)[d_7_b_]))))))
+        Invariant(Exists(int, lambda a:
+            Exists(int, lambda b:
+                ((0 <= a and a < b and b < len(s) and ((l) == ((s)[a]))) and ((h) == ((s)[b]))))))
         Invariant(Forall(int, lambda x: 
             Forall(int, lambda y:
                 (Implies((0 <= x and x < len(s) and 0 <= y and y < len(s)), dist(s[x], s[y]) == dist(s[y], s[x])), [[dist(s[x], s[y]) == dist(s[y], s[x])]]))))
-        Invariant(Forall(int, lambda d_8_a_:
-            Forall(int, lambda d_9_b_:
-                (Implies((0 <= d_8_a_ and (d_8_a_) < (d_5_i_) and 0 <= d_9_b_ and d_9_b_ < len(s)) and (d_8_a_ != d_9_b_), (dist(l, h)) <= (dist((s)[d_8_a_], (s)[d_9_b_]))), [[dist((s)[d_8_a_], (s)[d_9_b_])]]))))
+        Invariant(Forall(int, lambda a:
+            Forall(int, lambda b:
+                (Implies((0 <= a and (a) < (i) and 0 <= b and b < len(s)) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
         # invariants-end
-        d_10_j_ : int = (d_5_i_) + (1)
+        j : int = (i) + (1)
         # assert-start
-        Assert(Forall(int, lambda d_8_a_:
-            Forall(int, lambda d_9_b_:
-                (Implies((0 <= d_8_a_ and (d_8_a_) < (d_5_i_) and 0 <= d_9_b_ and d_9_b_ < len(s)) and (d_8_a_ != d_9_b_), (dist(l, h)) <= (dist((s)[d_8_a_], (s)[d_9_b_]))), [[dist((s)[d_8_a_], (s)[d_9_b_])]]))))
-        Assert(Forall(int, lambda x: (Implies(x >= 0 and x < d_5_i_, dist(l, h) <= dist(s[x], s[d_5_i_])), [[dist(s[x], s[d_5_i_])]])))
+        Assert(Forall(int, lambda a:
+            Forall(int, lambda b:
+                (Implies((0 <= a and (a) < (i) and 0 <= b and b < len(s)) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
+        Assert(Forall(int, lambda x: (Implies(x >= 0 and x < i, dist(l, h) <= dist(s[x], s[i])), [[dist(s[x], s[i])]])))
         # assert-end
-        while (d_10_j_) < (len(s)):
+        while (j) < (len(s)):
             # invariants-start
             Invariant(Acc(list_pred(s)))
-            Invariant(((0) <= (d_5_i_)) and ((d_5_i_) < (len(s))))
-            Invariant(((d_5_i_) < (d_10_j_)) and ((d_10_j_) <= (len(s))))
-            Invariant((d_4_d_) == (dist(l, h)))
+            Invariant(((0) <= (i)) and ((i) < (len(s))))
+            Invariant(((i) < (j)) and ((j) <= (len(s))))
+            Invariant((d) == (dist(l, h)))
             Invariant((len(s)) >= (2))
-            Invariant(Exists(int, lambda d_11_a_:
-                Exists(int, lambda d_12_b_:
-                    ((((0 <= d_11_a_ and d_11_a_ < d_12_b_ and d_12_b_ < len(s)) ) and ((l) == ((s)[d_11_a_]))) and ((h) == ((s)[d_12_b_]))))))
+            Invariant(Exists(int, lambda a:
+                Exists(int, lambda b:
+                    ((((0 <= a and a < b and b < len(s)) ) and ((l) == ((s)[a]))) and ((h) == ((s)[b]))))))
             Invariant(Forall(int, lambda x: 
                 Forall(int, lambda y:
                     (Implies((0 <= x and x < len(s) and 0 <= y and y < len(s)), dist(s[x], s[y]) == dist(s[y], s[x])), [[dist(s[x], s[y]) == dist(s[y], s[x])]]))))
-            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < d_5_i_, dist(s[d_5_i_], s[x]) == dist(s[x], s[d_5_i_])), [[dist(s[d_5_i_], s[x])]])))
-            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < d_5_i_, Implies(dist(l, h) <= dist(s[x], s[d_5_i_]), dist(l, h) <= dist(s[d_5_i_], s[x]))), [[dist(s[d_5_i_], s[x])]])))
-            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < d_5_i_, dist(l, h) <= dist(s[x], s[d_5_i_])), [[dist(s[x], s[d_5_i_])]])))
-            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < d_5_i_, dist(l, h) <= dist(s[d_5_i_], s[x])), [[dist(s[d_5_i_], s[x])]])))
-            Invariant(Forall(int, lambda d_13_a_:
-                Forall(int, lambda d_14_b_:
-                    (Implies((((d_13_a_ == (d_5_i_) and d_5_i_ < d_14_b_ and d_14_b_ < d_10_j_))) and (d_13_a_ != d_14_b_), (dist(l, h)) <= (dist((s)[d_13_a_], (s)[d_14_b_]))), [[dist((s)[d_13_a_], (s)[d_14_b_])]]))))
-            Invariant(Forall(int, lambda d_13_a_:
-                Forall(int, lambda d_14_b_:
-                    (Implies((((d_13_a_ == (d_5_i_) and 0 <= d_14_b_ and d_14_b_ < d_10_j_))) and (d_13_a_ != d_14_b_), (dist(l, h)) <= (dist((s)[d_13_a_], (s)[d_14_b_]))), [[dist((s)[d_13_a_], (s)[d_14_b_])]]))))
-            Invariant(Forall(int, lambda d_13_a_:
-                Forall(int, lambda d_14_b_:
-                    (Implies(((0 <= d_13_a_ and (d_13_a_) < (d_5_i_) and 0 <= d_14_b_ and d_14_b_ < len(s))) and (d_13_a_ != d_14_b_), (dist(l, h)) <= (dist((s)[d_13_a_], (s)[d_14_b_]))), [[dist((s)[d_13_a_], (s)[d_14_b_])]]))))
+            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < i, dist(s[i], s[x]) == dist(s[x], s[i])), [[dist(s[i], s[x])]])))
+            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < i, Implies(dist(l, h) <= dist(s[x], s[i]), dist(l, h) <= dist(s[i], s[x]))), [[dist(s[i], s[x])]])))
+            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < i, dist(l, h) <= dist(s[x], s[i])), [[dist(s[x], s[i])]])))
+            Invariant(Forall(int, lambda x: (Implies(x >= 0 and x < i, dist(l, h) <= dist(s[i], s[x])), [[dist(s[i], s[x])]])))
+            Invariant(Forall(int, lambda a:
+                Forall(int, lambda b:
+                    (Implies((((a == (i) and i < b and b < j))) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
+            Invariant(Forall(int, lambda a:
+                Forall(int, lambda b:
+                    (Implies((((a == (i) and 0 <= b and b < j))) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
+            Invariant(Forall(int, lambda a:
+                Forall(int, lambda b:
+                    (Implies(((0 <= a and (a) < (i) and 0 <= b and b < len(s))) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
             # invariants-end
-            if d_5_i_ != d_10_j_ and (dist((s)[d_5_i_], (s)[d_10_j_])) <= (d_4_d_):
-                l = (s)[d_5_i_]
-                h = (s)[d_10_j_]
-                d_4_d_ = dist(l, h)
-            d_10_j_ = (d_10_j_) + (1)
+            if i != j and (dist((s)[i], (s)[j])) <= (d):
+                l = (s)[i]
+                h = (s)[j]
+                d = dist(l, h)
+            j = (j) + (1)
         # assert-start
-        Assert(Forall(int, lambda d_8_a_:
-            Forall(int, lambda d_9_b_:
-                (Implies((0 <= d_8_a_ and (d_8_a_) <= (d_5_i_) and 0 <= d_9_b_ and d_9_b_ < len(s)) and (d_8_a_ != d_9_b_), (dist(l, h)) <= (dist((s)[d_8_a_], (s)[d_9_b_]))), [[dist((s)[d_8_a_], (s)[d_9_b_])]]))))
+        Assert(Forall(int, lambda a:
+            Forall(int, lambda b:
+                (Implies((0 <= a and (a) <= (i) and 0 <= b and b < len(s)) and (a != b), (dist(l, h)) <= (dist((s)[a], (s)[b]))), [[dist((s)[a], (s)[b])]]))))
         # assert-end
-        d_5_i_ = (d_5_i_) + (1)
+        i = (i) + (1)
     return (l, h)
     # impl-end

@@ -43,18 +43,18 @@ def special__factorial(n : int) -> int:
 
     # impl-start
     result : int = 1
-    d_2_fact_ : int = 1
-    d_3_i_ : int = 1
-    while (d_3_i_) <= (n):
+    fact : int = 1
+    i : int = 1
+    while (i) <= (n):
         # invariants-start
-        Invariant(((1) <= (d_3_i_)) and ((d_3_i_) <= (n + 1)))
-        Invariant(Forall(int, lambda d_2_i_: (not (((0) <= (d_2_i_)) and ((d_2_i_) <= (n))) or ((factorial(d_2_i_ + 1)) == (factorial(d_2_i_) * (d_2_i_ + 1))), [[factorial(d_2_i_ + 1)]])))
-        Invariant(Forall(int, lambda d_2_i_: (not (((0) <= (d_2_i_)) and ((d_2_i_) <= (n))) or ((special__factorial__rec(d_2_i_ + 1)) == (special__factorial__rec(d_2_i_) * factorial(d_2_i_ + 1))), [[special__factorial__rec(d_2_i_ + 1)]])))
-        Invariant((result) == (special__factorial__rec(d_3_i_ - 1)))
-        Invariant((d_2_fact_) == (factorial(d_3_i_ - 1)))
+        Invariant(((1) <= (i)) and ((i) <= (n + 1)))
+        Invariant(Forall(int, lambda i: (not (((0) <= (i)) and ((i) <= (n))) or ((factorial(i + 1)) == (factorial(i) * (i + 1))), [[factorial(i + 1)]])))
+        Invariant(Forall(int, lambda i: (not (((0) <= (i)) and ((i) <= (n))) or ((special__factorial__rec(i + 1)) == (special__factorial__rec(i) * factorial(i + 1))), [[special__factorial__rec(i + 1)]])))
+        Invariant((result) == (special__factorial__rec(i - 1)))
+        Invariant((fact) == (factorial(i - 1)))
         # invariants-end
-        d_2_fact_ = (d_2_fact_) * (d_3_i_)
-        result = (result) * (d_2_fact_)
-        d_3_i_ = (d_3_i_) + (1)
+        fact = (fact) * (i)
+        result = (result) * (fact)
+        i = (i) + (1)
     return result
     # impl-end

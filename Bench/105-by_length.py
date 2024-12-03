@@ -21,128 +21,128 @@ def SortReverseAndName(arr : List[int]) -> List[str]:
     Ensures(Acc(list_pred(arr)))
     Ensures(Acc(list_pred(Result())))
     Ensures((len(Result())) <= (len(arr)))
-    Ensures(Forall(int, lambda d_0_i_:
-        Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(Result()))), 
-            WithinRangeString(Result()[d_0_i_]))))
+    Ensures(Forall(int, lambda i:
+        Implies(((0) <= (i)) and ((i) < (len(Result()))), 
+            WithinRangeString(Result()[i]))))
     # post-conditions-end
 
     # impl-start
-    d_1_validNumbers_ : List[int] = []
-    d_2_i_ : int = int(0)
-    while (d_2_i_) < (len(arr)):
+    validNumbers : List[int] = []
+    i : int = int(0)
+    while (i) < (len(arr)):
         # invariants-start
-        Invariant(Acc(list_pred(d_1_validNumbers_)))
+        Invariant(Acc(list_pred(validNumbers)))
         Invariant(Acc(list_pred(arr)))
-        Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(arr))))
-        Invariant((len(d_1_validNumbers_)) <= (d_2_i_))
-        Invariant(Forall(int, lambda d_3_j_:
-            (Implies(((0) <= (d_3_j_)) and ((d_3_j_) < (len(d_1_validNumbers_))), WithinRange(d_1_validNumbers_[d_3_j_])), 
+        Invariant(((0) <= (i)) and ((i) <= (len(arr))))
+        Invariant((len(validNumbers)) <= (i))
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (len(validNumbers))), WithinRange(validNumbers[j])), 
                 [[]])))
         # invariants-end
-        if WithinRange((arr)[d_2_i_]):
-            d_1_validNumbers_ = (d_1_validNumbers_) + [(arr)[d_2_i_]]
-        d_2_i_ = (d_2_i_) + (1)
+        if WithinRange((arr)[i]):
+            validNumbers = (validNumbers) + [(arr)[i]]
+        i = (i) + (1)
     # assert-start
-    Assert(len(d_1_validNumbers_) <= len(arr))
+    Assert(len(validNumbers) <= len(arr))
     # assert-end
-    d_1_validNumbers_ = BubbleSort(d_1_validNumbers_)
+    validNumbers = BubbleSort(validNumbers)
 
-    d_1_validNumbers_ = reverse(d_1_validNumbers_)
-    d_2_i_ = 0
+    validNumbers = reverse(validNumbers)
+    i = 0
     result : List[str] = []
-    while (d_2_i_) < (len(d_1_validNumbers_)):
+    while (i) < (len(validNumbers)):
         # invariants-start
-        Invariant(Acc(list_pred(d_1_validNumbers_)))
+        Invariant(Acc(list_pred(validNumbers)))
         Invariant(Acc(list_pred(result)))
         Invariant(Acc(list_pred(arr)))
-        Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(d_1_validNumbers_))))
-        Invariant(len(d_1_validNumbers_) <= len(arr))
-        Invariant(d_2_i_ <= len(arr))
-        Invariant((len(result)) == (d_2_i_))
-        Invariant(Forall(int, lambda d_9_j_:
-            (Implies(((0) <= (d_9_j_)) and ((d_9_j_) < (len(d_1_validNumbers_))), ((1) <= ((d_1_validNumbers_)[d_9_j_])) and (((d_1_validNumbers_)[d_9_j_]) <= (9))), 
-                [[(d_1_validNumbers_)[d_9_j_]]])))
-        Invariant(Forall(int, lambda d_0_i_:
-            (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(result))), 
-                WithinRangeString(result[d_0_i_])), 
+        Invariant(((0) <= (i)) and ((i) <= (len(validNumbers))))
+        Invariant(len(validNumbers) <= len(arr))
+        Invariant(i <= len(arr))
+        Invariant((len(result)) == (i))
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (len(validNumbers))), ((1) <= ((validNumbers)[j])) and (((validNumbers)[j]) <= (9))), 
+                [[(validNumbers)[j]]])))
+        Invariant(Forall(int, lambda i:
+            (Implies(((0) <= (i)) and ((i) < (len(result))), 
+                WithinRangeString(result[i])), 
                 [[]])))
         # invariants-end
-        result = (result) + [NumberToName((d_1_validNumbers_)[d_2_i_])]
-        d_2_i_ = (d_2_i_) + (1)
+        result = (result) + [NumberToName((validNumbers)[i])]
+        i = (i) + (1)
     return result
     # impl-end
 
 def BubbleSort(a1 : List[int]) -> List[int]:
     # pre-conditions-start
     Requires(Acc(list_pred(a1), 1/2))
-    Requires(Forall(int, lambda d_4_j_:
-        Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(a1))), ((1) <= ((a1)[d_4_j_])) and (((a1)[d_4_j_]) <= (9)))))
+    Requires(Forall(int, lambda j:
+        Implies(((0) <= (j)) and ((j) < (len(a1))), ((1) <= ((a1)[j])) and (((a1)[j]) <= (9)))))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(a1), 1/2))
     Ensures(Acc(list_pred(Result())))
-    Ensures(Forall(int, lambda d_4_j_:
-        Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(Result()))), ((1) <= ((Result())[d_4_j_])) and (((Result())[d_4_j_]) <= (9)))))
+    Ensures(Forall(int, lambda j:
+        Implies(((0) <= (j)) and ((j) < (len(Result()))), ((1) <= ((Result())[j])) and (((Result())[j]) <= (9)))))
     Ensures((len(a1)) == (len(Result())))
-    Ensures(Forall(int, lambda d_0_i_:
-        Forall(int, lambda d_1_j_:
-            Implies((((0) <= (d_0_i_)) and ((d_0_i_) < (d_1_j_))) and ((d_1_j_) < (len((Result())))), ((Result())[d_0_i_]) <= ((Result())[d_1_j_])))))
+    Ensures(Forall(int, lambda i:
+        Forall(int, lambda j:
+            Implies((((0) <= (i)) and ((i) < (j))) and ((j) < (len((Result())))), ((Result())[i]) <= ((Result())[j])))))
     # post-conditions-end
 
     # impl-start
     a : List[int] = list(a1)
-    d_2_i_ : int = (len((a))) - (1)
-    while (d_2_i_) > (0):
+    i : int = (len((a))) - (1)
+    while (i) > (0):
         # invariants-start
         Invariant(Acc(list_pred(a)))
         Invariant(Acc(list_pred(a1), 1/2))
-        Invariant(Forall(int, lambda d_4_j_:
-            (Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(a))), ((1) <= ((a)[d_4_j_])) and (((a)[d_4_j_]) <= (9))), 
-                [[(a)[d_4_j_]]])))    
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (len(a))), ((1) <= ((a)[j])) and (((a)[j]) <= (9))), 
+                [[(a)[j]]])))    
         Invariant((len(a1)) == (len(a)))
-        Invariant(Implies((d_2_i_) < (0), (len((a))) == (0)))
-        Invariant(((-1) <= (d_2_i_)) and ((d_2_i_) < (len((a)))))
-        Invariant(Forall(int, lambda d_3_ii_:
-            (Forall(int, lambda d_4_jj_:
-                (Implies((((d_2_i_) <= (d_3_ii_)) and ((d_3_ii_) < (d_4_jj_))) and ((d_4_jj_) < (len((a)))), ((a)[d_3_ii_]) <= ((a)[d_4_jj_])),
-                    [[(a)[d_4_jj_]]])),
-                [[(a)[d_3_ii_]]])))
-        Invariant(Forall(int, lambda d_5_k_:
-            (Forall(int, lambda d_6_k_k_:
-                (Implies(((((0) <= (d_5_k_)) and ((d_5_k_) <= (d_2_i_))) and ((d_2_i_) < (d_6_k_k_)) and (d_6_k_k_) < (len((a)))), ((a)[d_5_k_]) <= ((a)[d_6_k_k_])),
-                    [[(a)[d_6_k_k_]]])),
-                [[(a)[d_5_k_]]])))
+        Invariant(Implies((i) < (0), (len((a))) == (0)))
+        Invariant(((-1) <= (i)) and ((i) < (len((a)))))
+        Invariant(Forall(int, lambda ii:
+            (Forall(int, lambda jj:
+                (Implies((((i) <= (ii)) and ((ii) < (jj))) and ((jj) < (len((a)))), ((a)[ii]) <= ((a)[jj])),
+                    [[(a)[jj]]])),
+                [[(a)[ii]]])))
+        Invariant(Forall(int, lambda k:
+            (Forall(int, lambda k_k:
+                (Implies(((((0) <= (k)) and ((k) <= (i))) and ((i) < (k_k)) and (k_k) < (len((a)))), ((a)[k]) <= ((a)[k_k])),
+                    [[(a)[k_k]]])),
+                [[(a)[k]]])))
         # invariants-end
-        d_7_j_ : int = 0
-        while (d_7_j_) < (d_2_i_):
+        j : int = 0
+        while (j) < (i):
             # invariants-start
             Invariant(Acc(list_pred(a)))
             Invariant(Acc(list_pred(a1), 1/2))
-            Invariant(Forall(int, lambda d_4_j_:
-                (Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(a))), ((1) <= ((a)[d_4_j_])) and (((a)[d_4_j_]) <= (9))), 
-                    [[(a)[d_4_j_]]])))    
+            Invariant(Forall(int, lambda j:
+                (Implies(((0) <= (j)) and ((j) < (len(a))), ((1) <= ((a)[j])) and (((a)[j]) <= (9))), 
+                    [[(a)[j]]])))    
             Invariant((len(a1)) == (len(a)))
-            Invariant((((0) < (d_2_i_)) and ((d_2_i_) < (len((a))))) and (((0) <= (d_7_j_)) and ((d_7_j_) <= (d_2_i_))))
-            Invariant(Forall(int, lambda d_8_ii_:
-                (Forall(int, lambda d_9_jj_:
-                    (Implies((((d_2_i_) <= (d_8_ii_)) and ((d_8_ii_) <= (d_9_jj_))) and ((d_9_jj_) < (len((a)))), ((a)[d_8_ii_]) <= ((a)[d_9_jj_])),
-                        [[(a)[d_9_jj_]]])),
-                    [[(a)[d_8_ii_]]])))
-            Invariant(Forall(int, lambda d_10_k_:
-                (Forall(int, lambda d_11_k_k_:
-                    (Implies(((((0) <= (d_10_k_)) and ((d_10_k_) <= (d_2_i_))) and ((d_2_i_) < (d_11_k_k_))) and ((d_11_k_k_) < (len((a)))), ((a)[d_10_k_]) <= ((a)[d_11_k_k_])),
-                        [[(a)[d_11_k_k_]]])),
-                    [[(a)[d_10_k_]]])))
-            Invariant(Forall(int, lambda d_12_k_:
-                (Implies(((0) <= (d_12_k_)) and ((d_12_k_) <= (d_7_j_)), ((a)[d_12_k_]) <= ((a)[d_7_j_])),
-                    [[(a)[d_12_k_]]])))
+            Invariant((((0) < (i)) and ((i) < (len((a))))) and (((0) <= (j)) and ((j) <= (i))))
+            Invariant(Forall(int, lambda ii:
+                (Forall(int, lambda jj:
+                    (Implies((((i) <= (ii)) and ((ii) <= (jj))) and ((jj) < (len((a)))), ((a)[ii]) <= ((a)[jj])),
+                        [[(a)[jj]]])),
+                    [[(a)[ii]]])))
+            Invariant(Forall(int, lambda k:
+                (Forall(int, lambda k_k:
+                    (Implies(((((0) <= (k)) and ((k) <= (i))) and ((i) < (k_k))) and ((k_k) < (len((a)))), ((a)[k]) <= ((a)[k_k])),
+                        [[(a)[k_k]]])),
+                    [[(a)[k]]])))
+            Invariant(Forall(int, lambda k:
+                (Implies(((0) <= (k)) and ((k) <= (j)), ((a)[k]) <= ((a)[j])),
+                    [[(a)[k]]])))
             # invariants-end
-            if ((a)[d_7_j_]) > ((a)[(d_7_j_) + (1)]):
-                rhs0_ : int = (a)[(d_7_j_) + (1)]
-                (a)[(d_7_j_) + (1)] = (a)[d_7_j_]
-                (a)[d_7_j_] = rhs0_
-            d_7_j_ = (d_7_j_) + (1)
-        d_2_i_ = (d_2_i_) - (1)
+            if ((a)[j]) > ((a)[(j) + (1)]):
+                rhs0_ : int = (a)[(j) + (1)]
+                (a)[(j) + (1)] = (a)[j]
+                (a)[j] = rhs0_
+            j = (j) + (1)
+        i = (i) - (1)
     return a
     # impl-end
 
@@ -150,49 +150,49 @@ def reverse(str : List[int]) -> List[int]:
     # pre-conditions-start
     Requires(Acc(list_pred(str), 1/2))
     Requires(Forall(int, lambda x: Forall(int, lambda y: Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(str))), (str)[x] <= (str)[y]))))
-    Requires(Forall(int, lambda d_4_j_:
-        Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(str))), ((1) <= ((str)[d_4_j_])) and (((str)[d_4_j_]) <= (9))))) 
+    Requires(Forall(int, lambda j:
+        Implies(((0) <= (j)) and ((j) < (len(str))), ((1) <= ((str)[j])) and (((str)[j]) <= (9))))) 
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(str), 1/2))
     Ensures(Acc(list_pred(Result())))
-    Ensures(Forall(int, lambda d_4_j_:
-        Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(str))), ((1) <= ((str)[d_4_j_])) and (((str)[d_4_j_]) <= (9))))) 
+    Ensures(Forall(int, lambda j:
+        Implies(((0) <= (j)) and ((j) < (len(str))), ((1) <= ((str)[j])) and (((str)[j]) <= (9))))) 
     Ensures(Forall(int, lambda x: Forall(int, lambda y: Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(Result()))), (Result())[x] >= (Result())[y]))))
     Ensures(str == Old(str))
     Ensures((len(Result())) == (len(str)))
-    Ensures(Forall(int, lambda d_11_k_:
-        Implies(((0) <= (d_11_k_)) and ((d_11_k_) < (len(str))), ((Result())[d_11_k_]) == ((str)[((len(str)) - (1)) - (d_11_k_)]))))
+    Ensures(Forall(int, lambda k:
+        Implies(((0) <= (k)) and ((k) < (len(str))), ((Result())[k]) == ((str)[((len(str)) - (1)) - (k)]))))
     # post-conditions-end
 
     # impl-start
     rev : List[int] = []
-    d_12_i_ : int = 0
-    while (d_12_i_) < (len(str)):
+    i : int = 0
+    while (i) < (len(str)):
         # invariants-start
         Invariant(Acc(list_pred(str), 1/2))
         Invariant(Acc(list_pred(rev)))
-        Invariant(Forall(int, lambda d_4_j_:
-            (Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(str))), ((1) <= ((str)[d_4_j_])) and (((str)[d_4_j_]) <= (9))), [[str[d_4_j_]]]))) 
-        Invariant(Forall(int, lambda d_4_j_:
-            ( Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (len(rev))), ((1) <= ((rev)[d_4_j_])) and (((rev)[d_4_j_]) <= (9))), [[rev[d_4_j_]]]))) 
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (len(str))), ((1) <= ((str)[j])) and (((str)[j]) <= (9))), [[str[j]]]))) 
+        Invariant(Forall(int, lambda j:
+            ( Implies(((0) <= (j)) and ((j) < (len(rev))), ((1) <= ((rev)[j])) and (((rev)[j]) <= (9))), [[rev[j]]]))) 
         Invariant(Forall(int, lambda x: 
             (Forall(int, lambda y: 
                     (Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(str))), (str)[x] <= (str)[y]), [[str[y]]])), 
                 [[str[x]]])))
-        Invariant(((d_12_i_) >= (0)) and ((d_12_i_) <= (len(str))))
-        Invariant((len(rev)) == (d_12_i_))
-        Invariant(Forall(int, lambda d_13_k_:
-            Implies(((0) <= (d_13_k_)) and ((d_13_k_) < (d_12_i_)), ((rev)[d_13_k_]) == ((str)[(len(str) - (1)) - (d_13_k_)]))))
+        Invariant(((i) >= (0)) and ((i) <= (len(str))))
+        Invariant((len(rev)) == (i))
+        Invariant(Forall(int, lambda k:
+            Implies(((0) <= (k)) and ((k) < (i)), ((rev)[k]) == ((str)[(len(str) - (1)) - (k)]))))
         Invariant(Forall(int, lambda x: 
             Forall(int, lambda y: 
-                (Implies(((0) <= (x)) and ((x) < (len(rev))) and (0 <= y and (y) < (len(str) - d_12_i_)), (str)[y] <= (rev)[x]), [[str[y] <= rev[x]]]))))
+                (Implies(((0) <= (x)) and ((x) < (len(rev))) and (0 <= y and (y) < (len(str) - i)), (str)[y] <= (rev)[x]), [[str[y] <= rev[x]]]))))
         Invariant(Forall(int, lambda x: 
             Forall(int, lambda y:
                 (Implies(((0) <= (x)) and ((x) < (y)) and ((y) < (len(rev))), (rev)[x] >= (rev)[y]), [[rev[x] >= rev[y]]]))))
         # invariants-end 
-        rev = (rev) + [(str)[(len(str) - (d_12_i_)) - (1)]]
-        d_12_i_ = (d_12_i_) + (1)
+        rev = (rev) + [(str)[(len(str) - (i)) - (1)]]
+        i = (i) + (1)
     return rev
     # impl-end
 

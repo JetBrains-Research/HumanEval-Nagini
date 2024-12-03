@@ -64,50 +64,50 @@ def IsValidParentheses1(s : List[int], i : int, depth : int) -> bool :
 def separate__paren__groups(paren__string : List[int]) -> List[List[int]]:
     # pre-conditions-start
     Requires(Acc(list_pred(paren__string)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(paren__string)))) or ((((paren__string)[d_0_i_]) == (0)) or (((paren__string)[d_0_i_]) == (1)))))
-    Requires(Forall(int, lambda d_1_i_:
-        not (((0) <= (d_1_i_)) and ((d_1_i_) <= (len(paren__string)))) or (IsValidParentheses(paren__string, d_1_i_, 0))))
+    Requires(Forall(int, lambda i:
+        not (((i) >= (0)) and ((i) < (len(paren__string)))) or ((((paren__string)[i]) == (0)) or (((paren__string)[i]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) <= (len(paren__string)))) or (IsValidParentheses(paren__string, i, 0))))
     Requires(IsValidParentheses2(paren__string, 0, 0))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(ResultT(List[List[int]]))))
     Ensures(Forall(ResultT(List[List[int]]), lambda x: Acc(list_pred(x), 1/2)))
-    Ensures((Forall(int, lambda d_2_i_:
-        not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(Result())))) or (IsValidParentheses1((Result())[d_2_i_], 0, 0)))))
+    Ensures((Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result())))) or (IsValidParentheses1((Result())[i], 0, 0)))))
     # post-conditions-end
 
     # impl-start
     res : List[List[int]] = []
-    d_3_current__string_ : List[int] = []
-    d_4_current__depth_ : int = int(0)
-    d_5_i_ : int = int(0)
-    while (d_5_i_) < (len(paren__string)):
+    current__string : List[int] = []
+    current__depth : int = int(0)
+    i : int = int(0)
+    while (i) < (len(paren__string)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
-        Invariant(Acc(list_pred(d_3_current__string_)))
+        Invariant(Acc(list_pred(current__string)))
         Invariant(Acc(list_pred(paren__string)))
-        Invariant(Forall(res, lambda d_4_i_: Acc(list_pred(d_4_i_), 1/2)))
-        Invariant(((0) <= (d_5_i_)) and ((d_5_i_) <= (len(paren__string))))
-        Invariant(Forall(int, lambda d_0_i_:
-            not (((d_0_i_) >= (0)) and ((d_0_i_) < (len(paren__string)))) or ((((paren__string)[d_0_i_]) == (0)) or (((paren__string)[d_0_i_]) == (1)))))
-        Invariant(Forall(int, lambda d_1_i_:
-            not (((0) <= (d_1_i_)) and ((d_1_i_) <= (len(paren__string)))) or (IsValidParentheses(paren__string, d_1_i_, 0))))
-        Invariant((Forall(int, lambda d_6_i1_:
-            not (((0) <= (d_6_i1_)) and ((d_6_i1_) < (len(res)))) or (IsValidParentheses1((res)[d_6_i1_], 0, 0)))))
-        Invariant(IsValidParentheses(paren__string, d_5_i_, 0))
+        Invariant(Forall(res, lambda i: Acc(list_pred(i), 1/2)))
+        Invariant(((0) <= (i)) and ((i) <= (len(paren__string))))
+        Invariant(Forall(int, lambda i:
+            not (((i) >= (0)) and ((i) < (len(paren__string)))) or ((((paren__string)[i]) == (0)) or (((paren__string)[i]) == (1)))))
+        Invariant(Forall(int, lambda i:
+            not (((0) <= (i)) and ((i) <= (len(paren__string)))) or (IsValidParentheses(paren__string, i, 0))))
+        Invariant((Forall(int, lambda i1:
+            not (((0) <= (i1)) and ((i1) < (len(res)))) or (IsValidParentheses1((res)[i1], 0, 0)))))
+        Invariant(IsValidParentheses(paren__string, i, 0))
         # invariants-end
-        d_7_c_ = (paren__string)[d_5_i_]
-        if (d_7_c_) == (0):
-            d_4_current__depth_ = (d_4_current__depth_) + (1)
-            d_3_current__string_ = (d_3_current__string_) + [d_7_c_]
-        elif (d_7_c_) == (1):
-            d_4_current__depth_ = (d_4_current__depth_) - (1)
-            d_3_current__string_ = (d_3_current__string_) + [d_7_c_]
-            if (d_4_current__depth_) == (0):
-                res = (res) + [d_3_current__string_]
-                d_3_current__string_ = []
-        d_5_i_ = (d_5_i_) + (1)
+        c = (paren__string)[i]
+        if (c) == (0):
+            current__depth = (current__depth) + (1)
+            current__string = (current__string) + [c]
+        elif (c) == (1):
+            current__depth = (current__depth) - (1)
+            current__string = (current__string) + [c]
+            if (current__depth) == (0):
+                res = (res) + [current__string]
+                current__string = []
+        i = (i) + (1)
     return res
     # impl-end
 
