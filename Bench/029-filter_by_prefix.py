@@ -64,8 +64,8 @@ def filter__by__prefix(xs : List[List[int]], p : List[int]) -> List[int]:
         Invariant(Acc(list_pred(p), 1/2))
         Invariant(((0) <= (i)) and ((i) <= (len(xs))))
         Invariant(Forall(xs, lambda x : Acc(list_pred(x))))
-        Invariant(Forall(filtered, lambda i:
-            (i >= 0 and i < i)))
+        Invariant(Forall(filtered, lambda j:
+            (j >= 0 and j < i)))
         Invariant(Forall(filtered, lambda i:
             (starts__with(xs[i], p, 0), [[starts__with(xs[i], p, 0)]])))
         # invariants-end

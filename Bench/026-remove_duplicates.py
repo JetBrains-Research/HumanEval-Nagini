@@ -30,8 +30,8 @@ def remove__duplicates(a : List[int]) -> List[int]:
         Invariant(Forall(int, lambda i: (Implies(i >= 0 and i < len(a), a_old[i] == a[i]))))
         Invariant(((0) <= (i)) and ((i) <= (len(a))))
         Invariant(len(result) <= i)
-        Invariant(Forall(int, lambda i:
-            (Implies(((0) <= (i)) and ((i) < (i)) and (count__rec(a, a[i], len(a)) == 1), exists_check(result, a[i])), 
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (i)) and (count__rec(a, a[j], len(a)) == 1), exists_check(result, a[j])),
                 [[]])))
         Invariant(Forall(int, lambda i:
             (not (((0) <= (i)) and ((i) < (len(result)))) or (count_check(a, (result)[i])), 
