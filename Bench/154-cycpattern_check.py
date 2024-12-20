@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def IsSubstring(s : List[int], sub : List[int], n : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(Acc(list_pred(sub)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return ((len(s)) >= (len(sub))) and (Exists(int, lambda i:

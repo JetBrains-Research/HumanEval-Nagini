@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def upper__sum__rec(i : int, j : int, s : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:

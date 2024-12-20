@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def IsValidParentheses(s : List[int], i : int, depth : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
     Requires(i >= 0 and i <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == (len(s)):
@@ -23,10 +23,10 @@ def IsValidParentheses(s : List[int], i : int, depth : int) -> bool :
 
 @Pure
 def IsValidParentheses2(s : List[int], i : int, depth : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
     Requires(i >= 0 and i <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == (len(s)):
@@ -43,10 +43,10 @@ def IsValidParentheses2(s : List[int], i : int, depth : int) -> bool :
 
 @Pure
 def IsValidParentheses1(s : List[int], i : int, depth : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
     Requires(i >= 0 and i <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == (len(s)):

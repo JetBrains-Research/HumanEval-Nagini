@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def Sum(a : List[int], s : int, t : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(((0) <= (s)) and ((s) <= (t)) and ((t) <= (len(a))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if s == t:

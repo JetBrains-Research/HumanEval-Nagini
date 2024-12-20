@@ -13,10 +13,10 @@ def abs(x : int) -> int :
 
 @Pure
 def sum__abs(i : int, j : int, s : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(0 <= i and i <= j and j <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:
@@ -27,10 +27,10 @@ def sum__abs(i : int, j : int, s : List[int]) -> int :
     
 @Pure 
 def count_negatives(i : int, j : int, s : List[int]) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(0 <= i and i <= j and j <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:

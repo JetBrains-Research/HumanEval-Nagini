@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def modp__rec(n : int, p : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires((p) > (0))
     Requires((n) >= (0))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (n) == (0):

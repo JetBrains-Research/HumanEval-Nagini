@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def ThreeDistinct(s : List[int], i : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) < (i)) and ((i) < ((len(s)) - (1))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return ((((s)[(i) - (1)]) != ((s)[i])) and (((s)[i]) != ((s)[(i) + (1)]))) and (((s)[(i) - (1)]) != ((s)[(i) + (1)]))
@@ -14,9 +14,9 @@ def ThreeDistinct(s : List[int], i : int) -> bool :
 
 @Pure
 def Happy(s : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return ((len(s)) >= (3)) and (Forall(int, lambda i:

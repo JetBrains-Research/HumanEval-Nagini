@@ -29,12 +29,12 @@ def fizz__buzz(n : int) -> int:
 
 @Pure 
 def fizz_buzz_fun(n : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if n == 0:
@@ -69,12 +69,12 @@ def count7(x : int) -> int:
 
 @Pure
 def count7__r(x : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(x >= 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if x == 0:

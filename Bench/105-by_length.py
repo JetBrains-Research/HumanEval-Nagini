@@ -197,12 +197,12 @@ def reverse(str : List[int]) -> List[int]:
     # impl-end
 
 def NumberToName(n : int) -> str :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 1 and n <= 9)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(WithinRangeString(Result()))
-    # pos-conditions-end
+    # pure-post-conditions-end
 
     # impl-start
     if (n) == (1):

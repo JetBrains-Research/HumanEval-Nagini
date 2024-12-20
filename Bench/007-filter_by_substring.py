@@ -46,10 +46,10 @@ def checkSubstring(s : List[int], sub : List[int]) -> bool:
 
 @Pure 
 def EqArrays(a : List[int], x : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(Acc(list_pred(x)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return len(a) == len(x) and Forall(int, lambda i: Implies(0 <= i and i < len(a), (a)[i] == x[i]))
@@ -57,11 +57,11 @@ def EqArrays(a : List[int], x : List[int]) -> bool :
 
 @Pure 
 def InArray(a : List[List[int]], x : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(Acc(list_pred(x)))
     Requires(Forall(a, lambda s: Acc(list_pred(s))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Exists(int, lambda s:

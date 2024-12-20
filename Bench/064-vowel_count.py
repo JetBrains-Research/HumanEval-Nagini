@@ -35,13 +35,13 @@ def vowel__count(s : List[int]) -> int:
 
 @Pure
 def count_fun(i : int, j : int, s : List[int]) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s))))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures((Result()) >= (0))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if i == j:

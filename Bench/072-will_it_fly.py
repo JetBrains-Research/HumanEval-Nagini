@@ -51,9 +51,9 @@ def will__it__fly(s : List[int], w : int) -> bool:
 
 @Pure
 def is__palindrome__pred(s : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(int, lambda k:
@@ -62,10 +62,10 @@ def is__palindrome__pred(s : List[int]) -> bool :
 
 @Pure
 def psum(i : int, j : int, s : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(0 <= i and i <= j and j <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:

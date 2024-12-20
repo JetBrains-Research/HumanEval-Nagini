@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def NotInArray(a : List[int], x : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(int, lambda i:
@@ -14,10 +14,10 @@ def NotInArray(a : List[int], x : int) -> bool :
 
 @Pure 
 def ExistsBoth(a : List[int], b : List[int], x : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
     Requires(Acc(list_pred(b), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
     
     # pure-start
     return Exists(int, lambda i:

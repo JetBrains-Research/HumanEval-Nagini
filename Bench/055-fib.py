@@ -3,12 +3,12 @@ from nagini_contracts.contracts import *
 
 @Pure
 def fib(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires((n) >= (0))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if (n) == (0):

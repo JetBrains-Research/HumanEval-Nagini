@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def sum__chars__rec(i : int, j : int, lst : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(lst)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(lst))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:

@@ -39,9 +39,9 @@ def parseparengroup(s : List[int]) -> int:
 
 @Pure 
 def get_len(s : List[int]) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return len(s) > 0
@@ -49,9 +49,9 @@ def get_len(s : List[int]) -> bool:
 
 @Pure 
 def contains12(s : List[int]) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(int, lambda i: 

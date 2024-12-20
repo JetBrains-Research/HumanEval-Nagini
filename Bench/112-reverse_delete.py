@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def InArray(a : List[int], x : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Exists(int, lambda i:
@@ -14,9 +14,9 @@ def InArray(a : List[int], x : int) -> bool :
 
 @Pure 
 def NotInArray(a : List[int], x : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(int, lambda i:
@@ -25,10 +25,10 @@ def NotInArray(a : List[int], x : int) -> bool :
 
 @Pure 
 def implArrays(chars : List[int], res : List[int], x : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(chars)))
     Requires(Acc(list_pred(res)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Implies(NotInArray(chars, x), InArray(res, x))
@@ -104,9 +104,9 @@ def is__palindrome__fun(text : List[int]) -> bool:
 
 @Pure
 def is__palindrome__pred(s : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(int, lambda k:

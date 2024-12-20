@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def xor(a : int, b : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Ensures((Result()) == ((0 if (a) == (b) else 1)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     result : int = int(0)

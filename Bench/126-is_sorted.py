@@ -64,12 +64,10 @@ def is__sorted(a : List[int]) -> bool:
 
 @Pure
 def count_set(a : List[int], x : int, i : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
     Requires(((0) <= (i)) and ((i) <= (len(a))))
-    # pre-conditions-end
-    # post-conditions-start
-    # post-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == 0:

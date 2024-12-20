@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def InArray(a : List[int], x : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Exists(int, lambda i:

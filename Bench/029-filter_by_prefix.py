@@ -4,15 +4,15 @@ from nagini_contracts.contracts import *
 
 @Pure
 def starts__with(s : List[int], p : List[int], i : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
     Requires(Acc(list_pred(p), 1/2))
     Requires(i >= 0 and i <= len(p) and i <= len(s))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Implies(len(p) == i and len(s) >= len(p), Result()))
     Ensures(Implies(len(s) < len(p), not Result()))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     return len(s) >= len(p) and Forall(int, lambda x: Implies(x >= i and x < len(p), s[x] == p[x]))
@@ -20,14 +20,14 @@ def starts__with(s : List[int], p : List[int], i : int) -> bool :
 
 @Pure
 def starts__with__fun(s : List[int], p : List[int], i : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s), 1/2))
     Requires(Acc(list_pred(p), 1/2))
     Requires(0 <= i and i <= len(p) and i <= len(s))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() == starts__with(s, p, i))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if (len(p) == i):

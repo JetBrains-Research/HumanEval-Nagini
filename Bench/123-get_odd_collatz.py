@@ -3,14 +3,14 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def iterate__to__odd(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n % 2 == 0)
     Requires(n >= 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() % 2 == 1)
     Ensures(Result() > 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if (n // 2) % 2 == 1:
@@ -21,13 +21,13 @@ def iterate__to__odd(n : int) -> int :
 
 @Pure
 def next__odd__collatz(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n > 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() > 0)
     Ensures(Result() % 2 == 1)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if ((n % 2)) == (0):

@@ -3,13 +3,13 @@ from nagini_contracts.contracts import *
 
 @Pure
 def contains_char(s : List[int], c : int, i : int, j : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(Forall(int, lambda i:
         not (((0) <= (i)) and ((i) < (len(s)))) or (((97) <= ((s)[i])) and (((s)[i]) <= (122)))))
     Requires(0 <= i and i <= j and j <= len(s))
     Requires(((97) <= (c)) and ((c) <= (122)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:
@@ -20,12 +20,12 @@ def contains_char(s : List[int], c : int, i : int, j : int) -> bool:
     
 @Pure 
 def count_chars_inter(s : List[int], c : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(Forall(int, lambda i:
         not (((0) <= (i)) and ((i) < (len(s)))) or (((97) <= ((s)[i])) and (((s)[i]) <= (122)))))
     Requires(((97) <= (c)) and ((c) <= (123)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if c == 97:

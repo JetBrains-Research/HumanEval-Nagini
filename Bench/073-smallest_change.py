@@ -3,13 +3,13 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def smallest__change__fun(s : List[int], i : int, j : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s) // 2)))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures((Result()) >= (0))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if i == j:

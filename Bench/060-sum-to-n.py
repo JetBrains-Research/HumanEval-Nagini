@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def psum(i : int, j : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(0 <= i and i <= j + 1)
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i > j:

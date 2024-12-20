@@ -4,12 +4,12 @@ from nagini_contracts.contracts import *
 #use-as-unpure
 @Pure
 def rot__sym(c : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(c >= 0 and c <= 25)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0 and Result() <= 25)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     alph : int = c - 0

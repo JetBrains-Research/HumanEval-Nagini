@@ -4,9 +4,9 @@ from nagini_contracts.contracts import *
 #use-as-unpure
 @Pure
 def dist(a : int, b : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Ensures(Result() >= 0)
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (a) < (b):

@@ -49,9 +49,9 @@ def remove__duplicates(a : List[int]) -> List[int]:
 
 @Pure 
 def exists_check(a : List[int], x : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Exists(int, lambda i:
@@ -60,9 +60,9 @@ def exists_check(a : List[int], x : int) -> bool:
 
 @Pure 
 def count_check(a : List[int], x : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return (count__rec(a, x, len(a))) == (1)
@@ -70,10 +70,10 @@ def count_check(a : List[int], x : int) -> bool:
 
 @Pure
 def count__rec(a : List[int], x : int, i : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
     Requires(((0) <= (i)) and ((i) <= (len(a))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == 0:

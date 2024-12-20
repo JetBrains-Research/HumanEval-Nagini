@@ -10,10 +10,10 @@ def IsPrimeHexDigit(c : int) -> bool :
 
 @Pure
 def count__prime__hex__digits__rec(i : int, j : int, num : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(num)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(num))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:

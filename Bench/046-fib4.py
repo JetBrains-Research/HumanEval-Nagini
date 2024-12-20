@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def fib4__rec(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 0)
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (((n) == (0)) or ((n) == (1))) or ((n) == (2)):

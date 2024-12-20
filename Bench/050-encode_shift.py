@@ -4,16 +4,16 @@ from nagini_contracts.contracts import *
 #use-as-unpure
 @Pure 
 def encode__char(c : int) -> int :
-    # pure-start
+    # pure-pure-start
     return (c - 97 + 5) % 26 + 97
-    # pure-end
+    # pure-pure-end
 
 #use-as-unpure
 @Pure 
 def decode__char(c : int) -> int :
-    # pure-start
+    # pure-pure-start
     return ((c) - (97) - (5)) % 26 + 97
-    # pure-end
+    # pure-pure-end
 
 def encode__shift(s : List[int]) -> List[int]:
     # pre-conditions-start

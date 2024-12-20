@@ -4,10 +4,10 @@ from nagini_contracts.contracts import *
 #use-as-unpure
 @Pure
 def is__sorted(a : List[int], l : int, r : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(((0) <= (l)) and ((l) <= (r)) and ((r) <= (len(a))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
     
     # pure-start
     return Forall(int, lambda i:

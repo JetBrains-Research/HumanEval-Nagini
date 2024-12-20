@@ -3,12 +3,12 @@ from nagini_contracts.contracts import *
 
 @Pure
 def first__digit(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(((0) <= (n)))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(0 <= Result() and (Result()) < (10))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if n < 10:
