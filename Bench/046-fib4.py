@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def fib4__rec(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 0)
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (((n) == (0)) or ((n) == (1))) or ((n) == (2)):
@@ -29,25 +29,25 @@ def fib4(n : int) -> int:
         return 0
     if (n) == (3):
         return 1
-    d_0_a_ : int = 0
-    d_1_b_ : int = 0
-    d_2_c_ : int = 0
-    d_3_d_ : int = 1
-    d_4_i_ : int = 4
-    while (d_4_i_) <= (n):
+    a : int = 0
+    b : int = 0
+    c : int = 0
+    d : int = 1
+    i : int = 4
+    while (i) <= (n):
         # invariants-start
-        Invariant(((4) <= (d_4_i_)) and ((d_4_i_) <= ((n) + (1))))
-        Invariant((d_0_a_) == (fib4__rec((d_4_i_) - (4))))
-        Invariant((d_1_b_) == (fib4__rec((d_4_i_) - (3))))
-        Invariant((d_2_c_) == (fib4__rec((d_4_i_) - (2))))
-        Invariant((d_3_d_) == (fib4__rec((d_4_i_) - (1))))
+        Invariant(((4) <= (i)) and ((i) <= ((n) + (1))))
+        Invariant((a) == (fib4__rec((i) - (4))))
+        Invariant((b) == (fib4__rec((i) - (3))))
+        Invariant((c) == (fib4__rec((i) - (2))))
+        Invariant((d) == (fib4__rec((i) - (1))))
         # invariants-end
-        d_5_temp_ : int = (((d_3_d_) + (d_2_c_)) + (d_1_b_)) + (d_0_a_)
-        d_0_a_ = d_1_b_
-        d_1_b_ = d_2_c_
-        d_2_c_ = d_3_d_
-        d_3_d_ = d_5_temp_
-        d_4_i_ = (d_4_i_) + (1)
-    result : int = d_3_d_
+        temp : int = (((d) + (c)) + (b)) + (a)
+        a = b
+        b = c
+        c = d
+        d = temp
+        i = (i) + (1)
+    result : int = d
     return result
     # impl-end

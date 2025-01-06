@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def IsEven(n : int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Ensures(((Result()) == (True)) or ((Result()) == (False)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return (n % 2) == 0
@@ -14,14 +14,14 @@ def IsEven(n : int) -> bool:
 #use-as-unpure
 @Pure
 def CountEvens(i : int, lst : List[int]) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(lst)))
     Requires(((i) >= (0)) and ((i) <= (len(lst))))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures((Result()) >= (0))
     Ensures((Result()) <= (len(lst) - i))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if len(lst) == i:
@@ -44,8 +44,8 @@ def Exchange(lst1 : List[int], lst2 : List[int]) -> str:
     # post-conditions-end
 
     # impl-start
-    d_1_totalEvens_ : int = CountEvens(0, lst1) + CountEvens(0, lst2)
-    if (d_1_totalEvens_) >= (len(lst1)):
+    totalEvens : int = CountEvens(0, lst1) + CountEvens(0, lst2)
+    if (totalEvens) >= (len(lst1)):
         result = "YES"
     elif True:
         result = "NO"

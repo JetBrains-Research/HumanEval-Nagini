@@ -9,67 +9,65 @@ def is__sorted(a : List[int]) -> bool:
     # post-conditions-start
     Ensures(Acc(list_pred(a)))
     Ensures((Result()) == (
-        Forall(int, lambda d_0_i_:
-            Forall(int, lambda d_1_j_:
-                not ((((0) <= (d_0_i_)) and ((d_0_i_) <= (d_1_j_))) and ((d_1_j_) < (len(a)))) or ((((a)[d_0_i_]) <= ((a)[d_1_j_])))))
-        and (Forall(int, lambda d_2_i_:
-                    not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(a)))) or ((count_set(a, (a)[d_2_i_], 0)) <= (2))))))
+        Forall(int, lambda i:
+            Forall(int, lambda j:
+                not ((((0) <= (i)) and ((i) <= (j))) and ((j) < (len(a)))) or ((((a)[i]) <= ((a)[j])))))
+        and (Forall(int, lambda i:
+                    not (((0) <= (i)) and ((i) < (len(a)))) or ((count_set(a, (a)[i], 0)) <= (2))))))
     # post-conditions-end
     # impl-start
     if (len(a)) == (0):
         # assert-start
-        Assert(Forall(int, lambda d_0_i_:
-            Forall(int, lambda d_1_j_:
-                not ((((0) <= (d_0_i_)) and ((d_0_i_) <= (d_1_j_))) and ((d_1_j_) < (len(a)))) or ((((a)[d_0_i_]) <= ((a)[d_1_j_]))))))
+        Assert(Forall(int, lambda i:
+            Forall(int, lambda j:
+                not ((((0) <= (i)) and ((i) <= (j))) and ((j) < (len(a)))) or ((((a)[i]) <= ((a)[j]))))))
         # assert-end
         return True
-    d_3_is__asc_ : bool = True
-    d_4_i_ : int = 1
-    while (d_4_i_) < (len(a)):
+    is__asc : bool = True
+    i : int = 1
+    while (i) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))
-        Invariant(((1) <= (d_4_i_)) and ((d_4_i_) <= (len(a))))
-        Invariant((d_3_is__asc_) == (Forall(int, lambda d_5_j_:
-            Forall(int, lambda d_6_k_:
-                not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_6_k_))) and ((d_6_k_) < (d_4_i_))) or (((a)[d_5_j_]) <= ((a)[d_6_k_]))))))
+        Invariant(((1) <= (i)) and ((i) <= (len(a))))
+        Invariant((is__asc) == (Forall(int, lambda j:
+            Forall(int, lambda k:
+                not ((((0) <= (j)) and ((j) < (k))) and ((k) < (i))) or (((a)[j]) <= ((a)[k]))))))
         # invariants-end
-        if ((a)[(d_4_i_) - (1)]) > ((a)[d_4_i_]):
-            d_3_is__asc_ = False
-        d_4_i_ = (d_4_i_) + (1)
-    if not(d_3_is__asc_):
+        if ((a)[(i) - (1)]) > ((a)[i]):
+            is__asc = False
+        i = (i) + (1)
+    if not(is__asc):
         return False
-    d_4_i_ = 0
-    d_7_has__no__more__that__2_ : bool = True
-    while (d_4_i_) < (len(a)):
+    i = 0
+    has__no__more__that__2 : bool = True
+    while (i) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(a)))
-        Invariant(((0) <= (d_4_i_)) and ((d_4_i_) <= (len(a))))
-        Invariant((d_3_is__asc_) == 
-            (Forall(int, lambda d_5_j_:
-                Forall(int, lambda d_6_k_:
-                    not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_6_k_))) and ((d_6_k_) < (len(a)))) or (((a)[d_5_j_]) <= ((a)[d_6_k_]))))))
-        Invariant((d_7_has__no__more__that__2_) == (Forall(int, lambda d_8_j_:
-            not (((0) <= (d_8_j_)) and ((d_8_j_) < (d_4_i_))) or ((count_set(a, (a)[d_8_j_], 0)) <= (2))) and 
-            (Forall(int, lambda d_5_j_:
-                Forall(int, lambda d_6_k_:
-                    not ((((0) <= (d_5_j_)) and ((d_5_j_) < (d_6_k_))) and ((d_6_k_) < (len(a)))) or (((a)[d_5_j_]) <= ((a)[d_6_k_])))))))
+        Invariant(((0) <= (i)) and ((i) <= (len(a))))
+        Invariant((is__asc) == 
+            (Forall(int, lambda j:
+                Forall(int, lambda k:
+                    not ((((0) <= (j)) and ((j) < (k))) and ((k) < (len(a)))) or (((a)[j]) <= ((a)[k]))))))
+        Invariant((has__no__more__that__2) == (Forall(int, lambda j:
+            not (((0) <= (j)) and ((j) < (i))) or ((count_set(a, (a)[j], 0)) <= (2))) and 
+            (Forall(int, lambda j:
+                Forall(int, lambda k:
+                    not ((((0) <= (j)) and ((j) < (k))) and ((k) < (len(a)))) or (((a)[j]) <= ((a)[k])))))))
         # invariants-end
-        d_9_count_ : int = count_set(a, (a)[d_4_i_], 0)
-        if (d_9_count_) > (2):
-            d_7_has__no__more__that__2_ = False
-        d_4_i_ = (d_4_i_) + (1)
-    f : bool = d_7_has__no__more__that__2_
+        count : int = count_set(a, (a)[i], 0)
+        if (count) > (2):
+            has__no__more__that__2 = False
+        i = (i) + (1)
+    f : bool = has__no__more__that__2
     return f
     # impl-end
 
 @Pure
 def count_set(a : List[int], x : int, i : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a), 1/2))
     Requires(((0) <= (i)) and ((i) <= (len(a))))
-    # pre-conditions-end
-    # post-conditions-start
-    # post-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (i) == 0:

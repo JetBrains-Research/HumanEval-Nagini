@@ -12,29 +12,29 @@ def fizz__buzz(n : int) -> int:
 
     # impl-start
     result : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < (n):
+    i : int = 0
+    while (i) < (n):
         # invariants-start
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (n)))
+        Invariant(((0) <= (i)) and ((i) <= (n)))
         Invariant(Forall(int, lambda x : (Implies(x >= 0 and x < n, 
             fizz_buzz_fun(x + 1) == (count7__r(x) if ((x % 11 == 0) or (x % 13 == 0)) else 0) + fizz_buzz_fun(x)), [[fizz_buzz_fun(x + 1)]])))
-        Invariant(result == fizz_buzz_fun(d_1_i_))
+        Invariant(result == fizz_buzz_fun(i))
         # invariants-end
-        if (((d_1_i_ % 11)) == (0)) or (((d_1_i_ % 13)) == (0)):
-            d_4_cnt_ : int = count7(d_1_i_)
-            result = (result) + (d_4_cnt_)
-        d_1_i_ = (d_1_i_) + (1)
+        if (((i % 11)) == (0)) or (((i % 13)) == (0)):
+            cnt : int = count7(i)
+            result = (result) + (cnt)
+        i = (i) + (1)
     return result
     # impl-end
 
 @Pure 
 def fizz_buzz_fun(n : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if n == 0:
@@ -55,26 +55,26 @@ def count7(x : int) -> int:
 
     # impl-start
     count : int = 0
-    d_6_y_ : int = x
-    while (d_6_y_) > (0):
+    y : int = x
+    while (y) > (0):
         # invariants-start
-        Invariant(((0) <= (d_6_y_)) and ((d_6_y_) <= (x)))
-        Invariant(((count) + (count7__r(d_6_y_))) == (count7__r(x)))
+        Invariant(((0) <= (y)) and ((y) <= (x)))
+        Invariant(((count) + (count7__r(y))) == (count7__r(x)))
         # invariants-end
-        if ((d_6_y_ % 10)) == (7):
+        if ((y % 10)) == (7):
             count = (count) + (1)
-        d_6_y_ = d_6_y_ // 10
+        y = y // 10
     return count
     # impl-end  
 
 @Pure
 def count7__r(x : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(x >= 0)
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if x == 0:

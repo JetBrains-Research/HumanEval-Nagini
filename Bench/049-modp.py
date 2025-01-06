@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def modp__rec(n : int, p : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires((p) > (0))
     Requires((n) >= (0))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (n) == (0):
@@ -26,17 +26,17 @@ def modp(n : int, p : int) -> int:
 
     # impl-start
     r : int = (1 % p)
-    d_0_i_ : int = 0
-    while (d_0_i_) < (n):
+    i : int = 0
+    while (i) < (n):
         # invariants-start
-        Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= (n)))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(d_0_i_ >= 0 and d_0_i_ < n, modp__rec(d_0_i_ + 1, p) == (modp__rec(d_0_i_, p) * 2) % p))))
-        Invariant((r) == (modp__rec(d_0_i_, p)))
+        Invariant(((0) <= (i)) and ((i) <= (n)))
+        Invariant(Forall(int, lambda i: (Implies(i >= 0 and i < n, modp__rec(i + 1, p) == (modp__rec(i, p) * 2) % p))))
+        Invariant((r) == (modp__rec(i, p)))
         # invariants-end
         # assert-start
-        Assert(modp__rec(d_0_i_ + 1, p) == (modp__rec(d_0_i_, p) * 2) % p)
+        Assert(modp__rec(i + 1, p) == (modp__rec(i, p) * 2) % p)
         # assert-end
         r = (((r) * (2)) % p)
-        d_0_i_ = (d_0_i_) + (1)
+        i = (i) + (1)
     return r
     # impl-end

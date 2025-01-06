@@ -21,9 +21,9 @@ def CountNumbersStartingOrEndingWithOne(n : int) -> int:
 
 @Pure
 def Pow(base : int, exponent : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires((exponent) >= (0))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (exponent) == (0):

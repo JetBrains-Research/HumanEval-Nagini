@@ -3,10 +3,10 @@ from nagini_contracts.contracts import *
 
 @Pure
 def upper__sum__rec(i : int, j : int, s : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:
@@ -26,19 +26,19 @@ def upper__sum(s : List[int]) -> int:
 
     # impl-start
     res : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(s))))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(s))), upper__sum__rec(0, d_0_i_ + 1, s) == upper__sum__rec(0, d_0_i_, s) + s[d_0_i_]), [[upper__sum__rec(0, d_1_i_ + 1, s)]])))
-        Invariant((res) == (upper__sum__rec(0, d_1_i_, s)))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant(Forall(int, lambda i: (Implies(((0) <= (i)) and ((i) < (len(s))), upper__sum__rec(0, i + 1, s) == upper__sum__rec(0, i, s) + s[i]), [[upper__sum__rec(0, i + 1, s)]])))
+        Invariant((res) == (upper__sum__rec(0, i, s)))
         # invariants-end
         # assert-start
-        Assert(upper__sum__rec(0, d_1_i_ + 1, s) == upper__sum__rec(0, d_1_i_, s) + s[d_1_i_])
+        Assert(upper__sum__rec(0, i + 1, s) == upper__sum__rec(0, i, s) + s[i])
         # assert-end
-        res = (res) + (((s)[d_1_i_]))
-        d_1_i_ = (d_1_i_) + (1)
+        res = (res) + (((s)[i]))
+        i = (i) + (1)
     return res
     # impl-end
 

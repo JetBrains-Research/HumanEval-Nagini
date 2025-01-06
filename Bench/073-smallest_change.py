@@ -3,13 +3,13 @@ from nagini_contracts.contracts import *
 
 @Pure 
 def smallest__change__fun(s : List[int], i : int, j : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s) // 2)))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures((Result()) >= (0))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if i == j:
@@ -32,20 +32,20 @@ def smallest__change(s : List[int]) -> int:
 
     # impl-start
     c : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < ((len(s) // 2)):
+    i : int = 0
+    while (i) < ((len(s) // 2)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= ((len(s) // 2))))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(d_0_i_ >= 0 and d_0_i_ < len(s) // 2, smallest__change__fun(s, 0, d_0_i_ + 1) == (smallest__change__fun(s, 0, d_0_i_) + 1 if (s)[d_0_i_] != (s)[len(s) - d_0_i_ - 1] else smallest__change__fun(s, 0, d_0_i_))), [[smallest__change__fun(s, 0, d_0_i_ + 1)]])))
-        Invariant(c == smallest__change__fun(s, 0, d_1_i_))
+        Invariant(((0) <= (i)) and ((i) <= ((len(s) // 2))))
+        Invariant(Forall(int, lambda i: (Implies(i >= 0 and i < len(s) // 2, smallest__change__fun(s, 0, i + 1) == (smallest__change__fun(s, 0, i) + 1 if (s)[i] != (s)[len(s) - i - 1] else smallest__change__fun(s, 0, i))), [[smallest__change__fun(s, 0, i + 1)]])))
+        Invariant(c == smallest__change__fun(s, 0, i))
         # invariants-end
 
         # assert-start
-        Assert(smallest__change__fun(s, 0, d_1_i_ + 1) == (smallest__change__fun(s, 0, d_1_i_) + 1 if (s)[d_1_i_] != (s)[len(s) - d_1_i_ - 1] else smallest__change__fun(s, 0, d_1_i_)))
+        Assert(smallest__change__fun(s, 0, i + 1) == (smallest__change__fun(s, 0, i) + 1 if (s)[i] != (s)[len(s) - i - 1] else smallest__change__fun(s, 0, i)))
         # assert-end
-        if ((s)[d_1_i_]) != ((s)[((len(s)) - (1)) - (d_1_i_)]):
+        if ((s)[i]) != ((s)[((len(s)) - (1)) - (i)]):
             c = (c) + (1)
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return c
     # impl-end

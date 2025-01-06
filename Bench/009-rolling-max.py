@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def getVal(mx: Optional[int]) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(mx is not None)
-    # pre-conditions-end
+    # pure-pre-conditions-end
     # pure-start
     return mx
     # pure-end

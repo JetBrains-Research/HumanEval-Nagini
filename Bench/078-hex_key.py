@@ -10,10 +10,10 @@ def IsPrimeHexDigit(c : int) -> bool :
 
 @Pure
 def count__prime__hex__digits__rec(i : int, j : int, num : List[int]) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(num)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(num))))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:
@@ -35,20 +35,20 @@ def count__prime__hex__digits(s : List[int]) -> int:
 
     # impl-start
     count : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(s))))
-        Invariant((count) == (count__prime__hex__digits__rec(0, d_1_i_, s)))
-        Invariant(count >= 0 and count <= d_1_i_)
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant((count) == (count__prime__hex__digits__rec(0, i, s)))
+        Invariant(count >= 0 and count <= i)
         Invariant(Forall(int, lambda x : (Implies(x >= 0 and x < len(s), (count__prime__hex__digits__rec(0, x + 1, s)) == ((count__prime__hex__digits__rec(0, x, s) + ((1 if IsPrimeHexDigit((s)[x]) else 0))))), [[count__prime__hex__digits__rec(0, x + 1, s)]])))
         # invariants-end
         
         # assert-start
-        Assert((count__prime__hex__digits__rec(0, d_1_i_ + 1, s)) == ((count__prime__hex__digits__rec(0, d_1_i_, s) + ((1 if IsPrimeHexDigit((s)[d_1_i_]) else 0)))))
+        Assert((count__prime__hex__digits__rec(0, i + 1, s)) == ((count__prime__hex__digits__rec(0, i, s) + ((1 if IsPrimeHexDigit((s)[i]) else 0)))))
         # assert-end
-        count = (count) + ((1 if IsPrimeHexDigit((s)[d_1_i_]) else 0))
-        d_1_i_ = (d_1_i_) + (1)
+        count = (count) + ((1 if IsPrimeHexDigit((s)[i]) else 0))
+        i = (i) + (1)
     return count
     # impl-end

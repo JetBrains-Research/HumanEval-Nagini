@@ -42,8 +42,8 @@ def flip__case(s : List[int]) -> List[int] :
     Ensures(Acc(list_pred(s)))
     Ensures(Acc(list_pred(Result())))
     Ensures((len(Result())) == (len(s)))
-    Ensures(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(s))), lower((s)[d_0_i_]) == upper((Result())[d_0_i_])))))
-    Ensures(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (len(s))), upper((s)[d_0_i_]) == lower((Result())[d_0_i_])))))
+    Ensures(Forall(int, lambda i: (Implies(((0) <= (i)) and ((i) < (len(s))), lower((s)[i]) == upper((Result())[i])))))
+    Ensures(Forall(int, lambda i: (Implies(((0) <= (i)) and ((i) < (len(s))), upper((s)[i]) == lower((Result())[i])))))
     # post-conditions-end
 
     # impl-start
@@ -55,8 +55,8 @@ def flip__case(s : List[int]) -> List[int] :
         Invariant(Acc(list_pred(res)))
         Invariant(((0) <= (i)) and ((i) <= (len(s))))
         Invariant((len(res)) == (len(s)))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (i)), lower((s)[d_0_i_]) == upper((res)[d_0_i_])))))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(((0) <= (d_0_i_)) and ((d_0_i_) < (i)), upper((s)[d_0_i_]) == lower((res)[d_0_i_])))))
+        Invariant(Forall(int, lambda j: (Implies(((0) <= (j)) and ((j) < (i)), lower((s)[j]) == upper((res)[j])))))
+        Invariant(Forall(int, lambda j: (Implies(((0) <= (j)) and ((j) < (i)), upper((s)[j]) == lower((res)[j])))))
         # invariants-end
         res[i] = flip__char(s[i])
         i = i + 1

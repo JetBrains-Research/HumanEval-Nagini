@@ -16,13 +16,13 @@ def checkSubstring(s : List[int], sub : List[int]) -> bool:
     if (len(sub)) == (0):
         result = True
     elif (len(s)) >= (len(sub)):
-        d_0_i_ : int = 0
-        while (d_0_i_) <= ((len(s)) - (len(sub))):
+        i : int = 0
+        while (i) <= ((len(s)) - (len(sub))):
             # invariants-start
             Invariant(Acc(list_pred(s), 1/2))
             Invariant(Acc(list_pred(sub), 1/2))
             Invariant(len(s) - len(sub) >= 0)
-            Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= 1 + ((len(s)) - (len(sub)))))
+            Invariant(((0) <= (i)) and ((i) <= 1 + ((len(s)) - (len(sub)))))
             # invariants-end
             x = 0 
             fl = True
@@ -31,80 +31,80 @@ def checkSubstring(s : List[int], sub : List[int]) -> bool:
                 Invariant(Acc(list_pred(s), 1/2))
                 Invariant(Acc(list_pred(sub), 1/2))
                 Invariant(len(s) - len(sub) >= 0)
-                Invariant(((0) <= (d_0_i_)) and ((d_0_i_) <= ((len(s)) - (len(sub)))))
+                Invariant(((0) <= (i)) and ((i) <= ((len(s)) - (len(sub)))))
                 Invariant(x >= 0 and x <= len(sub))
                 # invariants-end
-                if sub[x] != s[d_0_i_ + x]:
+                if sub[x] != s[i + x]:
                     fl = False
                     break
                 x = x + 1
             if fl:
                 result = True
-            d_0_i_ = (d_0_i_) + (1)
+            i = (i) + (1)
     return result
     # impl-end
 
 @Pure 
 def EqArrays(a : List[int], x : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(Acc(list_pred(x)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
-    return len(a) == len(x) and Forall(int, lambda d_0_i_: Implies(0 <= d_0_i_ and d_0_i_ < len(a), (a)[d_0_i_] == x[d_0_i_]))
+    return len(a) == len(x) and Forall(int, lambda i: Implies(0 <= i and i < len(a), (a)[i] == x[i]))
     # pure-end
 
 @Pure 
 def InArray(a : List[List[int]], x : List[int]) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(a)))
     Requires(Acc(list_pred(x)))
-    Requires(Forall(a, lambda d_0_s_: Acc(list_pred(d_0_s_))))
-    # pre-conditions-end
+    Requires(Forall(a, lambda s: Acc(list_pred(s))))
+    # pure-pre-conditions-end
 
     # pure-start
-    return Exists(int, lambda d_0_s_:
-        (Implies(((0) <= (d_0_s_)) and ((d_0_s_) < (len((a)))), 
-            EqArrays(a[d_0_s_], x))))
+    return Exists(int, lambda s:
+        (Implies(((0) <= (s)) and ((s) < (len((a)))), 
+            EqArrays(a[s], x))))
     # pure-end
 
 
 def filter__by__substring(strings : List[List[int]], substring : List[int]) -> List[List[int]]:
     # pre-conditions-start
     Requires(Acc(list_pred(strings)))
-    Requires(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
+    Requires(Forall(strings, lambda s: Acc(list_pred(s))))
     Requires(Acc(list_pred(substring)))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(strings)))
-    Ensures(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
+    Ensures(Forall(strings, lambda s: Acc(list_pred(s))))
     Ensures(Acc(list_pred(Result())))
-    Ensures(Forall(ResultT(List[List[int]]), lambda d_0_s_: Acc(list_pred(d_0_s_))))
+    Ensures(Forall(ResultT(List[List[int]]), lambda s: Acc(list_pred(s))))
     Ensures((len(Result())) <= (len(strings)))
-    Ensures(Forall(int, lambda d_3_i_:
-        (Implies(0 <= d_3_i_ and d_3_i_ < len(Result()), InArray(strings, Result()[d_3_i_])))))
+    Ensures(Forall(int, lambda i:
+        (Implies(0 <= i and i < len(Result()), InArray(strings, Result()[i])))))
     # post-conditions-end
 
     # impl-start
     res : List[List[int]] = []
-    d_2_i_ : int = 0
-    while (d_2_i_) < (len(strings)):
+    i : int = 0
+    while (i) < (len(strings)):
         # invariants-start
         Invariant(Acc(list_pred(res)))
         Invariant(Acc(list_pred(strings)))
         Invariant(Acc(list_pred(substring)))
-        Invariant(Forall(strings, lambda d_0_s_: Acc(list_pred(d_0_s_))))
-        Invariant(Forall(res, lambda d_3_s_: Acc(list_pred(d_3_s_))))
-        Invariant(((0) <= (d_2_i_)) and ((d_2_i_) <= (len(strings))))
-        Invariant((len(res)) <= (d_2_i_))
-        Invariant(Forall(int, lambda d_3_i_:
-            (Implies(0 <= d_3_i_ and d_3_i_ < len(res), InArray(strings, res[d_3_i_])), [[InArray(strings, res[d_3_i_])]])))
+        Invariant(Forall(strings, lambda s: Acc(list_pred(s))))
+        Invariant(Forall(res, lambda s: Acc(list_pred(s))))
+        Invariant(((0) <= (i)) and ((i) <= (len(strings))))
+        Invariant((len(res)) <= (i))
+        Invariant(Forall(int, lambda i:
+            (Implies(0 <= i and i < len(res), InArray(strings, res[i])), [[InArray(strings, res[i])]])))
         # invariants-end
-        d_4_check_ : bool = checkSubstring((strings)[d_2_i_], substring)
-        if d_4_check_:
-            cpy = list((strings)[d_2_i_])
+        check : bool = checkSubstring((strings)[i], substring)
+        if check:
+            cpy = list((strings)[i])
             res = (res) + [cpy]
-        d_2_i_ = (d_2_i_) + (1)
+        i = (i) + (1)
     return res
     # impl-end

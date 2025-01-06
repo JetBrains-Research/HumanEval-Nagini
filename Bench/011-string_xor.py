@@ -3,9 +3,9 @@ from nagini_contracts.contracts import *
 
 @Pure
 def xor(a : int, b : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Ensures((Result()) == ((0 if (a) == (b) else 1)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     result : int = int(0)
@@ -21,10 +21,10 @@ def string__xor(a : List[int], b : List[int]) -> List[int]:
     Requires(Acc(list_pred(b)))
     Requires(Acc(list_pred(a)))
     Requires((len(a)) == (len(b)))
-    Requires(Forall(int, lambda d_0_i_:
-        not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(a)))) or ((((a)[d_0_i_]) == (0)) or (((a)[d_0_i_]) == (1)))))
-    Requires(Forall(int, lambda d_1_i_:
-        not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(b)))) or ((((b)[d_1_i_]) == (0)) or (((b)[d_1_i_]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(a)))) or ((((a)[i]) == (0)) or (((a)[i]) == (1)))))
+    Requires(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(b)))) or ((((b)[i]) == (0)) or (((b)[i]) == (1)))))
     # pre-conditions-end
     # post-conditions-start
     Ensures(Acc(list_pred(b)))
@@ -32,32 +32,32 @@ def string__xor(a : List[int], b : List[int]) -> List[int]:
     Ensures(Acc(list_pred(Result())))
     Ensures((len(a)) == (len(b)))
     Ensures((len(Result())) == (len(a)))
-    Ensures(Forall(int, lambda d_2_i_:
-        not (((0) <= (d_2_i_)) and ((d_2_i_) < (len(Result())))) or ((((Result())[d_2_i_]) == (0)) or (((Result())[d_2_i_]) == (1)))))
-    Ensures(Forall(int, lambda d_3_i_:
-        not (((0) <= (d_3_i_)) and ((d_3_i_) < (len(Result())))) or (((Result())[d_3_i_]) == ((0 if ((a)[d_3_i_]) == ((b)[d_3_i_]) else 1)))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result())))) or ((((Result())[i]) == (0)) or (((Result())[i]) == (1)))))
+    Ensures(Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) < (len(Result())))) or (((Result())[i]) == ((0 if ((a)[i]) == ((b)[i]) else 1)))))
     # post-conditions-end
 
     # impl-start
     result : List[int] = []
-    d_4_i_ : int = int(0)
-    while (d_4_i_) < (len(a)):
+    i : int = int(0)
+    while (i) < (len(a)):
         # invariants-start
         Invariant(Acc(list_pred(b)))
         Invariant(Acc(list_pred(a)))
         Invariant(Acc(list_pred(result))) 
         Invariant((len(a)) == (len(b)))
-        Invariant(((d_4_i_) >= (0)) and ((d_4_i_) <= (len(a))))
-        Invariant((len(result)) == (d_4_i_))
-        Invariant(Forall(int, lambda d_0_i_:
-            not (((0) <= (d_0_i_)) and ((d_0_i_) < (len(a)))) or ((((a)[d_0_i_]) == (0)) or (((a)[d_0_i_]) == (1)))))
-        Invariant(Forall(int, lambda d_1_i_:
-            not (((0) <= (d_1_i_)) and ((d_1_i_) < (len(b)))) or ((((b)[d_1_i_]) == (0)) or (((b)[d_1_i_]) == (1)))))
-        Invariant(Forall(int, lambda d_5_j_:
-            not (((0) <= (d_5_j_)) and ((d_5_j_) < (d_4_i_))) or (((result)[d_5_j_]) == ((0 if ((a)[d_5_j_]) == ((b)[d_5_j_]) else 1)))))
+        Invariant(((i) >= (0)) and ((i) <= (len(a))))
+        Invariant((len(result)) == (i))
+        Invariant(Forall(int, lambda i:
+            not (((0) <= (i)) and ((i) < (len(a)))) or ((((a)[i]) == (0)) or (((a)[i]) == (1)))))
+        Invariant(Forall(int, lambda i:
+            not (((0) <= (i)) and ((i) < (len(b)))) or ((((b)[i]) == (0)) or (((b)[i]) == (1)))))
+        Invariant(Forall(int, lambda j:
+            not (((0) <= (j)) and ((j) < (i))) or (((result)[j]) == ((0 if ((a)[j]) == ((b)[j]) else 1)))))
         # invariants-end
-        d_6_bitResult_ = (0 if ((a)[d_4_i_]) == ((b)[d_4_i_]) else 1)
-        result = (result) + [d_6_bitResult_]
-        d_4_i_ = (d_4_i_) + (1)
+        bitResult = (0 if ((a)[i]) == ((b)[i]) else 1)
+        result = (result) + [bitResult]
+        i = (i) + (1)
     return result
     # impl-end

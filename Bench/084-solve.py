@@ -11,24 +11,24 @@ def solve(n : int) -> int:
     # post-conditions-end
 
     # impl-start
-    d_0_m_ : int = n
+    m : int = n
     r : int = 0
-    while (d_0_m_) > (0):
+    while (m) > (0):
         # invariants-start
-        Invariant(((0) <= (d_0_m_)) and ((d_0_m_) <= (n)))
+        Invariant(((0) <= (m)) and ((m) <= (n)))
         Invariant(r >= 0)
-        Invariant(((r) + (popcount(d_0_m_))) == (popcount(n)))
+        Invariant(((r) + (popcount(m))) == (popcount(n)))
         # invariants-end
-        r = (r) + ((d_0_m_ % 2))
-        d_0_m_ = (d_0_m_ // 2)
+        r = (r) + ((m % 2))
+        m = (m // 2)
     return r
     # impl-end
 
 @Pure
 def popcount(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(n >= 0)
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if n == 0:

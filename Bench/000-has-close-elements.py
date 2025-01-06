@@ -23,11 +23,11 @@ def abs1(x: int, threshold: int) -> bool:
 
 @Pure
 def fn(x: int, numbers: List[int], threshold: int) -> bool:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(threshold > 0)
     Requires(Acc(list_pred(numbers)))
     Requires(x >= 0 and x < len(numbers))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     return Forall(range(len(numbers)), lambda y :

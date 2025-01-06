@@ -3,13 +3,13 @@ from nagini_contracts.contracts import *
 
 @Pure
 def count__upper__fun(s : List[int], i : int, j : int) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(((0) <= (i)) and ((i) <= (j)) and ((j) <= (len(s))))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures((Result()) >= (0))
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if i == j:
@@ -34,24 +34,24 @@ def count__upper(s : List[int]) -> int:
 
     # impl-start
     cnt : int = 0
-    d_1_i_ : int = 0
+    i : int = 0
     
-    while (d_1_i_) < (len(s)):
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(s))))
-        Invariant(Forall(int, lambda d_0_i_: (Implies(d_0_i_ >= 0 and d_0_i_ < len(s), 
-            count__upper__fun(s, 0, d_0_i_ + 1) == (count__upper__fun(s, 0, d_0_i_) + (1) if is__upper__vowel(s[d_0_i_]) and d_0_i_ % 2 == 0 else count__upper__fun(s, 0, d_0_i_))), 
-                [[count__upper__fun(s, 0, d_0_i_ + 1)]])))
-        Invariant((cnt) == (count__upper__fun(s, 0, d_1_i_)))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
+        Invariant(Forall(int, lambda i: (Implies(i >= 0 and i < len(s), 
+            count__upper__fun(s, 0, i + 1) == (count__upper__fun(s, 0, i) + (1) if is__upper__vowel(s[i]) and i % 2 == 0 else count__upper__fun(s, 0, i))), 
+                [[count__upper__fun(s, 0, i + 1)]])))
+        Invariant((cnt) == (count__upper__fun(s, 0, i)))
         # invariants-end
 
         # assert-start
-        Assert(count__upper__fun(s, 0, d_1_i_ + 1) == (count__upper__fun(s, 0, d_1_i_) + (1) if is__upper__vowel(s[d_1_i_]) and d_1_i_ % 2 == 0 else count__upper__fun(s, 0, d_1_i_)))
+        Assert(count__upper__fun(s, 0, i + 1) == (count__upper__fun(s, 0, i) + (1) if is__upper__vowel(s[i]) and i % 2 == 0 else count__upper__fun(s, 0, i)))
         # assert-end
-        if (is__upper__vowel((s)[d_1_i_])) and (((d_1_i_ % 2)) == (0)):
+        if (is__upper__vowel((s)[i])) and (((i % 2)) == (0)):
             cnt = (cnt) + (1)
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return cnt
     # impl-end
 

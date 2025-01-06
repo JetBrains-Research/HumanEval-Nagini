@@ -3,12 +3,12 @@ from nagini_contracts.contracts import *
 
 @Pure
 def fib(n : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires((n) >= (0))
-    # pre-conditions-end
-    # post-conditions-start
+    # pure-pre-conditions-end
+    # pure-post-conditions-start
     Ensures(Result() >= 0)
-    # post-conditions-end
+    # pure-post-conditions-end
 
     # pure-start
     if (n) == (0):
@@ -36,19 +36,19 @@ def ComputeFib(n : int) -> int:
     if (n) == (1):
         result = 1
         return result
-    d_0_a_ : int = 0
-    d_1_b_ : int = 1
-    d_2_i_ : int = 2
-    while (d_2_i_) <= (n):
+    a : int = 0
+    b : int = 1
+    i : int = 2
+    while (i) <= (n):
         # invariants-start
-        Invariant(((2) <= (d_2_i_)) and ((d_2_i_) <= ((n) + (1))))
-        Invariant((d_0_a_) == (fib((d_2_i_) - (2))))
-        Invariant((d_1_b_) == (fib((d_2_i_) - (1))))
+        Invariant(((2) <= (i)) and ((i) <= ((n) + (1))))
+        Invariant((a) == (fib((i) - (2))))
+        Invariant((b) == (fib((i) - (1))))
         # invariants-end
-        d_3_temp_ : int = (d_0_a_) + (d_1_b_)
-        d_0_a_ = d_1_b_
-        d_1_b_ = d_3_temp_
-        d_2_i_ = (d_2_i_) + (1)
-    result = d_1_b_
+        temp : int = (a) + (b)
+        a = b
+        b = temp
+        i = (i) + (1)
+    result = b
     return result
     # impl-end

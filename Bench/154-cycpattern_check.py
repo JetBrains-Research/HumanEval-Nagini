@@ -3,15 +3,15 @@ from nagini_contracts.contracts import *
 
 @Pure
 def IsSubstring(s : List[int], sub : List[int], n : int) -> bool :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(Acc(list_pred(sub)))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
-    return ((len(s)) >= (len(sub))) and (Exists(int, lambda d_0_i_:
-        (((0) <= (d_0_i_)) and ((d_0_i_) < 1 + ((len(s)) - (len(sub))))) and (
-            Forall(int, lambda y: (Implies(y >= 0 and y < len(sub), sub[(n + y) % len(sub)] == s[d_0_i_ + y]), [[sub[(n + y) % len(sub)] == s[d_0_i_ + y]]])))))
+    return ((len(s)) >= (len(sub))) and (Exists(int, lambda i:
+        (((0) <= (i)) and ((i) < 1 + ((len(s)) - (len(sub))))) and (
+            Forall(int, lambda y: (Implies(y >= 0 and y < len(sub), sub[(n + y) % len(sub)] == s[i + y]), [[sub[(n + y) % len(sub)] == s[i + y]]])))))
     # pure-end
 
 def CycpatternCheck(word : List[int], pattern : List[int]) -> bool:
@@ -22,24 +22,24 @@ def CycpatternCheck(word : List[int], pattern : List[int]) -> bool:
     # post-conditions-start
     Ensures(Acc(list_pred(word)))
     Ensures(Acc(list_pred(pattern)))
-    Ensures(not (Result()) or (Exists(int, lambda d_1_i_:
-        (((0) <= (d_1_i_)) and ((d_1_i_) <= (len(pattern)))) and (IsSubstring(word, pattern, d_1_i_)))))
-    Ensures(not (not(Result())) or (Forall(int, lambda d_2_i_:
-        not (((0) <= (d_2_i_)) and ((d_2_i_) <= (len(pattern)))) or (not(IsSubstring(word, pattern, d_2_i_))))))
+    Ensures(not (Result()) or (Exists(int, lambda i:
+        (((0) <= (i)) and ((i) <= (len(pattern)))) and (IsSubstring(word, pattern, i)))))
+    Ensures(not (not(Result())) or (Forall(int, lambda i:
+        not (((0) <= (i)) and ((i) <= (len(pattern)))) or (not(IsSubstring(word, pattern, i))))))
     # post-conditions-end
 
     # impl-start
-    d_3_i_ : int = 0
-    while (d_3_i_) <= (len(pattern)):
+    i : int = 0
+    while (i) <= (len(pattern)):
         # invariants-start
         Invariant(Acc(list_pred(word)))
         Invariant(Acc(list_pred(pattern)))
-        Invariant(((0) <= (d_3_i_)) and ((d_3_i_) <= ((len(pattern)) + (1))))
-        Invariant(Forall(int, lambda d_4_j_:
-            (Implies(((0) <= (d_4_j_)) and ((d_4_j_) < (d_3_i_)), not(IsSubstring(word, pattern, d_4_j_))), [[IsSubstring(word, pattern, d_4_j_)]])))
+        Invariant(((0) <= (i)) and ((i) <= ((len(pattern)) + (1))))
+        Invariant(Forall(int, lambda j:
+            (Implies(((0) <= (j)) and ((j) < (i)), not(IsSubstring(word, pattern, j))), [[IsSubstring(word, pattern, j)]])))
         # invariants-end
-        if IsSubstring(word, pattern, d_3_i_):
+        if IsSubstring(word, pattern, i):
             return True
-        d_3_i_ = (d_3_i_) + (1)
+        i = (i) + (1)
     return False
     # impl-end

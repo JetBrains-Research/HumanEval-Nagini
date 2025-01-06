@@ -12,31 +12,31 @@ def count__nums(s : List[int]) -> int:
 
     # impl-start
     cnt : int = 0
-    d_1_i_ : int = 0
-    while (d_1_i_) < (len(s)):
+    i : int = 0
+    while (i) < (len(s)):
         # invariants-start
         Invariant(Acc(list_pred(s)))
-        Invariant(((0) <= (d_1_i_)) and ((d_1_i_) <= (len(s))))
+        Invariant(((0) <= (i)) and ((i) <= (len(s))))
         Invariant(Forall(int, lambda x : 
             (Implies(0 <= x and x < len(s), get_positive(0, x + 1, s) == ((digits__sum(s[x]) > 0) + get_positive(0, x, s))), 
                 [[get_positive(0, x + 1, s)]])))
-        Invariant((cnt) == (get_positive(0, d_1_i_, s)))
+        Invariant((cnt) == (get_positive(0, i, s)))
         # invariants-end
         # assert-start
-        Assert(get_positive(0, d_1_i_ + 1, s) == (digits__sum(s[d_1_i_]) > 0) + get_positive(0, d_1_i_, s))
+        Assert(get_positive(0, i + 1, s) == (digits__sum(s[i]) > 0) + get_positive(0, i, s))
         # assert-end
-        if (digits__sum((s)[d_1_i_])) > (0):
+        if (digits__sum((s)[i])) > (0):
             cnt = (cnt) + (1)
-        d_1_i_ = (d_1_i_) + (1)
+        i = (i) + (1)
     return cnt
     # impl-end
 
 @Pure 
 def get_positive(i : int, j : int, s : List[int]) -> int:
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Requires(Acc(list_pred(s)))
     Requires(0 <= i and i <= j and j <= len(s))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if i == j:
@@ -56,10 +56,10 @@ def digits__sum(x : int) -> int :
 
 @Pure
 def abs(x : int) -> int :
-    # pre-conditions-start
+    # pure-pre-conditions-start
     Ensures((Result()) >= (0)) 
     Ensures((Result()) == (x) or (Result()) == (0) - (x))
-    # pre-conditions-end
+    # pure-pre-conditions-end
 
     # pure-start
     if (x) >= (0):
