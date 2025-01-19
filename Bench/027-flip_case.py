@@ -25,14 +25,14 @@ def flip__char(c : int) -> int :
     Ensures(upper(c) == lower(Result()))
     # pre-conditions-end
 
-    # pure-start
+    # impl-start
     if lower(c):
         return ((c) - (0)) + (26)
     elif upper(c):
         return ((c) + (0)) - (26)
     elif True:
         return c
-    # pure-end
+    # impl-end
 
 def flip__case(s : List[int]) -> List[int] :
     # pre-conditions-start
