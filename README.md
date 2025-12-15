@@ -6,7 +6,7 @@ We added such properties to the translated programs in [Bench](https://github.co
 
 In [src](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/src) we copied Nagini verifier's code, to use it in our [CI infrastructure](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/.github/workflows). In CI we checked that every program in Bench is verified in the time limit of 600 seconds. Currently, it's failing due to Nagini's inconsistency between runs and sometimes more time needed for the verification of the same task. 
 
-In [WIP](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/WIP) you can find examples from HumanEval, that have not been translated yet. 
+In [WIP](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/WIP) you can find examples from HumanEval that are in the process of being translated.
 
 ## There is also a similar benchmark of HumanEval translated to [Dafny](https://github.com/JetBrains-Research/HumanEval-Dafny) 
 
