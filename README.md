@@ -1,5 +1,14 @@
 # HumanEval-Nagini
-examples from HumanEval translated to Nagini
+
+Examples from HumanEval translated to Nagini. Nagini is a verification [framework](https://github.com/marcoeilers/nagini) built on top of Python language. Its purpose is to prove the functional properties of programs. 
+
+We added such properties to the translated programs in [Bench](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/Bench). Additionally, different parts of the verification proofs/executable code are marked there, so that one can easily remove, for example, all invariants from the code and evaluate ones algorithm for invariant generation on this benchmark. We differentiate the following parts of code: invariants, function preconditions, function postconditions, function implementation, pure functions. 
+
+In [src](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/src) we copied Nagini verifier's code, to use it in our [CI infrastructure](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/.github/workflows). In CI we checked that every program in Bench is verified in the time limit of 600 seconds. Currently, it's failing due to Nagini's inconsistency between runs and sometimes more time needed for the verification of the same task. 
+
+In [WIP](https://github.com/JetBrains-Research/HumanEval-Nagini/tree/main/WIP) you can find examples from HumanEval, that have not been translated yet. 
+
+## There is also a similar benchmark of HumanEval translated to [Dafny](https://github.com/JetBrains-Research/HumanEval-Dafny) 
 
 Current status:
 
