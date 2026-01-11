@@ -46,9 +46,9 @@ def uniqueSorted(s : List[int]) -> List[int]:
         Invariant(((0) <= (i)) and ((i) <= (len(s))))
         Invariant(Forall(int, lambda k:
             (Implies(((0) <= (k)) and ((k) < (len(result))), InArray(s, result[k])), [[InArray(s, result[k])]])))
-        Invariant(Implies(i < len(s), 
-            Forall(int, lambda i:
-                (Implies(((0) <= (i)) and ((i) < (len(result))), result[i] <= s[i]), [[result[i]]]))))
+        Invariant(Implies(i < len(s),
+              Forall(int, lambda i1:
+                (Implies(((0) <= (i1)) and ((i1) < len(result)), result[i1] <= s[i]), [[result[i1]]]))))
         Invariant(Forall(int, lambda k:
             (Forall(int, lambda l:
                 (not ((((0) <= (k)) and ((k) < (l))) and ((l) < (len(result)))) or (((result)[k]) < ((result)[l])), 
